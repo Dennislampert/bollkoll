@@ -1,0 +1,18 @@
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+  cursor: pointer;
+}
+
+pre {
+  padding:10px !important;
+  margin-bottom:20px;
+}
+
+.panel {
+  margin-top:30px;
+}
+
+.pln{color:#000!important}
+@media print {.str{color:#080!important}.kwd{color:#008!important}.com{color:#800!important}.typ{color:#606!important}.lit{color:#066!important}.pun,.opn,.clo{color:#660!important}.tag{color:#008!important}.atn{color:#606!important}.atv{color:#080!important}.dec,.var{color:#606!important}.fun{color:red!important}!important}
