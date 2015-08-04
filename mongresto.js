@@ -31,7 +31,7 @@ var mongresto = module.exports = (function _mongresto(){ return {
   defaults: {
  
     // The MongoDB database to connect to
-    dbName: "bollkoll",
+    dbName: "bollkollDB",
 
     // The path to the rest api
     apiPath: "/api",
