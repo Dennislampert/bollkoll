@@ -9,6 +9,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/home.html",
       controller: "homeController"
     })
+    .when("/peter", {
+      templateUrl: "partials/home.html",
+      controller: "matchController"
+    })
     .otherwise({
       redirectTo: "/"
     });
