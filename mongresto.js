@@ -31,13 +31,13 @@ var mongresto = module.exports = (function _mongresto(){ return {
   defaults: {
  
     // The MongoDB database to connect to
-    dbName: "test",
+    dbName: "bollkoll",
 
     // The path to the rest api
     apiPath: "/api",
     
     // The path where you should put your Mongoose models
-    modelPath: "./mongoose-models/",
+    modelPath: "./mongoose-schema/",
     
     // The path where Mongresto will autogenerate
     // frontend JavaScript containing ngResource-based objects
