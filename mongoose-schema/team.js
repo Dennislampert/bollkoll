@@ -10,7 +10,7 @@ module.exports = function(mongoose) {
     goalsAgainst: Number,
     Points: Number,
     regionId: String,
-    divisionId: String,
+    division: Number,
     picturePath: String
   });
   

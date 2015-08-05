@@ -1,4 +1,4 @@
-app.controller("tableController", ["$scope", "Team", function($scope, Team) {
+app.controller("tableController", ["$scope", "Team", "Region", function($scope, Team, Region) {
   console.log("im working");
 
   // $scope.team = Team.create({
@@ -15,6 +15,16 @@ app.controller("tableController", ["$scope", "Team", function($scope, Team) {
   //   picturePath: "vonklv"
   // });
 
+  $scope.save = function() {
+    Team.create({
+      name: $scope.team.name,
+      regionId: $scope.region._id,
+      division: $scope.team.division
+    });
+  };
+
   $scope.getTeams = Team.get();
+
+  $scope.getRegions = Region.get();
 
 }]);
