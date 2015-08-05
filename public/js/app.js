@@ -13,15 +13,27 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
-    .when("/:region/:divition/spelschema", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
-    })
     .when("/:region/:divition/tabell", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
     .when("/:region/:divition/chat", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/login", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/register", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/om-bollkoll", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/crew", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
