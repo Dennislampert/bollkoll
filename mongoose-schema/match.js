@@ -13,7 +13,6 @@ module.exports = function(mongoose){
     place: String,
     gameWinnerId: String
   });
-
+  
   return mongoose.model("Match", matchSchema);
-
 };

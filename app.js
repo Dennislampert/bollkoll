@@ -30,5 +30,5 @@ app.get('*', function (req, res) {
 
 // Start up
 app.listen(3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  console.log("Node is running!");
 });

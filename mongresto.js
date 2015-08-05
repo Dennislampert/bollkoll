@@ -62,7 +62,6 @@ var mongresto = module.exports = (function _mongresto(){ return {
 
   init: function(app,options){
 
-    console.log("Mongresto: Initializing!");
 
     // Use defaults if no option is set
     options = options || {};
@@ -100,7 +99,7 @@ var mongresto = module.exports = (function _mongresto(){ return {
     
     // Check connection
     this.mongoose.connection.once('open', function() {
-      console.log("Mongresto: Connected to database " + dbName + "!");
+      // console.log("Mongresto: Connected to database " + dbName + "!");
     });
   },
 

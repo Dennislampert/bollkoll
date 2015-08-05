@@ -9,8 +9,37 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/home.html",
       controller: "homeController"
     })
-    .when("/peter", {
-      templateUrl: "partials/home.html",
+    .when("/region", {
+      templateUrl: "partials/addRegion.html",
+      controller: "regionController"
+    })
+    .when("/om-oss", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/loggain", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/registrering", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/om-bollkoll", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    // Get the ":values" as an object on the $routprovider and use it in the controller..
+    .when("/:region/:division/spelschema", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/:region/:division/tabell", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/:region/:division/chat", {
+      templateUrl: "partials/matches.html",
       controller: "matchController"
     })
     .otherwise({
