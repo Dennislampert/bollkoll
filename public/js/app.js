@@ -9,8 +9,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/home.html",
       controller: "homeController"
     })
-    .when("/settings/region", {
-      templateUrl: "partials/insertRegion.html",
+    .when("/region", {
+      templateUrl: "partials/addRegion.html",
       controller: "regionController"
     })
     .when("/crew", {

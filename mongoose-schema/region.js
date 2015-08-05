@@ -1,10 +1,10 @@
 module.exports = function(mongoose){
 
-  var regionSchema  = mongoose.Schema({
+  var Region  = mongoose.Schema({
     regionPath: String, // halsingland
     regionName: String, // Hälsingland
   });
 
-  return mongoose.model("Region", regionSchema);
+  return mongoose.model("Region", Region);
 
 };
