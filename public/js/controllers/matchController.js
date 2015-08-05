@@ -1,16 +1,20 @@
 //"myAppName" controller.
-app.controller("matchController", ["$scope","$routeParams","Match", function($scope,$routeParams,Match){
+app.controller("matchController", ["$scope", "$routeParams", "Match", "Region, Team", function($scope, $routeParams, Match, Region, Team){
 
-  // $scope.createMatch = function() {
+  // var getLjusdal = Region.get();
+  // console.log("getLjusdal: ", getLjusdal);
 
-  $scope.test = Match.get();
+  // collection.Region hämta regionPath som är lika med routeParams.region
+  Region.get({regionPath: $routeParams.region}, function(answer){
+    console.log("answer: regionsnamn:", answer[0]._id);
 
-// };
+    Team.get({}, function(answer){
+      console.log("answer: regionsnamn:", answer[0]._id);
+    });
+  });
 
-console.log("routeParams: ",$routeParams);
+// console.log("routeParams: ",$routeParams.division);
+// console.log("routeParams(region): ", $routeParams.region);
 
-
-  // $scope.test = Matches.getById("55815ab22a32d551d4c54bd7");
-  // $scope.test = Matches.get({_id:"55c1f49292efcc982c00d36e"});
 
 }]);
