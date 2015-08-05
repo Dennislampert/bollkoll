@@ -8,23 +8,24 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/home.html",
       controller: "homeController"
     })
-    .when("/settings/region", {
-      templateUrl: "partials/insertRegion.html",
+    .when("/region", {
+      templateUrl: "partials/addRegion.html",
       controller: "regionController"
     })
+
     .when("/table", {
       templateUrl: "partials/editTable.html",
       controller: "tableController"
     })
-    .when("/crew", {
+    .when("/om-oss", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
-    .when("/login", {
+    .when("/loggain", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
-    .when("/register", {
+    .when("/registrering", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })

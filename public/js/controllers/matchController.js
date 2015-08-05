@@ -1,6 +1,7 @@
 //"myAppName" controller.
-app.controller("matchController", ["$scope","Match", function($scope,Match){
+app.controller("matchController", ["$scope","$routeParams","Match", function($scope,$routeParams,Match){
 
+console.log("routeParams: ",$routeParams);
   $scope.clickevent = function(){
 
     Match.create({
