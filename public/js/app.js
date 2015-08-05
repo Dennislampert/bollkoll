@@ -9,6 +9,22 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/home.html",
       controller: "homeController"
     })
+    .when("/:region/:divition/spelschema", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/:region/:divition/spelschema", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/:region/:divition/tabell", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/:region/:divition/chat", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
     .otherwise({
       redirectTo: "/"
     });
