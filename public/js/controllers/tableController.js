@@ -18,6 +18,13 @@ app.controller("tableController", ["$scope", "Team", "Region", function($scope, 
   $scope.save = function() {
     Team.create({
       name: $scope.team.name,
+      gamesPlayed: 0,
+      gamesWon: 0,
+      gamesDrawn: 0,
+      gamesLost: 0,
+      goalsFor: 0,
+      goalsAgainst: 0,
+      Points: 0,
       regionId: $scope.region._id,
       division: $scope.team.division
     });
