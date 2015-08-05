@@ -13,8 +13,8 @@ app.controller("matchController", ["$scope","Match", function($scope,Match){
       guestResults: 1,
       finishedGame: false,
       regionId: 1,
-      divisionId: 1,
-      place: "Somewhere",
+      division: 4,
+      place: "Ilsbo",
       gameWinnerId: 1
 
     }, function() {

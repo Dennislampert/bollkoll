@@ -9,15 +9,11 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/home.html",
       controller: "homeController"
     })
-    .when("/:region/:divition/spelschema", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+    .when("/settings/region", {
+      templateUrl: "partials/insertRegion.html",
+      controller: "regionController"
     })
-    .when("/:region/:divition/tabell", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
-    })
-    .when("/:region/:divition/chat", {
+    .when("/crew", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
@@ -33,7 +29,16 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
-    .when("/crew", {
+    // Get the ":values" as an object on the $routprovider and use it in the controller..
+    .when("/:region/:divition/spelschema", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/:region/:divition/tabell", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/:region/:divition/chat", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
