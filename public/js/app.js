@@ -9,6 +9,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/home.html",
       controller: "homeController"
     })
+    .when("/tabell", {
+      templateUrl: "partials/tabell.html",
+      controller: "tableController"
+    })
     .otherwise({
       redirectTo: "/"
     });
