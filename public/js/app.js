@@ -29,6 +29,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
+    .when("/chat", {
+      templateUrl: "partials/chat.html",
+      controller: "chatController"
+    })
     // Get the ":values" as an object on the $routprovider and use it in the controller..
     .when("/:region/:divition/spelschema", {
       templateUrl: "partials/matches.html",

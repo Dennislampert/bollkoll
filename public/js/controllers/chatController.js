@@ -1,7 +1,7 @@
 app.controller("chatController", ["$scope", "Chat", function($scope, Chat){
 $scope.test = Chat.get();
 
-console.log($scope.test)
+console.log($scope.test);
 
   // $scope.test = Chat.create({
   // 	message: {
@@ -19,9 +19,6 @@ console.log($scope.test)
   //   matchId: "41241"
   // }, function() {
   //   $scope.test = Chat.get();
-  // });
-
-  //   $scope.test = Chat.remove();
   // });
 
 }]);
