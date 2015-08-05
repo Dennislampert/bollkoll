@@ -18,6 +18,16 @@
           <th>IM</th>
           <th>P</th>
         </tr>
+        <tr ng-repeat="team in getTeams">
+          <td>{{team.name}}</td>
+          <td>{{team.gamesPlayed}}</td>
+          <td>{{team.gamesWon}}</td>
+          <td>{{team.gamesDrawn}}</td>
+          <td>{{team.gamesLost}}</td>
+          <td>{{team.goalsFor}}</td>
+          <td>{{team.goalsAgainst}}</td>
+          <td>{{team.Points}}</td>
+        </tr>
       </table>
     </div>
   </div>
