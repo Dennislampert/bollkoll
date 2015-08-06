@@ -50,6 +50,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
+    .when("/anvandare/:username", {
+      templateUrl: "partials/userprofile.html",
+      controller: "profileController"
+    })
     .otherwise({
       redirectTo: "/"
     });
