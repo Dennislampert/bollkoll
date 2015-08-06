@@ -1,17 +1,17 @@
 module.exports = function(mongoose){
 
 	var matchSchema = mongoose.Schema({
-    homeTeamId: String,
-    guestTeamId: String,
-    time: Number,
+    homeTeamId: {type: mongoose.Schema.Types.ObjectId, ref: "Team"},
+    guestTeamId: {type: mongoose.Schema.Types.ObjectId, ref: "Team"},
+    time: {type:Number},
     date: Number,
     homeResults: Number,
     guestResults: Number,
     finishedGame: Boolean,
-    regionId: String,
-    divisionId: String,
+    region: {type: mongoose.Schema.Types.ObjectId, ref: "Region"},
+    division: Number,
     place: String,
-    gameWinnerId: String
+    gameWinnerId: {type: mongoose.Schema.Types.ObjectId, ref: "Team"}
   });
   
   return mongoose.model("Match", matchSchema);
