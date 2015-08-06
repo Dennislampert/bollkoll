@@ -1,7 +1,7 @@
 module.exports = function(mongoose) {
   
-  return mongoose.model("Team", {
-    name: String,
+  var teamSchema = mongoose.Schema({
+    name: {type: String, required:true},
     gamesPlayed: Number,
     gamesWon: Number,
     gamesDrawn: Number,
@@ -9,9 +9,9 @@ module.exports = function(mongoose) {
     goalsFor: Number,
     goalsAgainst: Number,
     Points: Number,
-    regionId: String,
-    divisionId: String,
+    regionId: {type: mongoose.Schema.Types.ObjectId, ref: "Region"},
+    division: Number,
     picturePath: String
   });
-  
+  var Team = mongoose.model("Team", teamSchema);
 };
