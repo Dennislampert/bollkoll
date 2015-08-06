@@ -13,7 +13,6 @@ app.controller("regionController", ["$scope","Region", function($scope,Region){
 
   // $scope.getRegions = function(){
   //   $scope.regions = Region.get();
-
   // };
 
 }]);
