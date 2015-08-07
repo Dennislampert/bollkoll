@@ -4,8 +4,7 @@ var app = angular.module("ngNode", ["ngRoute", "ngResource", "ui.bootstrap"]);
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
   //route config
-  $routeProvider
-    .when("/", {
+  $routeProvider.when("/", {
       templateUrl: "partials/home.html",
       controller: "homeController"
     })
@@ -13,13 +12,18 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/addRegion.html",
       controller: "regionController"
     })
+
+    .when("/table", {
+      templateUrl: "partials/editTable.html",
+      controller: "tableController"
+    })
     .when("/om-oss", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
     .when("/loggain", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/login.html",
+      controller: "loginController"
     })
     .when("/registrering", {
       templateUrl: "partials/matches.html",
@@ -39,8 +43,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "matchController"
     })
     .when("/:region/:division/tabell", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/table.html",
+      controller: "tableController"
     })
     .when("/:region/:division/chat", {
       templateUrl: "partials/matches.html",
@@ -49,6 +53,5 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .otherwise({
       redirectTo: "/"
     });
-
   $locationProvider.html5Mode(true);
 }]);
