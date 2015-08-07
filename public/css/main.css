@@ -34,7 +34,8 @@ pre {
 
 .chat #yourChat{
   background-color:#79CDCD;
-  border-radius: 2px;  
+  border-radius: 2px;
+  float: right;
 }
 
 .chatUser {
