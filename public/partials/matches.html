@@ -18,23 +18,23 @@
       </tr>
 
       <form ng-submit="save()">
-        <select type="text" ng-model="team._id" value="team._id" ng-options="team.name for region in getTeams" placeholder="Region">
+        <select type="text" ng-model="team._id" value="team._id" ng-options="team.name for region in getTeams">
           <option value=""> Hemmalag </option>
         </select>
 
 
-        <select type="text" ng-model="team._id" value="team._id" ng-options="team.name for region in getTeams" placeholder="Region">
+      <!--   <select type="text" ng-model="team._id" value="team._id" ng-options="">
           <option value=""> Bortalag </option>
-        </select>
+        </select> -->
 
 
-        <input type="text" ng-model="team.division" placeholder="Plats">
+        <input type="text" ng-model="match.place" placeholder="Plats">
 
 
-        <input type="text" ng-model="team.name" placeholder="Datum">
+        <input type="text" ng-model="match.date" placeholder="Datum">
 
 
-        <input type="text" ng-model="team.division" placeholder="Tid">
+        <input type="text" ng-model="match.time" placeholder="Tid">
 
 
         <button type="submit">Spara match</button>
