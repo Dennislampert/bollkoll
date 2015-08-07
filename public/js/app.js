@@ -22,11 +22,11 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "matchController"
     })
     .when("/loggain", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/login.html",
+      controller: "loginController"
     })
     .when("/registrering", {
-      templateUrl: "partials/matches.html",
+      templateUrl: "partials/register.html",
       controller: "matchController"
     })
     .when("/om-bollkoll", {
