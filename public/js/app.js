@@ -27,7 +27,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     })
     .when("/registrering", {
       templateUrl: "partials/matches.html",
-      controller: "matchController"
+      controller: "registerController"
     })
     .when("/om-bollkoll", {
       templateUrl: "partials/matches.html",
