@@ -11,6 +11,7 @@ module.exports = function(mongoose) {
       var username = req.body.username;
       mongoose.model("User").findOne(username, function(err, data) {
         if (err) { throw err; }
+        res.json(data);
       });
     } else if (req.method == "DELETE") {
       req.session.destroy(function(err) {

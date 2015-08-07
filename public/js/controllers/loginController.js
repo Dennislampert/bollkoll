@@ -1,4 +1,4 @@
-app.controller("loginController", ["$scope","$location","User", function($scope,$location,User){
+app.controller("loginController", ["$http","$scope","$location","User", function($http,$scope,$location,User){
 
 
 
@@ -6,7 +6,7 @@ app.controller("loginController", ["$scope","$location","User", function($scope,
   $scope.login = function(){
 
     $http.post('/api/login',$scope.userInfo).success(function(data){
-      consoel.log("Logedin info: ",data);
+      console.log("Logedin info: ",data);
 
     });
   };

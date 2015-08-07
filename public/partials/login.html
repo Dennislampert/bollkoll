@@ -1,7 +1,7 @@
-<form class="navbar-form navbar-left" role="search">
+<form class="navbar-form navbar-left" ng-submit="login()" role="search">
   <div class="form-group">
-    <input type="email" ng-module="userInfo.email" class="form-control" placeholder="Email">
-    <input type="password" class="form-control" placeholder="password">
+    <input type="email" ng-model="userInfo.email" class="form-control" placeholder="Email">
+    <input type="password" ng-model="userInfo.password" class="form-control" placeholder="password">
   </div>
-  <button type="submit" ng-module="userInfo.password" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-default">Submit</button>
 </form>
