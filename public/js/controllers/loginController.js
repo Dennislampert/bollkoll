@@ -10,15 +10,5 @@ app.controller("loginController", ["$http","$scope","$location","User", function
 
     });
   };
-
-  // User.create({
-  //   username: "dennis",
-  //   password: "lalala",
-  //   fname:"Dennis",
-  //   lname:"Lampert",
-  //   email:"dennis@lampert.se",
-  //   picturePath:"/dennis/hej"
-
-  // });
-
+  
 }]);
