@@ -2,21 +2,43 @@
   <div class="panel panel-default">
     <div class="panel-heading">Panel heading</div>
     <div class="panel-body">
-      <p>Some text for comming games</p>
+      <p>Some text for coming games</p>
     </div>
+  <!--   <div class="container">
+      {{minLjusdal}}
+    </div> -->
 
     <!-- Table for comming  -->
     <table class="table">
       <tr>
-        <th>Hemma - Borta</th>
+        <th>Hemma</th>
+        <th>Borta</th>
         <th>Tid</th>
         <th>Glyff</th>
       </tr>
-      <tr>
-        <th>Hemma - Borta</th>
-        <th>Tid</th>
-        <th>Glyff</th>
-      </tr>
+
+      <form ng-submit="save()">
+        <select type="text" ng-model="team._id" value="team._id" ng-options="team.name for region in getTeams">
+          <option value=""> Hemmalag </option>
+        </select>
+
+
+      <!--   <select type="text" ng-model="team._id" value="team._id" ng-options="">
+          <option value=""> Bortalag </option>
+        </select> -->
+
+
+        <input type="text" ng-model="match.place" placeholder="Plats">
+
+
+        <input type="text" ng-model="match.date" placeholder="Datum">
+
+
+        <input type="text" ng-model="match.time" placeholder="Tid">
+
+
+        <button type="submit">Spara match</button>
+      </form>
     </table>
     <!-- Table for played  -->
     <div class="panel-body">

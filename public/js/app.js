@@ -26,8 +26,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "loginController"
     })
     .when("/registrering", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/register.html",
+      controller: "registerController"
     })
     .when("/om-bollkoll", {
       templateUrl: "partials/matches.html",
@@ -38,6 +38,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "chatController"
     })
     // Get the ":values" as an object on the $routprovider and use it in the controller..
+    
+    // when "localhost:3000/skane/4/spelschema"
     .when("/:region/:division/spelschema", {
       templateUrl: "partials/matches.html",
       controller: "matchController"

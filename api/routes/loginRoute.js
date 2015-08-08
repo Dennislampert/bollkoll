@@ -8,8 +8,16 @@ module.exports = function(mongoose) {
         res.json(false);
       }
     } else if (req.method == "POST") {
-      var username = req.body.username;
-      mongoose.model("User").findOne(username, function(err, data) {
+      if (
+        !(req.body.username || req.body.email) &&
+        !req.body.password
+      ) {
+        res.json({
+          _error: "Invalid request payload"
+        });
+        return;
+      }
+      mongoose.model("User").findOne(req.body, function(err, data) {
         if (err) { throw err; }
         res.json(data);
       });

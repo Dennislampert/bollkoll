@@ -1,29 +1,44 @@
 //"myAppName" controller.
-app.controller("matchController", ["$scope","$routeParams","Match", function($scope,$routeParams,Match){
+app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", "Team", function($scope, $routeParams, Match, Region, Team){
 
-console.log("routeParams: ",$routeParams);
-  $scope.clickevent = function(){
 
+
+  $scope.save = function() {
     Match.create({
-
-      homeTeamId: 1,
-      guestTeamId: 1,
-      time: 1,
-      date: 1,
-      homeResults: 1,
-      guestResults: 1,
-      finishedGame: false,
-      regionId: 1,
-      division: 4,
-      place: "Ilsbo",
-      gameWinnerId: 1
-
-    }, function() {
-      $scope.test = Match.get();
+      homeTeamId: $scope.homeTeam._id,
+      guestTeamId: $scope.guestTeam._id,
+      place: $scope.match.place,
+      date: $scope.match.date,
+      time: $scope.match.time,
+      homeResults: 0,
+      guestResults: 0,
+      finishedGame: 0,
+      regionId: 0,
+      divisionId: 0,
+      gameWinnerId: 0
     });
   };
 
-  // $scope.test = Matches.getById("55815ab22a32d551d4c54bd7");
-  // $scope.test = Matches.get({_id:"55815ab22a32d551d4c54bd7"});
+
+
+  // collection.Region hämta regionPath som är lika med routeParams.region
+  Region.get({regionPath: $routeParams.region}, function(answer){
+
+    var regionId = answer[0]._id;
+
+    Team.get({
+      regionId: regionId,
+      division: $routeParams.division
+    },
+      function(team){
+      // console.log("3: ");
+      console.log("team: ", $scope.team);
+    });
+  });
+
+
+
+// console.log("routeParams: ",$routeParams.division);
+// console.log("routeParams(region): ", $routeParams.region);
 
 }]);
