@@ -38,7 +38,6 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
     });
   });
 
-
 // console.log("routeParams: ",$routeParams.division);
 // console.log("routeParams(region): ", $routeParams.region);
 

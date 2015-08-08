@@ -22,16 +22,20 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "matchController"
     })
     .when("/loggain", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/login.html",
+      controller: "loginController"
     })
     .when("/registrering", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/register.html",
+      controller: "registerController"
     })
     .when("/om-bollkoll", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
+    })
+    .when("/chat", {
+      templateUrl: "partials/chat.html",
+      controller: "chatController"
     })
     // Get the ":values" as an object on the $routprovider and use it in the controller..
     

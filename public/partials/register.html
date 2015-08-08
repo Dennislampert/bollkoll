@@ -1,0 +1,12 @@
+<!-- Register -->
+<form class="navbar-form navbar-left" ng-submit="register()" role="search">
+  <div class="form-group">
+    <input type="text" ng-model="userInfo.username" class="form-control" placeholder="Användarnamn">
+    <input type="text" ng-model="userInfo.fname" class="form-control" placeholder="Förnamn">
+    <input type="text" ng-model="userInfo.lname" class="form-control" placeholder="Efternamn">
+    <input type="email" ng-model="userInfo.email" class="form-control" placeholder="Email">
+    <input type="password" ng-model="userInfo.password" class="form-control" placeholder="Lösenord">
+    <input type="password" ng-model="userInfo.passwordCompare" class="form-control" placeholder="Lösenord igen">
+  </div>
+  <button type="submit" class="btn btn-default">Spara din profil</button>
+</form>
