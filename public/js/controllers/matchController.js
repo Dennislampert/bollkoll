@@ -38,7 +38,21 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
     });
   });
 
-// console.log("routeParams: ",$routeParams.division);
-// console.log("routeParams(region): ", $routeParams.region);
+
+
+  Match.get({
+    
+      homeTeamId: $scope.homeTeam._id,
+      guestTeamId: $scope.guestTeam._id,
+      place: $scope.match.place,
+      date: $scope.match.date,
+      time: $scope.match.time,
+      homeResults: 0,
+      guestResults: 0
+  });
+
+
+
+
 
 }]);
