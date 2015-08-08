@@ -1,10 +1,12 @@
 <div class="row">
-  <div class="container chat col-xs-10 col-sm-8 col-md-6 col-lg-4">
+  <div class="container chat col-xs-10 col-sm-10 col-md-10 col-lg-10">
     <p class="chatUser">Lolek</p>
-    <p><a id="otherChat">a tagg med id</a></p>
-    <p class="chatUser">Dade</p>
-    <p id="otherChat">p tagg med id</p>
-    <p class="chatUser">Santino</p>
-    <p id="yourChat">float:right, bootstrap påverkar inte background-color</p>
+    <p class="message"><a id="otherChat">a tagg med id</a></p>
+    <p class="yourChatUser">Santino</p>
+    <p><a id="yourChat" class="message">float:right, bootstrap påverkar inte background-color</a></p>
+    <div class="messageToSend col-xs-10 col-sm-3 col-md-3 col-lg-3">
+      <input type="text" class="form-control" placeholder="Skriv meddelande här...">
+      <button type="submit" class="btn btn-default">Skicka</button>
+    </div>
   </div>
 </div>
