@@ -8,10 +8,7 @@ module.exports = function(mongoose){
     homeResults: Number,
     guestResults: Number,
     finishedGame: Boolean,
-    region: {type: mongoose.Schema.Types.ObjectId, ref: "Region"},
-    division: Number,
-    place: String,
-    gameWinnerId: {type: mongoose.Schema.Types.ObjectId, ref: "Team"}
+    place: String
   });
   
   return mongoose.model("Match", matchSchema);
