@@ -1,9 +1,12 @@
 //"myAppName" controller.
 app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", "Team", function($scope, $routeParams, Match, Region, Team){
 
+  // console.log("hallelujah!")
 
 
-  $scope.save = function() {
+
+  $scope.saveIT = function() {
+    console.log("run bastard run! :", $scope);
     Match.create({
       homeTeamId: $scope.homeTeam._id,
       guestTeamId: $scope.guestTeam._id,
@@ -12,10 +15,7 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
       time: $scope.match.time,
       homeResults: 0,
       guestResults: 0,
-      finishedGame: 0,
-      regionId: 0,
-      divisionId: 0,
-      gameWinnerId: 0
+      finishedGame: 0
     });
   };
 
@@ -26,17 +26,17 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
 
     var regionId = answer[0]._id;
 
-    Team.get({
-      regionId: regionId,
-      division: $routeParams.division
+    Team.get({  // get all teams from collection 'team(s)' that 
+      regionId: regionId, // has this regionId
+      division: $routeParams.division // and this division
     },
-      function(team){
-      // console.log("3: ");
-      console.log("team: ", $scope.team);
+    function(teams){
+        $scope.homeTeams = teams;
+        $scope.guestTeams = teams;
+        console.log("homeTeams: ", $scope.homeTeams);
+        console.log("guestTeams: ", $scope.guestTeams);
     });
   });
-
-
 
 
 // console.log("routeParams: ",$routeParams.division);
