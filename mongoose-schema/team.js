@@ -1,5 +1,5 @@
 module.exports = function(mongoose) {
-  
+
   var team = mongoose.Schema({
     name: String,
     gamesPlayed: Number,
@@ -15,5 +15,5 @@ module.exports = function(mongoose) {
     });
 
   return mongoose.model("Team", team);
-  
+
 };
