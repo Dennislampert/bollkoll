@@ -1,14 +1,15 @@
-app.controller("loginController", ["$http","$scope","$location","User", function($http,$scope,$location,User){
-
-
+app.controller("loginController", ["$http","$scope","$location","Login", function($http,$scope,$location,Login){
 
   $scope.userInfo = {};
+
+  $scope.isLoggedIn = Login.user;
   $scope.login = function(){
 
-    $http.post('/api/login',$scope.userInfo).success(function(data){
-      console.log("Logedin info: ",data);
-
+    Login.login($scope.userInfo, function(data) {
+      console.log("logged in: ", data);
+      console.log("who's logged in?: ", Login.user);
     });
+
   };
   
 }]);
