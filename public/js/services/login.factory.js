@@ -4,6 +4,7 @@ app.factory("Login",["$http",function($http){
   var loginObject = {
     user: function() { return currentUser; },
     login: function(userInfo, callback) {
+      console.log(userInfo);
       $http.post('api/login', userInfo).success(function(user) {
         currentUser = user ? user : false;
         callback(currentUser);

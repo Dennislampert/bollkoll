@@ -1,5 +1,8 @@
 module.exports = function(mongoose) {
+  var sha256 = require('sha256'),
+  saltHash = require(process.cwd() + "/salt");
   return function(req, res) {
+    req.body.password = sha256(saltHash.salt + req.body.password);
     if (req.method == "GET") {
       if (req.session.user) {
         res.json(req.session.user);
