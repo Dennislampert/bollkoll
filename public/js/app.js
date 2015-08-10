@@ -44,6 +44,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
+    .when("/:region/:division/:gameId/matchstatus", {
+      templateUrl: "partials/matchstatus.html",
+      controller: "matchStatusController"
+    })
     .when("/:region/:division/tabell", {
       templateUrl: "partials/table.html",
       controller: "tableController"
