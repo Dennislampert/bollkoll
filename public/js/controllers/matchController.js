@@ -22,12 +22,21 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
     });
   };
 
+  var currentId;
+  $scope.currentlyShownResult = function(idToCheck){
+    return idToCheck != currentId;
+  };
+
+  $scope.toggleID = function(clickedId){
+    currentId = currentId == clickedId ? false : clickedId;
+  };
+
 
 
   // collection.Region hämta regionPath som är lika med routeParams.region
   Region.get({regionPath: $routeParams.region}, function(answer){
-
-    regionAndDivisionId.regionId = answer[0]._id;
+    console.log("answer: ",answer);
+    regionAndDivisionId.regionId = answer[0]._id ? answer[0]._id : 0;
     regionAndDivisionId.division = $routeParams.division;
 
     Team.get(
@@ -51,8 +60,9 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
         //regionAndDivisionId.homeTeamId =  {name:"hamburgare"};
         
         Match.get(
-          regionAndDivisionId, function(allMatches){
-            console.log("allMatches", allMatches);
+          regionAndDivisionId, function(games){
+            console.log("games", games);
+            $scope.games = games;
           }
         );
     });
