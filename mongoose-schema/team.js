@@ -1,6 +1,6 @@
 module.exports = function(mongoose) {
-  
-  return mongoose.model("Team", {
+
+  var team = mongoose.Schema({
     name: String,
     gamesPlayed: Number,
     gamesWon: Number,
@@ -10,8 +10,10 @@ module.exports = function(mongoose) {
     goalsAgainst: Number,
     Points: Number,
     regionId: String,
-    divisionId: String,
+    division: Number,
     picturePath: String
-  });
-  
+    });
+
+  return mongoose.model("Team", team);
+
 };

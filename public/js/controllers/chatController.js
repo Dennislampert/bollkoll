@@ -1,15 +1,23 @@
-app.controller("chatController", ["$scope", "Chat", function($scope, Chat){
-$scope.test = Chat.get();
+app.controller("chatController", ["$scope", "Chat", "Message", function($scope, Chat, Message){
+  $scope.test = Message.get(function() {
+  
+  });
 
-console.log($scope.test);
+  $scope.chatInfo = {};
+  $scope.send = function() {
+    Message.create($scope.chatInfo, function(data) {
+      console.log("lolek", data);
+    });
+  }  
 
   // $scope.test = Chat.create({
   // 	message: {
 	 //  tag: "tag",
-  //     content: "daaaaaamp"
+  //     content: "fakk yu"
   //   },
   //   user: {
-  //     name: "Dampbarn",
+  //     userId: "132213321",
+  //     name: "dkdk",
   //     loginProtection: true
   //   },
   //   status: {
