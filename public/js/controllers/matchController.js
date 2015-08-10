@@ -28,6 +28,7 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
   };
 
   $scope.toggleID = function(clickedId){
+
     currentId = currentId == clickedId ? false : clickedId;
   };
 
@@ -35,21 +36,18 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
 
   // collection.Region hämta regionPath som är lika med routeParams.region
   Region.get({regionPath: $routeParams.region}, function(answer){
-    console.log("answer: ",answer);
-    regionAndDivisionId.regionId = answer[0]._id ? answer[0]._id : 0;
+    regionAndDivisionId.regionId = answer[0]._id;
     regionAndDivisionId.division = $routeParams.division;
 
     Team.get(
-      regionAndDivisionId,
+      regionAndDivisionId, function(teams){
+        $scope.homeTeams = teams;
+        $scope.guestTeams = teams;
+        // console.log("homeTeams: ", $scope.homeTeams);
+        // console.log("guestTeams: ", $scope.guestTeams);
 
-      function(teams){
-          $scope.homeTeams = teams;
-          $scope.guestTeams = teams;
-          // console.log("homeTeams: ", $scope.homeTeams);
-          // console.log("guestTeams: ", $scope.guestTeams);
-
-          // console.log("regionAndDivisionId: ", regionAndDivisionId);
-        
+        // console.log("regionAndDivisionId: ", regionAndDivisionId);
+      
 
         // Populate by several properties by separating them with space in string
         regionAndDivisionId._populate = "homeTeamId guestTeamId";
@@ -61,7 +59,6 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
         
         Match.get(
           regionAndDivisionId, function(games){
-            console.log("games", games);
             $scope.games = games;
           }
         );
