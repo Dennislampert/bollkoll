@@ -8,6 +8,8 @@ module.exports = function(mongoose){
     homeResults: Number,
     guestResults: Number,
     finishedGame: Boolean,
+    regionId: {type: mongoose.Schema.Types.ObjectId, ref: "Region"},
+    division: Number,
     place: String
   });
   
