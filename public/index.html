@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>mongresto - documentation</title>
+    <title>BollKoll</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- set base href so that angular knows -->
     <base href="/"/>
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -19,11 +21,21 @@
     <script src="js/controllers/matchController.js"></script>
     <script src="js/controllers/regionController.js"></script>
     <script src="js/controllers/chatController.js"></script>
+
+    <script src="js/controllers/headerController.js"></script>
+
+    <script src="js/services/navTitleChange.factory.js"></script>
+
+    <script src="js/directives/navBar.directive.js"></script>
     <script src="js/controllers/loginController.js"></script>
     <script src="js/controllers/registerController.js"></script>
     <script src="js/services/login.factory.js"></script>
   </head>
-  <body ng-app="ngNode">
-    <div ng-view></div>
+  <body ng-app="bollKoll">
+
+    <nav-bar></nav-bar>
+
+    <div class="container" ng-view>
+    </div>
   </body>
 </html>

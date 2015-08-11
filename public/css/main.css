@@ -3,15 +3,78 @@
 .carousel,
 .panel-title a {
   cursor: pointer;
+  content: 'bananas';
+}
+.container {
+  margin: 65px 0 0;
+}
+.nav .home-link {
+  display: none;
+}
+@media (max-width: 767px) {
+  .navbar-text {
+    margin-left: 15px;
+  }
+  .navbar-brand {
+    display: none;
+  }
+  .nav .home-link {
+    display: block;
+  }
 }
 
-pre {
-  padding:10px !important;
-  margin-bottom:20px;
+.teamNames {
+    font-size:28px;
 }
 
-.panel {
-  margin-top:30px;
+.teamScores {
+    font-size:22px;
+}
+
+.teamNames, .teamScores {
+    text-align:center;
+    font-weight:normal;
+}
+
+.message a {
+  text-decoration:none;
+}
+
+.chat #otherChat{
+  background-color:#D3D3D3;
+  border-radius:2px;
+  float:left;
+  margin-left:5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.chat #yourChat{
+  background-color:#79CDCD;
+  border-radius: 2px;
+  float:right;
+  margin-right: 5px;
+  padding-left: 5px;
+}
+
+.chatUser {
+    font-size:12px;
+    margin-bottom:5px;
+    margin-left: 5px;
+}
+
+.yourChatUser {
+    font-size:12px;
+/*    margin-bottom:5px;
+    margin-right: 5px;
+    margin-left: 5px;*/
+    text-align:right;
+    margin-right:5px;
+}
+
+.messageToSend {
+    padding-top: 20px;
+    text-align:right;
 }
 
 .teamNames {

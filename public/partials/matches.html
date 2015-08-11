@@ -9,37 +9,68 @@
     </div> -->
 
     <!-- Table for comming  -->
+
+    <form ng-submit="saveIT()">
+      <select type="text" ng-model="homeTeam._id" value="homeTeam._id" ng-options="homeTeam.name for homeTeam in homeTeams">
+        <option value=""> Hemmalag </option>
+      </select>
+
+
+      <select type="text" ng-model="guestTeam._id" value="guestTeam._id" ng-options="guestTeam.name for guestTeam in guestTeams">
+        <option value=""> Bortalag </option>
+      </select>
+
+
+      <input type="text" ng-model="match.place" placeholder="Plats">
+
+
+      <input type="text" ng-model="match.date" placeholder="Datum">
+
+
+      <input type="text" ng-model="match.time" placeholder="Tid">
+
+
+      <button type="submit">Spara match</button>
+    </form>
+
+
+
+
     <table class="table">
       <tr>
-        <th>Hemma</th>
-        <th>Borta</th>
+        <th>Hemma - Borta</th>
         <th>Tid</th>
-        <th>Glyff</th>
+        <th>I Glyff</th>
+        <th>√ Glyff</th>
       </tr>
 
-      <form ng-submit="saveIT()">
-        <select type="text" ng-model="homeTeam._id" value="homeTeam._id" ng-options="homeTeam.name for homeTeam in homeTeams">
-          <option value=""> Hemmalag </option>
-        </select>
+
+<!-- 
+      <tr ng-repeat="game in games">
+        <td>{{ game. }}</td> -->
 
 
-        <select type="text" ng-model="guestTeam._id" value="guestTeam._id" ng-options="guestTeam.name for guestTeam in guestTeams">
-          <option value=""> Bortalag </option>
-        </select>
+    <tbody ng-repeat="game in games">
+      <tr ng-click="toggleID(game._id)"> <!-- Results ng-repete and hide every second row -->
+        <td>{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
+        <td>{{ game.date }}</td>
+        <td>Info</td>
+        <td>Status</td>
+      </tr>
+      <tr ng-hide="currentlyShownResult(game._id)">
+        <td>{{ game.homeResults }} - {{ game.guestResults }}</td>
+        <td>{{ game.time }}</td>
+        <td>Chatt</td>
+        <td>Update</td>
+      </tr>
+    </tbody>
 
-
-        <input type="text" ng-model="match.place" placeholder="Plats">
-
-
-        <input type="text" ng-model="match.date" placeholder="Datum">
-
-
-        <input type="text" ng-model="match.time" placeholder="Tid">
-
-
-        <button type="submit" ng-click="saveIT()">Spara match</button>
-      </form>
     </table>
+
+
+
+
+
     <!-- Table for played  -->
     <div class="panel-body">
       <p>Some text for played games</p>
