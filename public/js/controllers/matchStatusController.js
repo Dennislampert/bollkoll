@@ -2,15 +2,15 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
 
 	Match.get({
 		homeTeamId: $scope.homeTeam._id,
-    guestTeamId: $scope.guestTeam._id,
-    place: $scope.match.place,
-    date: $scope.match.date,
-    // time: $scope.match.time,
-    homeResults: 0,
-    guestResults: 0,
-    finishedGame: 0
-    // regionId: regionAndDivisionId.regionId,
-    // division: regionAndDivisionId.division
+        guestTeamId: $scope.guestTeam._id,
+        place: $scope.match.place,
+        date: $scope.match.date,
+        // time: $scope.match.time,
+        homeResults: 0,
+        guestResults: 0,
+        finishedGame: 0
+        // regionId: regionAndDivisionId.regionId,
+        // division: regionAndDivisionId.division
 	});
 
 
@@ -28,4 +28,14 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     });
 	};
 
+
+
+
+
+    Match.get(
+      homeTeamId, function(match){
+        // $scope.match = match;
+        console.log("match get!! ", match);
+      }
+    );
 }]);
