@@ -1,5 +1,5 @@
 //app declaration and dependency injection
-var app = angular.module("ngNode", ["ngRoute", "ngResource", "ui.bootstrap"]);
+var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ui.bootstrap"]);
 
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {

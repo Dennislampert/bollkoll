@@ -1,17 +1,28 @@
 
-  <div class="chat col-xs-10 col-sm-10 col-md-10 col-lg-10">
-    <div class="message col-lg-7 col-md-7 col-sm-7 col-xs-7" ng-repeat="message in test">
-    <p class="chatUser">Lolek</p>
-    <p><a id="otherChat">{{message.content}}</a></p>
+  <div class="chat container">
+    
+    <div class="row">
+      <div class="message col-lg-8 col-md-8 col-sm-8 col-xs-8" ng-repeat="message in test">
+        <p class="chatUser">{{message.userId.username}}</p>
+        <p id="otherChat">{{message.content}}</p>
+      </div>
     </div>
-    <div class="message col-lg-7 col-lg-offset-7 col-md-7 col-md-offset-7 col-sm-7 col-sm-offset-7 col-xs-7 col-xs-offset-7">
-    <p class="yourChatUser">Santino</p>
-    <p><a id="yourChat">float:right, bootstrap påverkar inte background-color float:right, bootstrap påverkar inte background-color float:right, bootstrap påverkar inte background-color float:right, bootstrap påverkar inte background-color</a></p>
+
+    <div class="row">
+      <div class="message col-lg-8 col-md-8 col-sm-8 col-xs-8 col-sm-4 col-xs-4 col-xs-offset-8" ng-repeat="message in test">
+        <p class="yourChatUser">Lolek</p>
+         <p id="yourChat">{{message.content}}</p>
+      </div>
     </div>
-    <form class="messageToSend col-xs-12 col-sm-3 col-md-3 col-lg-3" ng-submit="send()">
-      <input type="text" ng-model="chatInfo.content" class="form-control" placeholder="Skriv meddelande här...">
-      <button type="submit" class="btn btn-default">Skicka</button>
-    </div>
+
   </div>
+  <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <p class="statusUser">King</p>
+    <p id="statusMessage">GOAL! 1-0</p>
+  </div>
+  <form class="messageToSend col-xs-12 col-sm-3 col-md-3 col-lg-3" ng-submit="send()">
+    <input type="text" ng-model="chatInfo.content" class="form-control" placeholder="Skriv meddelande här...">
+    <button type="submit" class="btn btn-default">Skicka</button>
+  </form>
   <div class="status col-xs-12 col-sm-12 col-md-12 col-lg-12">
   </div>
