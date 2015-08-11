@@ -1,12 +1,23 @@
-<form ng-submit="saveResults()">
+<section>
 
-  <input type="number" ng-model="match.homeResults" placeholder="poäng hemma">
+	<form ng-submit="saveResults()">
+	  <input type="number" ng-model="match.homeResults" placeholder="poäng hemma">
 
 
-  <input type="number" ng-model="match.guestResults" placeholder="poäng borta">
+	  <input type="number" ng-model="match.guestResults" placeholder="poäng borta">
 
-<!--   <button type="submit" ng-click="defaultResults()"> Ångra </button> -->
+	<!--   <button type="submit" ng-click="defaultResults()"> Ångra </button> -->
 
-  <button type="submit" ng-click="saveResults()"> Spara </button>
+	  <button type="submit" ng-click="saveResults()"> Spara </button>
+	</form>
 
-</form>
+
+	<li ng-repeat="x in Match">
+    {{ x }}
+  </li>
+
+
+
+
+
+</section>
