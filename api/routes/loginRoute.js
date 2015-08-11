@@ -2,7 +2,7 @@ module.exports = function(mongoose) {
   var sha256 = require('sha256'),
   saltHash = require(process.cwd() + "/salt");
   return function(req, res) {
-    req.body.password = sha256(saltHash.salt + req.body.password);
+    
     if (req.method == "GET") {
       if (req.session.user) {
         res.json(req.session.user);
@@ -20,8 +20,13 @@ module.exports = function(mongoose) {
         });
         return;
       }
+      req.body.password = sha256(saltHash.salt + req.body.password);
+      console.log("body", req.body);
       mongoose.model("User").findOne(req.body, function(err, data) {
         if (err) { throw err; }
+        if(data) {
+          req.session.user = data;
+        }
         res.json(data);
       });
     } else if (req.method == "DELETE") {

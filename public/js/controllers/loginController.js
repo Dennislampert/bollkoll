@@ -8,6 +8,7 @@ app.controller("loginController", ["$http","$scope","$location","Login", functio
 
     Login.login($scope.userInfo, function(data) {
       console.log("logged in: ", data);
+      $location.url("/");
     });
 
   };
