@@ -2,9 +2,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">Panel heading</div>
     <table class="table matches-table">
-      <div class="panel-body">
+<!--       <div class="panel-body">
         <p>Some text for coming games</p>
-      </div>
+      </div> -->
       <tr>
         <th>Hemma - Borta</th>
         <th>Tid</th>
@@ -16,19 +16,18 @@
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
           <td><a href="#" tooltip="Plats: Jönkas IK, Kl:12:00, Datum:1980"  tooltip-trigger="focus" tooltip-placement="left" class="fa fa-info-circle"></a></td>
-          <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fa-sort-asc' : 'fa fa-sort-desc'" ></i></td><!-- fa fa-sort-asc -->
+          <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fa-sort-asc' : 'fa fa-sort-desc'" ></i></td>
         </tr>
         <tr ng-hide="currentlyShownResult(game._id)" >
-          <td> {{ game.homeResults }}  -  {{ game.guestResults }} </td>
-          <td>{{ game.time }}</td>
-          <td>
-          <a href="/chat" tooltip="See? Now click away..."  tooltip-trigger="focus" tooltip-placement="left" class="fa fa-comments "></a>
-
-          </td>
-          <td><i class="fa fa-pencil-square-o"></i></td>
+          <td ng-click="toggleID(game._id)">{{ game.homeResults }}  -  {{ game.guestResults }} </td>
+          <td ng-click="toggleID(game._id)">{{ game.time }}</td>
+          <td><a ng-href="/{{games.regionPath}}/chat" class="fa fa-comments "></a></td>
+          <td><a ng-href="/{{games.regionPath}}/{{game.division}}/{{game._id}}/matchstatus" class="fa fa-pencil-square-o"></i></td>
         </tr>
       </tbody>
     </table>
+
+
 
     <!-- Table for played  -->
     <div class="panel-heading">Spelade matcher</div>

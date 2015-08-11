@@ -49,9 +49,9 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
         
         Match.get(
           regionAndDivisionId, function(games){
-            console.log("games: ",games);
             games.regionPath = $routeParams.region;
             $scope.games = games;
+            console.log("games: ",$scope.games);
           }
         );
     });

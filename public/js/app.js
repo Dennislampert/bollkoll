@@ -53,8 +53,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "tableController"
     })
     .when("/:gameid/chat", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/chat.html",
+      controller: "chatController"
     })
     .otherwise({
       redirectTo: "/"
