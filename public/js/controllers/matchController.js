@@ -22,37 +22,36 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
     });
   };
 
+  var currentId;
+  $scope.currentlyShownResult = function(idToCheck){
+    return idToCheck != currentId;
+  };
+
+  $scope.toggleID = function(clickedId){
+
+    currentId = currentId == clickedId ? false : clickedId;
+  };
+
 
 
   // collection.Region hämta regionPath som är lika med routeParams.region
   Region.get({regionPath: $routeParams.region}, function(answer){
-
     regionAndDivisionId.regionId = answer[0]._id;
     regionAndDivisionId.division = $routeParams.division;
 
     Team.get(
-      regionAndDivisionId,
-
-      function(teams){
-          $scope.homeTeams = teams;
-          $scope.guestTeams = teams;
-          // console.log("homeTeams: ", $scope.homeTeams);
-          // console.log("guestTeams: ", $scope.guestTeams);
-
-          // console.log("regionAndDivisionId: ", regionAndDivisionId);
-        
+      regionAndDivisionId, function(teams){
+        $scope.homeTeams = teams;
+        $scope.guestTeams = teams;
 
         // Populate by several properties by separating them with space in string
         regionAndDivisionId._populate = "homeTeamId guestTeamId";
-
-        // Filtering by a value that first exists after population
-        // does not work? (Thomas - check/fix in Mongresto?)
-        //regionAndDivisionId.guestTeamId = {name:"hamburgare"};
-        //regionAndDivisionId.homeTeamId =  {name:"hamburgare"};
         
         Match.get(
-          regionAndDivisionId, function(allMatches){
-            console.log("allMatches", allMatches);
+          regionAndDivisionId, function(games){
+            games.regionPath = $routeParams.region;
+            $scope.games = games;
+            console.log("games: ",$scope.games);
           }
         );
     });
