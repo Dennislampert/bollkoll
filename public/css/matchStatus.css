@@ -1,3 +1,9 @@
 body {
   background-image: url("../backround_images/flashlight.jpg");
 }
+.greenery .first-tr:nth-child(1) {
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg");
+}
+.greenery tr:nth-child(2) {
+  background-image: url("../backround_images/greey-light.jpg");
+}

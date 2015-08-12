@@ -1,3 +1,34 @@
+.main-menu {
+  max-height: 1000px;
+  overflow: hidden;
+  -webkit-transition: max-height 1000s;
+  transition: max-height 1000s;
+}
+.main-menu li {
+  text-align: center;
+}
+.main-menu li select {
+  cursor: pointer;
+  padding: 5px;
+  margin: 0 0 5px;
+  background-color: #2D2D2D;
+  color: #FFFFFF;
+  border-radius: 5px;
+  box-sizing: none;
+}
+.main-menu li select:hover {
+  background-color: #4D4D4D;
+}
+.main-menu li a {
+  background-color: #2D2D2D;
+  color: #FFFFFF;
+}
+.main-menu li a:hover {
+  background-color: #4D4D4D;
+}
+.main-menu .hide {
+  max-height: 0;
+}
 body {
   background-image: url("../backround_images/flashlight.jpg");
 }
@@ -30,6 +61,12 @@ th {
 }
 body {
   background-image: url("../backround_images/flashlight.jpg");
+}
+.greenery .first-tr:nth-child(1) {
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg");
+}
+.greenery tr:nth-child(2) {
+  background-image: url("../backround_images/greey-light.jpg");
 }
 .nav,
 .pagination,
