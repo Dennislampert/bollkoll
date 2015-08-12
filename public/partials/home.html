@@ -1,8 +1,24 @@
-<ul class="col-xs-12 col-sm-6 col-md-8 col-lg-3 nav nav-pills nav-stacked" >
-  <li class="active">
-    <a href="">Division</a>
-  </li>
-  <li>
-    <a href="">Region</a>
-  </li>
-</ul>
+<div class="row col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-3 main-menu">
+  <ul class="nav nav-pills nav-stacked">
+    <li>
+      <region-drop-down></region-drop-down>
+    </li>
+    <li>
+      <division-drop-down></division-drop-down>
+    </li>
+  </ul>
+</div>
+
+<div class="row col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-3 main-menu" ng-class="{'hide': !regionDropDown || !divisionDropDown}">
+  <ul class="nav nav-pills nav-stacked">
+    <li>
+      <a ng-href="/{{ regionDropDown }}/{{ divisionDropDown }}/spelschema">Spelschema</a>
+    </li>
+    <li>
+      <a ng-href="/{{ regionDropDown }}/{{ divisionDropDown }}/tabell">Tabell</a>
+    </li>
+    <li>
+      <a ng-href="/{{ regionDropDown }}/{{ divisionDropDown }}/chat">Chat</a>
+    </li>
+  </ul>
+</div>
