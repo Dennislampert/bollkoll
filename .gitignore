@@ -2,3 +2,4 @@ node_modules/*
 .DS_Store
 data/mongod.lock
 data/*
+Public/css/*
