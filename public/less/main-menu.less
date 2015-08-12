@@ -1,0 +1,32 @@
+.main-menu{
+  max-height: 1000px;
+  overflow: hidden;
+  li {
+    text-align: center;
+    select {
+      cursor: pointer;
+      padding: 5px;
+      margin: 0 0 5px;
+      background-color: #2D2D2D;
+      color: #FFFFFF;
+      border-radius: 5px;
+      box-sizing: none;
+      &:hover{
+        background-color: #4D4D4D;
+      }
+    }
+    a {
+      background-color: #2D2D2D;
+      color: #FFFFFF;
+      &:hover {
+        background-color: #4D4D4D;
+      }
+    }
+  }
+  -webkit-transition: max-height 1000s;
+  transition: max-height 1000s;
+  .hide {
+    max-height: 0;
+  }
+}
+
