@@ -2,5 +2,5 @@
 app.controller("homeController", 
   ["$scope", "NavTitleChange",
   function($scope, NavTitleChange) {
-  NavTitleChange("Home");
+  NavTitleChange("Hem");
 }]);
