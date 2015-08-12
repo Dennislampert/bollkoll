@@ -1,6 +1,6 @@
 <section >
   <div class="panel panel-default">
-    <div class="panel-heading">Panel heading</div>
+    <div class="panel-heading">Kommande matcher</div>
     <table class="table matches-table">
 <!--       <div class="panel-body">
         <p>Some text for coming games</p>
@@ -15,7 +15,7 @@
         <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
-          <td><a href="#" tooltip="Plats: Jönkas IK, Kl:12:00, Datum:1980"  tooltip-trigger="focus" tooltip-placement="left" class="fa fa-info-circle"></a></td>
+          <td><a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fa-info-circle"></a></td>
           <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fa-sort-asc' : 'fa fa-sort-desc'" ></i></td>
         </tr>
         <tr ng-hide="currentlyShownResult(game._id)" >
@@ -29,6 +29,33 @@
 
 
 
+    <div class="panel-heading">Dagens matcher</div>
+    <table class="table matches-table">
+      <tr>
+        <th>Hemma - Borta</th>
+        <th>Tid</th>
+        <th><i class="fa fa-info-circle "></i></th>
+        <th><i class="fa fa-pencil-square-o"></i></th>
+      </tr>
+      <tbody ng-repeat="todaysGame in todyasGames">
+        <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
+          <td ng-click="toggleID(todaysGame._id)">{{ todaysGame.homeTeamId.name }} - {{ todaysGame.guestTeamId.name }}</td>
+          <td ng-click="toggleID(todaysGame._id)">{{ todaysGame.date }}</td>
+          <td><a href="#" tooltip="Plats: {{todaysGame.place}}, Kl:{{todaysGame.time}}, Datum:{{todaysGame.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fa-info-circle"></a></td>
+          <td ng-click="toggleID(todaysGame._id)"><i ng-class="currentlyShownResult(todaysGame._id) ? 'fa fa-sort-asc' : 'fa fa-sort-desc'" ></i></td>
+        </tr>
+        <tr ng-hide="currentlyShownResult(todaysGame._id)" >
+          <td ng-click="toggleID(todaysGame._id)">{{ todaysGame.homeResults }}  -  {{ todaysGame.guestResults }} </td>
+          <td ng-click="toggleID(todaysGame._id)">{{ todaysGame.time }}</td>
+          <td><a ng-href="/{{games.regionPath}}/chat" class="fa fa-comments "></a></td>
+          <td><a ng-href="/{{games.regionPath}}/{{todaysGame.division}}/{{todaysGame._id}}/matchstatus" class="fa fa-pencil-square-o"></i></td>
+        </tr>
+    <!-- <div class="panel-body">
+        <p>Some text for coming games</p>
+      </div> -->
+      </tbody>
+    </table>
+
     <!-- Table for played  -->
     <div class="panel-heading">Spelade matcher</div>
     <table class="table matches-table">
@@ -38,19 +65,22 @@
         <th><i class="fa fa-info-circle "></i></th>
         <th><i class="fa fa-pencil-square-o"></i></th>
       </tr>
-      <tbody ng-repeat="game in games">
-        <tr ng-click="toggleID(game._id)" class="first-tr"> <!-- Results ng-repete and hide every second row -->
-          <td>{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
-          <td>{{ game.date }}</td>
-          <td><i class="fa fa-info-circle "></i></td>
-          <td><i class="fa fa-futbol-o "></i></td>
+      <tbody ng-repeat="playedGame in playedGames">
+        <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
+          <td ng-click="toggleID(playedGame._id)">{{ playedGame.homeTeamId.name }} - {{ playedGame.guestTeamId.name }}</td>
+          <td ng-click="toggleID(playedGame._id)">{{ playedGame.date }}</td>
+          <td><a href="#" tooltip="Plats: {{playedGame.place}}, Kl:{{playedGame.time}}, Datum:{{playedGame.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fa-info-circle"></a></td>
+          <td ng-click="toggleID(playedGame._id)"><i ng-class="currentlyShownResult(playedGame._id) ? 'fa fa-sort-asc' : 'fa fa-sort-desc'" ></i></td>
         </tr>
-        <tr ng-hide="currentlyShownResult(game._id)"  >
-          <td> {{ game.homeResults }}  -  {{ game.guestResults }} </td>
-          <td>{{ game.time }}</td>
-          <td><i class="fa fa-comments "></i></td>
-          <td><i class="fa fa-pencil-square-o"></i></td>
+        <tr ng-hide="currentlyShownResult(playedGame._id)" >
+          <td ng-click="toggleID(playedGame._id)">{{ playedGame.homeResults }}  -  {{ playedGame.guestResults }} </td>
+          <td ng-click="toggleID(playedGame._id)">{{ playedGame.time }}</td>
+          <td><a ng-href="/{{games.regionPath}}/chat" class="fa fa-comments "></a></td>
+          <td><a ng-href="/{{games.regionPath}}/{{playedGame.division}}/{{playedGame._id}}/matchstatus" class="fa fa-pencil-square-o"></i></td>
         </tr>
+    <!-- <div class="panel-body">
+        <p>Some text for coming games</p>
+      </div> -->
       </tbody>
     </table>
   </div>

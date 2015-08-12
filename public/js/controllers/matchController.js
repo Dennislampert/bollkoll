@@ -51,6 +51,7 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
           regionAndDivisionId, function(games){
             games.regionPath = $routeParams.region;
             $scope.games = games;
+            $scope.playedGames = "";
             console.log("games: ",$scope.games);
           }
         );
