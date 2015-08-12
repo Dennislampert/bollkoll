@@ -1,20 +1,24 @@
 app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Region", "Team", function($scope, $routeParams, Match, Region, Team){
 
-	Match.get({
-		homeTeamId: $scope.homeTeam._id,
-        guestTeamId: $scope.guestTeam._id,
-        place: $scope.match.place,
-        date: $scope.match.date,
-        // time: $scope.match.time,
-        homeResults: 0,
-        guestResults: 0,
-        finishedGame: 0
-        // regionId: regionAndDivisionId.regionId,
-        // division: regionAndDivisionId.division
-	});
+    // console.log("$routeparams: ", $routeParams);
+
+    var populateObject = {};
+
+    populateObject._id = $routeParams.gameId;
+
+    populateObject._populate = "homeTeamId guestTeamId";
+
+    // När det finns tid, gör en GET för endast nödvändig data (results) för minskad datatrafik
+    function getUpdatedResults(){
+        Match.get(
+            populateObject, function(teams){
+                console.log("teams: ", teams);
+                $scope.teams = teams;
+            });
+    }
 
 
-
+    getUpdatedResults();
 
 	$scope.saveResults = function(){
 		console.log("saving(updating) results! ", $scope);
@@ -26,16 +30,7 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
       homeResults: $scope.match.homeResults,
       guestResults: $scope.match.guestResults
     });
+        getUpdatedResults();
 	};
 
-
-
-
-
-    Match.get(
-      homeTeamId, function(match){
-        // $scope.match = match;
-        console.log("match get!! ", match);
-      }
-    );
 }]);

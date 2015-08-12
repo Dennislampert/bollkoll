@@ -11,13 +11,12 @@
 	  <button type="submit" ng-click="saveResults()"> Spara </button>
 	</form>
 
-
-	<li ng-repeat="match in matches">
-    {{ match._id }}
-  </li>
-
-
-
-
+	<ul ng-repeat="team in teams">
+		<li>
+	    <!-- {{ team._id }} -->
+	    {{ team.homeTeamId.name }}
+	    {{ team.homeResults }}
+	  </li>
+	</ul>
 
 </section>
