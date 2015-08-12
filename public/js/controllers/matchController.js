@@ -1,8 +1,6 @@
-//"myAppName" controller.
-app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", "Team", function($scope, $routeParams, Match, Region, Team){
+app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", "Team", "Login", function($scope, $routeParams, Match, Region, Team, Login){
 
   // console.log("hallelujah!")
-
 
   var regionAndDivisionId = {};
 
@@ -32,6 +30,7 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
     currentId = currentId == clickedId ? false : clickedId;
   };
 
+    console.log("Login: ",Login.user);
 
 
   // collection.Region hämta regionPath som är lika med routeParams.region
@@ -51,6 +50,7 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
           regionAndDivisionId, function(games){
             games.regionPath = $routeParams.region;
             $scope.games = games;
+            $scope.playedGames = "";
             console.log("games: ",$scope.games);
           }
         );

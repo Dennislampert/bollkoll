@@ -61,6 +61,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/chat.html",
       controller: "chatController"
     })
+    .when("/data", {
+      templateUrl: "partials/chat.html",
+      controller: "dataController"
+    })
     .otherwise({
       redirectTo: "/"
     });
