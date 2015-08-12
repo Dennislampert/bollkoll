@@ -2,8 +2,9 @@ app.controller("chatController", ["$scope", "Chat", "Message", "Login", function
   $scope.test = Message.get({_populate:"userId"},function() {
     console.log("s", $scope.test)
   });
-
-  var currentUser = Login.user()
+  var currentUser = Login.user
+  $scope.currentUser = Login.user;
+  console.log("currentUser: ", Login);
   $scope.chatInfo = {};
   $scope.send = function() {
     $scope.chatInfo.userId = Login.user()._id;
