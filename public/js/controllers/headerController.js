@@ -1,6 +1,6 @@
 app.controller("headerController", ["$scope", function($scope) {
   $scope.navCollapsed = true;
-  var origNavText = 'no title';
+  var origNavText = 'Hem';
   $scope.navText = origNavText;
   $scope.$on("titleChange", function(e, data) {
     $scope.navText = data || origNavText;
