@@ -22,8 +22,8 @@ app.use(m.cookieparser());
 app.use(m.expresssession({resave: true, saveUninitialized: false, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: new Date(Date.now() + 604800000) }}));
 app.use(m.express.static(m.path.join(__dirname, 'public')));
 var options = {
-  premissionToAsk: require('./permission/permissionToAsk.js'),
-  premissionToAnswere: require('./permission/permissonToAnswer.js'),
+  permissionToAsk: require('./permission/permissionToAsk.js'),
+  permissionToAnswer: require('./permission/permissonToAnswer.js'),
   customRoutes: [
     {
       method: "all",
@@ -34,6 +34,35 @@ var options = {
 };
 // Initialize our own REST api - mongresto
 m.mongresto.init(app, options);
+// get all data for Hälsingland div 4
+
+
+
+// Route everything "else" to angular (in html5mode)
+app.get('/getdata', function (req, res) {
+  var http = require('http');
+
+  var url = 'http://api.everysport.com/v1/leagues/69643/events?limit=1000&apikey=0b5af832685c9f68013fe4055a74ef2f';
+
+  http.get(url, function(res) {
+      var body = '';
+
+      res.on('data', function(chunk) {
+          body += chunk;
+      });
+
+      res.on('end', function() {
+          var fbResponse = JSON.parse(body);
+          console.log("Got response: ", fbResponse.events);
+      });
+  }).on('error', function(e) {
+        console.log("Got error: ", e);
+  });
+
+});
+
+
+
 
 // Route everything "else" to angular (in html5mode)
 app.get('*', function (req, res) {

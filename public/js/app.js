@@ -1,5 +1,5 @@
 //app declaration and dependency injection
-var app = angular.module("ngNode", ["ngRoute", "ngResource", "ui.bootstrap"]);
+var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ui.bootstrap"]);
 
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
@@ -40,17 +40,26 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     // Get the ":values" as an object on the $routprovider and use it in the controller..
     
     // when "localhost:3000/skane/4/spelschema"
+    .when("/:region/:division/spelschema/settings", {
+      templateUrl: "partials/matchSet.html",
+      controller: "matchController"
+    })
     .when("/:region/:division/spelschema", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
+    })
+    .when("/:region/:division/:gameId/matchstatus", {
+      templateUrl: "partials/matchstatus.html",
+      controller: "matchStatusController",
+      isLogin: true
     })
     .when("/:region/:division/tabell", {
       templateUrl: "partials/table.html",
       controller: "tableController"
     })
-    .when("/:region/:division/chat", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+    .when("/:gameid/chat", {
+      templateUrl: "partials/chat.html",
+      controller: "chatController"
     })
     .otherwise({
       redirectTo: "/"
