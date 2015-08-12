@@ -22,8 +22,8 @@ app.use(m.cookieparser());
 app.use(m.expresssession({resave: true, saveUninitialized: false, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: new Date(Date.now() + 604800000) }}));
 app.use(m.express.static(m.path.join(__dirname, 'public')));
 var options = {
-  premissionToAsk: require('./permission/permissionToAsk.js'),
-  premissionToAnswere: require('./permission/permissonToAnswer.js'),
+  permissionToAsk: require('./permission/permissionToAsk.js'),
+  permissionToAnswer: require('./permission/permissonToAnswer.js'),
   customRoutes: [
     {
       method: "all",

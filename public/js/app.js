@@ -1,5 +1,5 @@
 //app declaration and dependency injection
-var app = angular.module("ngNode", ["ngRoute", "ngResource", "ui.bootstrap"]);
+var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ui.bootstrap"]);
 
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
@@ -50,7 +50,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     })
     .when("/:region/:division/:gameId/matchstatus", {
       templateUrl: "partials/matchstatus.html",
-      controller: "matchStatusController"
+      controller: "matchStatusController",
+      isLogin: true
     })
     .when("/:region/:division/tabell", {
       templateUrl: "partials/table.html",
