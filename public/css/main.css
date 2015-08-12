@@ -1,3 +1,33 @@
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+}
+.fa {
+  padding-left: 20%;
+  background: #fcba6a;
+  background: -moz-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #fcba6a), color-stop(47%, #ff9715), color-stop(53%, #ff920a), color-stop(63%, #ff8400), color-stop(74%, #eb7d00), color-stop(85%, #de7a00), color-stop(100%, #a85802));
+  background: -webkit-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
+  background: -o-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
+  background: -ms-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
+  background: linear-gradient(to bottom, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcba6a', endColorstr='#a85802', GradientType=0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+th {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+.matches-table .first-tr:nth-child(1) {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg");
+  cursor: pointer;
+}
+.matches-table tr:nth-child(2) {
+  color: #fff;
+  background-image: url("../backround_images/greey-light.jpg");
+  cursor: pointer;
+}
 .nav,
 .pagination,
 .carousel,
@@ -22,6 +52,7 @@
     display: block;
   }
 }
+
 
 .teamNames {
     font-size:28px;
@@ -138,3 +169,4 @@
 
 .pln{color:#000!important}
 @media print {.str{color:#080!important}.kwd{color:#008!important}.com{color:#800!important}.typ{color:#606!important}.lit{color:#066!important}.pun,.opn,.clo{color:#660!important}.tag{color:#008!important}.atn{color:#606!important}.atv{color:#080!important}.dec,.var{color:#606!important}.fun{color:red!important}!important}
+

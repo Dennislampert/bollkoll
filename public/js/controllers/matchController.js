@@ -43,23 +43,15 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
       regionAndDivisionId, function(teams){
         $scope.homeTeams = teams;
         $scope.guestTeams = teams;
-        // console.log("homeTeams: ", $scope.homeTeams);
-        // console.log("guestTeams: ", $scope.guestTeams);
-
-        // console.log("regionAndDivisionId: ", regionAndDivisionId);
-      
 
         // Populate by several properties by separating them with space in string
         regionAndDivisionId._populate = "homeTeamId guestTeamId";
-
-        // Filtering by a value that first exists after population
-        // does not work? (Thomas - check/fix in Mongresto?)
-        //regionAndDivisionId.guestTeamId = {name:"hamburgare"};
-        //regionAndDivisionId.homeTeamId =  {name:"hamburgare"};
         
         Match.get(
           regionAndDivisionId, function(games){
+            games.regionPath = $routeParams.region;
             $scope.games = games;
+            console.log("games: ",$scope.games);
           }
         );
     });
