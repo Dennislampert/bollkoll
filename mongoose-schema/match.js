@@ -1,10 +1,9 @@
 module.exports = function(mongoose){
-
 	var matchSchema = mongoose.Schema({
     homeTeamId: {type: mongoose.Schema.Types.ObjectId, ref: "Team"},
     guestTeamId: {type: mongoose.Schema.Types.ObjectId, ref: "Team"},
-    time: {type:Number},
-    date: Number,
+    time: String,
+    date: String,
     homeResults: Number,
     guestResults: Number,
     finishedGame: Boolean,
