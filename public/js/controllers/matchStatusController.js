@@ -33,4 +33,12 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
         getUpdatedResults();
 	};
 
+    $scope.match = {homeResults:0,guestResults:0};
+
+    $scope.increaseGoals = function (match,prop){match[prop]++;};
+    $scope.decreaseGoals = function (match,prop){match[prop]--;};
+    $scope.decreaseDisallowed = function(x){return x < 1;};
+    $scope.increaseDisallowed = function(x){return x > 30;};
+
+
 }]);

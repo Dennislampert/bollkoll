@@ -11,7 +11,23 @@
 	    <td>{{ team.guestTeamId.name }}</td>
 	    <td>{{ team.guestResults }}</td>
 		</tr>
+
+
+
+
+
+
+		<div>
+      <button ng-click="decreaseGoals(match,'homeResults')" ng-disabled="decreaseDisallowed(match.homeResults)">-</button>
+      <span>{{match.homeResults}}</span>
+    	<button ng-click="increaseGoals(match,'homeResults')" ng-disabled="increaseDisallowed(match.homeResults)">+</button>
+    </div>
 	</div>
+
+
+
+
+
 
 	<form ng-submit="saveResults()">
 	  <input type="number" ng-model="match.homeResults" placeholder="poäng hemma">
