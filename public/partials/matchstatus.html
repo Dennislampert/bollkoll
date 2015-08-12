@@ -1,22 +1,23 @@
 <section>
 
+	<div ng-repeat="team in teams">
+		<tr>
+			<th>{{ team.homeTeamId.name }} - {{ team.guestTeamId.name }}</th>
+		</tr>
+		<tr>
+	    <td>{{ team.date }}</td>
+	    <td>{{ team.homeTeamId.name }}</td>	
+	    <td>{{ team.homeResults }}</td>
+	    <td>{{ team.guestTeamId.name }}</td>
+	    <td>{{ team.guestResults }}</td>
+		</tr>
+	</div>
+
 	<form ng-submit="saveResults()">
 	  <input type="number" ng-model="match.homeResults" placeholder="poäng hemma">
-
-
 	  <input type="number" ng-model="match.guestResults" placeholder="poäng borta">
-
 	<!--   <button type="submit" ng-click="defaultResults()"> Ångra </button> -->
-
 	  <button type="submit" ng-click="saveResults()"> Spara </button>
 	</form>
-
-	<ul ng-repeat="team in teams">
-		<li>
-	    <!-- {{ team._id }} -->
-	    {{ team.homeTeamId.name }}
-	    {{ team.homeResults }}
-	  </li>
-	</ul>
 
 </section>
