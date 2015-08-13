@@ -1,11 +1,11 @@
-app.controller("profileController", ["$scope", "Person", function($scope, Person){
+app.controller("profileController", ["$scope", "$routeParams", "User", function($scope, $routeParams, User){
 
 	$scope.saveUserInfo = function(){
 		//$scope.userName
 
 		console.log($scope.userName);
 
-		Person.create({
+		User.create({
 			userName: $scope.userName,
 			picturePath: "some path.."
 

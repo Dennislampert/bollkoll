@@ -3,10 +3,10 @@ app.controller("chatController", ["$scope", "Chat", "Message", "Login", function
     console.log("s", $scope.test)
   });
 
-  var currentUser = Login.user()
+  var currentUser = Login.user
   $scope.chatInfo = {};
   $scope.send = function() {
-    $scope.chatInfo.userId = Login.user()._id;
+    $scope.chatInfo.userId = Login.user._id;
     console.log("c", $scope.chatInfo);
     Message.create($scope.chatInfo, function(data) {
       console.log("lolek", data);
