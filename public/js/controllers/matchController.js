@@ -1,27 +1,59 @@
-//"myAppName" controller.
-app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", "Team", function($scope, $routeParams, Match, Region, Team){
+app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", "Team", "Login", function($scope, $routeParams, Match, Region, Team, Login){
 
-  // var getLjusdal = Region.get();
-  // console.log("getLjusdal: ", getLjusdal);
-  console.log("1: ");
+  // console.log("hallelujah!")
+
+  var regionAndDivisionId = {};
+
+  $scope.saveIT = function() {
+    console.log("run bastard run! :", $scope);
+    Match.create({
+      homeTeamId: $scope.homeTeam._id,
+      guestTeamId: $scope.guestTeam._id,
+      place: $scope.match.place,
+      date: $scope.match.date,
+      time: $scope.match.time,
+      homeResults: 0,
+      guestResults: 0,
+      finishedGame: 0,
+      regionId: regionAndDivisionId.regionId,
+      division: regionAndDivisionId.division
+    });
+  };
+
+  var currentId;
+  $scope.currentlyShownResult = function(idToCheck){
+    return idToCheck != currentId;
+  };
+
+  $scope.toggleID = function(clickedId){
+
+    currentId = currentId == clickedId ? false : clickedId;
+  };
+
+    console.log("Login: ",Login.user);
+
+
   // collection.Region hämta regionPath som är lika med routeParams.region
   Region.get({regionPath: $routeParams.region}, function(answer){
-    // console.log("answer: regionsnamn:", answer[0]._id);
-  console.log("2: ");
-    var regionId = answer[0]._id;
+    regionAndDivisionId.regionId = answer[0]._id;
+    regionAndDivisionId.division = $routeParams.division;
 
-    Team.get({
-      regionId: regionId,
-      division: $routeParams.division
-    },
-      function(gurka){
-      console.log("3: ");
-      console.log("gurka: regionsnamn:", gurka);
+    Team.get(
+      regionAndDivisionId, function(teams){
+        $scope.homeTeams = teams;
+        $scope.guestTeams = teams;
+
+        // Populate by several properties by separating them with space in string
+        regionAndDivisionId._populate = "homeTeamId guestTeamId";
+        
+        Match.get(
+          regionAndDivisionId, function(games){
+            games.regionPath = $routeParams.region;
+            $scope.games = games;
+            $scope.playedGames = "";
+            console.log("games: ",$scope.games);
+          }
+        );
     });
   });
-
-// console.log("routeParams: ",$routeParams.division);
-// console.log("routeParams(region): ", $routeParams.region);
-
-
 }]);

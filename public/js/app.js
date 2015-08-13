@@ -1,5 +1,5 @@
 //app declaration and dependency injection
-var app = angular.module("ngNode", ["ngRoute", "ngResource", "ui.bootstrap"]);
+var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ui.bootstrap"]);
 
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
@@ -22,12 +22,12 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "matchController"
     })
     .when("/loggain", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/login.html",
+      controller: "loginController"
     })
     .when("/registrering", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/register.html",
+      controller: "registerController"
     })
     .when("/om-bollkoll", {
       templateUrl: "partials/matches.html",
@@ -38,17 +38,32 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "chatController"
     })
     // Get the ":values" as an object on the $routprovider and use it in the controller..
+    
+    // when "localhost:3000/skane/4/spelschema"
+    .when("/:region/:division/spelschema/settings", {
+      templateUrl: "partials/matchSet.html",
+      controller: "matchController"
+    })
     .when("/:region/:division/spelschema", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
+    })
+    .when("/:region/:division/:gameId/matchstatus", {
+      templateUrl: "partials/matchstatus.html",
+      controller: "matchStatusController",
+      isLogin: true
     })
     .when("/:region/:division/tabell", {
       templateUrl: "partials/table.html",
       controller: "tableController"
     })
-    .when("/:region/:division/chat", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+    .when("/:gameid/chat", {
+      templateUrl: "partials/chat.html",
+      controller: "chatController"
+    })
+    .when("/data", {
+      templateUrl: "partials/chat.html",
+      controller: "dataController"
     })
     .when("/anvandare/:username", {
       templateUrl: "partials/userprofile.html",

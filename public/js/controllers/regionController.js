@@ -6,14 +6,10 @@ app.controller("regionController", ["$scope","Region", function($scope,Region){
     Region.create({
       regionPath: $scope.region.path, // halsingland
       regionName: $scope.region.name, // Hälsingland
-
     });
-      
   };
 
   // $scope.getRegions = function(){
   //   $scope.regions = Region.get();
-
   // };
-
 }]);
