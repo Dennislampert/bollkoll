@@ -1,6 +1,7 @@
+@import "less/top-menu.less";
 @import "less/main-menu.less";
 @import "less/matches.less";
-
+ 
 .nav,
 .pagination,
 .carousel,
@@ -13,20 +14,7 @@
 	margin: 65px 0 0;
 }
 
-.nav .home-link {
-  display: none;
-}
-
-// xs (Phone)
-@media (max-width: 767px) {
-  .navbar-text {
-    margin-left: 15px;
-  }
-
-  .navbar-brand {
-    display: none;
-  }
-  .nav .home-link {
-    display: block;
-  }
+.hide-element {
+  max-height: 0;
+  opacity: 0;
 }
