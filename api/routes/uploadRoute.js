@@ -12,10 +12,10 @@ module.exports = function(mongoose) {
   // return an array of controllers for "/api/upload" that will be
   // called in the order of the array
   return [multipartMiddleware, function(req, res) {
-    // if (!req.session.user) {
-    //   res.json({_error: "Forbidden"});
-    //   return;
-    // }
+    if (!req.session.user) {
+      res.json({_error: "Forbidden"});
+      return;
+    }
     // the recieved file
     var file = req.files.file;
 
@@ -30,8 +30,7 @@ module.exports = function(mongoose) {
 
         // find public path (for <img src=""> tags etc)
         var publicPath = '/' + path.relative(process.cwd() + '/public', uploadPath);
-        res.json(publicPath);
-        return;
+
         // get the mongoose 'File' model
         var FileModel = mongoose.model("File");
 
@@ -47,6 +46,7 @@ module.exports = function(mongoose) {
         dbFile.save(function(err, data) {
           if (err) { throw err; }
           // and finally send a response to client
+          res.json(publicPath);
         });
       });
     });
