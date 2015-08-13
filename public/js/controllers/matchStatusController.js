@@ -9,6 +9,9 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
         _populate: "homeTeamId guestTeamId"
     });
 
+    hehe = $scope.match;
+
+
     // populateObject._id = $routeParams.gameId;
 
     // populateObject._populate = "homeTeamId guestTeamId";

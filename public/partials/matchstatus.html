@@ -1,6 +1,6 @@
 <section>
 
-		<table>
+<!-- 		<table>
 			<tr>
 				<td>{{ match.homeTeamId.name }} - {{ match.guestTeamId.name }}</td>
 			</tr>
@@ -19,22 +19,54 @@
 		  <tr>
 		    <td>{{ match.guestResults }}</td>
 			</tr>
-		</table>
+		</table> -->
 
 
-		<div class="homeTeamScore">
-      <button ng-click="decreaseGoals(match,'homeResults')" ng-disabled="decreaseDisallowed(match.homeResults)">-</button>
-      <span>{{match.homeResults}}</span>
-    	<button ng-click="increaseGoals(match,'homeResults')" ng-disabled="increaseDisallowed(match.homeResults)">+</button>
-    </div>
-
-		<div class="guestTeamScore">
-      <button ng-click="decreaseGoals(match,'guestResults')" ng-disabled="decreaseDisallowed(match.guestResults)">-</button>
-      <span>{{match.guestResults}}</span>
-    	<button ng-click="increaseGoals(match,'guestResults')" ng-disabled="increaseDisallowed(match.guestResults)">+</button>
-    </div>
 
 
+
+	<div class="">
+		<h2>{{ match.homeTeamId.name }} - {{ match.guestTeamId.name }}</h2>
+		<h4>{{ match.date }}</h4>
+
+    <table class="table table-striped table-condensed">
+	        <tr>
+						<th>
+							{{ match.homeTeamId.name }}
+						</th>
+						<th></th>
+					</tr>
+	        <tr>
+				    <td>{{ match.homeResults }}</td>
+				    <td>
+				    	<div class="homeTeamScore">
+					      <button ng-click="decreaseGoals(match,'homeResults')" ng-disabled="decreaseDisallowed(match.homeResults)">-</button>
+					      <span>{{match.homeResults}}</span>
+					    	<button ng-click="increaseGoals(match,'homeResults')" ng-disabled="increaseDisallowed(match.homeResults)">+</button>
+					    </div>
+				    </td>
+				  </tr>
+    </table>
+    <table class="table table-striped table-condensed">
+	        <tr>
+						<th>
+							{{ match.guestTeamId.name }}
+						</th>
+						<th></th>
+					</tr>
+
+	        <tr>
+				    <td>{{ match.guestResults }}</td>
+				    <td>
+				    	<div class="guestTeamScore">
+					      <button ng-click="decreaseGoals(match,'guestResults')" ng-disabled="decreaseDisallowed(match.guestResults)">-</button>
+					      <span>{{match.guestResults}}</span>
+					    	<button ng-click="increaseGoals(match,'guestResults')" ng-disabled="increaseDisallowed(match.guestResults)">+</button>
+					    </div>
+				    </td>
+				  </tr>
+    </table>
+	</div>
 
 
 
@@ -46,21 +78,3 @@
 	</form>
 
 </section>
-
-
-
-
-
-
-
-<div class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
-      <tr>
-		    <td>{{ match.guestResults }}</td>
-			</tr>
-      
-      <input type="text" class="form-control" placeholder="Search for...">
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
