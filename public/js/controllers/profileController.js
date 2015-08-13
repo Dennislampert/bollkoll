@@ -1,16 +1,15 @@
-app.controller("profileController", ["$scope", "$routeParams", "User", function($scope, $routeParams, User){
+app.controller("profileController", ["$scope", "$http", "$location", "FileUploader", "Login", function($scope, $http, $location, FileUploader, Login) {
 
-	$scope.saveUserInfo = function(){
-		//$scope.userName
+  // reference(!) to Login.user object
+  // (logged in user data)
+  $scope.user = Login.user;
 
-		console.log($scope.userName);
+  $scope.files = [];
+  $scope.upload = function() {
+    FileUploader($scope.files[0]).success(function(data) {
+      console.log("saved file, public path: ", data);
+      $scope.uploadedFilePath = data;
+    });
+  };
 
-		User.create({
-			userName: $scope.userName,
-			picturePath: "some path.."
-
-		});
-
-
-	};
 }]);

@@ -11,3 +11,7 @@ module.exports = function(mongoose) {
 
   return mongoose.model("User", userSchema);
 };
+
+// User.findOne(req.session.user, function(User) {
+// 	User.picture = File;
+// })
