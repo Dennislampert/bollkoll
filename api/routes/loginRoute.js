@@ -24,9 +24,11 @@ module.exports = function(mongoose) {
       console.log("body", req.body);
       mongoose.model("User").findOne(req.body, function(err, data) {
         if (err) { throw err; }
-        if(data) {
-          req.session.user = data;
-        }
+        // don't store the password
+        data && (data.password = undefined);
+
+        // store all other user info in a session property
+        data && (req.session.user = data);
         res.json(data);
       });
     } else if (req.method == "DELETE") {

@@ -10,12 +10,14 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     })
     .when("/region", {
       templateUrl: "partials/addRegion.html",
-      controller: "regionController"
+      controller: "regionController",
+      loggedIn: true
     })
 
     .when("/table", {
       templateUrl: "partials/editTable.html",
-      controller: "tableController"
+      controller: "tableController",
+      loggedIn: true
     })
     .when("/om-oss", {
       templateUrl: "partials/matches.html",
