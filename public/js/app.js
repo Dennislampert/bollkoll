@@ -10,7 +10,14 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     })
     .when("/region", {
       templateUrl: "partials/addRegion.html",
-      controller: "regionController"
+      controller: "regionController",
+      loggedIn: true
+    })
+
+    .when("/table", {
+      templateUrl: "partials/editTable.html",
+      controller: "tableController",
+      loggedIn: true
     })
 
     .when("/table", {
@@ -51,7 +58,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .when("/:region/:division/:gameId/matchstatus", {
       templateUrl: "partials/matchstatus.html",
       controller: "matchStatusController",
-      isLogin: true
+      loggedIn: true
     })
     .when("/:region/:division/tabell", {
       templateUrl: "partials/table.html",
@@ -60,6 +67,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .when("/:gameid/chat", {
       templateUrl: "partials/chat.html",
       controller: "chatController"
+    })
+    .when("/data", {
+      templateUrl: "partials/chat.html",
+      controller: "dataController"
     })
     .otherwise({
       redirectTo: "/"
