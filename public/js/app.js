@@ -10,12 +10,14 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     })
     .when("/region", {
       templateUrl: "partials/addRegion.html",
-      controller: "regionController"
+      controller: "regionController",
+      loggedIn: true
     })
 
     .when("/table", {
       templateUrl: "partials/editTable.html",
-      controller: "tableController"
+      controller: "tableController",
+      loggedIn: true
     })
     .when("/om-oss", {
       templateUrl: "partials/matches.html",
@@ -51,7 +53,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .when("/:region/:division/:gameId/matchstatus", {
       templateUrl: "partials/matchstatus.html",
       controller: "matchStatusController",
-      isLogin: true
+      loggedIn: true
     })
     .when("/:region/:division/tabell", {
       templateUrl: "partials/table.html",
