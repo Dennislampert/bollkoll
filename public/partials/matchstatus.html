@@ -1,38 +1,47 @@
 <section>
 
-	<div ng-repeat="team in teams">
-		<tr>
-			<th>{{ team.homeTeamId.name }} - {{ team.guestTeamId.name }}</th>
-		</tr>
-		<tr>
-	    <td>{{ team.date }}</td>
-	    <td>{{ team.homeTeamId.name }}</td>	
-	    <td>{{ team.homeResults }}</td>
-	    <td>{{ team.guestTeamId.name }}</td>
-	    <td>{{ team.guestResults }}</td>
-		</tr>
+		<table>
+			<tr>
+				<td>{{ match.homeTeamId.name }} - {{ match.guestTeamId.name }}</td>
+			</tr>
+			<tr>
+		    <td>{{ match.date }}</td>
+		  </tr>
+		  <tr>
+		    <td>{{ match.homeTeamId.name }}</td>	
+		  </tr>
+		  <tr>
+		    <td>{{ match.homeResults }}</td>
+		  </tr>
+		  <tr>
+		    <td>{{ match.guestTeamId.name }}</td>
+		  </tr>
+		  <tr>
+		    <td>{{ match.guestResults }}</td>
+			</tr>
+		</table>
 
 
-
-
-
-
-		<div>
+		<div class="homeTeamScore">
       <button ng-click="decreaseGoals(match,'homeResults')" ng-disabled="decreaseDisallowed(match.homeResults)">-</button>
       <span>{{match.homeResults}}</span>
     	<button ng-click="increaseGoals(match,'homeResults')" ng-disabled="increaseDisallowed(match.homeResults)">+</button>
     </div>
-	</div>
 
+		<div class="guestTeamScore">
+      <button ng-click="decreaseGoals(match,'guestResults')" ng-disabled="decreaseDisallowed(match.guestResults)">-</button>
+      <span>{{match.guestResults}}</span>
+    	<button ng-click="increaseGoals(match,'guestResults')" ng-disabled="increaseDisallowed(match.guestResults)">+</button>
+    </div>
 
 
 
 
 
 	<form ng-submit="saveResults()">
-	  <input type="number" ng-model="match.homeResults" placeholder="poäng hemma">
-	  <input type="number" ng-model="match.guestResults" placeholder="poäng borta">
-	<!--   <button type="submit" ng-click="defaultResults()"> Ångra </button> -->
+	 <!--  <input type="number" ng-model="match.homeResults" placeholder="poäng hemma">
+	  <input type="number" ng-model="match.guestResults" placeholder="poäng borta"> -->
+	  <button type="submit" ng-click="defaultResults()"> Ångra </button>
 	  <button type="submit" ng-click="saveResults()"> Spara </button>
 	</form>
 
