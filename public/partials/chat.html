@@ -2,7 +2,7 @@
   <div class="chat container">
     {{currentUser.username}}
     <div class="row">
-      <div class="message col-lg-8 col-md-8 col-sm-8 col-xs-8" ng-repeat="message in test">
+      <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in test">
         <div ng-if="message.userId._id !== yourUser._id">
           <p class="chatUser">{{message.userId.username}}</p>
           <p id="otherChat">{{message.content}}</p>

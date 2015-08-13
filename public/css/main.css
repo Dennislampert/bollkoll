@@ -80,6 +80,7 @@ th {
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e0e0e0', endColorstr='#e0e0e0', GradientType=0);
   /* IE6-9 */
+  float: left;
 }
 .chat .yourChatUser {
   float: right;
@@ -107,7 +108,7 @@ th {
 }
 .chat #otherChat,
 .chat #yourChat {
-  max-width: 250px;
+  max-width: 200px;
   white-space: pre-wrap;
   word-wrap: break-word;
   padding: 5px;
