@@ -3,4 +3,3 @@ node_modules/*
 data/mongod.lock
 data/*
 public/css/*
-*.css
