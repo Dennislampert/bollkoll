@@ -85,7 +85,7 @@ app.controller("dataController", ["$scope", "$http", "Match", "Region", "Team", 
               thisGuestTeam = thisGuestTeam === null ? theHomeTeam:thisGuestTeam;
 
               if (thisHomeTeam && thisGuestTeam){
-                console.log("creating match: ");
+                console.log("creating match..");
                 var time = new Date(event.startDate);
                 var stringTime = ""+time+"";
                 var month = time.getMonth();

@@ -30,9 +30,21 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
     currentId = currentId == clickedId ? false : clickedId;
   };
 
-    console.log("Login: ",Login.user);
 
 
+  var time = new Date();
+  var stringTime = ""+time+"";
+  var month = time.getMonth();
+  var splitTime = stringTime.split(" ");
+  var date = ""+splitTime[3]+"-"+month+"-"+splitTime[2];
+  var hours = ""+splitTime[4]+"";
+
+  hours.replace(':','').replace(':','');
+
+
+
+
+  console.log("Login: ",Login.user);
   // collection.Region hämta regionPath som är lika med routeParams.region
   Region.get({regionPath: $routeParams.region}, function(answer){
     regionAndDivisionId.regionId = answer[0]._id;
@@ -54,6 +66,7 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
             console.log("games: ",$scope.games);
           }
         );
-    });
+      }
+    );
   });
 }]);
