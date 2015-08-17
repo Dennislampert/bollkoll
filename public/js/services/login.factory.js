@@ -17,40 +17,49 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
     login: function(credentials, callback) {
       $http.post('api/login', credentials).success(function(data) {
         updateObj(data ? data : {}, loginObj.user);
-        callback(loginObj.user);
+        
+        // let the entire app know we are logged in
+        $rootScope.$broadcast("login");
+
+        callback && callback(loginObj.user);
       });
     },
     check: function(callback) {
       $http.get('api/login').success(function(data) {
         updateObj(data ? data : {}, loginObj.user);
-        callback(loginObj.user);
+
+        callback && callback(loginObj.user);
       });
     },
     logout: function(callback) {
       $http.delete('api/login').success(function(data) {
         updateObj({}, loginObj.user);
-        callback(loginObj.user);
+        
+        // let the entire app know we are logged out
+        $rootScope.$broadcast("logout");
+
+        callback && callback(loginObj.user);
       });
     }
   };
 
-  loginObj.check(function() {});
-  // check if logged in every 5 seconds
-  setInterval(function() {
-    loginObj.check(function(){});
-  }, 5000);
 
-  $rootScope.$on('$routeChangeStart', function (event, next) {
-    var userAuthenticated = loginObj.user;
-    /* Check if the user is logged in */
-    console.log("next", next.$$route.loggedIn);
-    if (!userAuthenticated._id && !next.loggedIn) {
-      /* You can save the user's location to take him back to the same page after he has logged-in */
-      $rootScope.savedLocation = $location.url();
-
-      $location.path('/');
+  // check if logged in every 30 seconds
+  loginObj.check(function() {
+    if (!loginObj.user._id) {
+      // let the entire app know we are logged out
+      $rootScope.$broadcast("logout");
     }
   });
+  setInterval(function() {
+    loginObj.check(function(){
+    if (!loginObj.user._id) {
+      // let the entire app know we are logged out
+      $rootScope.$broadcast("logout");
+    }
+    });
+  }, 30000);
+
 
   return loginObj;
 }]);

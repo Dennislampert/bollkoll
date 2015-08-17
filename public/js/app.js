@@ -1,5 +1,5 @@
 //app declaration and dependency injection
-var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ui.bootstrap"]);
+var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ngFileUpload", "ui.bootstrap"]);
 
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
@@ -10,12 +10,14 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     })
     .when("/region", {
       templateUrl: "partials/addRegion.html",
-      controller: "regionController"
+      controller: "regionController",
+      loggedIn: true
     })
 
     .when("/table", {
       templateUrl: "partials/editTable.html",
-      controller: "tableController"
+      controller: "tableController",
+      loggedIn: true
     })
     .when("/om-oss", {
       templateUrl: "partials/matches.html",
@@ -51,7 +53,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .when("/:region/:division/:gameId/matchstatus", {
       templateUrl: "partials/matchstatus.html",
       controller: "matchStatusController",
-      isLogin: true
+      loggedIn: true
     })
     .when("/:region/:division/tabell", {
       templateUrl: "partials/table.html",
@@ -64,6 +66,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .when("/data", {
       templateUrl: "partials/chat.html",
       controller: "dataController"
+    })
+    .when("/anvandare/:username", {
+      templateUrl: "partials/userprofile.html",
+      controller: "profileController"
     })
     .otherwise({
       redirectTo: "/"
