@@ -19,7 +19,7 @@
         <tr ng-hide="currentlyShownResult(game._id)" >
           <td ng-click="toggleID(game._id)">{{ game.homeResults }}  -  {{ game.guestResults }} </td>
           <td ng-click="toggleID(game._id)">{{ game.time }}</td>
-          <td><a ng-href="/{{games.regionPath}}/chat" class="fa fa-comments "></a></td>
+          <td><a ng-href="/{{games._id}}/chat" class="fa fa-comments "></a></td>
           <td><a ng-href="/{{games.regionPath}}/{{game.division}}/{{game._id}}/matchstatus" class="fa fa-pencil-square-o"></i></td>
         </tr>
       </tbody>
@@ -46,7 +46,7 @@
         <tr ng-hide="currentlyShownResult(game._id)" >
           <td ng-click="toggleID(game._id)">{{ game.homeResults }}  -  {{ game.guestResults }} </td>
           <td ng-click="toggleID(game._id)">{{ game.time }}</td>
-          <td><a ng-href="/{{games.regionPath}}/chat" class="fa fa-comments "></a></td>
+          <td><a ng-href="/{{games._id}}/chat" class="fa fa-comments "></a></td>
           <td><a ng-href="/{{games.regionPath}}/{{game.division}}/{{game._id}}/matchstatus" class="fa fa-pencil-square-o"></i></td>
         </tr>
       </tbody>
@@ -72,7 +72,7 @@
         <tr ng-hide="currentlyShownResult(game._id)" >
           <td ng-click="toggleID(game._id)">{{ game.homeResults }}  -  {{ game.guestResults }} </td>
           <td ng-click="toggleID(game._id)">{{ game.time }}</td>
-          <td><a ng-href="/{{games.regionPath}}/chat" class="fa fa-comments "></a></td>
+          <td><a ng-href="/{{games._id}}/chat" class="fa fa-comments "></a></td>
           <td><a ng-href="/{{games.regionPath}}/{{game.division}}/{{game._id}}/matchstatus" class="fa fa-pencil-square-o"></i></td>
         </tr>
       </tbody>
