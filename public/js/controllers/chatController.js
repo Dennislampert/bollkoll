@@ -1,6 +1,6 @@
 app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "Match", "Login", 
   function($scope, $routeParams, Chat, Message, Match, Login){
-  $scope.test = Message.get({matchId:$routeParams.gameid},{_populate:"userId"},function() {
+  $scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
     console.log("s", $scope.test);
   });
 
@@ -10,7 +10,7 @@ app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "
   $scope.chatInfo = {};
   $scope.send = function() {
     $scope.chatInfo.userId = Login.user._id;
-    $scope.chatInfo.gameid = $routeParams.gameid;
+    $scope.chatInfo.matchId = $routeParams.matchId;
     console.log("c", $scope.chatInfo);
     Message.create($scope.chatInfo, function(data) {
       console.log("lolek", data);
