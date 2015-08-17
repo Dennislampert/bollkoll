@@ -1,5 +1,5 @@
-// exports.upload = {
-//   publicPath: __dirname + '/public/files/'
-// };
+exports.upload = {
+  publicPath: __dirname + '/public/files/'
+};
 
-// exports.hashSalt = "mahSault";
+exports.hashSalt = "mahSault";
