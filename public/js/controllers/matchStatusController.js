@@ -4,12 +4,18 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
 
     // var populateObject = {};
 
+    function duplicateResults(){
+         $scope.oldResults = {
+            homeResults: $scope.match.homeResults,
+            guestResults: $scope.match.guestResults
+        };
+    }
+
     $scope.match = Match.getById({
         _id: $routeParams.gameId,
         _populate: "homeTeamId guestTeamId"
-    });
+    },duplicateResults);
 
-    hehe = $scope.match;
 
 
     // populateObject._id = $routeParams.gameId;
@@ -20,7 +26,6 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     /*function getUpdatedResults(){
         Match.get(
             populateObject, function(teams){
-                console.log("teams: ", teams);
                 $scope.teams = teams;
             });
     }
@@ -30,9 +35,9 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
 
 	$scope.saveResults = function(){
 		console.log("saving(updating) results! ", $scope);
-        $scope.match.$update(function(data) {
-            //getUpdatedResults();
-        });
+
+
+        $scope.match.$update(duplicateResults);
         /*
         Match.update({
           _id: $routeParams.gameId

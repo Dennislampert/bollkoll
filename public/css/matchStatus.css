@@ -1,11 +1,14 @@
 body {
   background-image: url("../backround_images/flashlight.jpg");
 }
-tr:nth-child(0) {
-  background-color: white;
-  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg");
+tr:nth-child(even) {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
 }
-tr:nth-child(1) {
-  background-color: grey;
-  background-image: url("../backround_images/table-2.2-light.jpg");
+tr:nth-child(odd) {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg") !important;
+}
+.table {
+  margin-bottom: 0px;
 }
