@@ -3,7 +3,7 @@ app.controller("profileController", ["$scope", "$http", "$location", "FileUpload
   // reference(!) to Login.user object
   // (logged in user data)
   $scope.user = Login.user;
-
+  
   var stop = true;
   $scope.upload = function() {
     if (stop === false){
@@ -32,6 +32,5 @@ app.controller("profileController", ["$scope", "$http", "$location", "FileUpload
       }
     }
   });
-
 
 }]);

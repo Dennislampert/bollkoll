@@ -1,9 +1,9 @@
 app.controller("dataController", ["$scope", "$http", "Match", "Region", "Team", function($scope, $http, Match, Region ,Team){
 
-  $http.get("/getData").then(parseData);
+  $http.get("/api/getData").then(parseData);
 
   function parseData(data){
-
+    console.log("data: ",data);
     var events = data.data.events;
     var counter = -1;
 

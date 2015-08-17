@@ -21,25 +21,10 @@ app.use(m.bodyparser.urlencoded({ extended: false }));
 app.use(m.cookieparser());
 app.use(m.expresssession({resave: true, saveUninitialized: false, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: new Date(Date.now() + 604800000) }}));
 app.use(m.express.static(m.path.join(__dirname, 'public')));
-var options = { //};
-  permissionToAsk: require('./permission/permissionToAsk.js'),
-  permissionToAnswer: require('./permission/permissonToAnswer.js'),
-  customRoutes: [
-    {
-      method: "all",
-      path: "login",
-      controller: require('./api/routes/loginRoute')
-    }
-  ]
-};
-// Initialize our own REST api - mongresto
-m.mongresto.init(app, options);
-// get all data for Hälsingland div 4
-
 
 
 // Route everything "else" to angular (in html5mode)
-app.get('/getdata', function (req, res) {
+app.get('/api/getdata', function (req, res) {
   var http = require('http');
 
   var url = 'http://api.everysport.com/v1/leagues/69643/events?limit=1000&apikey=0b5af832685c9f68013fe4055a74ef2f';
@@ -60,6 +45,29 @@ app.get('/getdata', function (req, res) {
   });
 
 });
+
+
+var options = { //};
+  permissionToAsk: require('./permission/permissionToAsk.js'),
+  permissionToAnswer: require('./permission/permissonToAnswer.js'),
+  customRoutes: [
+    {
+      method: "all",
+      path: "login",
+      controller: require('./api/routes/loginRoute')
+    },
+    {
+      method: "post",
+      path: "upload",
+      controller: require('./api/routes/uploadRoute')
+    }
+  ]
+};
+// Initialize our own REST api - mongresto
+m.mongresto.init(app, options);
+// get all data for Hälsingland div 4
+
+
 
 
 

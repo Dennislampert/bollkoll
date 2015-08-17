@@ -1,5 +1,5 @@
 //app declaration and dependency injection
-var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ui.bootstrap"]);
+var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ngFileUpload", "ui.bootstrap"]);
 
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
@@ -66,6 +66,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .when("/data", {
       templateUrl: "partials/chat.html",
       controller: "dataController"
+    })
+    .when("/anvandare/:username", {
+      templateUrl: "partials/userprofile.html",
+      controller: "profileController"
     })
     .otherwise({
       redirectTo: "/"
