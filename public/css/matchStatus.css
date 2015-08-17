@@ -6,11 +6,9 @@ body {
 }
 tr td {
   color: #fff;
-  height: 43px;
+  height: 45px;
   vertical-align: middle !important;
-}
-.defaultSaveButtons.blackText {
-  float: left;
+  border-top: 0px !important;
 }
 h2 {
   color: #fff;
@@ -33,4 +31,12 @@ tr:nth-child(odd) {
 }
 .matchTopTeam h2 {
   text-align: center;
+}
+.homeTeamScore,
+.yellowPenaltyCardHomeTeam,
+.redPenaltyCardHomeTeam,
+.guestTeamScore,
+.yellowPenaltyCardGuestTeam,
+.redPenaltyCardGuestTeam {
+  display: inline-block;
 }

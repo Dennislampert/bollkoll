@@ -34,9 +34,9 @@
 		    <td>Gult straffkort</td>
 		    <td>
 		    	<div class="yellowPenaltyCardHomeTeam">
-			      <button class="blackText" ng-click="decreaseGoals(match,'homeResults')" ng-disabled="decreaseDisallowed(match.homeResults)">-</button>
+			      <button class="blackText" ng-click="disabled" ng-disabled="disabled">-</button>
 			      <span>0</span>
-			    	<button class="blackText" ng-click="increaseGoals(match,'homeResults')" ng-disabled="increaseDisallowed(match.homeResults)">+</button>
+			    	<button class="blackText" ng-click="disabled" ng-disabled="disabled">+</button>
 			    </div>
 		    </td>
 		  </tr>
@@ -45,9 +45,9 @@
 		    <td>Rött straffkort</td>
 		    <td>
 		    	<div class="redPenaltyCardHomeTeam">
-			      <button class="blackText" ng-click="decreaseGoals(match,'homeResults')" ng-disabled="decreaseDisallowed(match.homeResults)">-</button>
+			      <button class="blackText" ng-click="disabled" ng-disabled="disabled">-</button>
 			      <span>0</span>
-			    	<button class="blackText" ng-click="increaseGoals(match,'homeResults')" ng-disabled="increaseDisallowed(match.homeResults)">+</button>
+			    	<button class="blackText" ng-click="disabled" ng-disabled="disabled">+</button>
 			    </div>
 		    </td>
 		  </tr>
@@ -75,24 +75,24 @@
 				    </td>
 				  </tr>
 
-      <tr class="yellowPenaltyCardGuestTeam">
+      <tr>
 		    <td>Gult straffkort</td>
 		    <td>
-		    	<div>
-			      <button class="blackText" ng-click="decreaseGoals(match,'homeResults')" ng-disabled="decreaseDisallowed(match.homeResults)">-</button>
+		    	<div class="yellowPenaltyCardGuestTeam">
+			      <button class="blackText" ng-click="disabled" ng-disabled="disabled">-</button>
 			      <span>0</span>
-			    	<button class="blackText" ng-click="increaseGoals(match,'homeResults')" ng-disabled="increaseDisallowed(match.homeResults)">+</button>
+			    	<button class="blackText" ng-click="disabled" ng-disabled="disabled">+</button>
 			    </div>
 		    </td>
 		  </tr>
 
-      <tr class="redPenaltyCardGuestTeam">
+      <tr>
 		    <td>Rött straffkort</td>
 		    <td>
-		    	<div>
-			      <button class="blackText" ng-click="decreaseGoals(match,'homeResults')" ng-disabled="decreaseDisallowed(match.homeResults)">-</button>
+		    	<div class="redPenaltyCardGuestTeam">
+			      <button class="blackText" ng-click="disabled" ng-disabled="disabled">-</button>
 			      <span>0</span>
-			    	<button class="blackText" ng-click="increaseGoals(match,'homeResults')" ng-disabled="increaseDisallowed(match.homeResults)">+</button>
+			    	<button class="blackText" ng-click="disabled" ng-disabled="disabled">+</button>
 			    </div>
 		    </td>
 		  </tr>
@@ -103,14 +103,18 @@
 			</tr>
 
 			<tr>
-				<td></td>
-				<td></td>
+				<td>
+					<form class="defaultButtons" ng-submit="saveResults()">
+					  <button class="blackText" type="submit" ng-click="defaultResults()"> Ångra </button>
+					</form>
+				</td>
+				<td>
+					<form class="saveButton" ng-submit="saveResults()">
+						<button class="blackText" type="submit" ng-click="saveResults()"> Spara </button>
+					</form>
+				</td>
 			</tr>
 			
-			<form class="defaultSaveButtons" ng-submit="saveResults()">
-			  <button class="blackText" type="submit" ng-click="defaultResults()"> Ångra </button>
-			  <button class="blackText" type="submit" ng-click="saveResults()"> Spara </button>
-			</form>
     </table>
 	</div>
 
