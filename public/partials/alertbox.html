@@ -1,5 +1,8 @@
-<div ng-controller="AlertCtrl">
-  <alert type="{{alert.type}}">{{alert.msg}}</alert>
-  <button type="button" class='btn btn-default'>Gå till login</button>
-  <button type="button" class='btn btn-default'>Avbryt</button>
+<div ng-controller="alertBoxController" >
+  <alert class="alertBox col-xs-11 col-sm-8 col-md-8 col-lg-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2" type="{{alerts.type}}">{{alerts.msg}}
+    <div class="alertBtn">
+      <a ng-href="/loggain"><button type="button" class='btn btn-default' >Gå till login</button></a>
+      <a ng-click="back()"><button type="button" class='btn btn-default'>Avbryt</button></a>
+    </div>
+  </alert>
 </div>
