@@ -1,5 +1,7 @@
-app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", "Team", "Login", function($scope, $routeParams, Match, Region, Team, Login){
-
+app.controller("matchController",
+  ["$scope", "$routeParams", "Match", "Region", "Team", "Login", "NavTitleChange", 
+  function($scope, $routeParams, Match, Region, Team, Login, NavTitleChange) {
+  NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
   // console.log("hallelujah!")
 
   var regionAndDivisionId = {};
