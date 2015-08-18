@@ -105,6 +105,29 @@ th {
   /* IE6-9 */
   float: right;
 }
+.chat #statusMessage {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ef3232+0,ff4f4f+30,ff4f4f+70,ef3232+100  */
+  background: #ef3232;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ef3232), color-stop(30%, #ff4f4f), color-stop(70%, #ff4f4f), color-stop(100%, #ef3232));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ef3232', endColorstr='#ef3232', GradientType=0);
+  /* IE6-9 */
+  padding: 5px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  text-align: center;
+}
 .chat #otherChat,
 .chat #yourChat {
   max-width: 200px;
@@ -119,6 +142,10 @@ th {
 .chat .yourChatUser {
   font-size: 12px;
   margin-bottom: 5px;
+}
+.chat .messageToSend {
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 .nav,
 .pagination,

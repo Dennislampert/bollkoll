@@ -1,5 +1,6 @@
 .chat{
-  background-color:#fff;
+  
+  background-color:#fff; 
   #otherChat{
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0e0e0+0,f3f3f3+30,f3f3f3+70,e0e0e0+100 */
 	background: #e0e0e0; /* Old browsers */
@@ -28,6 +29,21 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6e2e4', endColorstr='#b6e2e4',GradientType=0 ); /* IE6-9 */
     float:right;
   }
+  #statusMessage{ 
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ef3232+0,ff4f4f+30,ff4f4f+70,ef3232+100  */
+    background: #ef3232; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ef3232), color-stop(30%,#ff4f4f), color-stop(70%,#ff4f4f), color-stop(100%,#ef3232)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ef3232 0%,#ff4f4f 30%,#ff4f4f 70%,#ef3232 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ef3232 0%,#ff4f4f 30%,#ff4f4f 70%,#ef3232 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ef3232 0%,#ff4f4f 30%,#ff4f4f 70%,#ef3232 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ef3232 0%,#ff4f4f 30%,#ff4f4f 70%,#ef3232 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef3232', endColorstr='#ef3232',GradientType=0 ); /* IE6-9 */
+    padding:5px;
+    border:1px solid #999;
+    border-radius:5px;
+    text-align:center;
+  }
   #otherChat, #yourChat {  
     max-width:200px;
     white-space:pre-wrap;
@@ -40,6 +56,14 @@
   .chatUser, .yourChatUser{
     font-size:12px;
     margin-bottom:5px;
+  }
+  .messageToSend {
+    margin:0 auto;
+    margin-bottom:20px;
+    .chatTextBox {
+    }
+    .chatTextSubmit {
+    }
   }
 	
 }
