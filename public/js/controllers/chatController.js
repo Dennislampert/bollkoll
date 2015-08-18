@@ -1,4 +1,10 @@
-app.controller("chatController", ["$scope", "Chat", "Message", "Login", function($scope, Chat, Message, Login){
+app.controller("chatController", ["$scope", "Chat", "Message", "Login", "Hashtag", function($scope, Chat, Message, Login, Hashtag){
+
+
+  console.log("Hashtag: ",Hashtag);
+
+
+
   $scope.test = Message.get({_populate:"userId"},function() {
     console.log("s", $scope.test);
   });
