@@ -1,8 +1,20 @@
 var path = require('path'),
     config = require(path.normalize(process.cwd() + '/config.js')),
     fs = require('fs'),
+    gm = require('gm').subClass({imageMagick: true}),
     // include the multipart middleware for file uploading
     multipart = require('connect-multiparty');
+
+    function scaleimage(path) {
+      console.log("path: ", path);
+      gm(path)
+      .resize(400, 400)
+      .gravity("Center")
+      .crop(400, 400)
+      .write('public/files/kalle.png', function (err) {
+        if (!err) console.log('done');
+      });
+    }
 
 
 // middleware controller for simplifying file uploads
@@ -47,6 +59,7 @@ module.exports = function(mongoose) {
           if (err) { throw err; }
           // and finally send a response to client
           res.json(publicPath);
+          scaleimage("public"+publicPath);
         });
       });
     });

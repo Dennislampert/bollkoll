@@ -72,10 +72,6 @@ th {
   background-image: url("../backround_images/greey-light.jpg");
   cursor: pointer;
 }
-.profilbild {
-  border-radius: 25px;
-  border: solid #000 5px;
-}
 .nav,
 .pagination,
 .carousel,
