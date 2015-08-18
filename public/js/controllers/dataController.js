@@ -3,7 +3,7 @@ app.controller("dataController", ["$scope", "$http", "Match", "Region", "Team", 
   $http.get("/api/getData").then(parseData);
 
   function parseData(data){
-
+    console.log("data: ",data);
     var events = data.data.events;
     var counter = -1;
 
@@ -85,7 +85,7 @@ app.controller("dataController", ["$scope", "$http", "Match", "Region", "Team", 
               thisGuestTeam = thisGuestTeam === null ? theHomeTeam:thisGuestTeam;
 
               if (thisHomeTeam && thisGuestTeam){
-                console.log("creating match: ");
+                console.log("creating match..");
                 var time = new Date(event.startDate);
                 var stringTime = ""+time+"";
                 var month = time.getMonth();

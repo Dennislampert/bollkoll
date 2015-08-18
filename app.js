@@ -60,6 +60,11 @@ var options = { //};
       method: "post",
       path: "upload",
       controller: require('./api/routes/uploadRoute')
+    },
+    {
+      method: "get",
+      path: "chatlong/:matchId/:latestKnownMessageId",
+      controller: require('./api/routes/longPoll')
     }
   ]
 };
