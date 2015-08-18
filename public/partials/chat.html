@@ -1,33 +1,36 @@
 
   <div class="chat container">
-    {{currentUser.username}}
+    <!-- {{currentUser.username}} -->
     <div class="row">
-      <div class="message col-lg-8 col-md-8 col-sm-8 col-xs-8" ng-repeat="message in test">
+      <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in allMessages">
         <div ng-if="message.userId._id !== yourUser._id">
-          <p class="chatUser">{{message.userId.username}}</p>
+          <p class="chatUser">{{message.userId.username}}:</p>
           <p id="otherChat">{{message.content}}</p>
         </div>
         <div ng-if="message.userId._id == yourUser._id">
-          <p class="yourChatUser">{{message.userId.username}}</p>
+          <p class="yourChatUser">{{message.userId.username}}</p> 
           <p id="yourChat">{{message.content}}</p>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="message col-lg-8 col-md-8 col-sm-8 col-xs-8 col-sm-4 col-xs-4 col-xs-offset-8" ng-repeat="message in test">
-        <p></p>
+      <div class="row">
+        <div class="message col-lg-8 col-md-8 col-sm-8 col-xs-8 col-sm-4 col-xs-4 col-xs-offset-8" ng-repeat="message in allMessages">
+          <p></p>
+        </div>
       </div>
-    </div>
 
-  </div>
-  <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <p class="statusUser">dada</p>
-    <p id="statusMessage">GOAL! 1-0</p>
-  </div>
-  <form class="messageToSend col-xs-12 col-sm-3 col-md-3 col-lg-3" ng-submit="send()">
-    <input type="text" ng-model="chatInfo.content" class="form-control" placeholder="Skriv meddelande här...">
-    <button type="submit" class="btn btn-default">Skicka</button>
-  </form>
-  <div class="status col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <p class="statusUser">dada</p>
+        <p id="statusMessage">GOAL! 1-0</p>
+      </div>
+
+      <form class="messageToSend col-xs-12 col-sm-3 col-md-3 col-lg-3" ng-submit="send()">
+        <input type="text" ng-model="chatInfo.content" class="form-control" placeholder="Skriv meddelande här...">
+        <button type="submit" class="btn btn-default">Skicka</button>
+      </form>
+
+      <div class="status col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      </div>
+
+    </div>
   </div>

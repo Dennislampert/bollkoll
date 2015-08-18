@@ -5,7 +5,6 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
   var regionAndDivisionId = {};
 
   $scope.saveIT = function() {
-    console.log("run bastard run! :", $scope);
     Match.create({
       homeTeamId: $scope.homeTeam._id,
       guestTeamId: $scope.guestTeam._id,
@@ -20,17 +19,49 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
     });
   };
 
+
+
+  var time = new Date();
+  var stringTime = ""+time+"";
+  var month = time.getMonth();
+  var splitTime = stringTime.split(" ");
+  var date = ""+splitTime[3]+"-"+month+"-"+splitTime[2];
+
+
+  $scope.dateCompare = function(date,condition){
+    
+    // Split textdate
+    date = date.split("-").map(function(x){return x/1;});
+
+    // Today 
+    var today = new Date();
+    today = [today.getFullYear(),today.getMonth()+1,today.getDate()];
+
+    // Convert from array of numbers to a large number
+    today = today[0]*10000 + today[1]*100 + today[2];
+    date = date[0]*10000 + date[1]*100 + date[2];
+
+    // Check according to condition
+    return (condition == "today" && date == today) ||
+      (condition == "beforeToday" && date < today) ||
+      (condition == "afterToday" && date > today);
+  };
+
+
+
+
+
+
   var currentId;
   $scope.currentlyShownResult = function(idToCheck){
     return idToCheck != currentId;
   };
 
   $scope.toggleID = function(clickedId){
-
     currentId = currentId == clickedId ? false : clickedId;
   };
 
-    console.log("Login: ",Login.user);
+
 
 
   // collection.Region hämta regionPath som är lika med routeParams.region
@@ -49,11 +80,13 @@ app.controller("matchController", ["$scope", "$routeParams", "Match", "Region", 
         Match.get(
           regionAndDivisionId, function(games){
             games.regionPath = $routeParams.region;
+            $scope.date = date.split("-").join("");
             $scope.games = games;
+            console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
-            console.log("games: ",$scope.games);
           }
         );
-    });
+      }
+    );
   });
 }]);
