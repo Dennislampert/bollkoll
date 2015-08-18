@@ -1,5 +1,7 @@
-app.controller("profileController", ["$scope", "$http", "$location", "FileUploader", "Login", function($scope, $http, $location, FileUploader, Login) {
-
+app.controller("profileController",
+  ["$scope", "$http", "$location", "$routeParams", "FileUploader", "Login", "NavTitleChange",
+  function($scope, $http, $location, $routeParams, FileUploader, Login, NavTitleChange) {
+  NavTitleChange($routeParams.username + "s profil");
   // reference(!) to Login.user object
   // (logged in user data)
   $scope.user = Login.user;
