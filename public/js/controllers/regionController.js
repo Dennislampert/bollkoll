@@ -1,6 +1,8 @@
 //"myAppName" controller.
-app.controller("regionController", ["$scope","Region", function($scope,Region){
-
+app.controller("regionController",
+  ["$scope","Region", "NavTitleChange",
+  function($scope, Region, NavTitleChange) {
+  NavTitleChange("Lägg till region");
   $scope.save = function(){
 
     Region.create({

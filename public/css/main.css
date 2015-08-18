@@ -1,3 +1,17 @@
+.nav .home-link {
+  display: none;
+}
+@media (max-width: 767px) {
+  .navbar-text {
+    text-align: center;
+  }
+  .navbar-brand {
+    display: none;
+  }
+  .nav .home-link {
+    display: block;
+  }
+}
 .main-menu {
   max-height: 300px;
   overflow: hidden;

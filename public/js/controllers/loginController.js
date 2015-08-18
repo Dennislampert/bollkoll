@@ -1,5 +1,7 @@
-app.controller("loginController", ["$http","$scope","$location","Login", function($http,$scope,$location,Login){
-
+app.controller("loginController",
+  ["$http", "$scope", "$location", "Login", "NavTitleChange",
+  function($http, $scope, $location ,Login, NavTitleChange) {
+  NavTitleChange("Logga in");
   $scope.userInfo = {};
 
   $scope.isLoggedIn = Login.user;
