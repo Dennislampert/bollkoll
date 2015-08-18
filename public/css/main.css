@@ -1,8 +1,23 @@
+.nav .home-link {
+  display: none;
+}
+@media (max-width: 767px) {
+  .navbar-text {
+    margin-left: 15px;
+  }
+  .navbar-brand {
+    display: none;
+  }
+  .nav .home-link {
+    display: block;
+  }
+}
 .main-menu {
-  max-height: 1000px;
+  max-height: 300px;
   overflow: hidden;
-  -webkit-transition: max-height 1000s;
-  transition: max-height 1000s;
+  opacity: 1;
+  -webkit-transition: max-height 0.5s ease-in-out, opacity 0.7s;
+  transition: max-height 0.5s ease-in-out, opacity 0.7s;
 }
 .main-menu li {
   text-align: center;
@@ -14,6 +29,7 @@
   background-color: #2D2D2D;
   color: #FFFFFF;
   border-radius: 5px;
+  border: none;
   box-sizing: none;
 }
 .main-menu li select:hover {
@@ -25,9 +41,6 @@
 }
 .main-menu li a:hover {
   background-color: #4D4D4D;
-}
-.main-menu .hide {
-  max-height: 0;
 }
 body {
   background-image: url("../backround_images/flashlight.jpg");
@@ -59,6 +72,10 @@ th {
   background-image: url("../backround_images/greey-light.jpg");
   cursor: pointer;
 }
+.profilbild {
+  border-radius: 25px;
+  border: solid #000 5px;
+}
 .nav,
 .pagination,
 .carousel,
@@ -69,17 +86,7 @@ th {
 .container {
   margin: 65px 0 0;
 }
-.nav .home-link {
-  display: none;
-}
-@media (max-width: 767px) {
-  .navbar-text {
-    margin-left: 15px;
-  }
-  .navbar-brand {
-    display: none;
-  }
-  .nav .home-link {
-    display: block;
-  }
+.hide-element {
+  max-height: 0;
+  opacity: 0;
 }

@@ -1,13 +1,11 @@
-<form ng-submit="saveUserInfo()">
-  <div class="form-group">
-  
-    <input type="text" class="form-control" ng-model="userName">
-  </div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<img class="profilbild" src="{{image.path}}" height="400" width="400">
 
-  <div class="form-group">
-    <button class="btn btn-success">Spara användarinfo</button>
-  </div>
-</form>
+<h3>Förnamn: {{user.fname}}</h3>
+<h3>Efternamn: {{user.lname}}</h3>
+<h3>Användarnamn: {{user.username}}</h3>
+
+
 
 
 
@@ -15,12 +13,13 @@
 
 <form ng-submit="upload()">
        <div class="form-group">
-       
-       
+  
         <input type="file" class="form-control" ngf-select ng-model="files">
       </div>
 
       <div class="form-group">
         <button class="btn btn-success">Upload!</button>
       </div>
-    </form>
+</form>
+
+</div>
