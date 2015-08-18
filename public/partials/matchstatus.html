@@ -1,7 +1,7 @@
 <section>
 
 	<div class="matchTopTeam">
-		<h2>{{ match.homeTeamId.name }} - {{ match.guestTeamId.name }}</h2>
+		<h2>{{ match.homeTeamId.name | uppercase }} - {{ match.guestTeamId.name | uppercase }}</h2>
 
     <table style="width:100%" class="table table-striped table-condensed">
 
@@ -14,7 +14,7 @@
 
       <tr>
 				<td class="matchHomeTeam">
-					{{ match.homeTeamId.name }}
+					{{ match.homeTeamId.name | uppercase }}
 				</td>
 				<td></td>
 			</tr>
@@ -59,7 +59,7 @@
 
 	        <tr>
 						<td class="matchGuestTeam">
-							{{ match.guestTeamId.name }}
+							{{ match.guestTeamId.name | uppercase }}
 						</td>
 						<td></td>
 					</tr>
@@ -104,7 +104,7 @@
 
 			<tr>
 				<td>
-					<form class="defaultButtons" ng-submit="saveResults()">
+					<form class="defaultButtons" ng-submit="defaultResults()">
 					  <button class="blackText" type="submit" ng-click="defaultResults()"> Ångra </button>
 					</form>
 				</td>
