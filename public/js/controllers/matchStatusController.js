@@ -17,14 +17,14 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
 
         $scope.match.$update(duplicateResults);
 
-        // creating an object where we, inside,  save content for the chat
+        // creating an object where we, inside, save content for the chat
         $scope.chatInfo = {};
 
         // putting results into the newly created object "chatInfo"
         $scope.chatInfo.homeResults = $scope.match.homeResults;
         $scope.chatInfo.guestResults = $scope.match.guestResults;
 
-        // the following syntax ends up visible in the chat
+        // the following syntax ends up visible in the chat wwindow
         $scope.chatInfo.content = $scope.match.homeTeamId.name + " " + $scope.match.homeResults + " - " + $scope.match.guestTeamId.name + " " + $scope.match.guestResults;
 
         $scope.chatInfo.userId = Login.user._id;
