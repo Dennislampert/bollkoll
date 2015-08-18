@@ -35,7 +35,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
-    .when("/chat", {
+    .when("/chat/:matchId", {
       templateUrl: "partials/chat.html",
       controller: "chatController"
     })

@@ -1,8 +1,8 @@
-app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "Match", "Login", 
-  function($scope, $routeParams, Chat, Message, Match, Login){
-  $scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
+app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "Match", "Login", "$http", 
+  function($scope, $routeParams, Chat, Message, Match, Login, $http){
+  /*$scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
     console.log("s", $scope.test);
-  });
+  });*/
 
   $scope.yourUser = Login.user;
   console.log("currentUser: ", $scope.yourUser);
@@ -16,7 +16,19 @@ app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "
       console.log("lolek", data);
     });
   };
+  $scope.allMessages = [];
+  function longpoller(timestamp) {
+    $http.get("/api/chatlong/"+$routeParams.matchId+"/" + timestamp + "/").success(function(data) {
+      console.log("data", data);
+      data.forEach(function(msg) {
+        timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
+        $scope.allMessages.push(msg);
+      });
+
+      longpoller(timestamp);
+    });
+  }
+  longpoller(0);
 
 }]);
 
-// $http.get("/chat/"+$routeParams +"").then(parseData);
