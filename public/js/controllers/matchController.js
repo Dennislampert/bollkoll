@@ -68,6 +68,13 @@ app.controller("matchController",
 
   // collection.Region hämta regionPath som är lika med routeParams.region
   Region.get({regionPath: $routeParams.region}, function(answer){
+    console.log("what is the answer?: ", answer);
+    if (!answer.length) {
+      // ABORT IF NO REGION FOUND (FOR NOW)
+      alert("NO REGION FOUND :/");
+      return;
+
+    }
     regionAndDivisionId.regionId = answer[0]._id;
     regionAndDivisionId.division = $routeParams.division;
 
@@ -84,6 +91,7 @@ app.controller("matchController",
             games.regionPath = $routeParams.region;
             $scope.date = date.split("-").join("");
             $scope.games = games;
+            window.games = games;
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
           }
