@@ -1,4 +1,4 @@
-app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "Match", "Login", "$http", 
+app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "Match", "Login", "$http",
   function($scope, $routeParams, Chat, Message, Match, Login, $http){
   /*$scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
     console.log("s", $scope.test);
@@ -18,6 +18,7 @@ app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "
   };
   $scope.allMessages = [];
   function longpoller(timestamp) {
+    console.log("/api/chatlong/"+$routeParams.matchId+"/" + timestamp + "/");
     $http.get("/api/chatlong/"+$routeParams.matchId+"/" + timestamp + "/").success(function(data) {
       console.log("data", data);
       data.forEach(function(msg) {

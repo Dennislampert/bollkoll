@@ -26,8 +26,8 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
 
         // the following syntax ends up visible in the chat wwindow
         $scope.chatInfo.content = $scope.match.homeTeamId.name + " " + $scope.match.homeResults + " - " + $scope.match.guestTeamId.name + " " + $scope.match.guestResults;
-
         $scope.chatInfo.userId = Login.user._id;
+        $scope.chatInfo.matchId = $routeParams.gameId;
         $scope.chatInfo.status = true;
 
         console.log("blabla", $scope.chatInfo);
