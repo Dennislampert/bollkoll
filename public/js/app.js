@@ -27,6 +27,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/login.html",
       controller: "loginController"
     })
+    .when("/loggain/fel", {
+      templateUrl: "partials/login.html",
+      controller: "loginController"
+    })
     .when("/registrering", {
       templateUrl: "partials/register.html",
       controller: "registerController"
