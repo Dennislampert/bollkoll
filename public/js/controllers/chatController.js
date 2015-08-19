@@ -1,6 +1,6 @@
 app.controller("chatController",
-  ["$scope", "Chat", "Message", "Login", "NavTitleChange",
-  function($scope, Chat, Message, Login, NavTitleChange) {
+  ["$scope", "$http", "$routeParams", "Chat", "Message", "Login", "NavTitleChange",
+  function($scope, $http, $routeParams, Chat, Message, Login, NavTitleChange) {
   NavTitleChange("<MATCHNAMN> chat");
   /*$scope.test = Message.get({_populate:"userId"},function() {
     console.log("s", $scope.test);
