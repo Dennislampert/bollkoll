@@ -1,6 +1,6 @@
 app.controller("chatController",
-  ["$scope", "Chat", "Message", "Login", "NavTitleChange","Hashtag",
-  function($scope, Chat, Message, Login, NavTitleChange, Hashtag) {
+  ["$scope", "$http","$routeParams", "Chat", "Message", "Login", "NavTitleChange",
+  function($scope, $http, $routeParams, Chat, Message, Login, NavTitleChange) {
   NavTitleChange("<MATCHNAMN> chat");
   /*$scope.test = Message.get({_populate:"userId"},function() {
     console.log("s", $scope.test);
@@ -10,17 +10,33 @@ app.controller("chatController",
   console.log("currentUser: ", $scope.yourUser);
 
   $scope.chatInfo = {};
+
   $scope.send = function() {
     $scope.chatInfo.userId = Login.user._id;
 
-    $scope.chatInfo.hastag = $scope.chatInfo.content.match(/#[a-zA-ZäöåÄÖÅ]*/g);
-    $scope.chatInfo.matchId = $routeParams.matchId;
+    var hashOrgArray = $scope.chatInfo.content.match(/#[a-zA-ZäöåÄÖÅ0-9]*/g);
 
-    console.log("c", $scope.chatInfo);
+    // filter out duplicates in array.. By Nodebite
+    if (hashOrgArray){
+
+      Array.prototype.hashOrgArray = function(){
+        var a = this;
+        return a.filter(function(val,index){
+          return a.indexOf(val) == index && val.length>1;
+        });
+      };
+
+      $scope.chatInfo.hastag = hashOrgArray.hashOrgArray();
+      console.log("hastags: ", $scope.chatInfo.hastag);
+
+    }
+
+    $scope.chatInfo.matchId = $routeParams.matchId;
     Message.create($scope.chatInfo, function(data) {
       console.log("lolek", data);
     });
   };
+
   $scope.allMessages = [];
   function longpoller(timestamp) {
     $http.get("/api/chatlong/"+$routeParams.matchId+"/" + timestamp + "/").success(function(data) {
@@ -35,4 +51,38 @@ app.controller("chatController",
   }
   longpoller(0);
 
+
+
+  var openOrColse = false;
+  //get hastage like this (function like modulus %word%)
+  $scope.openTagSearch = function(){
+    // if open true maki it false to close.. and oposite
+    openOrColse = openOrColse ? false : true;
+    console.log("openOrColse: ",open);
+    $scope.open = openOrColse;
+    return openOrColse;
+  };
+
+  $scope.tags = {};
+  $scope.findHastags = function(){
+    $scope.allMessages = [];
+    Message.get({hastag:$scope.tags.searchTag, matchId:$routeParams.matchId, _populate:"userId"},function(hastags){
+      hastags.forEach(function(msg) {
+        msg.conversation = "läs mer";
+        $scope.allMessages.push(msg);
+      });
+    });
+  };
+
+
+
+
+
+
+
 }]);
+
+
+
+
+

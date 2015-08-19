@@ -1,5 +1,5 @@
 app.controller("matchController",
-  ["$scope", "$routeParams", "Match", "Region", "Team", "Login", "NavTitleChange", 
+  ["$scope", "$routeParams", "Match", "Region", "Team", "Login", "NavTitleChange",
   function($scope, $routeParams, Match, Region, Team, Login, NavTitleChange) {
   NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
   // console.log("hallelujah!")
@@ -50,10 +50,6 @@ app.controller("matchController",
   };
 
 
-
-
-
-
   var currentId;
   $scope.currentlyShownResult = function(idToCheck){
     return idToCheck != currentId;
@@ -62,9 +58,6 @@ app.controller("matchController",
   $scope.toggleID = function(clickedId){
     currentId = currentId == clickedId ? false : clickedId;
   };
-
-
-
 
   // collection.Region hämta regionPath som är lika med routeParams.region
   Region.get({regionPath: $routeParams.region}, function(answer){
