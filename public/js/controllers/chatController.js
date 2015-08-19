@@ -1,8 +1,13 @@
+app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "Match", "Login", "$http",
+  function($scope, $routeParams, Chat, Message, Match, Login, $http){
+  /*$scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
+=======
 app.controller("chatController",
   ["$scope", "$http", "$routeParams", "Chat", "Message", "Login", "NavTitleChange",
   function($scope, $http, $routeParams, Chat, Message, Login, NavTitleChange) {
   NavTitleChange("<MATCHNAMN> chat");
   /*$scope.test = Message.get({_populate:"userId"},function() {
+>>>>>>> master
     console.log("s", $scope.test);
   });*/
 
@@ -20,6 +25,7 @@ app.controller("chatController",
   };
   $scope.allMessages = [];
   function longpoller(timestamp) {
+    console.log("/api/chatlong/"+$routeParams.matchId+"/" + timestamp + "/");
     $http.get("/api/chatlong/"+$routeParams.matchId+"/" + timestamp + "/").success(function(data) {
       console.log("data", data);
       data.forEach(function(msg) {

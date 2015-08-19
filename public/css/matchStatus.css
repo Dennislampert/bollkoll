@@ -1,0 +1,42 @@
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+}
+.mainMenu {
+  padding: 0;
+}
+tr td {
+  color: #fff;
+  height: 45px;
+  vertical-align: middle !important;
+  border-top: 0px !important;
+}
+h2 {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+.matchTopTeam h2 {
+  margin: 0;
+}
+tr:nth-child(even) {
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+tr:nth-child(odd) {
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg") !important;
+}
+.blackText {
+  color: #000;
+}
+.table {
+  margin-bottom: 0px;
+}
+.matchTopTeam h2 {
+  text-align: center;
+}
+.homeTeamScore,
+.yellowPenaltyCardHomeTeam,
+.redPenaltyCardHomeTeam,
+.guestTeamScore,
+.yellowPenaltyCardGuestTeam,
+.redPenaltyCardGuestTeam {
+  display: inline-block;
+}
