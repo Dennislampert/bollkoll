@@ -1,6 +1,19 @@
-app.controller("alertBoxController", ["$scope", "$rootScope", "$location", "Login", function($scope, $rootScope, $location, Login) {
-  $scope.alerts = {
-    type: 'success', msg: 'Du behöver logga in för att kunna få tillgång till denna sidan!'
+app.controller("alertBoxController", ["$scope", "$rootScope", "$modal", "$log", "$location", "Login", function($scope, $rootScope, $modal, $log, $location, Login) {
+
+  $scope.open = function (size) {
+
+    var modalInstance = $modal.open({
+      animation: $scope.animationsEnabled,
+      templateUrl: 'alertbox.html',
+      controller: 'alertBoxController',
+      size: size,
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
   };
 
   var history = [];
@@ -14,4 +27,16 @@ app.controller("alertBoxController", ["$scope", "$rootScope", "$location", "Logi
       $location.url(prevUrl);
   };
 
+}]);
+
+app.controller('ModalInstanceCtrl',["$scope", "$modalInstance", function ($scope, $modalInstance) {
+
+  $scope.redirect = function () {
+    $modalInstance.close();
+    $location.url("/loggain");
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
 }]);

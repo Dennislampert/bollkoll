@@ -1,8 +1,10 @@
-<div ng-controller="alertBoxController" >
-  <alert class="alertBox col-xs-11 col-sm-8 col-md-8 col-lg-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2" type="{{alerts.type}}">{{alerts.msg}}
-    <div class="alertBtn">
-      <a ng-href="/loggain"><button type="button" class='btn btn-default' >Gå till login</button></a>
-      <a ng-click="back()"><button type="button" class='btn btn-default'>Avbryt</button></a>
-    </div>
-  </alert>
+<div ng-controller="alertBoxController">
+  <div class="modal-header">
+      <h3 class="modal-title">I'm a modal!</h3>
+  </div>
+  <div class="modal-body">
+      <p>Du måste vara inloggad för att få tillgång till sidan!</p>
+      <button type="button" class="btn btn-default" ng-click="redirect()">Gå till login</button>
+      <button type="button" class="btn btn-default" ng-click="close()">Avbryt</button>
+  </div>
 </div>
