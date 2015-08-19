@@ -3,7 +3,11 @@
 }
 @media (max-width: 767px) {
   .navbar-text {
+<<<<<<< HEAD
     text-align: center;
+=======
+    margin-left: 15px;
+>>>>>>> origin/julius
   }
   .navbar-brand {
     display: none;

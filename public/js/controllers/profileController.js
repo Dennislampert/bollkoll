@@ -1,12 +1,13 @@
 app.controller("profileController",
-  ["$scope", "$http", "$location", "$routeParams", "FileUploader", "Login", "NavTitleChange",
-  function($scope, $http, $location, $routeParams, FileUploader, Login, NavTitleChange) {
+  ["$scope", "$http", "$location", "$routeParams", "FileUploader", "File", "Login", "NavTitleChange",
+  function($scope, $http, $location, $routeParams, FileUploader, File, Login, NavTitleChange) {
   NavTitleChange($routeParams.username + "s profil");
   // reference(!) to Login.user object
   // (logged in user data)
   $scope.user = Login.user;
   
   var stop = true;
+
   $scope.upload = function() {
     if (stop === false){
 
@@ -17,7 +18,6 @@ app.controller("profileController",
       });
     }
   };
-
 
   $scope.$watch('files', function (file) {
     
