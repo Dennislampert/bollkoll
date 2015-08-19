@@ -9,6 +9,7 @@
       <div ng-if="message.userId._id == yourUser._id">
         <p class="yourChatUser">{{message.userId.username}}</p> 
         <p id="yourChat">{{message.content}}</p>
+
         <button class="yourChatUser" ng-if="message.conversation">{{message.conversation}}</button>
       </div>
       <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="message.status">
@@ -16,7 +17,6 @@
         <p id="statusMessage">lol</p>
     </div>
     </div>
-
     <form class="messageToSend col-xs-12 col-sm-3 col-md-3 col-lg-3 input-group" ng-submit="send()">
       <div class="form-group">  
         <input type="text" ng-model="chatInfo.content" class="form-control chatTextBox" placeholder="Skriv meddelande här...">
@@ -35,6 +35,5 @@
         
     <div class="status col-xs-12 col-sm-12 col-md-12 col-lg-12">
     </div>
-
   </div>
 </div>
