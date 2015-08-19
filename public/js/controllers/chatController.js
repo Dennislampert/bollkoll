@@ -1,6 +1,13 @@
 app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "Match", "Login", "$http",
   function($scope, $routeParams, Chat, Message, Match, Login, $http){
   /*$scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
+=======
+app.controller("chatController",
+  ["$scope", "Chat", "Message", "Login", "NavTitleChange",
+  function($scope, Chat, Message, Login, NavTitleChange) {
+  NavTitleChange("<MATCHNAMN> chat");
+  /*$scope.test = Message.get({_populate:"userId"},function() {
+>>>>>>> master
     console.log("s", $scope.test);
   });*/
 
