@@ -1,5 +1,5 @@
-app.controller("chatController", ["$scope", "$routeParams", "Chat", "Message", "Match", "Login", "$http",
-  function($scope, $routeParams, Chat, Message, Match, Login, $http){
+app.controller("chatController", ["$http", "$scope", "$routeParams", "Chat", "Message", "Match", "Login",
+  function($http, $scope, $routeParams, Chat, Message, Match, Login){
   /*$scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
 =======
 app.controller("chatController",

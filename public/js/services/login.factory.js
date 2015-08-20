@@ -17,7 +17,8 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
     login: function(credentials, callback) {
       $http.post('api/login', credentials).success(function(data) {
         updateObj(data ? data : {}, loginObj.user);
-        
+        // console.log("data(login): ", data);
+        // console.log("loginObj.user: ", loginObj.user);
         // let the entire app know we are logged in
         $rootScope.$broadcast("login");
 
@@ -27,7 +28,7 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
     check: function(callback) {
       $http.get('api/login').success(function(data) {
         updateObj(data ? data : {}, loginObj.user);
-
+        // console.log("data(check): ", data);
         callback && callback(loginObj.user);
       });
     },
