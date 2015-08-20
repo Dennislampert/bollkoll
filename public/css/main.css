@@ -3,11 +3,7 @@
 }
 @media (max-width: 767px) {
   .navbar-text {
-<<<<<<< HEAD
     text-align: center;
-=======
-    margin-left: 15px;
->>>>>>> origin/julius
   }
   .navbar-brand {
     display: none;
@@ -212,6 +208,34 @@ tr:nth-child(odd) {
   background-color: #FDE357 !important;
   color: #555 !important;
   text-align: center;
+}
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+}
+.mainMenu {
+  padding: 0;
+}
+tr td {
+  color: #fff;
+  height: 30px;
+  vertical-align: middle !important;
+  border-top: 0px !important;
+}
+h2 {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+tr:nth-child(even) {
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+tr:nth-child(odd) {
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg") !important;
+}
+.blackText {
+  color: #000;
+}
+.table {
+  margin-bottom: 0px;
 }
 .nav,
 .pagination,

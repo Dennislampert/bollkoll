@@ -75,6 +75,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/userprofile.html",
       controller: "profileController"
     })
+    .when("/anvandare/:username/settings", {
+      templateUrl: "partials/userprofilesettings.html",
+      controller: "profileSettingsController"
+    })
     .otherwise({
       redirectTo: "/"
     });
