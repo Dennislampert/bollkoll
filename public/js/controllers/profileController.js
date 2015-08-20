@@ -1,6 +1,6 @@
 app.controller("profileController",
-  ["$scope", "$http", "$location", "$routeParams", "FileUploader", "Login", "User", "File", "NavTitleChange",
-  function($scope, $http, $location, $routeParams, FileUploader, Login, User, File, NavTitleChange) {
+  ["$scope", "$http", "$location", "$routeScope", "$routeParams", "modalService", "FileUploader", "Login", "User", "File", "NavTitleChange",
+  function($scope, $http, $location, $routeScope, $routeParams, modalService, FileUploader, Login, User, File, NavTitleChange) {
   NavTitleChange($routeParams.username + "s profil");
   // reference(!) to Login.user object
   // (logged in user data)
@@ -28,7 +28,11 @@ app.controller("profileController",
           stop = false;
           console.log("uploaded image is okey");
         }else{
-            // send bastis modual
+          // send bastis modual
+          $routeScope.errmsg = 'blablabla';
+          $scope.errorbox = modalService.open({
+            templateUrl:'partials/globalalert.html'
+          });
           console.log("You try to upload a file that we dont accept..");
         }
       }
