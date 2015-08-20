@@ -52,14 +52,14 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
       });
     },
     getCurrentUser: function() {
-      for(var prop in loginObj) {
-        if(loginObj.hasOwnProperty(prop))
+      for(var prop in loginObj.user) {
+        if(loginObj.user.hasOwnProperty(prop))
             return false;
         }
-      return true;
+      return user;
     }
  
-
+  };
   // check if logged in every 30 seconds
   loginObj.check(function() {
     if (!loginObj.user._id) {
