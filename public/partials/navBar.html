@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" ng-href="/">Boll Koll</a>
-      <p class="navbar-text">{{navText}}</p>
+      <p class="navbar-text">{{ navText }} {{ headerUser }}</p>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,10 +19,14 @@
           <a ng-href="/" ng-click="navCollapsed = true">Hem</a>
         </li>
         <li>
-          <a ng-href="/loggain" ng-click="navCollapsed = true">Logga in</a>
+          <a ng-href="/loggain" ng-click="navCollapsed = true" ng-if="!headerUser">Logga in</a>
+          <a ng-href="" ng-click="navCollapsed = true" ng-if="headerUser">Logga ut</a>
         </li>
         <li>
           <a ng-href="/om-oss" ng-click="navCollapsed = true">Om oss</a>
+        </li>
+        <li>
+          <a ng-href="/anvandare/{{  }}" ng-click="navCollapsed = true">Profilsida</a>
         </li>
       </ul>
       

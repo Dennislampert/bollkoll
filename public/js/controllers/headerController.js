@@ -1,4 +1,8 @@
-app.controller("headerController", ["$scope", function($scope) {
+app.controller("headerController", 
+  ["$scope", "Login", 
+  function($scope, Login) {
+  $scope.headerUser = Login.user;
+  // console.log($scope.headerUser);
   $scope.navCollapsed = true;
   var origNavText = 'Hem';
   $scope.navText = origNavText;
