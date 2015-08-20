@@ -1,20 +1,10 @@
 var path = require('path'),
     config = require(path.normalize(process.cwd() + '/config.js')),
     fs = require('fs'),
-    gm = require('gm').subClass({imageMagick: true}),
     // include the multipart middleware for file uploading
-    multipart = require('connect-multiparty');
+    multipart = require('connect-multiparty'),
+    imagehandler = require('lwip');
 
-    function scaleimage(path) {
-      console.log("path: ", path);
-      gm(path)
-      .resize(400, 400)
-      .gravity("Center")
-      .crop(400, 400)
-      .write('public/files/kalle.png', function (err) {
-        if (!err) console.log('done');
-      });
-    }
 
 
 // middleware controller for simplifying file uploads
@@ -31,37 +21,53 @@ module.exports = function(mongoose) {
     // the recieved file
     var file = req.files.file;
 
+
     // read the recieved file
     fs.readFile(file.path, function (err, data) {
+      console.log("lite data: ", data);
+      console.log("filnamn: ", file.name.split(".").pop());
+
       // decide where to store the file
       var uploadPath = path.normalize(config.upload.publicPath + file.name);
 
-      // write file to file system
-      fs.writeFile(uploadPath, data, function (err, data) {
-        if (err) throw err;
+      var filetype = file.name.split(".").pop();
 
-        // find public path (for <img src=""> tags etc)
-        var publicPath = '/' + path.relative(process.cwd() + '/public', uploadPath);
+      imagehandler.open(data, filetype, function(err, image){
+        // check err...
+        // define a batch of manipulations and save to disk as JPEG:
+            console.log("hejhej :", image);
+            console.log("uploadpath :", uploadPath);
+        image.batch()
+          .resize(200,200)
+          .crop(200, 200)       // crop a 200X200 square from center
+          .writeFile(uploadPath, function(err){
+            // check err...
+            // done.
+          // find public path (for <img src=""> tags etc)
+          var publicPath = '/' + path.relative(process.cwd() + '/public', uploadPath);
 
-        // get the mongoose 'File' model
-        var FileModel = mongoose.model("File");
+          // get the mongoose 'File' model
+          var FileModel = mongoose.model("File");
 
-        // create a new File document
-        var dbFile = new FileModel({
-          name: file.name,
-          path: publicPath,
-          type: file.type,
-          owner: req.session.user // all files have an owner
-        });
-        
-        // save file to mongodb
-        dbFile.save(function(err, data) {
-          if (err) { throw err; }
-          // and finally send a response to client
-          res.json(publicPath);
-          scaleimage("public"+publicPath);
+          // create a new File document
+          var dbFile = new FileModel({
+            name: file.name,
+            path: publicPath,
+            type: file.type,
+            owner: req.session.user // all files have an owner
+          });
+          
+          // save file info to mongodb
+          dbFile.save(function(err, data) {
+            if (err) { throw err; }
+            // and finally send a response to client
+            res.json(publicPath);
+            scaleimage("public"+publicPath);
+          });
         });
       });
+
+
     });
   }];
 };
