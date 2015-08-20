@@ -1,4 +1,7 @@
-app.controller("tableController", ["$scope", "Team", "Region", function($scope, Team, Region) {
+app.controller("tableController",
+  ["$scope", "$routeParams", "Team", "Region", "NavTitleChange",
+  function($scope, $routeParams, Team, Region, NavTitleChange) {
+  NavTitleChange("Tabell för " + $routeParams.region + " division " + $routeParams.division);
   console.log("im working");
 
   // $scope.team = Team.create({

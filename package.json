@@ -12,6 +12,7 @@
     "express": "~4.12.2",
     "serve-favicon": "~2.2.0",
     "mongoose": "*",
+    "mongo-express": "*",
     "express-session": "*",
     "connect-multiparty": "*",
     "sha256":"*"

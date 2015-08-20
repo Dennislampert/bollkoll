@@ -1,6 +1,6 @@
 node_modules/*
 .DS_Store
-data/mongod.lock
 data/*
+data/mongod.lock
 public/css/*
-*.css
+.DS_Store

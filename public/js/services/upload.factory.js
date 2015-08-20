@@ -3,17 +3,18 @@
 app.factory("FileUploader", ["Upload", function(Upload) {
   // FileUploader factory returns a function
   return function(file) {
-    console.log("file: ",file);
+
     // the function returns the Upload request
     // so that we can still do .success() etc. in
     // our controllers
-    return Upload.upload({
-      // POST REST URL
-      url: '/api/upload',
-      // send filename to save
-      fileName: file.name,
-      // and the file data
-      file: file
-    });
+      return Upload.upload({
+        // POST REST URL
+        url: '/api/upload',
+        // send filename to save
+        fileName: file.name,
+        // and the file data
+        file: file
+      });
+
   };
 }]);
