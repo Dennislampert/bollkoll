@@ -117,6 +117,7 @@ tr:nth-child(odd) {
 .chat {
   background-color: #fff;
   min-height: 500px;
+  margin-bottom: 65px;
 }
 .chat #otherChat {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0e0e0+0,f3f3f3+30,f3f3f3+70,e0e0e0+100 */
@@ -140,7 +141,6 @@ tr:nth-child(odd) {
 }
 .chat .yourChatUser {
   float: right;
-  margin-left: 120%;
 }
 .chat #yourChat {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b6e2e4+0,f4ffff+30,f4ffff+70,b6e2e4+100 */
@@ -191,12 +191,13 @@ tr:nth-child(odd) {
   white-space: pre-wrap;
   word-wrap: break-word;
   padding: 5px;
-  margin-bottom: 25px;
   border: 1px solid #999;
   border-radius: 5px;
 }
 .chat .chatUser,
-.chat .yourChatUser {
+.chat .yourChatUser,
+.chat .statusUser {
+  margin-top: 25px;
   font-size: 12px;
   margin-bottom: 5px;
 }
@@ -212,9 +213,30 @@ tr:nth-child(odd) {
 .chat .statusDate {
   font-size: 10px;
 }
-.chat .messageToSend {
-  margin: 0 auto;
-  margin-bottom: 20px;
+.chat .chatUser,
+.chat .otherChatDate,
+.chat #otherChat,
+.chat .statusUser,
+.chat .statusDate,
+.chat #statusMessage {
+  margin-left: 5px;
+}
+.chat .yourChatDate,
+.chat .yourChatUser,
+.chat #yourChat,
+.chat #statusMessage {
+  margin-right: 5px;
+}
+.messageToSend {
+  position: fixed;
+  bottom: 0;
+}
+.messageToSend .chatTextBox {
+  resize: none;
+  height: 50px;
+}
+.messageToSend .chatTextSubmit {
+  height: 50px;
 }
 .alert-warning {
   border-color: #ff4900 !important;
@@ -230,7 +252,7 @@ tr:nth-child(odd) {
   content: 'bananas';
 }
 .container {
-  margin: 65px 0 0;
+  margin: 65px auto 0;
 }
 .hide-element {
   max-height: 0;
