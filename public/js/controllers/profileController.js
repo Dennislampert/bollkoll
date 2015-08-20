@@ -1,19 +1,19 @@
 app.controller("profileController",
-  ["$scope", "$http", "$location", "$routeParams", "FileUploader", "Login", "NavTitleChange",
-  function($scope, $http, $location, $routeParams, FileUploader, Login, NavTitleChange) {
+  ["$scope", "$http", "$location", "$routeParams", "FileUploader", "Login", "User", "File", "NavTitleChange",
+  function($scope, $http, $location, $routeParams, FileUploader, Login, User, File, NavTitleChange) {
   NavTitleChange($routeParams.username + "s profil");
   // reference(!) to Login.user object
   // (logged in user data)
-  $scope.user = Login.user;
-  
+  $scope.onlineUser = Login.user;
+    
   var stop = true;
   $scope.upload = function() {
     if (stop === false){
-
-      console.log("files: ",$scope.files);
-      FileUploader($scope.files).success(function(data) {
-        console.log("saved files, public path: ", data);
-        $scope.uploadedFilePath = data;
+      User.get({username: $routeParams.username}, function(userprofile){
+        FileUploader($scope.files).success(function(data) {
+          $scope.user = userprofile[0];
+          loadImage();
+        });
       });
     }
   };
@@ -28,11 +28,26 @@ app.controller("profileController",
           stop = false;
           console.log("uploaded image is okey");
         }else{
+            // send bastis modual
           console.log("You try to upload a file that we dont accept..");
         }
       }
     }
   });
 
+
+  function loadImage(){
+    
+    User.get({username: $routeParams.username}, function(userprofile){
+        // $scope.uploadedFilePath = data;
+      $scope.user = userprofile[0];
+      File.get({owner:userprofile[0]._id}, function(Getfile){
+        $scope.image = Getfile.pop();
+      });
+    });
+  }
+
+
+loadImage();
 
 }]);
