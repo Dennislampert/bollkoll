@@ -5,7 +5,8 @@ module.exports = function(mongoose) {
     date: {type : Date, default: Date.now },
     status: {type: Boolean, default: false},
     hastag: {type: Array, default: []},
-    matchId: {type: mongoose.Schema.Types.ObjectId, ref: "Match"}
+    matchId: {type: mongoose.Schema.Types.ObjectId, ref: "Match"},
+    regionOdiv: {type: String, required:true}
   });
   return mongoose.model("Message", messageSchema);
 };

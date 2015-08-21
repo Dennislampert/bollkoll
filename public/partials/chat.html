@@ -1,37 +1,41 @@
 <div class="chat container">
   <!-- {{currentUser.username}} -->
   <div class="row">
-    <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in allMessages">
+    <div ng-animate="{show: 'animate-enter'}" class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in allMessages">
       <div ng-if="message.userId._id !== yourUser._id">
         <p class="chatUser">{{message.userId.username}}:</p>
         <p id="otherChat">{{message.content}}</p>
+        
+        <button ng-click="readHashConversation(message)" ng-if="message.userId._id !== yourUser._id && tags.conversation" class="otherChat">{{tags.conversation}}</button>
+
       </div>
       <div ng-if="message.userId._id == yourUser._id">
         <p class="yourChatUser">{{message.userId.username}}</p> 
         <p id="yourChat">{{message.content}}</p>
+        
+        <button ng-click="readHashConversation(message)" ng-if="message.userId._id == yourUser._id && tags.conversation" class="yourChatUser" >{{tags.conversation}}</button>
 
-        <button class="yourChatUser" ng-if="message.conversation">{{message.conversation}}</button>
       </div>
       <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="message.status">
         <p class="statusUser">dada</p>
         <p id="statusMessage">lol</p>
     </div>
     </div>
-    <form class="messageToSend col-xs-12 col-sm-3 col-md-3 col-lg-3 input-group" ng-submit="send()">
+    <form class="messageToSend col-xs-4 col-sm-3 col-md-3 col-lg-3 input-group" ng-submit="send()">
       <div class="form-group">  
-        <input type="text" ng-model="chatInfo.content" class="form-control chatTextBox" placeholder="Skriv meddelande här...">
+        <input type="text" ng-click="activateLongpoller()" ng-model="chatInfo.content" class="form-control chatTextBox" placeholder="Skriv meddelande här...">
         <span class="input-group-btn">
           <button type="submit" class="btn btn-default chatTextSubmit">Skicka</button>
-          <button type="button" class="searchTag btn btn-default chatTextSubmit" ng-click="openTagSearch(bool)" >
-            <i class="fa fa-search"></i>
+          <button type="button" class="searchTag btn btn-default chatTextSubmit" ng-click="tagSearch(chatInfo.content)" >
+            #<i class="fa fa-search"></i>
           </button>
         </span>
       </div>
     </form>
-    <form class="messageToSend col-xs-12 col-sm-3 col-md-3 col-lg-3 input-group" ng-submit="findHastags()">
+    <!-- <form class="messageToSend col-xs-4 col-sm-3 col-md-3 col-lg-3 input-group" ng-submit="findHastags()">
       <div class="form-group" ng-show="open" ng-include="'partials/hashSearch.html'">
       </div>
-    </form>
+    </form> -->
         
     <div class="status col-xs-12 col-sm-12 col-md-12 col-lg-12">
     </div>
