@@ -15,10 +15,20 @@ module.exports = function(mongoose) {
             message.processing = true;
         	var now = new Date().getTime();
         	//console.log("message: ", message.req.params);
-        	mongoose.model("Message").find({
-        		matchId:message.matchId,
-        		date:{$gt: new Date(message.latestKnownMessageId/1)}
-        	})
+            var q;
+            if (!message.divisionId) {
+                q = {
+                    matchId:message.matchId,
+                    date:{$gt: new Date(message.latestKnownMessageId/1)}
+                }
+            } else {
+                q = {
+                    matchId: null,
+                    divisionId: message.divisionId,
+                    date:{$gt: new Date(message.latestKnownMessageId/1)}
+                }
+            }
+        	mongoose.model("Message").find(q)
             .populate("userId")
             .exec(function(err,data){
                 if(!data || data.length==0){
@@ -46,11 +56,13 @@ module.exports = function(mongoose) {
     setInterval(queueHandler,100);
 
     return function(req,res){
+        console.log("m", req.params);
 		messageQueue.push({
 			req:req,
 			res:res,
 			time: new Date().getTime(),
 			matchId: req.params.matchId,
+            divisionId: req.params.divisionId,
 			latestKnownMessageId: req.params.latestKnownMessageId
 		});
 	    queueHandler();
