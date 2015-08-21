@@ -63,7 +63,7 @@ var options = { //};
     },
     {
       method: "get",
-      path: "chatlong/:matchId/:latestKnownMessageId",
+      path: "chatlong/:matchId/:latestKnownMessageId/:divisionId?",
       controller: require('./api/routes/longPoll')
     }
   ]

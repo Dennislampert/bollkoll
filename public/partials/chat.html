@@ -1,6 +1,7 @@
 <div class="chat container">
   <!-- {{currentUser.username}} -->
   <div class="row">
+
     <div ng-animate="{show: 'animate-enter'}" class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in allMessages">
       <div ng-if="message.userId._id !== yourUser._id">
         <p class="chatUser">{{message.userId.username}}:</p>
@@ -10,7 +11,7 @@
 
       </div>
       <div ng-if="message.userId._id == yourUser._id">
-        <p class="yourChatUser">{{message.userId.username}}</p> 
+        <p class="yourChatUser">{{message.userId.username}}</p>
         <p id="yourChat">{{message.content}}</p>
         
         <button ng-click="readHashConversation(message)" ng-if="message.userId._id == yourUser._id && tags.conversation" class="yourChatUser" >{{tags.conversation}}</button>
@@ -19,6 +20,7 @@
       <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="message.status">
         <p class="statusUser">dada</p>
         <p id="statusMessage">lol</p>
+
     </div>
     </div>
     <form class="messageToSend col-xs-4 col-sm-3 col-md-3 col-lg-3 input-group" ng-submit="send()">
@@ -32,11 +34,6 @@
         </span>
       </div>
     </form>
-    <!-- <form class="messageToSend col-xs-4 col-sm-3 col-md-3 col-lg-3 input-group" ng-submit="findHastags()">
-      <div class="form-group" ng-show="open" ng-include="'partials/hashSearch.html'">
-      </div>
-    </form> -->
-        
     <div class="status col-xs-12 col-sm-12 col-md-12 col-lg-12">
     </div>
   </div>
