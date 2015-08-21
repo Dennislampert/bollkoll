@@ -72,6 +72,15 @@ th {
   background-image: url("../backround_images/greey-light.jpg");
   cursor: pointer;
 }
+.alertBox {
+  position: fixed;
+  margin-top: 22vh;
+  text-align: center;
+  font-size: 20px;
+}
+.alertBtn {
+  margin-top: 3vh;
+}
 body {
   background-image: url("../backround_images/flashlight.jpg");
 }
