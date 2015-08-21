@@ -3,8 +3,8 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "Chat", "Me
   /*$scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
 =======
 app.controller("chatController",
-  ["$scope", "Chat", "Message", "Login", "NavTitleChange",
-  function($scope, Chat, Message, Login, NavTitleChange) {
+  ["$scope", "$http", "$routeParams", "Chat", "Message", "Login", "NavTitleChange",
+  function($scope, $http, $routeParams, Chat, Message, Login, NavTitleChange) {
   NavTitleChange("<MATCHNAMN> chat");
   /*$scope.test = Message.get({_populate:"userId"},function() {
 >>>>>>> master

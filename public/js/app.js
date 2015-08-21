@@ -13,7 +13,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "regionController",
       loggedIn: true
     })
-
+    .when("/test", {
+      templateUrl: "partials/alertbox.html",
+      controller: "alertBoxController"
+    })
     .when("/table", {
       templateUrl: "partials/editTable.html",
       controller: "tableController",
