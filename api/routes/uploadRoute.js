@@ -3,18 +3,9 @@ var path = require('path'),
     fs = require('fs'),
     gm = require('gm').subClass({imageMagick: true}),
     // include the multipart middleware for file uploading
-    multipart = require('connect-multiparty');
+    multipart = require('connect-multiparty'),
+    gm = require('gm');
 
-    function scaleimage(path) {
-      console.log("path: ", path);
-      gm(path)
-      .resize(400, 400)
-      .gravity("Center")
-      .crop(400, 400)
-      .write('public/files/kalle.png', function (err) {
-        if (!err) console.log('done');
-      });
-    }
 
 
 // middleware controller for simplifying file uploads
@@ -34,15 +25,17 @@ module.exports = function(mongoose) {
     // read the recieved file
     fs.readFile(file.path, function (err, data) {
       // decide where to store the file
+        
       var uploadPath = path.normalize(config.upload.publicPath + file.name);
+      var publicPath = '/' + path.relative(process.cwd() + '/public', uploadPath);
 
-      // write file to file system
-      fs.writeFile(uploadPath, data, function (err, data) {
-        if (err) throw err;
-
-        // find public path (for <img src=""> tags etc)
-        var publicPath = '/' + path.relative(process.cwd() + '/public', uploadPath);
-
+      var filetype = file.name.split(".").pop();
+      console.log("uploadpath :", uploadPath);
+      gm(data)
+      .resize(200,200)
+      .crop(200, 200)
+      .write(uploadPath, function(err){
+  
         // get the mongoose 'File' model
         var FileModel = mongoose.model("File");
 
@@ -54,7 +47,11 @@ module.exports = function(mongoose) {
           owner: req.session.user // all files have an owner
         });
         
+<<<<<<< HEAD
         // save file to mongodb
+=======
+        // save file info to mongodb
+>>>>>>> master
         dbFile.save(function(err, data) {
           if (err) { throw err; }
           // and finally send a response to client
@@ -63,5 +60,11 @@ module.exports = function(mongoose) {
         });
       });
     });
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> master
   }];
 };
