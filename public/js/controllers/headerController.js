@@ -1,15 +1,22 @@
 app.controller("headerController", 
-  ["$scope", "Login", 
-  function($scope, Login) {
-  $scope.headerUser = Login.user;
-  // console.log($scope.headerUser);
-  $scope.navCollapsed = true;
+  ["$scope", "$rootScope", "Login",
+  function($scope, $rootScope, Login) {
+  $scope.headerUser = Login.getCurrentUser();
+  $scope.nav  = {
+    collapsed: true
+  };
+
   var origNavText = 'Hem';
   $scope.navText = origNavText;
   $scope.$on("titleChange", function(e, data) {
     $scope.navText = data || origNavText;
-  })
+  });
+
+  $rootScope.$on('login', function() { 
+    $scope.headerUser = Login.getCurrentUser();
+  });
+
   $scope.collapseToggle = function() {
-    $scope.navCollapsed = !$scope.navCollapsed;
+    $scope.nav.collapsed = !$scope.nav.collapsed;
   };
 }]);
