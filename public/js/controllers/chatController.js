@@ -63,7 +63,6 @@ app.controller("chatController",
     $scope.allMessages = [];
     function longpoller(timestamp) {
       if (stopLongpoler === false){
-        // var getParam = matchId || divisionId;
 
         console.log( "divisionId: ",divisionId,"matchId: ",matchId);
         var url = "/api/chatlong/"+ divisionId+ "/" + timestamp + "/" + matchId;
@@ -82,10 +81,12 @@ app.controller("chatController",
 
 
 
-    // Dennis hash functon.....
+
+
     $scope.activateLongpoller = function(){
-      console.log("clicktextarea");
+
       if (stopLongpoler === true){
+      console.log("textingtextarea");
         stopLongpoler = false;
         $scope.tags.conversation = "";
         var lastmessage = $scope.allMessages.pop();
