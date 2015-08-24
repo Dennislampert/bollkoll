@@ -1,6 +1,10 @@
 node_modules/*
 .DS_Store
-data/*
 data/mongod.lock
+<<<<<<< HEAD
 public/css/*
 .DS_Store
+=======
+data/*
+public/css/*
+>>>>>>> master
