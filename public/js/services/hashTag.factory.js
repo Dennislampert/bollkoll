@@ -1,5 +1,6 @@
-app.factory("hasTag", ["$rootScope", function($rootScope) {
-  return function(displayName) {
-    $rootScope.$broadcast("titleChange", displayName);
-  };
+app.factory("Hashtag", ["Message", "Login", function(Message, Login) {
+  console.log("rootScope; ");
+  return Message.get({},function(answer) {
+    console.log("s", answer);
+  });
 }]);
