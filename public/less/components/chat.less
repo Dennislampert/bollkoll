@@ -1,7 +1,9 @@
 .chat{
   background-color:#fff;
-  min-height:500px;
-  margin-bottom:65px;
+  height:700px;
+  margin-bottom:50px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   #otherChat{
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0e0e0+0,f3f3f3+30,f3f3f3+70,e0e0e0+100 */
   background: #e0e0e0; /* Old browsers */
@@ -16,6 +18,7 @@
   }
   .yourChatUser{
     float:right;
+
   }
   #yourChat{
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b6e2e4+0,f4ffff+30,f4ffff+70,b6e2e4+100 */
@@ -55,7 +58,7 @@
   .chatUser, .yourChatUser, .statusUser{
     margin-top:25px;
     font-size:12px;
-    margin-bottom:5px;
+    margin-bottom:-10px;
   }
   .otherChatDate{
     display: block;
@@ -74,6 +77,7 @@
     margin-right:5px;
   }
 }
+
 .messageToSend {
   position:fixed;
   bottom:0;
