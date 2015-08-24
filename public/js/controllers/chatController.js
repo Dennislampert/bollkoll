@@ -84,6 +84,7 @@ app.controller("chatController",
 
     // Dennis hash functon.....
     $scope.activateLongpoller = function(){
+      console.log("clicktextarea");
       if (stopLongpoler === true){
         stopLongpoler = false;
         $scope.tags.conversation = "";

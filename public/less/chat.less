@@ -1,7 +1,7 @@
 .chat{
-
   background-color:#fff;
   min-height:500px;
+  margin-bottom:65px;
   #otherChat{
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0e0e0+0,f3f3f3+30,f3f3f3+70,e0e0e0+100 */
   background: #e0e0e0; /* Old browsers */
@@ -16,7 +16,7 @@
   }
   .yourChatUser{
     float:right;
-    margin-left:120%;
+
   }
   #yourChat{
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b6e2e4+0,f4ffff+30,f4ffff+70,b6e2e4+100 */
@@ -50,11 +50,11 @@
     white-space:pre-wrap;
     word-wrap:break-word;
     padding:5px;
-    margin-bottom:25px;
     border:1px solid #999;
     border-radius:5px;
   }
-  .chatUser, .yourChatUser{
+  .chatUser, .yourChatUser, .statusUser{
+    margin-top:25px;
     font-size:12px;
     margin-bottom:5px;
   }
@@ -68,24 +68,22 @@
   .otherChatDate, .yourChatDate, .statusDate{
     font-size:10px;
   }
-  .messageToSend {
-    margin:0 auto;
-    margin-bottom:20px;
-    .chatTextBox {
-    }
-    .chatTextSubmit {
-    }
+  .chatUser, .otherChatDate, #otherChat, .statusUser, .statusDate, #statusMessage{
+    margin-left:5px;
+  } 
+  .yourChatDate, .yourChatUser, #yourChat, #statusMessage{
+    margin-right:5px;
   }
-
 }
-
-
-
-
-
-
-
-
-
- 
+.messageToSend {
+  position:fixed;
+  bottom:0;
+  .chatTextBox {
+    resize:none;
+    height:50px;
+  }
+  .chatTextSubmit {
+    height:50px;
+  }
+}
 
