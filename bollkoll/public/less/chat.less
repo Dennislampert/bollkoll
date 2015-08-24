@@ -1,0 +1,89 @@
+.chat{
+  background-color:#fff;
+  min-height:500px;
+  margin-bottom:65px;
+  #otherChat{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0e0e0+0,f3f3f3+30,f3f3f3+70,e0e0e0+100 */
+	background: #e0e0e0; /* Old browsers */
+	background: -moz-linear-gradient(top,  #e0e0e0 0%, #f3f3f3 30%, #f3f3f3 70%, #e0e0e0 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e0e0e0), color-stop(30%,#f3f3f3), color-stop(70%,#f3f3f3), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #e0e0e0 0%,#f3f3f3 30%,#f3f3f3 70%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #e0e0e0 0%,#f3f3f3 30%,#f3f3f3 70%,#e0e0e0 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #e0e0e0 0%,#f3f3f3 30%,#f3f3f3 70%,#e0e0e0 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #e0e0e0 0%,#f3f3f3 30%,#f3f3f3 70%,#e0e0e0 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0e0e0', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
+	float:left;
+  }
+  .yourChatUser{
+    float:right;
+
+  }
+  #yourChat{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b6e2e4+0,f4ffff+30,f4ffff+70,b6e2e4+100 */
+	background: #b6e2e4; /* Old browsers */
+	background: -moz-linear-gradient(top,  #b6e2e4 0%, #f4ffff 30%, #f4ffff 70%, #b6e2e4 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b6e2e4), color-stop(30%,#f4ffff), color-stop(70%,#f4ffff), color-stop(100%,#b6e2e4)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #b6e2e4 0%,#f4ffff 30%,#f4ffff 70%,#b6e2e4 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #b6e2e4 0%,#f4ffff 30%,#f4ffff 70%,#b6e2e4 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #b6e2e4 0%,#f4ffff 30%,#f4ffff 70%,#b6e2e4 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #b6e2e4 0%,#f4ffff 30%,#f4ffff 70%,#b6e2e4 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6e2e4', endColorstr='#b6e2e4',GradientType=0 ); /* IE6-9 */
+    float:right;
+  }
+  #statusMessage{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ef3232+0,ff4f4f+30,ff4f4f+70,ef3232+100  */
+    background: #ef3232; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ef3232), color-stop(30%,#ff4f4f), color-stop(70%,#ff4f4f), color-stop(100%,#ef3232)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ef3232 0%,#ff4f4f 30%,#ff4f4f 70%,#ef3232 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ef3232 0%,#ff4f4f 30%,#ff4f4f 70%,#ef3232 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ef3232 0%,#ff4f4f 30%,#ff4f4f 70%,#ef3232 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ef3232 0%,#ff4f4f 30%,#ff4f4f 70%,#ef3232 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef3232', endColorstr='#ef3232',GradientType=0 ); /* IE6-9 */
+    padding:5px;
+    border:1px solid #999;
+    border-radius:5px;
+    text-align:center;
+  }
+  #otherChat, #yourChat {
+    max-width:200px;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    padding:5px;
+    border:1px solid #999;
+    border-radius:5px;
+  }
+  .chatUser, .yourChatUser, .statusUser{
+    margin-top:25px;
+    font-size:12px;
+    margin-bottom:5px;
+  }
+  .otherChatDate{
+    display: block;
+  }
+  .yourChatDate{
+    float:right;
+    margin-left:120%;
+  }
+  .otherChatDate, .yourChatDate, .statusDate{
+    font-size:10px;
+  }
+  .chatUser, .otherChatDate, #otherChat, .statusUser, .statusDate, #statusMessage{
+    margin-left:5px;
+  } 
+  .yourChatDate, .yourChatUser, #yourChat, #statusMessage{
+    margin-right:5px;
+  }
+}
+
+.messageToSend {
+  position:fixed;
+  bottom:0;
+  .chatTextBox {
+    resize:none;
+    height:50px;
+  }
+  .chatTextSubmit {
+    height:50px;
+  }
+}

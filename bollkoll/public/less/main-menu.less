@@ -1,0 +1,33 @@
+.main-menu{
+  // display: block;
+  max-height: 300px;
+  overflow: hidden;
+  opacity: 1;
+
+  -webkit-transition: max-height 0.5s ease-in-out, opacity 0.7s;
+  transition: max-height 0.5s ease-in-out, opacity 0.7s;
+
+  li {
+    text-align: center;
+    select {
+      cursor: pointer;
+      padding: 5px;
+      margin: 0 0 5px;
+      background-color: #2D2D2D;
+      color: #FFFFFF;
+      border-radius: 5px;
+      border: none;
+      box-sizing: none;
+      &:hover{
+        background-color: #4D4D4D;
+      }
+    }
+    a {
+      background-color: #2D2D2D;
+      color: #FFFFFF;
+      &:hover {
+        background-color: #4D4D4D;
+      }
+    }
+  }
+}

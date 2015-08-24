@@ -2,7 +2,7 @@ module.exports = function(mongoose) {
   var messageSchema = mongoose.Schema({
 
     hastag: {type: Array, default: []},
-    matchId: {type: mongoose.Schema.Types.ObjectId, ref: "Match",default: null},
+    matchId: {type: mongoose.Schema.Types.ObjectId, ref: "Match", default: null},
     divisionId: {type: String, required:true},
     userId: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
     content: {type: String, required: true},

@@ -1,0 +1,269 @@
+.nav .home-link {
+  display: none;
+}
+@media (max-width: 767px) {
+  .navbar-text {
+    text-align: center;
+  }
+  .navbar-brand {
+    display: none;
+  }
+  .nav .home-link {
+    display: block;
+  }
+}
+.main-menu {
+  max-height: 300px;
+  overflow: hidden;
+  opacity: 1;
+  -webkit-transition: max-height 0.5s ease-in-out, opacity 0.7s;
+  transition: max-height 0.5s ease-in-out, opacity 0.7s;
+}
+.main-menu li {
+  text-align: center;
+}
+.main-menu li select {
+  cursor: pointer;
+  padding: 5px;
+  margin: 0 0 5px;
+  background-color: #2D2D2D;
+  color: #FFFFFF;
+  border-radius: 5px;
+  border: none;
+  box-sizing: none;
+}
+.main-menu li select:hover {
+  background-color: #4D4D4D;
+}
+.main-menu li a {
+  background-color: #2D2D2D;
+  color: #FFFFFF;
+}
+.main-menu li a:hover {
+  background-color: #4D4D4D;
+}
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+}
+.fa {
+  padding-left: 20%;
+  background: #fcba6a;
+  background: -moz-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, #fcba6a), color-stop(47%, #ff9715), color-stop(53%, #ff920a), color-stop(63%, #ff8400), color-stop(74%, #eb7d00), color-stop(85%, #de7a00), color-stop(100%, #a85802));
+  background: -webkit-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
+  background: -o-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
+  background: -ms-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
+  background: linear-gradient(to bottom, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcba6a', endColorstr='#a85802', GradientType=0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+th {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+.matches-table .first-tr:nth-child(1) {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg");
+  cursor: pointer;
+}
+.matches-table tr:nth-child(2) {
+  color: #fff;
+  background-image: url("../backround_images/greey-light.jpg");
+  cursor: pointer;
+}
+.alertBox {
+  position: fixed;
+  margin-top: 22vh;
+  text-align: center;
+  font-size: 20px;
+}
+.alertBtn {
+  margin-top: 3vh;
+}
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+}
+.mainMenu {
+  padding: 0;
+}
+tr td {
+  color: #fff;
+  height: 45px;
+  vertical-align: middle !important;
+  border-top: 0px !important;
+}
+h2 {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+.matchTopTeam h2 {
+  margin: 0;
+}
+tr:nth-child(even) {
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+tr:nth-child(odd) {
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg") !important;
+}
+.blackText {
+  color: #000;
+}
+.table {
+  margin-bottom: 0px;
+}
+.matchTopTeam h2 {
+  text-align: center;
+}
+.homeTeamScore,
+.yellowPenaltyCardHomeTeam,
+.redPenaltyCardHomeTeam,
+.guestTeamScore,
+.yellowPenaltyCardGuestTeam,
+.redPenaltyCardGuestTeam {
+  display: inline-block;
+}
+.chat {
+  background-color: #fff;
+  min-height: 500px;
+  margin-bottom: 65px;
+}
+.chat #otherChat {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0e0e0+0,f3f3f3+30,f3f3f3+70,e0e0e0+100 */
+  background: #e0e0e0;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #e0e0e0 0%, #f3f3f3 30%, #f3f3f3 70%, #e0e0e0 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e0e0e0), color-stop(30%, #f3f3f3), color-stop(70%, #f3f3f3), color-stop(100%, #e0e0e0));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #e0e0e0 0%, #f3f3f3 30%, #f3f3f3 70%, #e0e0e0 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #e0e0e0 0%, #f3f3f3 30%, #f3f3f3 70%, #e0e0e0 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #e0e0e0 0%, #f3f3f3 30%, #f3f3f3 70%, #e0e0e0 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #e0e0e0 0%, #f3f3f3 30%, #f3f3f3 70%, #e0e0e0 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e0e0e0', endColorstr='#e0e0e0', GradientType=0);
+  /* IE6-9 */
+  float: left;
+}
+.chat .yourChatUser {
+  float: right;
+}
+.chat #yourChat {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#b6e2e4+0,f4ffff+30,f4ffff+70,b6e2e4+100 */
+  background: #b6e2e4;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #b6e2e4 0%, #f4ffff 30%, #f4ffff 70%, #b6e2e4 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b6e2e4), color-stop(30%, #f4ffff), color-stop(70%, #f4ffff), color-stop(100%, #b6e2e4));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #b6e2e4 0%, #f4ffff 30%, #f4ffff 70%, #b6e2e4 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #b6e2e4 0%, #f4ffff 30%, #f4ffff 70%, #b6e2e4 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #b6e2e4 0%, #f4ffff 30%, #f4ffff 70%, #b6e2e4 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #b6e2e4 0%, #f4ffff 30%, #f4ffff 70%, #b6e2e4 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b6e2e4', endColorstr='#b6e2e4', GradientType=0);
+  /* IE6-9 */
+  float: right;
+}
+.chat #statusMessage {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ef3232+0,ff4f4f+30,ff4f4f+70,ef3232+100  */
+  background: #ef3232;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ef3232), color-stop(30%, #ff4f4f), color-stop(70%, #ff4f4f), color-stop(100%, #ef3232));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ef3232 0%, #ff4f4f 30%, #ff4f4f 70%, #ef3232 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ef3232', endColorstr='#ef3232', GradientType=0);
+  /* IE6-9 */
+  padding: 5px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  text-align: center;
+}
+.chat #otherChat,
+.chat #yourChat {
+  max-width: 200px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding: 5px;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+.chat .chatUser,
+.chat .yourChatUser,
+.chat .statusUser {
+  margin-top: 25px;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.chat .otherChatDate {
+  display: block;
+}
+.chat .yourChatDate {
+  float: right;
+  margin-left: 120%;
+}
+.chat .otherChatDate,
+.chat .yourChatDate,
+.chat .statusDate {
+  font-size: 10px;
+}
+.chat .chatUser,
+.chat .otherChatDate,
+.chat #otherChat,
+.chat .statusUser,
+.chat .statusDate,
+.chat #statusMessage {
+  margin-left: 5px;
+}
+.chat .yourChatDate,
+.chat .yourChatUser,
+.chat #yourChat,
+.chat #statusMessage {
+  margin-right: 5px;
+}
+.messageToSend {
+  position: fixed;
+  bottom: 0;
+}
+.messageToSend .chatTextBox {
+  resize: none;
+  height: 50px;
+}
+.messageToSend .chatTextSubmit {
+  height: 50px;
+}
+.alert-warning {
+  border-color: #ff4900 !important;
+  background-color: #FDE357 !important;
+  color: #555 !important;
+  text-align: center;
+}
+.nav,
+.pagination,
+.carousel,
+.panel-title a {
+  cursor: pointer;
+  content: 'bananas';
+}
+.container {
+  margin: 65px auto 0;
+}
+.hide-element {
+  max-height: 0;
+  opacity: 0;
+}

@@ -1,39 +1,57 @@
+
+
+
+
+
+
+
+
 <div class="chat container">
   <!-- {{currentUser.username}} -->
   <div class="row">
-
-    <div ng-animate="{show: 'animate-enter'}" class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in allMessages">
-      <div ng-if="message.userId._id !== yourUser._id">
+    <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in allMessages">
+      <!-- <div ng-if="message.userId._id !== yourUser._id">
         <p class="chatUser">{{message.userId.username}}:</p>
         <p id="otherChat">{{message.content}}</p>
-        
-        <button ng-click="readHashConversation(message)" ng-if="message.userId._id !== yourUser._id && tags.conversation" class="otherChat">{{tags.conversation}}</button>
-
       </div>
       <div ng-if="message.userId._id == yourUser._id">
         <p class="yourChatUser">{{message.userId.username}}</p>
         <p id="yourChat">{{message.content}}</p>
-        
-        <button ng-click="readHashConversation(message)" ng-if="message.userId._id == yourUser._id && tags.conversation" class="yourChatUser" >{{tags.conversation}}</button>
-
       </div>
       <div class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="message.status">
-        <p class="statusUser">dada</p>
-        <p id="statusMessage">lol</p>
-
-    </div>
-    </div>
-    <form class="messageToSend col-xs-4 col-sm-3 col-md-3 col-lg-3 input-group" ng-submit="send()">
-      <div class="form-group">  
-        <input type="text" ng-click="activateLongpoller()" ng-model="chatInfo.content" class="form-control chatTextBox" placeholder="Skriv meddelande här...">
-        <span class="input-group-btn">
-          <button type="submit" class="btn btn-default chatTextSubmit">Skicka</button>
-          <button type="button" class="searchTag btn btn-default chatTextSubmit" ng-click="tagSearch(chatInfo.content)" >
-            #<i class="fa fa-search"></i>
-          </button>
-        </span>
+        <p class="statusUser">{{message.userId.username}}</p>
+        <p id="statusMessage">{{message.content}}</p>
+      </div> -->
+      <div ng-class="{true: 'col-lg-12 col-md-12 col-sm-12 col-xs-12', false: ''}[!!message.status]">
+        <div ng-if="!message.status">
+          <p ng-class="{true:'chatUser', false:'yourChatUser'}[message.userId._id !== yourUser._id]">{{message.userId.username}}:</p>
+          <p class="{{message.userId._id !== yourUser._id ? 'otherChatDate' : 'yourChatDate'}}">{{message.date | date:'hh:mm'}}</p>
+          <p id="{{message.userId._id !== yourUser._id ? 'otherChat' : 'yourChat'}}">{{message.content}}</p>
+          <button ng-click="readHashConversation(message)" ng-if="tags.conversation" class="{{message.userId._id !== yourUser._id ? 'otherChatDate' : 'yourChatDate'}}">{{tags.conversation}}</button>
+        </div>
+        <div ng-if="message.status">
+          <p class="statusUser">{{message.userId.username}}:</p>
+          <p class="statusDate">{{message.date | date:'hh:mm'}}</p>
+          <p id="statusMessage">{{message.content}}</p>
+        </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="message col-lg-8 col-md-8 col-sm-8 col-xs-8 col-sm-4 col-xs-4 col-xs-offset-8" ng-repeat="message in allMessages">
+        <p></p>
+      </div>
+    </div>
+
+    <form class="messageToSend col-xs-12 col-sm-3 col-md-3 col-lg-3 input-group" ng-submit="send()">
+      <input type="text" ng-click="activateLongpoller()" ng-model="chatInfo.content" class="form-control chatTextBox" placeholder="Skriv meddelande här...">
+      <span class="input-group-btn">
+      <button type="submit" class="btn btn-default chatTextSubmit">Skicka</button>
+      <button type="button" class="searchTag btn btn-default chatTextSubmit" ng-click="tagSearch(chatInfo.content)" >
+        #<i class="fa fa-search"></i>
+      </button>
+      </span>
     </form>
+
     <div class="status col-xs-12 col-sm-12 col-md-12 col-lg-12">
     </div>
   </div>
