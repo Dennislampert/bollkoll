@@ -47,11 +47,7 @@ module.exports = function(mongoose) {
           owner: req.session.user // all files have an owner
         });
         
-<<<<<<< HEAD
-        // save file to mongodb
-=======
         // save file info to mongodb
->>>>>>> master
         dbFile.save(function(err, data) {
           if (err) { throw err; }
           // and finally send a response to client
@@ -60,11 +56,5 @@ module.exports = function(mongoose) {
         });
       });
     });
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> master
   }];
 };
