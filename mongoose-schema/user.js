@@ -5,13 +5,12 @@ module.exports = function(mongoose) {
     password: { type:String, required:true},
     fname: { type:String, required:true },
     lname: { type:String, required:true },
-    email: { type:String, required:true ,index: { unique:true } },
-    picturePath: { type: String, default: "/uploads/images/default.jpeg" },
+    email: { type:String, required:true ,index: { unique:true } }
   });
 
   return mongoose.model("User", userSchema);
 };
 
 // User.findOne(req.session.user, function(User) {
-// 	User.picture = File;
+//	User.picture = File;
 // })

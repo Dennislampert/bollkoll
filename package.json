@@ -17,6 +17,7 @@
     "mongo-express": "*",
     "express-session": "*",
     "connect-multiparty": "*",
-    "sha256":"*"
+    "sha256":"*",
+    "gm":"*"
   }
 }

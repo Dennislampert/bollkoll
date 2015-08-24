@@ -1,0 +1,10 @@
+<div>
+  <div class="modal-header">
+      <h3 class="modal-title">{{message.header}}</h3>
+  </div>
+  <div class="modal-body">
+      <p>{{message.msg}}</p>
+      <button ng-if="choice" type="button" class="btn btn-default" ng-click="redirect()"></button>
+      <button type="button" class="btn btn-default" ng-click="cancel()">Tillbaka till uppladdning</button>
+  </div>
+</div>

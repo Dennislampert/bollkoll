@@ -10,7 +10,7 @@ var paths = {
   ],
   lessInput: [ // directories to compile LESS from
     './bootstrap_less/bootstrap.less',
-    './less/**/*.less'
+    './less/*.less'
   ],
   cssOutput: './css' // directory to compile CSS to
 };
