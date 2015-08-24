@@ -1,6 +1,6 @@
 app.controller("profileController",
-  ["$scope", "$http", "$location", "$routeScope", "$routeParams", "modalService", "FileUploader", "Login", "User", "File", "NavTitleChange",
-  function($scope, $http, $location, $routeScope, $routeParams, modalService, FileUploader, Login, User, File, NavTitleChange) {
+  ["$scope", "$http", "$location", "$routeParams", "modalService", "FileUploader", "Login", "User", "File", "NavTitleChange",
+  function($scope, $http, $location, $routeParams, modalService, FileUploader, Login, User, File, NavTitleChange) {
   NavTitleChange($routeParams.username + "s profil");
   // reference(!) to Login.user object
   // (logged in user data)
@@ -29,11 +29,23 @@ app.controller("profileController",
           console.log("uploaded image is okey");
         }else{
           // send bastis modual
-          $routeScope.errmsg = 'blablabla';
+
           $scope.errorbox = modalService.open({
-            templateUrl:'partials/globalalert.html'
-          });
-          console.log("You try to upload a file that we dont accept..");
+            templateUrl:'partials/globalalert.html',
+            controller: 'uploadAlertController',
+            resolve: {
+              message: function() {
+                $scope.message = {};
+                $scope.message.header = "Bilduppladdning misslyckades!";
+                $scope.message.msg = "Vi stöder inte detta bildformatet, vänligen ladda upp en bild med formatet png, jpg eller jpeg.";
+                return $scope.message;
+              }
+            },
+            close: function(closeData) {
+              $scope.files = [];
+              console.log("the modal closed, and sent back ", closeData);
+            }
+           });
         }
       }
     }
@@ -52,6 +64,19 @@ app.controller("profileController",
   }
 
 
-loadImage();
+  loadImage();
 
+}]);
+
+
+app.controller('uploadAlertController', ["$scope", "$modalInstance", "message", function($scope, $modalInstance, message) {
+  $scope.message = message;
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss();
+  };
+
+  $scope.redirect = function() {
+    $modalInstance.close({msg: "I CLOSED!"});
+  };
 }]);

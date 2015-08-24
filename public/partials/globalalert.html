@@ -1,10 +1,10 @@
 <div>
   <div class="modal-header">
-      <h3 class="modal-title">I'm a modal!</h3>
+      <h3 class="modal-title">{{message.header}}</h3>
   </div>
   <div class="modal-body">
-      <p>{{errmsg}}</p>
-      <button type="button" class="btn btn-default" ng-click="redirect()">Gå till login</button>
-      <button type="button" class="btn btn-default" ng-click="cancel(back)">Avbryt</button>
+      <p>{{message.msg}}</p>
+      <button ng-if="choice" type="button" class="btn btn-default" ng-click="redirect()"></button>
+      <button type="button" class="btn btn-default" ng-click="cancel()">Tillbaka till uppladdning</button>
   </div>
 </div>
