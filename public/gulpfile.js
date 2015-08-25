@@ -10,7 +10,7 @@ var paths = {
   ],
   lessInput: [ // directories to compile LESS from
     './bootstrap_less/bootstrap.less',
-    './less/**/*.less'
+    './less/*.less'
   ],
   cssOutput: './css' // directory to compile CSS to
 };
@@ -29,10 +29,9 @@ function reportChange() {
 }
 
 // a gulp task to watch files for changes
-gulp.task('watch', [], function() {
+gulp.task('watch', ['build-css-from-less'], function() {
   gulp
     // using paths.watchDirs to watch ALL less
     .watch(paths.watchDirs, ['build-css-from-less'])
     .on('change', reportChange); // run reportChange on every change
 });
-

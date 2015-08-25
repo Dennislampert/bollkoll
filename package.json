@@ -1,5 +1,7 @@
 {
+  "main":"public/index.html",
   "name": "ngNodeRest",
+  "node-main": "app.js",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -15,6 +17,7 @@
     "mongo-express": "*",
     "express-session": "*",
     "connect-multiparty": "*",
-    "sha256":"*"
+    "sha256":"*",
+    "gm":"*"
   }
 }

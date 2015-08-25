@@ -22,7 +22,6 @@ app.use(m.cookieparser());
 app.use(m.expresssession({resave: true, saveUninitialized: false, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: new Date(Date.now() + 604800000) }}));
 app.use(m.express.static(m.path.join(__dirname, 'public')));
 
-
 // Route everything "else" to angular (in html5mode)
 app.get('/api/getdata', function (req, res) {
   var http = require('http');
@@ -47,7 +46,7 @@ app.get('/api/getdata', function (req, res) {
 });
 
 
-var options = { //};
+var options = {
   permissionToAsk: require('./permission/permissionToAsk.js'),
   permissionToAnswer: require('./permission/permissonToAnswer.js'),
   customRoutes: [
@@ -63,7 +62,7 @@ var options = { //};
     },
     {
       method: "get",
-      path: "chatlong/:matchId/:latestKnownMessageId",
+      path: "chatlong/:divisionId/:latestKnownMessageId/:matchId?",
       controller: require('./api/routes/longPoll')
     }
   ]
@@ -86,3 +85,6 @@ app.get('*', function (req, res) {
 app.listen(3000, function(){
   console.log("Node is running!");
 });
+
+
+

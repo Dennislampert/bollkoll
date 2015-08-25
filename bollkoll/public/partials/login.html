@@ -1,0 +1,20 @@
+<form class="navbar-form navbar-left" ng-submit="login()" role="search">
+  <div class="form-group">
+    <input ng-keyup="faultyLogin = false" type="email" ng-model="userInfo.email" class="form-control" placeholder="Email">
+    <input ng-keyup="faultyLogin = false" type="password" ng-model="userInfo.password" class="form-control" placeholder="password">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+  <a href="/registrering"><button type="button" class="btn btn-default">Registrering</button></a>
+</form>
+<!-- <div>
+  <p>{{isLoggedIn}}</p>
+</div> -->
+
+
+
+<div class="alert alert-warning loginErrorMessage" 
+	ng-if="faultyLogin">
+  <strong>Inloggning misslyckades!</strong><br>
+  <p>E-mail adress eller lösenord är fel.</p>
+  <p>Var god försök igen.</p>
+</div>
