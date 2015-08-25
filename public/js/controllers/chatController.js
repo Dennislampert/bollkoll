@@ -1,11 +1,27 @@
-app.controller("chatController", ["$http", "$scope", "$routeParams", "Chat", "Message", "Match", "Region", "Login",
-  function($http, $scope, $routeParams, Chat, Message, Match, Region, Login){
 
+app.controller("chatController", ["$http", "$scope", "$routeParams", "$anchorScroll", "$location", "Chat", "Message", "Match", "Region", "Login",
+  function($http, $scope, $routeParams, $anchorScroll, $location, Chat, Message, Match, Region, Login){
+  /*$scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
+=======
+app.controller("chatController",
+  ["$scope", "$http", "$routeParams", "Chat", "Message", "Login", "NavTitleChange",
+  function($scope, $http, $routeParams, Chat, Message, Login, NavTitleChange) {
+  NavTitleChange("<MATCHNAMN> chat");
+  /*$scope.test = Message.get({_populate:"userId"},function() {
+>>>>>>> master
+    console.log("s", $scope.test);
+  });*/
+
+  $scope.goToBottom = function() {
+    $location.hash('bottom');
+    $anchorScroll();
+  };
+
+  console.log("routeParams: ", $routeParams);
   $scope.yourUser = Login.user;
 
   if($routeParams.regionPath){
     Region.get({regionPath:$routeParams.regionPath},function(regionId){
-      console.log("dennis: ",regionId);
       async(0, regionId[0]._id + $routeParams.division);
     });
   }
@@ -24,7 +40,6 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "Chat", "Me
     $scope.send = function() {
       $scope.chatInfo.userId = Login.user._id;
       $scope.chatInfo.matchId = matchId.length > 1 ? matchId : null;
-      console.log("$scope.chatInfo.matchId: ",$scope.chatInfo.matchId);
       $scope.chatInfo.divisionId = divisionId;
       var hashOrgArray = "";
       hashOrgArray = $scope.chatInfo.content.match(/#[a-zA-ZäöåÄÖÅ0-9]*/g);

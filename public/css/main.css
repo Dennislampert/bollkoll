@@ -125,8 +125,10 @@ tr:nth-child(odd) {
 }
 .chat {
   background-color: #fff;
-  min-height: 500px;
-  margin-bottom: 65px;
+  height: 700px;
+  margin-bottom: 50px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .chat #otherChat {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0e0e0+0,f3f3f3+30,f3f3f3+70,e0e0e0+100 */
@@ -208,7 +210,7 @@ tr:nth-child(odd) {
 .chat .statusUser {
   margin-top: 25px;
   font-size: 12px;
-  margin-bottom: 5px;
+  margin-bottom: -10px;
 }
 .chat .otherChatDate {
   display: block;
