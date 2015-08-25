@@ -12,15 +12,6 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
     }
   }
 
-  function getCurrentuser(obj) {
-      for(var prop in obj) {
-          if(obj.hasOwnProperty(prop))
-              return false;
-      }
-
-      return true;
-  }
-
   var loginObj = {
     user: {},
     login: function(credentials, callback) {

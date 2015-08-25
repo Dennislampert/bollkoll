@@ -1,6 +1,6 @@
 app.controller("headerController",
-  ["$scope", "$rootScope", "Login", "$window", "modalService",
-  function($scope, $rootScope, Login, $window, modalService) {
+  ["$scope", "$location", "$rootScope", "Login", "$window", "modalService",
+  function($scope, $location, $rootScope, Login, $window, modalService) {
   $scope.headerUser = Login.getCurrentUser();
   $scope.nav  = {
     collapsed: true
@@ -16,14 +16,17 @@ app.controller("headerController",
     $scope.headerUser = Login.getCurrentUser();
   });
 
+  $rootScope.$on('logout', function() {
+    $scope.headerUser = Login.getCurrentUser();
+  });
+
   $scope.collapseToggle = function() {
     $scope.nav.collapsed = !$scope.nav.collapsed;
   };
 
   $scope.logout = function() {
+    // $scope.headerUser = Login.logout();
+    // $location.path("/");
     Login.logout();
-    modalService.open({
-      templateUrl: 'partials/logoutAlert.html',
-    })
   };
 }]);

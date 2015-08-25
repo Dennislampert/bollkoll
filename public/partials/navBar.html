@@ -26,8 +26,8 @@
           <a ng-href="/loggain" ng-click="nav.collapsed = true">Logga in</a>
           
         </li>
-        <li ng-if="headerUser" ng-click="logout()">
-          <a ng-href="/" ng-click="nav.collapsed = true" >Logga ut</a>
+        <li ng-if="headerUser">
+          <a ng-href="/" ng-click="nav.collapsed = true; logout()" >Logga ut</a>
         </li>
         <li>
           <a ng-href="/om-oss" ng-click="nav.collapsed = true">Om oss</a>
