@@ -9,14 +9,18 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" ng-href="/">Boll Koll</a>
-      <p class="navbar-text">{{navText}}</p>
+      <p class="navbar-text">
+        {{ navText }}
+        <span ng-if="headerUser"> inloggad</span>
+        <span ng-if="!headerUser"> inte inloggad</span>
+      </p>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div ng-class="{true: 'collapse', false:''}[navCollapsed]" class="navbar-collapse" id="top-navbar-collapse">
+    <div ng-class="{true: 'collapse', false:''}[nav.collapsed]" class="navbar-collapse" id="top-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="home-link">
-          <a ng-href="/" ng-click="navCollapsed = true">Hem</a>
+          <a ng-href="/" ng-click="nav.collapsed = true">Hem</a>
         </li>
         <form class="navbar-form navbar-left" role="search" ng-controller="headerController" ng-submit="search()">
           <div class="form-group">
@@ -24,11 +28,19 @@
             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
           </div>
         </form>
-        <li>
-          <a ng-href="/loggain" ng-click="navCollapsed = true">Logga in</a>
+        
+        <li ng-if="!headerUser">
+          <a ng-href="/loggain" ng-click="nav.collapsed = true">Logga in</a>
+          
+        </li>
+        <li ng-if="headerUser">
+          <a ng-href="/" ng-click="nav.collapsed = true; logout()" >Logga ut</a>
         </li>
         <li>
-          <a ng-href="/om-oss" ng-click="navCollapsed = true">Om oss</a>
+          <a ng-href="/om-oss" ng-click="nav.collapsed = true">Om oss</a>
+        </li>
+        <li ng-if="headerUser">
+          <a ng-href="/anvandare/{{ headerUser.username }}" ng-click="nav.collapsed = true">Profilsida</a>
         </li>
       </ul>
       
