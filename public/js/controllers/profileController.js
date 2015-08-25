@@ -15,6 +15,7 @@ app.controller("profileController",
         console.log("saved files, public path: ", data);
         $scope.uploadedFilePath = data;
       });
+    });
     }
   };
 

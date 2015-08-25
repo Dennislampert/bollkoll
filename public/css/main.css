@@ -253,34 +253,6 @@ tr:nth-child(odd) {
   color: #555 !important;
   text-align: center;
 }
-body {
-  background-image: url("../backround_images/flashlight.jpg");
-}
-.mainMenu {
-  padding: 0;
-}
-tr td {
-  color: #fff;
-  height: 30px;
-  vertical-align: middle !important;
-  border-top: 0px !important;
-}
-h2 {
-  color: #fff;
-  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
-}
-tr:nth-child(even) {
-  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
-}
-tr:nth-child(odd) {
-  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg") !important;
-}
-.blackText {
-  color: #000;
-}
-.table {
-  margin-bottom: 0px;
-}
 .nav,
 .pagination,
 .carousel,
@@ -289,7 +261,7 @@ tr:nth-child(odd) {
   content: 'bananas';
 }
 .container {
-  margin: 65px auto 0;
+  margin: 65px 0 0;
 }
 .hide-element {
   max-height: 0;
