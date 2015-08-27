@@ -304,6 +304,9 @@ tr:nth-child(odd) {
   border-top-right-radius: 0;
   margin-bottom: 10px;
 }
+.has-error {
+  margin-bottom: 1px;
+}
 .nav,
 .pagination,
 .carousel,

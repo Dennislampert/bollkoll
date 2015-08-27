@@ -21,12 +21,23 @@
 <div class="wrapper">
   <form class="form-signin">       
     <h2 class="form-signin-heading">Please login</h2>
-    <input type="text" ng-model="userInfo.username" class="form-control firstInput" placeholder="Användarnamn" required>
+    <div ng-if="!usernameUniqe" class="form-group has-error">
+      <input type="text" ng-model="userInfo.username"class="form-control firstInput" id="inputError1" placeholder="Användarnamn" required>
+    </div>
+    <input ng-if="usernameUniqe" type="text" ng-model="userInfo.username" class="form-control firstInput" placeholder="Användarnamn" required>
     <input type="text" ng-model="userInfo.fname" class="form-control middleFornInput" placeholder="Förnamn" required>
     <input type="text" ng-model="userInfo.lname" class="form-control middleFornInput" placeholder="Efternamn" required>
-    <input type="email" ng-model="userInfo.email" class="form-control middleFornInput" placeholder="Email" required>
+    <div ng-if="!emailUniqe" class="form-group has-error">
+      <input type="text" ng-model="userInfo.username"class="form-control firstInput" id="inputError1" placeholder="Användarnamn" required>
+    </div>
+    <input ng-if="emailUniqe" type="email" ng-model="userInfo.email" class="form-control middleFornInput" placeholder="Email" required>
     <input type="password" ng-model="userInfo.password" class="form-control middleFornInput" placeholder="Lösenord" required>
     <input type="password" ng-model="userInfo.passwordCompare" class="form-control lastInput" placeholder="Lösenord igen" required>
     <button type="submit" class="btn btn-lg btn-primary btn-block">Spara din profil</button>
   </form>
 </div>
+
+
+
+
+
