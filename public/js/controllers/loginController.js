@@ -1,6 +1,6 @@
 app.controller("loginController",
-  ["$http", "$scope", "$location", "$route", "Login", "NavTitleChange",
-  function($http, $scope, $location , $route, Login, NavTitleChange) {
+  ["$http", "$scope", "$location", "$route", "Login", "NavTitleChange", "modalService",
+  function($http, $scope, $location , $route, Login, NavTitleChange, modalService) {
   NavTitleChange("Logga in");
   $scope.userInfo = {};
 
@@ -14,13 +14,39 @@ app.controller("loginController",
   $scope.login = function(){
 
     Login.login($scope.userInfo, function(data) {
-      // console.log("logged in: ", data);
+      console.log("logged in: ", data);
       $location.url(data._id ? "/" : "/loggain/fel");
       $route.reload();
+      if (!data._id) {
+        modalService.open({
+        templateUrl: 'partials/globalalert.html',
+        controller: 'loginAlertController',
+        resolve: {
+          message: function() {
+            $scope.message = {};
+            $scope.message.header = "Inloggningen misslyckades!";
+            $scope.message.msg = "Användarnamnet eller lösenordet stämde , var god och försök igen!";
+            $scope.message.msgBtn = "Försök igen";
+            return $scope.message;
+          }
+        }
+        });
+      $scope.userInfo = null;
+      }
     });
-
-    $scope.userInfo = null;
 
   };
   
+}]);
+
+app.controller('loginAlertController', ["$scope", "$modalInstance", "message", function($scope, $modalInstance, message) {
+  $scope.message = message;
+
+  $scope.cancel = function() {
+    $modalInstance.dismiss();
+  };
+
+  $scope.redirect = function() {
+    $modalInstance.close({msg: "I CLOSED!"});
+  };
 }]);
