@@ -35,8 +35,7 @@ app.controller("headerController",
   	}
   	else {
 	  var searchParams = {
-	  	username: $scope.term
-      // regionName: $scope.term
+	  	searchAll: $scope.term
 	  };
 
 	  var searchUrl = '/search';
