@@ -1,5 +1,5 @@
-app.controller("chatController", ["$http", "$scope", "$routeParams", "Chat", "Message", "Match", "Region", "Login",
-  function($http, $scope, $routeParams, Chat, Message, Match, Region, Login){
+app.controller("chatController", ["$http", "$scope", "$routeParams", "$anchorScroll", "$location", "Chat", "Message", "Match", "Region", "Login",
+  function($http, $scope, $routeParams, $anchorScroll, $location, Chat, Message, Match, Region, Login){
   /*$scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
 =======
 app.controller("chatController",
@@ -10,6 +10,12 @@ app.controller("chatController",
 >>>>>>> master
     console.log("s", $scope.test);
   });*/
+
+  $scope.goToBottom = function() {
+    $location.hash('bottom');
+    $anchorScroll();
+    console.log("sug kuk");
+  }
 
   console.log("routeParams: ", $routeParams);
   $scope.yourUser = Login.user;
