@@ -30,10 +30,29 @@ app.controller("headerController",
     Login.logout();
   };
   $scope.search = function(){
-  	$location.search("username=" + $scope.term);
-    // $http.get($scope.term).success(function(result) {
-    //    console.log("result");
-    //    return result.data;
-    // });
+  	if($scope.term == false) {
+  	  console.log("its false, I'm sorry");
+  	}
+  	else {
+	  var searchParams = {
+	  	username: $scope.term
+	  };
+
+	  var searchUrl = '/search';
+	  var first = true;
+	  for (var i in searchParams) {
+	  	searchUrl += first ? '?' : '&';
+	  	searchUrl += i + '=' + searchParams[i];
+	  	first = false;
+	  }
+
+	  searchUrl = encodeURI(searchUrl);
+	  console.log("searchUrl", searchUrl);
+	  $location.url(searchUrl);
+	  // $http.get($scope.term).success(function(result) {
+	  //    console.log("result");
+	  //    return result.data;
+	  // });
+	}
   }
 }]);

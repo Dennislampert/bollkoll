@@ -11,6 +11,15 @@
   .nav .home-link {
     display: block;
   }
+  .searchBoxFix {
+    width: 100%;
+  }
+  .searchBoxFix input {
+    width: 90%;
+  }
+  .searchBoxFix button {
+    width: 10%;
+  }
 }
 .main-menu {
   max-height: 300px;
