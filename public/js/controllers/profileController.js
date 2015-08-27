@@ -19,6 +19,7 @@ app.controller("profileController",
   };
 
   $scope.$watch('files', function (file) {
+  console.log("Login.user :", Login.user);
     
     if (file){
       console.log("file: ",file);
@@ -58,7 +59,14 @@ app.controller("profileController",
         // $scope.uploadedFilePath = data;
       $scope.user = userprofile[0];
       File.get({owner:userprofile[0]._id}, function(Getfile){
-        $scope.image = Getfile.pop();
+        if (Getfile.length===0){
+          console.log("true");
+          $scope.image = {};
+          $scope.image.path = "../../files/defaultimg.png";
+        }else{
+          $scope.image = Getfile.pop();
+          
+        }
       });
     });
   }

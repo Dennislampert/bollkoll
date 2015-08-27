@@ -3,9 +3,9 @@ module.exports = function(mongoose){
   // with properties
   var FileSchema = mongoose.Schema({
     name: {type:String, required:true},
-    path: {type:String, required:true},
+    path: {type:String, required:true, default: "/files/defaultimg.png"},
     type: {type:String, required:true},
-    owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
+    owner: {type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null}
   });
 
   // Create a model from the schema
