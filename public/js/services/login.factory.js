@@ -12,15 +12,6 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
     }
   }
 
-  function getCurrentuser(obj) {
-      for(var prop in obj) {
-          if(obj.hasOwnProperty(prop))
-              return false;
-      }
-
-      return true;
-  }
-
   var loginObj = {
     user: {},
     login: function(credentials, callback) {
@@ -52,14 +43,14 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
       });
     },
     getCurrentUser: function() {
-      for(var prop in loginObj.user) {
-        if(loginObj.user.hasOwnProperty(prop))
-            return false;
-        }
-      return user;
+      if (!objectIsEmpty(loginObj.user)) {
+        return loginObj.user;
+      }
+      else {
+        return false;
+      }
     }
- 
-  };
+ };
   // check if logged in every 30 seconds
   loginObj.check(function() {
     if (!loginObj.user._id) {
@@ -78,4 +69,13 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
 
 
   return loginObj;
+
+  function objectIsEmpty(obj) {
+    for(var prop in obj) {
+        if(obj.hasOwnProperty(prop))
+            return false;
+    }
+
+    return true;
+  }
 }]);
