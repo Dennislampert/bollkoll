@@ -1,26 +1,6 @@
-<!-- Register -->
-<!-- <div class="jumbotron">
-   <div class="container">
-      <div class="row col-sm-12 col-md-10 col-md-offset-1">
-      <form class="navbar-form navbar-left" ng-submit="register()" role="search">
-        <div class="form-group">
-          <input type="text" ng-model="userInfo.username" class="form-control" placeholder="Användarnamn" required>
-          <input type="text" ng-model="userInfo.fname" class="form-control" placeholder="Förnamn" required>
-          <input type="text" ng-model="userInfo.lname" class="form-control" placeholder="Efternamn" required>
-          <input type="email" ng-model="userInfo.email" class="form-control" placeholder="Email" required>
-          <input type="password" ng-model="userInfo.password" class="form-control" placeholder="Lösenord" required>
-          <input type="password" ng-model="userInfo.passwordCompare" class="form-control" placeholder="Lösenord igen" required>
-        </div>
-        <button type="submit" class="btn btn-default">Spara din profil</button>
-      </form>
-    </div>
-  </div>
-</div>
- -->
-
 <div class="wrapper">
-  <form class="form-signin">       
-    <h2 class="form-signin-heading">Please login</h2>
+  <form class="form-signin" ng-submit="register()">       
+    <h2 class="form-signin-heading">Registrara dig här</h2>
     <div ng-if="!usernameUniqe" class="form-group has-error">
       <input type="text" ng-model="userInfo.username"class="form-control firstInput" id="inputError1" placeholder="Användarnamn" required>
     </div>
@@ -28,7 +8,7 @@
     <input type="text" ng-model="userInfo.fname" class="form-control middleFornInput" placeholder="Förnamn" required>
     <input type="text" ng-model="userInfo.lname" class="form-control middleFornInput" placeholder="Efternamn" required>
     <div ng-if="!emailUniqe" class="form-group has-error">
-      <input type="text" ng-model="userInfo.username"class="form-control firstInput" id="inputError1" placeholder="Användarnamn" required>
+      <input type="text" ng-model="userInfo.email"class="form-control middleFornInput" id="inputError1" placeholder="Användarnamn" required>
     </div>
     <input ng-if="emailUniqe" type="email" ng-model="userInfo.email" class="form-control middleFornInput" placeholder="Email" required>
     <input type="password" ng-model="userInfo.password" class="form-control middleFornInput" placeholder="Lösenord" required>

@@ -3,26 +3,14 @@ app.controller("registerController",
   function($scope, $http, User, $location, NavTitleChange, modalService) {
   NavTitleChange("Registrera");
   $scope.userInfo = {};
+  $scope.emailUniqe = true;
+  $scope.usernameUniqe = true;
+
   $scope.register = function() {
-    if ($scope.userInfo.password === $scope.userInfo.passwordCompare && $scope.userInfo._id) {
-      User.create($scope.userInfo, function(data) {
-        modalService.open({
-          templateUrl: 'partials/globalalert.html',
-          controller: 'registerAlertController',
-          resolve: {
-              message: function() {
-                $scope.message = {};
-                $scope.message.header = "Registrering lyckades!";
-                $scope.message.msg = "Vänligen logga in igen! ";
-                $scope.message.msgBtn = "Tillbaka till logga in";
-                return $scope.message;
-              }
-            },
-        });
-        console.log("rr", data);
-        $location.url("/loggain");
-      });
-    }
+    $scope.emailUniqe = true;
+    $scope.usernameUniqe = true;
+    console.log("gooo");
+    
     if ($scope.userInfo.password != $scope.userInfo.passwordCompare) {
       modalService.open({
         templateUrl: 'partials/globalalert.html',
@@ -37,14 +25,18 @@ app.controller("registerController",
           }
         }
       });
+      $scope.userInfo.password = "";
+      $scope.userInfo.passwordCompare = "";
     }
-    $scope.$watch("userInfo.username",function(newVal, oldVal){
 
-      if(!newVal){return;}
-      // check if userName is registered
-      User.get({username:newVal},function(listOfUsers){
-        console.log("listOfUsers:", listOfUsers);
-        if(listOfUsers.length > 0){
+    // check if userName is registered
+    User.get({username:$scope.userInfo.username},function(username){
+      console.log("username:", username);
+      // check if email is registered
+      User.get({email:$scope.userInfo.email},function(email){
+        console.log("email:", email);
+        if(username.length > 0){
+          $scope.usernameUniqe = false;
           console.log("Username exists");
           //$scope.userNameAlreadyRegistered = true;
           modalService.open({
@@ -61,17 +53,8 @@ app.controller("registerController",
             }
           });
         }
-      });
-    });
-
-    $scope.$watch("userInfo.email",function(newVal,oldVal){
-      
-      if(!newVal){return;}
-      // check if email is registered
-      User.get({email:newVal},function(listOfUsers){
-        //If users with that email exists
-        if(listOfUsers.length > 0){
-          
+        if(email.length > 0){
+          $scope.emailUniqe = false;
           modalService.open({
             templateUrl: 'partials/globalalert.html',
             controller: 'registerAlertController',
@@ -84,6 +67,25 @@ app.controller("registerController",
                 return $scope.message;
               }
             }
+          });
+        }
+        if ($scope.userInfo.password === $scope.userInfo.passwordCompare && $scope.emailUniqe === true && $scope.usernameUniqe === true ) {
+          User.create($scope.userInfo, function(data) {
+            modalService.open({
+              templateUrl: 'partials/globalalert.html',
+              controller: 'registerAlertController',
+              resolve: {
+                message: function() {
+                  $scope.message = {};
+                  $scope.message.header = "Registrering lyckades!";
+                  $scope.message.msg = "Nu kan du logga in! ";
+                  $scope.message.msgBtn = "Logga in";
+                  return $scope.message;
+                }
+              },
+            });
+            console.log("rr", data);
+            $location.url("/loggain");
           });
         }
       });
