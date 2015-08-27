@@ -1,10 +1,11 @@
 app.controller("searchResultController",
-  ["$http", "$scope", "$routeParams", "User",
-  function($http, $scope, $routeParams, User) {
+  ["$http", "$scope", "$routeParams", "User", "Region",
+  function($http, $scope, $routeParams, User, Region) {
   	console.log("params", $routeParams);
   	var searchParams = {}
   	for (var i in $routeParams)  {
   		searchParams[i] = $routeParams[i];
+      console.log("lol: ", searchParams[i]);
   	}
   	/*if (i == "username") {
   		$routeParams[i] = new RegExp($routeParams[i], "i");
@@ -16,4 +17,8 @@ app.controller("searchResultController",
         $scope.allSearchResults.push(result);
         console.log("$scope.allSearchResults: ", $scope.allSearchResults);
     });
+    // Region.get(searchParams,function(result){
+    //     $scope.allSearchResults.push(result);
+    //     console.log("$scope.allSearchResults: ", $scope.allSearchResults);
+    // });
 }]);
