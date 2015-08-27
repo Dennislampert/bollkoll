@@ -1,20 +1,16 @@
 
-app.controller("chatController", ["$http", "$scope", "$routeParams", "$anchorScroll", "$location", "Chat", "Message", "Match", "Region", "Login",
-  function($http, $scope, $routeParams, $anchorScroll, $location, Chat, Message, Match, Region, Login){
-  /*$scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
-=======
-app.controller("chatController",
-  ["$scope", "$http", "$routeParams", "Chat", "Message", "Login", "NavTitleChange",
-  function($scope, $http, $routeParams, Chat, Message, Login, NavTitleChange) {
-  NavTitleChange("<MATCHNAMN> chat");
-  /*$scope.test = Message.get({_populate:"userId"},function() {
->>>>>>> master
-    console.log("s", $scope.test);
-  });*/
+app.controller("chatController", ["$http", "$scope", "$routeParams", "$location", "Chat", "Message", "Match", "Region", "Login","$anchorScroll",
+  function($http, $scope, $routeParams, $location, Chat, Message, Match, Region, Login, $anchorScroll){
 
-  $scope.goToBottom = function() {
-    $location.hash('bottom');
-    $anchorScroll();
+
+  $scope.displayedMsgs = [];
+
+  var goToBottom = function() {
+    console.log("goToBottom!");
+    var scrollid = $scope.displayedMsgs.pop();
+    console.log("scrollid: ",scrollid._id);
+    var objDiv = document.getElementById("scrollid._id");
+    objDiv.scrollTop = objDiv.scrollHeight;
   };
 
   console.log("routeParams: ", $routeParams);
@@ -34,7 +30,7 @@ app.controller("chatController",
   }
   
   function async(matchId, divisionId){
-    var stopLongpoler = false;
+    $scope.readSearch = false;
     $scope.chatInfo = {};
 
     $scope.send = function() {
@@ -59,10 +55,12 @@ app.controller("chatController",
       Message.create($scope.chatInfo, function(data) {
         console.log("lolek", data);
         delete $scope.chatInfo.hastag;
+        $scope.chatInfo.content = "";
       });
     };
 
     $scope.allMessages = [];
+    $scope.displayedMsgs = $scope.allMessages;
     function longpoller(timestamp) {
       console.log( "divisionId: ",divisionId,"matchId: ",matchId);
       var url = "/api/chatlong/"+ divisionId+ "/" + timestamp + "/" + matchId;
@@ -71,8 +69,10 @@ app.controller("chatController",
         if (!data.hasOwnProperty("status")) {
           data.forEach(function(msg) {
             timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
+
             $scope.allMessages.push(msg);
           });
+          goToBottom();
           longpoller(timestamp);
         }
       });
@@ -81,11 +81,12 @@ app.controller("chatController",
 
 
     $scope.activateLongpoller = function(){
-      if (stopLongpoler === true){
+      if ($scope.readSearch === true){
         console.log("textingtextarea");
-        stopLongpoler = false;
+        $scope.readSearch = false;
         $scope.tags.conversation = "";
-        async(matchId, divisionId);
+        // async(matchId, divisionId);
+        $scope.displayedMsgs = $scope.allMessages;
       }
     };
 
@@ -97,21 +98,22 @@ app.controller("chatController",
           $scope.tags.conversation = "";
           $scope.searchMessages.push(theConversation);
         });
+        $scope.displayedMsgs = $scope.searchMessages;
       });
     };
-
-
 
     //get hastage like this (function like modulus %word%)
     $scope.tags = {};
     $scope.tagSearch = function(searchTag){
-      stopLongpoler = true;
+      $scope.readSearch = true;
       $scope.searchMessages = [];
       Message.get({hastag:searchTag, matchId:$routeParams.matchId, _populate:"userId"},function(hastags){
         hastags.forEach(function(hashtag) {
           $scope.tags.conversation = "läs mer";
           $scope.searchMessages.push(hashtag);
         });
+
+        $scope.displayedMsgs = $scope.searchMessages;
       });
     };
   
