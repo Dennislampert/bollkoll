@@ -1,32 +1,25 @@
-app.controller("chatController", ["$http", "$scope", "$routeParams", "$anchorScroll", "$location", "Chat", "Message", "Match", "Region", "Login",
-  function($http, $scope, $routeParams, $anchorScroll, $location, Chat, Message, Match, Region, Login){
-  /*$scope.test = Message.get({matchId:$routeParams.matchId , _populate:"userId"},function() {
-=======
-app.controller("chatController",
-  ["$scope", "$http", "$routeParams", "Chat", "Message", "Login", "NavTitleChange",
-  function($scope, $http, $routeParams, Chat, Message, Login, NavTitleChange) {
-  NavTitleChange("<MATCHNAMN> chat");
-  /*$scope.test = Message.get({_populate:"userId"},function() {
->>>>>>> master
-    console.log("s", $scope.test);
-  });*/
 
-  $scope.goToBottom = function() {
-    $location.hash('bottom');
-    $anchorScroll();
-    console.log("sug kuk");
-  }
+app.controller("chatController", ["$http", "$scope", "$routeParams", "$location", "Chat", "Message", "Match", "Region", "Login","$anchorScroll",
+  function($http, $scope, $routeParams, $location, Chat, Message, Match, Region, Login, $anchorScroll){
+
+
+  $scope.displayedMsgs = [];
+
+  var goToBottom = function() {
+    console.log("goToBottom!");
+    var scrollid = $scope.displayedMsgs.pop();
+    console.log("scrollid: ",scrollid._id);
+    var objDiv = document.getElementById("scrollid._id");
+    objDiv.scrollTop = objDiv.scrollHeight;
+  };
 
   console.log("routeParams: ", $routeParams);
   $scope.yourUser = Login.user;
-  console.log("currentUser: ", $scope.yourUser);
 
   if($routeParams.regionPath){
     Region.get({regionPath:$routeParams.regionPath},function(regionId){
-      console.log("dennis: ",regionId);
       async(0, regionId[0]._id + $routeParams.division);
     });
-    // $routeParams.matchId = regionId[0]._id + $routeParams.division;
   }
   else{
     Match.get({_id:$routeParams.matchId}, function(match){
@@ -37,13 +30,12 @@ app.controller("chatController",
   }
   
   function async(matchId, divisionId){
-    var stopLongpoler = false;
+    $scope.readSearch = false;
     $scope.chatInfo = {};
 
     $scope.send = function() {
       $scope.chatInfo.userId = Login.user._id;
       $scope.chatInfo.matchId = matchId.length > 1 ? matchId : null;
-      console.log("$scope.chatInfo.matchId: ",$scope.chatInfo.matchId);
       $scope.chatInfo.divisionId = divisionId;
       var hashOrgArray = "";
       hashOrgArray = $scope.chatInfo.content.match(/#[a-zA-ZäöåÄÖÅ0-9]*/g);
@@ -53,7 +45,7 @@ app.controller("chatController",
         Array.prototype.hashOrgArray = function(){
           var a = this;
           return a.filter(function(val,index){
-            return a.indexOf(val) == index && val.length>1;
+            return a.indexOf(val) == index && val.length > 1;
           });
         };
         $scope.chatInfo.hastag = hashOrgArray.hashOrgArray();
@@ -63,74 +55,68 @@ app.controller("chatController",
       Message.create($scope.chatInfo, function(data) {
         console.log("lolek", data);
         delete $scope.chatInfo.hastag;
+        $scope.chatInfo.content = "";
       });
     };
 
     $scope.allMessages = [];
+    $scope.displayedMsgs = $scope.allMessages;
     function longpoller(timestamp) {
-      if (stopLongpoler === false){
-        // var getParam = matchId || divisionId;
+      console.log( "divisionId: ",divisionId,"matchId: ",matchId);
+      var url = "/api/chatlong/"+ divisionId+ "/" + timestamp + "/" + matchId;
+      $http.get(url).success(function(data) {
+        console.log("data: ",data);
+        if (!data.hasOwnProperty("status")) {
+          data.forEach(function(msg) {
+            timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
 
-        console.log( "divisionId: ",divisionId,"matchId: ",matchId);
-        var url = "/api/chatlong/"+ divisionId+ "/" + timestamp + "/" + matchId;
-        $http.get(url).success(function(data) {
-          console.log("data: ",data);
-          if (!data.hasOwnProperty("status")) {
-            data.forEach(function(msg) {
-              timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
-              $scope.allMessages.push(msg);
-            });
-            longpoller(timestamp);
-          }
-        });
-      }
+            $scope.allMessages.push(msg);
+          });
+          goToBottom();
+          longpoller(timestamp);
+        }
+      });
     }
 
 
 
-    // Dennis hash functon.....
     $scope.activateLongpoller = function(){
-      console.log("clicktextarea");
-      if (stopLongpoler === true){
-        stopLongpoler = false;
+      if ($scope.readSearch === true){
+        console.log("textingtextarea");
+        $scope.readSearch = false;
         $scope.tags.conversation = "";
-        var lastmessage = $scope.allMessages.pop();
-        console.log("lastmessage: ", lastmessage);
-        $scope.allMessages = [];
-        longpoller(0);
+        // async(matchId, divisionId);
+        $scope.displayedMsgs = $scope.allMessages;
       }
     };
 
     $scope.readHashConversation = function(message){
-      $scope.allMessages = [];
+      $scope.searchMessages = [];
       var time = new Date(message.date).getTime();
       Message.get({date:{$gte:time}, matchId:$routeParams.matchId, _populate:"userId"},function(afterHastags){
         afterHastags.forEach(function(theConversation) {
           $scope.tags.conversation = "";
-          $scope.allMessages.push(theConversation);
+          $scope.searchMessages.push(theConversation);
         });
+        $scope.displayedMsgs = $scope.searchMessages;
       });
     };
-
-    $scope.yourUser = Login.user;
 
     //get hastage like this (function like modulus %word%)
     $scope.tags = {};
     $scope.tagSearch = function(searchTag){
-      stopLongpoler = true;
-      $scope.allMessages = [];
+      $scope.readSearch = true;
+      $scope.searchMessages = [];
       Message.get({hastag:searchTag, matchId:$routeParams.matchId, _populate:"userId"},function(hastags){
         hastags.forEach(function(hashtag) {
           $scope.tags.conversation = "läs mer";
-          $scope.allMessages.push(hashtag);
+          $scope.searchMessages.push(hashtag);
         });
+
+        $scope.displayedMsgs = $scope.searchMessages;
       });
     };
   
-
-
-
-
     longpoller(0);
 
   }
