@@ -1,6 +1,8 @@
 app.controller("searchResultController",
-  ["$http", "$scope", "$routeParams", "User", "Region", "Match",
-  function($http, $scope, $routeParams, User, Region, Match) {
+  ["$http", "$scope", "$routeParams", "$location", "User", "Message", "Match", "NavTitleChange",
+  function($http, $scope, $routeParams, $location, User, Message, Match, NavTitleChange) {
+    NavTitleChange("Sök");
+
   	console.log("params", $routeParams.searchParams);
     var searchRegExp = new RegExp(".*" + $routeParams.searchParams + ".*");
     
@@ -26,19 +28,31 @@ app.controller("searchResultController",
    //    console.log("lol: ", searchParams[i]);
   	// }
 
-  	$scope.allSearchResults = [];
+  	$scope.usersFound = [];
+    $scope.messagesFound = [];
+    $scope.matchesFound = [];
+    $scope.showUsers = false;
+    $scope.showMessages = false;
+    $scope.showMatches = false;
   	$scope.searchResult = {};
   	User.get(searchParams, function(result){
         console.log("lol");
-        $scope.allSearchResults.push(result);
-        console.log("$scope.allSearchResults: ", $scope.allSearchResults);
+        $scope.usersFound = result;
+        console.log("$scope.usersFound: ", $scope.usersFound);
     });
-    Region.get(searchParams,function(result){
-        $scope.allSearchResults.push(result);
-        console.log("$scope.allSearchResults: ", $scope.allSearchResults);
+    Message.get(searchParams,function(result){
+        $scope.messagesFound = result;
+        console.log("$scope.messagesFound: ", $scope.messagesFound);
     });
+
+    var mSearch = JSON.parse(JSON.stringify(searchParams)); // copy searchParams object
+    // mSearch._populate = "guestTeamId homeTeamId regionId";
     Match.get(searchParams,function(result){
-        $scope.allSearchResults.push(result);
-        console.log("$scope.allSearchResults: ", $scope.allSearchResults);
+        $scope.matchesFound = result;
+        console.log("$scope.matchesFound: ", $scope.matchesFound);
     });
+
+    $scope.redirect = function(path){
+      $location.path(path);
+    }
 }]);

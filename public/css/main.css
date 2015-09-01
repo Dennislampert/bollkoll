@@ -316,6 +316,18 @@ tr:nth-child(odd) {
 .has-error {
   margin-bottom: 1px;
 }
+.searchResults .arrowIcon {
+  float: right;
+}
+.searchResults a {
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+  display: block;
+}
+.searchResults a:hover {
+  background-color: #aaa;
+}
 .nav,
 .pagination,
 .carousel,
