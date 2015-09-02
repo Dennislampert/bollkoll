@@ -82,7 +82,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/userprofilesettings.html",
       controller: "profileSettingsController"
     })
-    .when("/search/:searchResult", {
+    .when("/search/:searchParams", {
       templateUrl: "partials/searchResult.html",
       controller: "searchResultController"
     })

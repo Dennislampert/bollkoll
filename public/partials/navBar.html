@@ -22,14 +22,18 @@
         <li class="home-link">
           <a ng-href="/" ng-click="nav.collapsed = true">Hem</a>
         </li>
-
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search here...">
-            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+      </ul>
+      <form class="navbar-form navbar-right" role="search" ng-controller="headerController">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search here..." ng-model="term">
+            <span class="input-group-btn">
+              <a class="btn btn-default" ng-href="/search/{{ term }}"><i class="fa fa-search"></i></a>
+            </span>
           </div>
-        </form>
-        
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
         <li ng-if="!headerUser">
           <a ng-href="/loggain" ng-click="nav.collapsed = true">Logga in</a>
           

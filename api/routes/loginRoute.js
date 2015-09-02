@@ -32,10 +32,12 @@ module.exports = function(mongoose) {
         res.json(data);
       });
     } else if (req.method == "DELETE") {
-      req.session.destroy(function(err) {
+      delete req.session.user;
+      res.json(true);
+     /* req.session.destroy(function(err) {
         if(err) { throw err; }
         res.json(true);
-      });
+      });*/
     } else {
       res.json({error: "failed hard!"});
     }

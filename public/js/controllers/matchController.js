@@ -5,11 +5,14 @@ app.controller("matchController",
   // console.log("hallelujah!")
 
   var regionAndDivisionId = {};
+  var regionName;
 
   $scope.saveIT = function() {
     Match.create({
       homeTeamId: $scope.homeTeam._id,
+      // homeTeamName: ,
       guestTeamId: $scope.guestTeam._id,
+      // guestTeamName: ,
       place: $scope.match.place,
       date: $scope.match.date,
       time: $scope.match.time,
@@ -17,6 +20,7 @@ app.controller("matchController",
       guestResults: 0,
       finishedGame: 0,
       regionId: regionAndDivisionId.regionId,
+      regionName: regionName,
       division: regionAndDivisionId.division
     });
   };
@@ -69,13 +73,14 @@ app.controller("matchController",
 
     }
     regionAndDivisionId.regionId = answer[0]._id;
+    regionName = answer[0].regionName;
     regionAndDivisionId.division = $routeParams.division;
 
     Team.get(
       regionAndDivisionId, function(teams){
         $scope.homeTeams = teams;
         $scope.guestTeams = teams;
-
+        console.log("$scope.homeTeams: ", $scope.homeTeams);
         // Populate by several properties by separating them with space in string
         regionAndDivisionId._populate = "homeTeamId guestTeamId";
         

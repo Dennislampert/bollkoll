@@ -11,6 +11,15 @@
   .nav .home-link {
     display: block;
   }
+  .searchBoxFix {
+    width: 100%;
+  }
+  .searchBoxFix input {
+    width: 90%;
+  }
+  .searchBoxFix button {
+    width: 10%;
+  }
 }
 .main-menu {
   max-height: 300px;
@@ -93,7 +102,7 @@ tr td {
   vertical-align: middle !important;
   border-top: 0px !important;
 }
-h2 {
+.h2 {
   color: #fff;
   background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
 }
@@ -125,7 +134,7 @@ tr:nth-child(odd) {
 }
 .chat {
   background-color: #fff;
-  height: 700px;
+  height: 75vh;
   margin-bottom: 50px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -255,6 +264,7 @@ tr:nth-child(odd) {
   color: #555 !important;
   text-align: center;
 }
+
 /* line 19, styles/cropme.scss */
 cropme {
   display: block;
@@ -388,6 +398,70 @@ cropme img {
 /* line 121, styles/cropme.scss */
 cropme canvas {
   display: none;
+}
+.wrapper {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 30px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.inlogg {
+  margin-bottom: 10px;
+}
+.firstInput {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.middleFornInput {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.lastInput {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin-bottom: 10px;
+}
+.has-error {
+  margin-bottom: 1px;
+}
+.searchResults .arrowIcon {
+  float: right;
+}
+.searchResults a {
+  text-decoration: none;
+  color: #000;
+  text-align: center;
+  display: block;
+}
+.searchResults a:hover {
+  background-color: #aaa;
 }
 .nav,
 .pagination,
