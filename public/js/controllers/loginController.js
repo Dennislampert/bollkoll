@@ -14,7 +14,7 @@ app.controller("loginController",
   $scope.login = function(){
 
     Login.login($scope.userInfo, function(data) {
-      // console.log("logged in: ", data);
+      console.log("logged in: ", data);
       $location.url(data._id ? "/" : "/loggain/fel");
       $route.reload();
     });

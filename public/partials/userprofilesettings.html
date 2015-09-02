@@ -4,10 +4,21 @@
 
 			<tr>
 				<td>
-					<img src="{{image.path}}" class="img-circle col-xs-12 col-sm-12 col-md-12 col-lg-3">
+					<cropme
+			        width="300"
+			        height="300"
+			        ratio="1"
+			        icon-class=""
+			        type="png"
+			        destination-width="300"
+			        id="cropme1"
+			        ok-label="Ok"
+			        <!-- src="images/myImage.jpg" -->
+			        cancel-label="Cancel">
+			    </cropme>
 				</td>
 				<td>
-					<form ng-submit="upload()">
+	<!-- 				<form ng-submit="upload()">
 					      <div class="form-group">
 					        <input id="files" type="file" class="form-control" ngf-select ng-model="files">
 					      </div>
@@ -15,7 +26,7 @@
 					      <div class="form-group">
 					        <button class="btn btn-success">Upload!</button>
 					      </div>
-					</form>
+					</form> -->
 				</td>
 			</tr>
 
