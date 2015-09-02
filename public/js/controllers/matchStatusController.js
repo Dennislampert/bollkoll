@@ -46,6 +46,28 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
 
 
 
+
+    $scope.allMessages = [];
+    $scope.displayedMsgs = $scope.allMessages;
+    // the long-poler shall only run during the  day that the match is being played..
+    function longpoller2(timestamp) {
+      console.log( "divisionId: ",divisionId,"matchId: ",matchId);
+      var url = "/api/chatlong/"+ divisionId+ "/" + timestamp + "/" + matchId;
+      $http.get(url).success(function(data) {
+        console.log("data: ",data);
+        if (!data.hasOwnProperty("status")) {
+          data.forEach(function(msg) {
+            timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
+
+            $scope.allMessages.push(msg);
+          });
+          goToBottom();
+          longpoller2(timestamp);
+        }
+      });
+    }
+
+
     // $scope.chatInfo = {};
     //   $scope.send = function() {
     //     $scope.chatInfo.userId = Login.user._id;

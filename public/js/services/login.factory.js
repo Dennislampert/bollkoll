@@ -39,7 +39,7 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
         // let the entire app know we are logged out
         $rootScope.$broadcast("logout");
 
-        callback && callback(loginObj.user);
+        // callback && callback(loginObj.user);
       });
     },
     getCurrentUser: function() {

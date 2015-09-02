@@ -3,27 +3,22 @@ app.controller("dataController", ["$scope", "$http", "Match", "Region", "Team", 
   $http.get("/api/getData").then(parseData);
 
   function parseData(data){
-    console.log("data: ",data);
     var events = data.data.events;
     var counter = -1;
-
+    var count = 0;
     function parseOneEvent(){
       counter++;
       if(counter >= events.length){return;}
       var event = events[counter];
-      console.log("event: ",event);
       var regionName = event.league.name.split(" ")[2];
       var division = event.league.name.split(" ")[1];
-      var regionPath = regionName.toLowerCase().replace('å','a').replace('ä', 'a').replace('ö', 'o');
+      var regionPath = regionName.toLowerCase().replace('å','a').replace('ä', 'a').replace('ö', 'o').replace(' ', '');
 
       Region.get({"regionPath":regionPath},function(regionInfo){
-
-        
-        
         if (regionInfo.length === 0 ){
           Region.create({
-            regionPath: regionPath, // halsingland
-            regionName: regionName, // Hälsingland
+            regionPath: regionPath, // ex.halsingland
+            regionName: regionName, // ex.Hälsingland
           },function(created){
           });
         }
@@ -85,15 +80,14 @@ app.controller("dataController", ["$scope", "$http", "Match", "Region", "Team", 
               thisGuestTeam = thisGuestTeam === null ? theHomeTeam:thisGuestTeam;
 
               if (thisHomeTeam && thisGuestTeam){
-                console.log("creating match..");
                 var time = new Date(event.startDate);
                 var stringTime = ""+time+"";
-                var month = time.getMonth();
+                var month = (time.getMonth()+1) + '';
+                if(month.length<2){month = "0" + month;}
                 var splitTime = stringTime.split(" ");
                 var date = ""+splitTime[3]+"-"+month+"-"+splitTime[2];
                 var hours = ""+splitTime[4]+"";
-                console.log(date ," ", hours);
-
+                count ++;
                 Match.create({
                   homeTeamId: thisHomeTeam[0]._id,
                   guestTeamId: thisGuestTeam[0]._id,
@@ -114,133 +108,9 @@ app.controller("dataController", ["$scope", "$http", "Match", "Region", "Team", 
           });
         }
       });
-
-
-      // Check som things in the database
-      // Create some things, then in your "last" callback do
-      
     }
     parseOneEvent();
   }
 
 }]);
-// thi is make
 
-
-/*
-
-
-
-  $scope.activateLongpoller = function(){
-    if (stopLongpoler === true){
-      console.log(" stopLongpoler was true");
-      stopLongpoler = false;
-      $scope.tags.conversation = "";
-      $scope.allMessages = [];
-      longpoller(0);
-
-    }
-  };
-
-  $scope.readHashConversation = function(message){
-    $scope.allMessages = [];
-    var time = new Date(message.date).getTime();
-    console.log("time: ",time);
-    Message.get({date:{$gte:time}, matchId:$routeParams.matchId, _populate:"userId"},function(afterHastags){
-      afterHastags.forEach(function(theConversation) {
-        console.log("gte: ",theConversation);
-        $scope.tags.conversation = "";
-        $scope.allMessages.push(theConversation);
-      });
-    });
-
-  };
-
-
-  $scope.yourUser = Login.user;
-  console.log("currentUser: ", $scope.yourUser);
-
-  $scope.chatInfo = {};
-  var stopLongpoler = false;
-
-  $scope.send = function() {
-    $scope.chatInfo.userId = Login.user._id;
-    var hashOrgArray = "";
-    // remember star befor /g !!!!
-    hashOrgArray = $scope.chatInfo.content.match(/#[a-zA-ZäöåÄÖÅ0-9]/g);
-
-    // filter out duplicates in array.. By Nodebite
-    if (hashOrgArray){
-
-      Array.prototype.hashOrgArray = function(){
-        var a = this;
-        return a.filter(function(val,index){
-          return a.indexOf(val) == index && val.length>1;
-        });
-      };
-      $scope.chatInfo.hastag = hashOrgArray.hashOrgArray();
-    }
-
-    $scope.chatInfo.matchId = $routeParams.matchId;
-    Message.create($scope.chatInfo, function(data) {
-      console.log("lolek", data);
-      delete $scope.chatInfo.hastag;
-    });
-  };
-  $scope.allMessages = [];
-  function longpoller(timestamp) {
-    if (stopLongpoler === false){
-      console.log("/api/chatlong/"+$routeParams.matchId+"/" + timestamp + "/");
-      $http.get("/api/chatlong/"+$routeParams.matchId+"/" + timestamp + "/").success(function(data) {
-        console.log("data", data);
-        data.forEach(function(msg) {
-          timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
-          $scope.allMessages.push(msg);
-        });
-        longpoller(timestamp);
-      });
-    }
-
-  }
-  longpoller(0);
-
-  var openOrColse = false;
-  //get hastage like this (function like modulus %word%)
-  $scope.tagSearch = function(searchTag){
-    stopLongpoler = true;
-    $scope.allMessages = [];
-    Message.get({hastag:searchTag, matchId:$routeParams.matchId, _populate:"userId"},function(hastags){
-      hastags.forEach(function(hashtag) {
-        $scope.tags.conversation = "läs mer";
-        $scope.allMessages.push(hashtag);
-      });
-    });
-  };
-
-  $scope.tags = {};
-  $scope.findHastags = function(){
-    stopLongpoler = true;
-    $scope.allMessages = [];
-    Message.get({hastag:$scope.tags.searchTag, matchId:$routeParams.matchId, _populate:"userId"},function(hastags){
-      hastags.forEach(function(hashtag) {
-        $scope.tags.conversation = "läs mer";
-        $scope.allMessages.push(hashtag);
-      });
-    });
-  };
-
-
-
-
-
-
-
-}]);
-
-
-
-
-
-
-
-*/

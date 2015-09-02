@@ -1,29 +1,30 @@
+<div class="container">
+  <img src="{{image.path}}" class="img-circle col-xs-12 col-sm-12 col-md-12 col-lg-3">
 
-<img src="{{image.path}}" class="img-circle col-xs-12 col-sm-12 col-md-12 col-lg-3">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-<h3>Namn: {{user.fname}} {{user.lname}}</h3>
-<h3>Användarnamn: {{user.username}}</h3>
-
-
+  <h3>Namn: {{user.fname}} {{user.lname}}</h3>
+  <h3>Användarnamn: {{user.username}}</h3>
 
 
 
 
 
-<form ng-submit="upload()">
-  
-      <div class="form-group">
-        <input id="files" type="file" class="form-control" accept="image/*"  ngf-select ng-model="files">
-
-      </div>
-
-      <div class="form-group">
-        <button class="btn btn-success">Upload!</button>
-      </div>
-</form>
 
 
+  <form ng-submit="upload()">
+    
+        <div class="form-group">
+          <input id="files" type="file" class="form-control" accept="image/*"  ngf-select ng-model="files">
 
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-success">Upload!</button>
+        </div>
+  </form>
+
+
+
+  </div>
 </div>

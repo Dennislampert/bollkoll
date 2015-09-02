@@ -1,34 +1,33 @@
+<div class="container">
+  <div class="chat">
+    <div class="row">
 
-<div class="chat">
-  <div class="row">
-
-    <div  class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in displayedMsgs">
-      <div ng-if="!message.status">
-        <p ng-class="{true:'chatUser', false:'yourChatUser'}[message.userId._id !== yourUser._id]">({{message.date | date:'HH:mm'}}) {{message.userId.username}}:</p>
-        <p class="{{message.userId._id !== yourUser._id ? 'otherChatDate' : 'yourChatDate'}}"></p>
-        <p id="{{message.userId._id !== yourUser._id ? 'otherChat' : 'yourChat'}}">{{message.content}}</p>
-        <button ng-click="readHashConversation(message)" ng-if="tags.conversation" class="{{message.userId._id !== yourUser._id ? 'otherChatDate' : 'yourChatDate'}}">{{tags.conversation}}</button>
+      <div  class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in displayedMsgs">
+        <div ng-if="!message.status">
+          <p ng-class="{true:'chatUser', false:'yourChatUser'}[message.userId._id !== yourUser._id]">({{message.date | date:'HH:mm'}}) {{message.userId.username}}:</p>
+          <p class="{{message.userId._id !== yourUser._id ? 'otherChatDate' : 'yourChatDate'}}"></p>
+          <p id="{{message.userId._id !== yourUser._id ? 'otherChat' : 'yourChat'}}">{{message.content}}</p>
+          <button ng-click="readHashConversation(message)" ng-if="tags.conversation" class="{{message.userId._id !== yourUser._id ? 'otherChatDate' : 'yourChatDate'}}">{{tags.conversation}}</button>
+        </div>
+        <div ng-if="message.status">
+          <p class="statusUser">({{message.date | date:'HH:mm'}}) Match Bot:</p>
+          <!-- <p class="statusDate">{{message.date | date:'hh:mm'}}</p> -->
+          <p id="statusMessage">{{message.content}}</p>
+        </div>
       </div>
-      <div ng-if="message.status">
-        <p class="statusUser">({{message.date | date:'HH:mm'}}) Match Bot:</p>
-        <!-- <p class="statusDate">{{message.date | date:'hh:mm'}}</p> -->
-        <p id="statusMessage">{{message.content}}</p>
-
-      </div>
-      <div id="{{message._id}}">{{message._id}}</div>
     </div>
   </div>
-</div>
-<div class="messageToSend">
-  <form class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xs-offset-0 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 input-group" ng-submit="send()">
-    <textarea type="text" ng-keydown="activateLongpoller()" ng-model="chatInfo.content" class="form-control chatTextBox" placeholder="Skriv meddelande här...">
-    </textarea>
-    <span class="input-group-btn">
-    <button type="submit" class="btn btn-default chatTextSubmit"><i class="fa fa-paper-plane"></i></button>
-    <button type="button" class="searchTag btn btn-default chatTextSubmit" ng-click="tagSearch(chatInfo.content)" >
-      #<i class="fa fa-search"></i>
-    </button>
-    </span>
-  </form>
-</div>
+  <div class="messageToSend">
+    <form class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xs-offset-0 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 input-group" ng-submit="send()">
+      <textarea ng-enter="send()" type="text" ng-keydown="activateLongpoller()" ng-model="chatInfo.content" class="form-control chatTextBox" placeholder="Skriv meddelande här...">
+      </textarea>
+      <span class="input-group-btn">
+      <button type="submit" class="btn btn-default chatTextSubmit"><i class="fa fa-paper-plane"></i></button>
+      <button type="button" class="searchTag btn btn-default chatTextSubmit" ng-click="tagSearch(chatInfo.content)" >
+        #<i class="fa fa-search"></i>
+      </button>
+      </span>
+    </form>
+  </div>
 
+</div>
