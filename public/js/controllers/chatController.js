@@ -5,16 +5,17 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
 
   $scope.displayedMsgs = [];
 
-  var goToBottom = function() {
-    console.log("goToBottom!");
-    var scrollid = $scope.displayedMsgs.pop();
-    console.log("scrollid: ",scrollid._id);
-    var objDiv = document.getElementById("scrollid._id");
-    objDiv.scrollTop = objDiv.scrollHeight;
-  };
+  // var goToBottom = function() {
+  //   console.log("goToBottom!");
+  //   var scrollid = $scope.displayedMsgs.pop();
+  //   console.log("scrollid: ",scrollid._id);
+  //   var objDiv = document.getElementById("scrollid._id");
+  //   objDiv.scrollTop = objDiv.scrollHeight;
+  // };
 
   console.log("routeParams: ", $routeParams);
   $scope.yourUser = Login.user;
+  window.user = Login.user;
 
   if($routeParams.regionPath){
     Region.get({regionPath:$routeParams.regionPath},function(regionId){
@@ -35,6 +36,7 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
 
     $scope.send = function() {
       $scope.chatInfo.userId = Login.user._id;
+      $scope.chatInfo.userName = Login.user.username;
       $scope.chatInfo.matchId = matchId.length > 1 ? matchId : null;
       $scope.chatInfo.divisionId = divisionId;
       var hashOrgArray = "";
@@ -72,7 +74,7 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
 
             $scope.allMessages.push(msg);
           });
-          goToBottom();
+          // goToBottom();
           longpoller(timestamp);
         }
       });
