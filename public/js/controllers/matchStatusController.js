@@ -1,4 +1,4 @@
-app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Region", "Team", "Message", "Login", function($scope, $routeParams, Match, Region, Team, Message, Login){
+app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Region", "Team", "Message", "Login", "modalService", function($scope, $routeParams, Match, Region, Team, Message, Login, modalService){
 
     function duplicateResults(){
          $scope.oldResults = {
@@ -44,7 +44,23 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     $scope.increaseDisallowed = function(x){return x > 30;};
 
 
+    $scope.finishGame = function() {
+        $scope.match.$update(duplicateResults);
 
+        modalService.open({
+            templateUrl:'partials/globalalert.html',
+            controller: 'uploadAlertController',
+            resolve: {
+              message: function() {
+                $scope.message = {};
+                $scope.message.header = "Avsluta match?";
+                $scope.message.msg = "Är du säker på att du vill avsluta matchen?";
+                $scope.message.msgBtn = "Avsluta match!";
+                return $scope.message;
+              }
+            }
+        });
+    };
 
     // $scope.chatInfo = {};
     //   $scope.send = function() {
