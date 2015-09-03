@@ -1,8 +1,14 @@
-<div class="container">
+<div>
   <div class="row col-lg-6 col-md-8 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
     <div class="searchResults panel panel-default" ng-if="usersFound.length">
-      <div class="panel-heading" ng-click="showUsers = !showUsers"><h3>Användare ({{ usersFound.length }})<span class="arrowIcon" ng-if="showUsers">▼</span><span ng-if="!showUsers" class="arrowIcon">▲</span></h3></div>
-      <div class="panel-body" ng-if="showUsers">
+      <div class="panel-heading noselect" ng-click="showUsers = !showUsers">
+        <h3>
+          Användare ({{ usersFound.length }})
+          <span class="arrowIcon" ng-if="showUsers">▼</span>
+          <span ng-if="!showUsers" class="arrowIcon">▲</span>
+        </h3>
+      </div>
+      <div class="panel-body" ng-class="{'hide-body': !showUsers}">
         <div class="panel panel-default" ng-repeat="user in usersFound">
           <div class="panel-heading">{{ user.username }}</div>
           <div class="panel-body">
@@ -16,26 +22,42 @@
       </div>
     </div>
     <div class="searchResults panel panel-default" ng-if="matchesFound.length">
-      <div class="panel-heading" ng-click="showMatches = !showMatches"><h3>Matcher ({{ matchesFound.length }}) <span class="arrowIcon" ng-if="showMatches">▼</span><span ng-if="!showMatches" class="arrowIcon">▲</span></h3></div>
-      <div class="panel-body" ng-if="showMatches">    
-        <div class="matchResult" ng-repeat="match in matchesFound">
-          <a ng-href="/{{match._id}}/chat">
-            {{ match.homeTeamName + " " + match.homeResults }} - {{ match.guestResults + " " + match.guestTeamName}}
-          </a>
+      <div class="panel-heading noselect" ng-click="showMatches = !showMatches">
+        <h3>Matcher ({{ matchesFound.length }})
+          <span class="arrowIcon" ng-if="showMatches">▼</span>
+          <span ng-if="!showMatches" class="arrowIcon">▲</span>
+        </h3>
+      </div>
+      <div class="panel-body" ng-class="{'hide-body': !showMatches}">    
+        <div class="matchResult panel panel-default" ng-repeat="match in matchesFound">
+          <div class="panel-heading">{{ match.homeTeamName }} vs. {{ match.guestTeamName}}</div>
+          <div class="panel-body">
+            <!-- <a ng-href="/{{match._id}}/chat"> -->
+              <p>{{ match.homeTeamName + " " + match.homeResults }} - {{ match.guestResults + " " + match.guestTeamName}}</p>
+            <!-- </a> -->
+            <button class="btn btn-success pull-right" ng-click=" redirect('/anvandare/' + user.username)">Till profil</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="searchResults panel panel-default" ng-if="messagesFound.length">
-      <div class="panel-heading" ng-click="showMessages = !showMessages"><h3>Meddelande ({{ messagesFound.length }})<span class="arrowIcon" ng-if="showMessages">▼</span><span ng-if="!showMessages" class="arrowIcon">▲</span></h3></div>
-      <div class="panel-body" ng-if="showMessages"> 
-        <div class="messageResult" ng-repeat="message in messagesFound">
-          <a>
-            {{ message.content }}
-          </a>
+      <div class="panel-heading noselect" ng-click="showMessages = !showMessages">
+        <h3>Meddelande ({{ messagesFound.length }})
+          <span class="arrowIcon" ng-if="showMessages">▼</span>
+          <span ng-if="!showMessages" class="arrowIcon">▲</span>
+        </h3>
+      </div>
+      <div class="panel-body" ng-class="{'hide-body': !showMessages}"> 
+        <div class="messageResult panel panel-default" ng-repeat="message in messagesFound">
+          <div class="panel-heading">({{ message.date | date : 'yyyy-MM-dd HH:mm:ss' }}) {{ message.userName }}:</div>
+          <div class="panel-body">
+            <p>{{ message.content }}</p>
+
+            <button class="btn btn-success pull-right" ng-click=" redirect('/anvandare/' + user.username)">Till profil</button>
+          </div>
+          
         </div>
       </div>
     </div>
   </div>
-  <div class="searchParams">
-  </div>  
 </div>
