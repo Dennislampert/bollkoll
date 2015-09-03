@@ -52,20 +52,20 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
     }
  };
   // check if logged in every 30 seconds
-  loginObj.check(function() {
-    if (!loginObj.user._id) {
-      // let the entire app know we are logged out
-      $rootScope.$broadcast("logout");
-    }
-  });
-  setInterval(function() {
-    loginObj.check(function(){
-    if (!loginObj.user._id) {
-      // let the entire app know we are logged out
-      $rootScope.$broadcast("logout");
-    }
+  function checkLogin(){
+    loginObj.check(function() {
+      if (!loginObj.user._id) {
+        // let the entire app know we are logged out
+        $rootScope.$broadcast("logout");
+      }
+      else {
+        $rootScope.$broadcast("login");
+      }
     });
-  }, 30000);
+  }
+
+  checkLogin();
+  setInterval(checkLogin, 30000);
 
 
   return loginObj;

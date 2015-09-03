@@ -77,14 +77,11 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
             scroll.gotoBottom();
           }
 
-
           longpoller(timestamp);
 
         }
       });
     }
-
-
 
     $scope.activateLongpoller = function(){
       if ($scope.readSearch === true){
@@ -126,14 +123,4 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
     longpoller(0);
 
   }
-
-
-
-
-
-
-
-
-
-
 }]);

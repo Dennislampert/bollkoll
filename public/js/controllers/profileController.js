@@ -2,14 +2,14 @@ app.controller("profileController",
   ["$scope", "$http", "$location", "$routeParams", "modalService", "FileUploader", "Login", "User", "File", "NavTitleChange",
   function($scope, $http, $location, $routeParams, modalService, FileUploader, Login, User, File, NavTitleChange) {
   NavTitleChange($routeParams.username + "s profil");
-  // reference(!) to Login.user object
-  // (logged in user data)
+
   $scope.onlineUser = Login.user;
     
   var stop = true;
   $scope.upload = function() {
     if (stop === false){
       User.get({username: $routeParams.username}, function(userprofile){
+        console.log("$scope.files: ",$scope.files);
         FileUploader($scope.files).success(function(data) {
           $scope.user = userprofile[0];
           loadImage();
@@ -19,14 +19,12 @@ app.controller("profileController",
   };
 
   $scope.$watch('files', function (file) {
-    
     if (file){
-      console.log("file: ",file);
       if (file.length){
         var fileType = file[0].name.split('.').pop().toLowerCase();
         if (fileType == "jpg" || fileType == "png" || fileType == "jpeg"){
           stop = false;
-          console.log("uploaded image is okey");
+
         }else{
           // send bastis modual
 
@@ -43,7 +41,7 @@ app.controller("profileController",
             },
             close: function(closeData) {
               $scope.files = [];
-              console.log("the modal closed, and sent back ", closeData);
+
             }
            });
         }

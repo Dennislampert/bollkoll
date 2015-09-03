@@ -80,7 +80,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/userprofile.html",
       controller: "profileController"
     })
-    .when("/search/:searchResult", {
+    .when("/search/:searchParams", {
       templateUrl: "partials/searchResult.html",
       controller: "searchResultController"
     })

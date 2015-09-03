@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row col-lg-6 col-md-8 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
+    <div class="searchResults panel panel-default" ng-if="usersFound.length">
+      <div class="panel-heading" ng-click="showUsers = !showUsers"><h3>Användare ({{ usersFound.length }})<span class="arrowIcon" ng-if="showUsers">▼</span><span ng-if="!showUsers" class="arrowIcon">▲</span></h3></div>
+      <div class="panel-body" ng-if="showUsers">
+        <div class="panel panel-default" ng-repeat="user in usersFound">
+          <div class="panel-heading">{{ user.username }}</div>
+          <div class="panel-body">
+            <p>First name: {{ user.fname }}</p>
+            <p>Last name: {{ user.lname }}</p>
+            <button class="btn btn-success pull-right" ng-click=" redirect('/anvandare/' + user.username)">Till profil</button>
+          </div>
+        </div>
+        <div class="userResult">
+        </div>
+      </div>
+    </div>
+    <div class="searchResults panel panel-default" ng-if="matchesFound.length">
+      <div class="panel-heading" ng-click="showMatches = !showMatches"><h3>Matcher ({{ matchesFound.length }}) <span class="arrowIcon" ng-if="showMatches">▼</span><span ng-if="!showMatches" class="arrowIcon">▲</span></h3></div>
+      <div class="panel-body" ng-if="showMatches">    
+        <div class="matchResult" ng-repeat="match in matchesFound">
+          <a ng-href="/{{match._id}}/chat">
+            {{ match.homeTeamName + " " + match.homeResults }} - {{ match.guestResults + " " + match.guestTeamName}}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="searchResults panel panel-default" ng-if="messagesFound.length">
+      <div class="panel-heading" ng-click="showMessages = !showMessages"><h3>Meddelande ({{ messagesFound.length }})<span class="arrowIcon" ng-if="showMessages">▼</span><span ng-if="!showMessages" class="arrowIcon">▲</span></h3></div>
+      <div class="panel-body" ng-if="showMessages"> 
+        <div class="messageResult" ng-repeat="message in messagesFound">
+          <a>
+            {{ message.content }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="searchParams">
+  </div>  
+</div>

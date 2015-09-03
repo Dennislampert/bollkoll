@@ -2,14 +2,16 @@ app.controller("matchController",
   ["$scope", "$routeParams", "Match", "Region", "Team", "Login", "NavTitleChange",
   function($scope, $routeParams, Match, Region, Team, Login, NavTitleChange) {
   NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
-  // console.log("hallelujah!")
 
   var regionAndDivisionId = {};
+  var regionName;
 
   $scope.saveIT = function() {
     Match.create({
       homeTeamId: $scope.homeTeam._id,
+      // homeTeamName: ,
       guestTeamId: $scope.guestTeam._id,
+      // guestTeamName: ,
       place: $scope.match.place,
       date: $scope.match.date,
       time: $scope.match.time,
@@ -17,10 +19,10 @@ app.controller("matchController",
       guestResults: 0,
       finishedGame: 0,
       regionId: regionAndDivisionId.regionId,
+      regionName: regionName,
       division: regionAndDivisionId.division
     });
   };
-
 
 
   var time = new Date();
@@ -49,7 +51,6 @@ app.controller("matchController",
       (condition == "afterToday" && date > today);
   };
 
-
   var currentId;
   $scope.currentlyShownResult = function(idToCheck){
     return idToCheck != currentId;
@@ -63,19 +64,19 @@ app.controller("matchController",
   Region.get({regionPath: $routeParams.region}, function(answer){
     console.log("what is the answer?: ", answer);
     if (!answer.length) {
-      // ABORT IF NO REGION FOUND (FOR NOW)
       alert("NO REGION FOUND :/");
       return;
 
     }
     regionAndDivisionId.regionId = answer[0]._id;
+    regionName = answer[0].regionName;
     regionAndDivisionId.division = $routeParams.division;
 
     Team.get(
       regionAndDivisionId, function(teams){
         $scope.homeTeams = teams;
         $scope.guestTeams = teams;
-
+        console.log("$scope.homeTeams: ", $scope.homeTeams);
         // Populate by several properties by separating them with space in string
         regionAndDivisionId._populate = "homeTeamId guestTeamId";
         
