@@ -66,10 +66,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/table.html",
       controller: "tableController"
     })
-    .when("/:matchId/chat", {
-      templateUrl: "partials/chat.html",
-      controller: "chatController"
-    })
+    // .when("/:matchId/chat", {
+    //   templateUrl: "partials/chat.html",
+    //   controller: "chatController"
+    // })
     .when("/data", {
       templateUrl: "partials/chat.html",
       controller: "dataController"

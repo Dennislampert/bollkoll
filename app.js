@@ -54,7 +54,7 @@ var app = m.express();
 app.use(m.bodyparser.json());
 app.use(m.bodyparser.urlencoded({ extended: false }));
 app.use(m.cookieparser());
-app.use(m.expresssession({resave: true, saveUninitialized: false, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: new Date(Date.now() + 604800000) }}));
+app.use(m.expresssession({unset: "destroy", resave: true, saveUninitialized: false, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: new Date(Date.now() + 604800000) }}));
 app.use(m.express.static(m.path.join(__dirname, 'public')));
 
 // Route everything "else" to angular (in html5mode)
