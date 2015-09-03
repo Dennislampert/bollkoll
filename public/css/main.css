@@ -264,7 +264,67 @@ tr:nth-child(odd) {
   color: #555 !important;
   text-align: center;
 }
-
+.wrapper {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+.form-signin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 30px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.inlogg {
+  margin-bottom: 10px;
+}
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+}
+.mainMenu {
+  padding: 0;
+}
+tr td {
+  color: #fff;
+  height: 30px;
+  vertical-align: middle !important;
+  border-top: 0px !important;
+}
+h2 {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+tr:nth-child(even) {
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+tr:nth-child(odd) {
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg") !important;
+}
+.blackText {
+  color: #000;
+}
+.table {
+  margin-bottom: 0px;
+}
 /* line 19, styles/cropme.scss */
 cropme {
   display: block;
@@ -398,39 +458,6 @@ cropme img {
 /* line 121, styles/cropme.scss */
 cropme canvas {
   display: none;
-}
-.wrapper {
-  margin-top: 80px;
-  margin-bottom: 80px;
-}
-.form-signin {
-  max-width: 380px;
-  padding: 15px 35px 45px;
-  margin: 0 auto;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 30px;
-}
-.form-signin .checkbox {
-  font-weight: normal;
-}
-.form-signin .form-control {
-  position: relative;
-  font-size: 16px;
-  height: auto;
-  padding: 10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.inlogg {
-  margin-bottom: 10px;
 }
 .firstInput {
   margin-bottom: -1px;
