@@ -10,7 +10,7 @@
         <button ng-click="readHashConversation(message)" ng-if="tags.conversation" class="{{message.userId._id !== yourUser._id ? 'otherChatDate' : 'yourChatDate'}}">{{tags.conversation}}</button>
       </div>
       <div ng-if="message.status">
-        <p class="statusUser">({{message.date | date:'HH:mm'}}) Match Bot:</p>
+        <p class="statusUser">({{message.date | date:'HH:mm'}}) {{message.userId.username}}:</p>
         <!-- <p class="statusDate">{{message.date | date:'hh:mm'}}</p> -->
         <p id="statusMessage">{{message.content}}</p>
 
