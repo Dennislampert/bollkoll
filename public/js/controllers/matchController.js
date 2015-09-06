@@ -98,7 +98,6 @@ app.controller("matchController",
             setTimeout(function() {
               $location.hash($routeParams.matchId);
               $anchorScroll();
-
             },500);
           }
         );

@@ -1,6 +1,6 @@
 app.controller("searchResultController",
-  ["$http", "$scope", "$routeParams", "$location", "User", "Message", "Match", "NavTitleChange",
-  function($http, $scope, $routeParams, $location, User, Message, Match, NavTitleChange) {
+  ["$http", "$scope", "$routeParams", "$location", "$anchorScroll", "User", "Message", "Match", "NavTitleChange",
+  function($http, $scope, $routeParams, $location, $anchorScroll, User, Message, Match, NavTitleChange) {
     NavTitleChange("Sök");
 
   	console.log("params", $routeParams.searchParams);
@@ -57,7 +57,14 @@ app.controller("searchResultController",
         console.log("$scope.messagesFound: ", $scope.messagesFound);
     });
 
+    $scope.scrollToAnchor = function(anchor) {
+      setTimeout(function() {
+        $location.hash(anchor);
+        $anchorScroll();
+      },300);
+    };
+
     $scope.redirect = function(path){
       $location.path(path);
-    }
+    };
 }]);

@@ -1,7 +1,8 @@
 <div>
   <div class="row col-lg-6 col-md-8 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
+
     <div id="users" class="searchResults panel panel-default" ng-if="usersFound.length">
-      <div class="panel-heading noselect" ng-click="showUsers = !showUsers;">
+      <div class="panel-heading noselect" ng-click="showUsers = !showUsers; scrollToAnchor('users')">
         <h3>
           Användare ({{ usersFound.length }})
           <span class="arrowIcon" ng-if="showUsers">▼</span>
@@ -21,8 +22,9 @@
         </div>
       </div>
     </div>
-    <div class="searchResults panel panel-default" ng-if="matchesFound.length">
-      <div class="panel-heading noselect" ng-click="showMatches = !showMatches">
+
+    <div id="matches" class="searchResults panel panel-default" ng-if="matchesFound.length">
+      <div class="panel-heading noselect" ng-click="showMatches = !showMatches; scrollToAnchor('matches')">
         <h3>Matcher ({{ matchesFound.length }})
           <span class="arrowIcon" ng-if="showMatches">▼</span>
           <span ng-if="!showMatches" class="arrowIcon">▲</span>
@@ -36,15 +38,16 @@
             <!-- <a ng-href="/{{match._id}}/chat"> -->
               <p>Hemma: {{ match.homeTeamName + " - " + match.homeResults }} poäng</p>
               <p>Borta: {{ match.guestTeamName + " - " + match.guestResults }} poäng</p>
-              {{match}}
+
             <!-- </a> -->
             <button class="btn btn-success pull-right" ng-click="redirect('/' + match.regionId.regionPath + '/' + match.division + '/spelschema/' + match._id)">Till match</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="searchResults panel panel-default" ng-if="messagesFound.length">
-      <div class="panel-heading noselect" ng-click="showMessages = !showMessages">
+
+    <div id="messages" class="searchResults panel panel-default" ng-if="messagesFound.length">
+      <div class="panel-heading noselect" ng-click="showMessages = !showMessages; scrollToAnchor('messages')">
         <h3>Meddelande ({{ messagesFound.length }})
           <span class="arrowIcon" ng-if="showMessages">▼</span>
           <span ng-if="!showMessages" class="arrowIcon">▲</span>
@@ -56,8 +59,10 @@
           <div class="panel-heading noselect" ng-click="showMessage = !showMessage">({{ message.date | date : 'yyyy-MM-dd HH:mm:ss' }}) {{ message.userName }}:</div>
           <div class="panel-body" ng-class="{'hide-body': !showMessage}">
             <p>{{ message.content }}</p>
-            {{message}}
+            
             <button class="btn btn-success pull-right" ng-click=" redirect('/' + message.regionId.regionPath + '/' + message.division + '/chat/' + message._id)">Till meddelande</button>
+            <button class="btn btn-success pull-right" ng-click=" redirect('/anvandare/' + message.userId.username)">Till profil</button>
+            
           </div>
         </div>
       </div>
