@@ -1,6 +1,6 @@
 app.controller("matchController",
-  ["$scope", "$routeParams", "Match", "Region", "Team", "Login", "NavTitleChange",
-  function($scope, $routeParams, Match, Region, Team, Login, NavTitleChange) {
+  ["$scope", "$routeParams", "$anchorScroll", "Match", "Region", "Team", "Login", "NavTitleChange", "$location",
+  function($scope, $routeParams, $anchorScroll, Match, Region, Team, Login, NavTitleChange, $location) {
   // NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
   // console.log("hallelujah!")
 
@@ -95,6 +95,11 @@ app.controller("matchController",
             window.games = games;
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
+            setTimeout(function() {
+              $location.hash($routeParams.matchId);
+              $anchorScroll();
+
+            },500);
           }
         );
       }
