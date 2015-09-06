@@ -2,7 +2,12 @@
   border-color: #080808;
   overflow: hidden;
 
-  &>.panel-heading {
+  & .panel {
+    border-color: #080808;
+    overflow: hidden;
+  }
+
+  & .panel-heading {
     cursor: pointer;
     color: #9d9d9d;
     background-color: #222222;
@@ -12,7 +17,7 @@
       color: #FFFFFF;
     }
   }
-  &>.panel-body {
+  & .panel-body {
     max-height: 500px;
     overflow: auto;
     &.hide-body {
@@ -21,8 +26,8 @@
       overflow: hidden;
     }
 
-    -webkit-transition: max-height 0.3s, padding 0.3s;
-    transition: max-height 0.3s, padding 0.3s;
+    -webkit-transition: max-height 0.2s, padding 0.2s;
+    transition: max-height 0.2s, padding 0.2s;
   }
   .arrowIcon {
     float: right;

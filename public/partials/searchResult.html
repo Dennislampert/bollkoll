@@ -1,7 +1,7 @@
 <div>
   <div class="row col-lg-6 col-md-8 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
-    <div class="searchResults panel panel-default" ng-if="usersFound.length">
-      <div class="panel-heading noselect" ng-click="showUsers = !showUsers">
+    <div id="users" class="searchResults panel panel-default" ng-if="usersFound.length">
+      <div class="panel-heading noselect" ng-click="showUsers = !showUsers;">
         <h3>
           Användare ({{ usersFound.length }})
           <span class="arrowIcon" ng-if="showUsers">▼</span>
@@ -9,9 +9,9 @@
         </h3>
       </div>
       <div class="panel-body" ng-class="{'hide-body': !showUsers}">
-        <div class="panel panel-default" ng-repeat="user in usersFound">
-          <div class="panel-heading">{{ user.username }}</div>
-          <div class="panel-body">
+        <div class="panel panel-default" ng-repeat="user in usersFound" ng-init="user.showUser = false">
+          <div class="panel-heading noselect" ng-click="showUser = !showUser">{{ user.username }}</div>
+          <div class="panel-body" ng-class="{'hide-body': !showUser}">
             <p>First name: {{ user.fname }}</p>
             <p>Last name: {{ user.lname }}</p>
             <button class="btn btn-success pull-right" ng-click=" redirect('/anvandare/' + user.username)">Till profil</button>
@@ -28,14 +28,17 @@
           <span ng-if="!showMatches" class="arrowIcon">▲</span>
         </h3>
       </div>
-      <div class="panel-body" ng-class="{'hide-body': !showMatches}">    
-        <div class="matchResult panel panel-default" ng-repeat="match in matchesFound">
-          <div class="panel-heading">{{ match.homeTeamName }} vs. {{ match.guestTeamName}}</div>
-          <div class="panel-body">
+      <div class="panel-body" ng-class="{'hide-body': !showMatches}">
+
+        <div class="matchResult panel panel-default" ng-repeat="match in matchesFound" ng-init="user.showMatch = false">
+          <div class="panel-heading noselect" ng-click="showMatch = !showMatch">({{ match.date }}) {{ match.homeTeamName }} vs. {{ match.guestTeamName}}</div>
+          <div class="panel-body" ng-class="{'hide-body': !showMatch}">
             <!-- <a ng-href="/{{match._id}}/chat"> -->
-              <p>{{ match.homeTeamName + " " + match.homeResults }} - {{ match.guestResults + " " + match.guestTeamName}}</p>
+              <p>Hemma: {{ match.homeTeamName + " - " + match.homeResults }} poäng</p>
+              <p>Borta: {{ match.guestTeamName + " - " + match.guestResults }} poäng</p>
+              {{match}}
             <!-- </a> -->
-            <button class="btn btn-success pull-right" ng-click=" redirect('/anvandare/' + user.username)">Till profil</button>
+            <button class="btn btn-success pull-right" ng-click="redirect('/' + match.regionId.regionPath + '/' + match.division + '/spelschema/' + match._id)">Till match</button>
           </div>
         </div>
       </div>
@@ -48,14 +51,14 @@
         </h3>
       </div>
       <div class="panel-body" ng-class="{'hide-body': !showMessages}"> 
-        <div class="messageResult panel panel-default" ng-repeat="message in messagesFound">
-          <div class="panel-heading">({{ message.date | date : 'yyyy-MM-dd HH:mm:ss' }}) {{ message.userName }}:</div>
-          <div class="panel-body">
-            <p>{{ message.content }}</p>
 
-            <button class="btn btn-success pull-right" ng-click=" redirect('/anvandare/' + user.username)">Till profil</button>
+        <div class="messageResult panel panel-default" ng-repeat="message in messagesFound" ng-init="message.showMessage = false">
+          <div class="panel-heading noselect" ng-click="showMessage = !showMessage">({{ message.date | date : 'yyyy-MM-dd HH:mm:ss' }}) {{ message.userName }}:</div>
+          <div class="panel-body" ng-class="{'hide-body': !showMessage}">
+            <p>{{ message.content }}</p>
+            {{message}}
+            <button class="btn btn-success pull-right" ng-click=" redirect('/' + message.regionId.regionPath + '/' + message.division + '/chat/' + message._id)">Till meddelande</button>
           </div>
-          
         </div>
       </div>
     </div>
