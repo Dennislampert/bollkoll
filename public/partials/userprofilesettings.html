@@ -1,0 +1,78 @@
+<section>
+	<div class="matchTopTeam">
+    <table style="width:100%" class="table table-striped table-condensed">
+
+			<tr>
+				<td>
+					<cropme
+		        width="300"
+		        height="300"
+		        ratio="1"
+		        icon-class=""
+		        type="jpg"
+		        destination-width="300"
+		        id="cropme1"
+		        ok-label="Ok"
+		        src="chosenPicture"
+		        cancel-label="Cancel">
+		    	</cropme>
+				</td>
+				<td>
+	<!-- 				<form ng-submit="upload()">
+					      <div class="form-group">
+					        <input id="files" type="file" class="form-control" ngf-select ng-model="files">
+					      </div>
+
+					      <div class="form-group">
+					        <button class="btn btn-success">Upload!</button>
+					      </div>
+					</form> -->
+				</td>
+			</tr>
+
+      <tr>
+				<td>Förnamn: </td>
+				<td>{{user.fname}} </td>
+			</tr>
+
+      <tr>
+		    <td>Efternamn: </td>
+		    <td>{{user.lname}} </td>
+		  </tr>
+
+      <tr>
+		    <td>Användarnamn: </td>
+		    <td>{{user.username}} </td>
+		  </tr>
+
+      <tr>
+		    <td></td>
+		    <td></td>
+		  </tr>
+
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+
+			<tr>
+				<td>
+					<form class="defaultButtons" ng-submit="defaultResults()">
+					  <button class="blackText" type="submit"> Ångra </button>
+					</form>
+				</td>
+				<td>
+					<form class="saveButton" ng-submit="saveResults()">
+						<button class="blackText" type="submit"> Spara </button>
+					</form>
+				</td>
+			</tr>
+			
+    </table>
+	</div>
+</section>

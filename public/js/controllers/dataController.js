@@ -96,7 +96,9 @@ app.controller("dataController", ["$scope", "$http", "Match", "Region", "Team", 
 
                 Match.create({
                   homeTeamId: thisHomeTeam[0]._id,
+                  homeTeamName: thisHomeTeam[0].name,
                   guestTeamId: thisGuestTeam[0]._id,
+                  guestTeamName: thisGuestTeam[0].name,
                   time: hours,
                   date: date,
                   homeResults: 0,

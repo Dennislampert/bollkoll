@@ -1,0 +1,41 @@
+.searchResults {
+  border-color: #080808;
+  overflow: hidden;
+
+  & .panel {
+    border-color: #080808;
+    overflow: hidden;
+  }
+
+  & .panel-heading {
+    cursor: pointer;
+    color: #9d9d9d;
+    background-color: #222222;
+    border: none;
+    &:hover {
+      background-color: #4D4D4D;
+      color: #FFFFFF;
+    }
+  }
+  & .panel-body {
+    max-height: 500px;
+    overflow: auto;
+    &.hide-body {
+      max-height: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    -webkit-transition: max-height 0.2s, padding 0.2s;
+    transition: max-height 0.2s, padding 0.2s;
+  }
+  .arrowIcon {
+    float: right;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    display: block;
+  }
+} 

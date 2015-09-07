@@ -1,11 +1,35 @@
-app.controller("headerController", ["$scope", function($scope) {
-  $scope.navCollapsed = true;
+app.controller("headerController",
+  ["$scope", "$location", "$rootScope", "Login", "$window", "modalService",
+  function($scope, $location, $rootScope, Login, $window, modalService) {
+  $scope.headerUser = Login.getCurrentUser();
+  $scope.nav  = {
+    collapsed: true
+  };
+
   var origNavText = 'Hem';
   $scope.navText = origNavText;
   $scope.$on("titleChange", function(e, data) {
     $scope.navText = data || origNavText;
-  })
+  });
+
+  $rootScope.$on('login', function() {
+    $scope.headerUser = Login.getCurrentUser();
+  });
+
+  $rootScope.$on('logout', function() {
+    $scope.headerUser = Login.getCurrentUser();
+  });
+
   $scope.collapseToggle = function() {
-    $scope.navCollapsed = !$scope.navCollapsed;
+    $scope.nav.collapsed = !$scope.nav.collapsed;
+  };
+
+  $scope.logout = function() {
+    Login.logout();
+  };
+  $scope.search = function(seachTerm) {
+    if (seachTerm) {
+      $location.path("/search/" + seachTerm);
+    }
   };
 }]);

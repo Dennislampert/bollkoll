@@ -7,19 +7,54 @@ var m = {};
   "cookie-parser",
   "body-parser",
   "express-session",
+  "fs",
+  "path",
   "./mongresto"
 ].forEach(function(x){
   // store required modules in m
   m[x.replace(/\W/g,'')] = require(x);
 });
 
+
+// function resize(publicPath, filename, uploadPath) {
+//   var resizeCrop = require('resize-crop');
+//   /*publicPath = publicPath.replace(/\\/g, "\\\\");
+//   uploadPath = uploadPath.replace(/\\/g, "\\\\");*/
+//    console.log("publicPath: ", publicPath);
+//    console.log("uploadPath: ", uploadPath);
+//   resizeCrop(
+//       {
+//           format: filename.split(".").pop(),
+//           src: m.path.normalize(process.cwd() + publicPath),
+//           dest: m.path.normalize(process.cwd() + uploadPath),
+//           height: 250,
+//           width: 250,
+//           gravity: "center"
+//       },
+//       function( err, filePath ){
+//         if (err) { throw err; }
+//           console.log("done!");
+//           console.log("filePath!: ", filePath);
+//           console.log("err: ", err);
+//       }
+//   );
+// }
+
+// resize(
+//   '/public/files/catinshock.jpg',
+//   'slide_414978_5264748_compressed.jpg',
+//   '/public/files/resize-catinshock.jpg')
+
+m['fs'].exists('C:\\NODE.JS\\bollkoll\\public\\files\\slide_414978_5264748_compressed.jpg', function(data){
+  console.log("d", data);
+});
 // Standard Express boiler plate code
 var app = m.express();
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(m.bodyparser.json());
 app.use(m.bodyparser.urlencoded({ extended: false }));
 app.use(m.cookieparser());
-app.use(m.expresssession({resave: true, saveUninitialized: false, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: new Date(Date.now() + 604800000) }}));
+app.use(m.expresssession({unset: "destroy", resave: true, saveUninitialized: false, secret: 'SOMERANDOMSECRETHERE', cookie: { maxAge: new Date(Date.now() + 604800000) }}));
 app.use(m.express.static(m.path.join(__dirname, 'public')));
 
 // Route everything "else" to angular (in html5mode)
