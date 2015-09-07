@@ -1,15 +1,13 @@
 
-<img src="{{image.path}}" class="img-circle col-xs-12 col-sm-12 col-md-12 col-lg-3">
 
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	<h3>Namn: {{user.fname}} {{user.lname}}</h3>
 	<h3>Användarnamn: {{user.username}}</h3>
 </div>
 
+ -->
 
-<form class="saveButton" ng-submit="editProfile()">
-  <button class="blackText" type="submit"> Editera bild </button>
-</form>
 
 
 <section>
@@ -18,18 +16,7 @@
 
       <tr>
         <td>
-          <cropme
-            width="300"
-            height="300"
-            ratio="1"
-            icon-class=""
-            type="jpg"
-            destination-width="300"
-            id="cropme1"
-            ok-label="Ok"
-            src="chosenPicture"
-            cancel-label="Cancel">
-          </cropme>
+          <img src="{{image.path}}" class="img-circle col-xs-12 col-sm-12 col-md-12 col-lg-3">
         </td>
       </tr>
 
@@ -43,6 +30,14 @@
 
       <tr>
         <td>Användarnamn: {{user.username}}</td>
+      </tr>
+
+      <tr>
+        <td>
+          <form class="saveButton" ng-submit="editProfile()">
+            <button class="blackText" type="submit"> Editera bild </button>
+          </form>
+        </td>
       </tr>
 
     </table>
