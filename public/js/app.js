@@ -46,6 +46,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/chat.html",
       controller: "chatController"
     })
+    .when("/:regionPath/:division/chat/:messageId", {
+      templateUrl: "partials/chat.html",
+      controller: "chatController"
+    })
     // Get the ":values" as an object on the $routprovider and use it in the controller..
 
     // when "localhost:3000/skane/4/spelschema"
@@ -54,6 +58,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "matchController"
     })
     .when("/:region/:division/spelschema", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/:region/:division/spelschema/:matchId", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })

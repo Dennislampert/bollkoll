@@ -25,34 +25,11 @@ app.controller("headerController",
   };
 
   $scope.logout = function() {
-    // $scope.headerUser = Login.logout();
-    // $location.path("/");
     Login.logout();
   };
-  $scope.search = function(){
-  	if($scope.term == false) {
-  	  console.log("its false, I'm sorry");
-  	}
-  	else {
-	  var searchParams = {
-	  	searchAll: $scope.term
-	  };
-
-	  var searchUrl = '/search';
-	  var first = true;
-	  for (var i in searchParams) {
-	  	searchUrl += first ? '?' : '&';
-	  	searchUrl += i + '=' + searchParams[i];
-	  	first = false;
-	  }
-
-	  searchUrl = encodeURI(searchUrl);
-	  console.log("searchUrl", searchUrl);
-	  $location.url(searchUrl);
-	  // $http.get($scope.term).success(function(result) {
-	  //    console.log("result");
-	  //    return result.data;
-	  // });
-	}
-  }
+  $scope.search = function(seachTerm) {
+    if (seachTerm) {
+      $location.path("/search/" + seachTerm);
+    }
+  };
 }]);
