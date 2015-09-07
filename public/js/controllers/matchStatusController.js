@@ -13,7 +13,8 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     },duplicateResults);
 
 
-	$scope.saveResults = function(){
+
+    $scope.saveResults = function(){
 
         $scope.match.$update(duplicateResults);
 
@@ -35,7 +36,7 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
         Message.create($scope.chatInfo, function(resultsInChat) {
           console.log("resultsInChat", resultsInChat);
         });
-	};
+    };
 
 
     $scope.increaseGoals = function (match,prop){match[prop]++;};
@@ -43,10 +44,9 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     $scope.decreaseDisallowed = function(x){return x < 1;};
     $scope.increaseDisallowed = function(x){return x > 30;};
 
-
     $scope.finishGame = function() {
         $scope.match.$update(duplicateResults);
-
+        $scope.match.finishedGame = true;
         modalService.open({
             templateUrl:'partials/globalalert.html',
             controller: 'uploadAlertController',
