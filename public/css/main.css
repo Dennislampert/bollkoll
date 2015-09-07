@@ -240,6 +240,7 @@ tr:nth-child(odd) {
 .chat .statusDate,
 .chat #statusMessage {
   margin-left: 5px;
+  margin-top: 10px;
 }
 .chat .yourChatDate,
 .chat .yourChatUser,

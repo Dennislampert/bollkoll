@@ -69,6 +69,10 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
       });
     };
 
+    
+
+    var scrolledToAnchor = false;
+
     $scope.allMessages = [];
     $scope.displayedMsgs = $scope.allMessages;
     function longpoller(timestamp) {
@@ -81,6 +85,8 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
             timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
 
             $scope.allMessages.push(msg);
+
+            scrollToAnchor();
           });
           // goToBottom();
           longpoller(timestamp);
@@ -88,6 +94,16 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
       });
     }
 
+    function scrollToAnchor() {
+      if (!scrolledToAnchor) {
+        setTimeout(function() {
+          $location.hash($routeParams.messageId);
+          $anchorScroll();
+          scrolledToAnchor = true;
+        },500);
+        
+      }
+    }
 
 
     $scope.activateLongpoller = function(){
