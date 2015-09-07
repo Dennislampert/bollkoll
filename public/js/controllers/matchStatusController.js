@@ -1,4 +1,4 @@
-app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Region", "Team", "Message", "Login", function($scope, $routeParams, Match, Region, Team, Message, Login){
+app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Region", "Team", "Message", "Login", "modalService", function($scope, $routeParams, Match, Region, Team, Message, Login, modalService){
 
     function duplicateResults(){
          $scope.oldResults = {
@@ -13,7 +13,8 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     },duplicateResults);
 
 
-	$scope.saveResults = function(){
+
+    $scope.saveResults = function(){
 
         $scope.match.$update(duplicateResults);
 
@@ -35,7 +36,7 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
         Message.create($scope.chatInfo, function(resultsInChat) {
           console.log("resultsInChat", resultsInChat);
         });
-	};
+    };
 
 
     $scope.increaseGoals = function (match,prop){match[prop]++;};
@@ -43,9 +44,38 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     $scope.decreaseDisallowed = function(x){return x < 1;};
     $scope.increaseDisallowed = function(x){return x > 30;};
 
+    $scope.finishGame = function() {
+        $scope.match.$update(duplicateResults);
+        $scope.match.finishedGame = true;
+        modalService.open({
+            templateUrl:'partials/globalalert.html',
+            controller: 'matchAlertController',
+            resolve: {
+              message: function() {
+                $scope.message = {};
+                $scope.message.header = "Avsluta match?";
+                $scope.message.msg = "Är du säker på att du vill avsluta matchen?";
+                $scope.message.msgBtn = "Avsluta match!";
+                return $scope.message;
+              }
+            }
+        });
 
+    };
+}]);
+    
+app.controller('matchAlertController', ["$scope", "$modalInstance", "message", "$location", "$routeParams", function($scope, $modalInstance, message, $location, $routeParams) {
+  $scope.message = message;
 
+  $scope.cancel = function() {
+    $modalInstance.close();
+    $location.path('/' + $routeParams.region + "/" + $routeParams.division + "/spelschema");
+  };
 
+  $scope.redirect = function() {
+    $modalInstance.close({msg: "I CLOSED!"});
+  };
+}]);
     // $scope.chatInfo = {};
     //   $scope.send = function() {
     //     $scope.chatInfo.userId = Login.user._id;
@@ -54,4 +84,3 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     //       console.log("lolek", data);
     //     });
     //   };
-}]);

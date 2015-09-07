@@ -63,6 +63,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcba6a', endColorstr='#a85802', GradientType=0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: 30px;
 }
 th {
   color: #fff;
@@ -243,6 +244,7 @@ tr:nth-child(odd) {
   margin-right: 5px;
 }
 .messageToSend {
+  width: 100%;
   position: fixed;
   bottom: 0;
 }
@@ -539,9 +541,11 @@ cropme canvas {
   -ms-user-select: none;
   user-select: none;
 }
+
 body {
   background-image: url("../backround_images/flashlight.jpg");
 }
+
 body {
   background-size: cover !important;
 }

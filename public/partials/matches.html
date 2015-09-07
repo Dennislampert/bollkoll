@@ -13,7 +13,7 @@
         <tr class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
-          <td><a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"></a></td>
+          <a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"><td></td></a>
           <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
         </tr>
         <tr ng-hide="currentlyShownResult(game._id)" >
@@ -41,7 +41,7 @@
         <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
-          <td><a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"></a></td>
+          <a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"><td></td></a>
           <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
         </tr>
         <tr ng-hide="currentlyShownResult(game._id)" >
@@ -74,11 +74,10 @@
           <td ng-click="toggleID(game._id)">{{ game.homeResults }}  -  {{ game.guestResults }} </td>
           <td ng-click="toggleID(game._id)">{{ game.time }}</td>
           <td><a ng-href="/{{game._id}}/chat" class="fa fontaw fa-comments "></a></td>
-          <td><a ng-href="/{{games.regionPath}}/{{game.division}}/{{game._id}}/matchstatus" class="fa fontaw fa-pencil-square-o"></i></td>
+          <td><a ng-if="!game.finishedGame" ng-href="/{{games.regionPath}}/{{game.division}}/{{game._id}}/matchstatus" class="fa fontaw fa-pencil-square-o"></i></td>
         </tr>
       </tbody>
     </table>
-
 
     <div class="panel-body">
       <p>En förklaring till alla symboler</p>
