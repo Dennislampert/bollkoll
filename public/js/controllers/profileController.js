@@ -4,17 +4,18 @@ app.controller("profileController",
   NavTitleChange($routeParams.username + "s profil");
   // reference(!) to Login.user object
   // (logged in user data)
-  $scope.onlineUser = Login.user;
+  $scope.user = Login.user;
     
   var stop = true;
+
   $scope.upload = function() {
     if (stop === false){
       User.get({username: $routeParams.username}, function(userprofile){
-        FileUploader($scope.files).success(function(data) {
-          $scope.user = userprofile[0];
-          loadImage();
-        });
+      FileUploader($scope.files).success(function(data) {
+        console.log("saved files, public path: ", data);
+        $scope.uploadedFilePath = data;
       });
+    });
     }
   };
 
@@ -24,7 +25,7 @@ app.controller("profileController",
       console.log("file: ",file);
       if (file.length){
         var fileType = file[0].name.split('.').pop().toLowerCase();
-        if (fileType == "jpg" || fileType == "png" || fileType == "jpeg"){
+        if (fileType == "jpg" || fileType == "png"){
           stop = false;
           console.log("uploaded image is okey");
         }else{

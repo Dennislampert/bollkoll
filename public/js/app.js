@@ -1,5 +1,5 @@
 //app declaration and dependency injection
-var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ngFileUpload", "ui.bootstrap"]);
+var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ngFileUpload", "ui.bootstrap", "ngSanitize", "ngTouch", "superswipe", "cropme"]);
 
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
@@ -46,6 +46,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/chat.html",
       controller: "chatController"
     })
+    .when("/:regionPath/:division/chat/:messageId", {
+      templateUrl: "partials/chat.html",
+      controller: "chatController"
+    })
     // Get the ":values" as an object on the $routprovider and use it in the controller..
 
     // when "localhost:3000/skane/4/spelschema"
@@ -54,6 +58,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "matchController"
     })
     .when("/:region/:division/spelschema", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
+    .when("/:region/:division/spelschema/:matchId", {
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
@@ -78,10 +86,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/table.html",
       controller: "tableController"
     })
-    .when("/:matchId/chat", {
-      templateUrl: "partials/chat.html",
-      controller: "chatController"
-    })
+    // .when("/:matchId/chat", {
+    //   templateUrl: "partials/chat.html",
+    //   controller: "chatController"
+    // })
     .when("/data", {
       templateUrl: "partials/chat.html",
       controller: "dataController"
@@ -89,6 +97,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .when("/anvandare/:username", {
       templateUrl: "partials/userprofile.html",
       controller: "profileController"
+    })
+    .when("/anvandare/:username/settings", {
+      templateUrl: "partials/userprofilesettings.html",
+      controller: "profileSettingsController"
     })
     .when("/search/:searchParams", {
       templateUrl: "partials/searchResult.html",

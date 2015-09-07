@@ -63,7 +63,7 @@
         <th><i class="fa fontaw fa-info-circle "></i></th>
         <th><i class="fa fontaw fa-pencil-square-o"></i></th>
       </tr>
-      <tbody ng-repeat="game in games" ng-if="dateCompare(game.date,'beforeToday')">
+      <tbody ng-repeat="game in games"  id="{{game._id}}" ng-if="dateCompare(game.date,'beforeToday')">
         <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
