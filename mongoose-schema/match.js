@@ -8,6 +8,7 @@ module.exports = function(mongoose){
     date: String,
     homeResults: Number,
     guestResults: Number,
+    lastScoreTime: { type : Date, default: Date.now },
     finishedGame: Boolean,
     regionId: {type: mongoose.Schema.Types.ObjectId, ref: "Region"},
     regionName: String,

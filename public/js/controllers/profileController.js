@@ -26,8 +26,6 @@ app.controller("profileController",
           stop = false;
 
         }else{
-          // send bastis modual
-
           $scope.errorbox = modalService.open({
             templateUrl:'partials/globalalert.html',
             controller: 'uploadAlertController',
@@ -41,7 +39,6 @@ app.controller("profileController",
             },
             close: function(closeData) {
               $scope.files = [];
-
             }
            });
         }

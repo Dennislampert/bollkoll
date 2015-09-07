@@ -69,6 +69,7 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
         if (!data.hasOwnProperty("status")) {
           
           data.forEach(function(msg) {
+            console.log("timestamp: ",timestamp, " msg.date: ",msg.date);
             timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
 
             $scope.allMessages.push(msg);

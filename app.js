@@ -30,16 +30,16 @@ app.get('/api/getdata', function (req, res) {
   var url = 'http://api.everysport.com/v1/leagues/69659/events?limit=1000&apikey=878d16e28ab6fe3a5f40035efbadca69';
 
   http.get(url, function(resp) {
-      var body = '';
+    var body = '';
 
-      resp.on('data', function(chunk) {
-          body += chunk;
-      });
-      resp.on('end', function() {
-          // var Response = JSON.parse(body);
-          // console.log("Got response: ", body);
-      res.json(JSON.parse(body));
-      });
+    resp.on('data', function(chunk) {
+        body += chunk;
+    });
+    resp.on('end', function() {
+        // var Response = JSON.parse(body);
+        // console.log("Got response: ", body);
+    res.json(JSON.parse(body));
+    });
   }).on('error', function(e) {
       console.log("Got error: ", e);
   });
@@ -66,7 +66,7 @@ var options = {
     },
     {
       method: "get",
-      path: "resultWatch/:divisionId/:latestKnownMessageId/:matchId",
+      path: "resultWatch/:lastScoreTime/:matchId",
       controller: require('./api/routes/resultWatch')
     }
   ]
