@@ -51,10 +51,8 @@
 .main-menu li a:hover {
   background-color: #4D4D4D;
 }
-body {
-  background-image: url("../backround_images/flashlight.jpg");
-}
 .fontaw {
+  padding-left: 20%;
   background: #fcba6a;
   background: -moz-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
   background: -webkit-gradient(left top, left bottom, color-stop(0%, #fcba6a), color-stop(47%, #ff9715), color-stop(53%, #ff920a), color-stop(63%, #ff8400), color-stop(74%, #eb7d00), color-stop(85%, #de7a00), color-stop(100%, #a85802));
@@ -89,9 +87,6 @@ th {
 }
 .alertBtn {
   margin-top: 3vh;
-}
-body {
-  background-image: url("../backround_images/flashlight.jpg");
 }
 .mainMenu {
   padding: 0;
@@ -299,8 +294,14 @@ tr:nth-child(odd) {
 .inlogg {
   margin-bottom: 10px;
 }
-body {
-  background-image: url("../backround_images/flashlight.jpg");
+.img-circle {
+  border-radius: 0%;
+  width: 300px;
+}
+@media (max-width: 360px) {
+  .img-circle {
+    width: 100%;
+  }
 }
 .mainMenu {
   padding: 0;
@@ -539,4 +540,12 @@ cropme canvas {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+}
+
+body {
+  background-size: cover !important;
 }
