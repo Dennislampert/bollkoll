@@ -13,7 +13,7 @@
         <tr class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
-          <td><a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"></a></td>
+          <a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"><td></td></a>
           <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
         </tr>
         <tr ng-hide="currentlyShownResult(game._id)" >
@@ -41,7 +41,7 @@
         <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
-          <td><a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"></a></td>
+          <a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"><td></td></a>
           <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
         </tr>
         <tr ng-hide="currentlyShownResult(game._id)" >
