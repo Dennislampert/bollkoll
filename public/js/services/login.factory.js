@@ -66,7 +66,7 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
       }
     });
 
-  }, 30000);
+  }
   console.log('route', $route);
 
   function waitForRoute(callback) {
@@ -118,7 +118,6 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
     }
 
   });
-  }
 
   checkLogin();
   setInterval(checkLogin, 30000);
