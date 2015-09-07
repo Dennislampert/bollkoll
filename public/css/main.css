@@ -51,9 +51,6 @@
 .main-menu li a:hover {
   background-color: #4D4D4D;
 }
-body {
-  background-image: url("../backround_images/flashlight.jpg");
-}
 .fontaw {
   padding-left: 20%;
   background: #fcba6a;
@@ -89,9 +86,6 @@ th {
 }
 .alertBtn {
   margin-top: 3vh;
-}
-body {
-  background-image: url("../backround_images/flashlight.jpg");
 }
 .mainMenu {
   padding: 0;
@@ -306,9 +300,6 @@ tr:nth-child(odd) {
   .img-circle {
     width: 100%;
   }
-}
-body {
-  background-image: url("../backround_images/flashlight.jpg");
 }
 .mainMenu {
   padding: 0;
@@ -547,4 +538,11 @@ cropme canvas {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+}
+body {
+  background-size: cover !important;
+  background-repeat: none;
 }
