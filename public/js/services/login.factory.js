@@ -99,6 +99,7 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
       !loginObj.user._id &&
       next.$$route.loggedIn
     ) {
+      return;
       event.preventDefault();
       modalService.open({
         templateUrl:'partials/globalalert.html',

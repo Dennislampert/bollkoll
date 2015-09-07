@@ -49,7 +49,7 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
         $scope.match.finishedGame = true;
         modalService.open({
             templateUrl:'partials/globalalert.html',
-            controller: 'uploadAlertController',
+            controller: 'matchAlertController',
             resolve: {
               message: function() {
                 $scope.message = {};
@@ -60,8 +60,22 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
               }
             }
         });
-    };
 
+    };
+}]);
+    
+app.controller('matchAlertController', ["$scope", "$modalInstance", "message", "$location", "$routeParams", function($scope, $modalInstance, message, $location, $routeParams) {
+  $scope.message = message;
+
+  $scope.cancel = function() {
+    $modalInstance.close();
+    $location.path('/' + $routeParams.region + "/" + $routeParams.division + "/spelschema");
+  };
+
+  $scope.redirect = function() {
+    $modalInstance.close({msg: "I CLOSED!"});
+  };
+}]);
     // $scope.chatInfo = {};
     //   $scope.send = function() {
     //     $scope.chatInfo.userId = Login.user._id;
@@ -70,4 +84,3 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     //       console.log("lolek", data);
     //     });
     //   };
-}]);
