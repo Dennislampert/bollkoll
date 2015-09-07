@@ -55,7 +55,6 @@ body {
   background-image: url("../backround_images/flashlight.jpg");
 }
 .fontaw {
-  padding-left: 20%;
   background: #fcba6a;
   background: -moz-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
   background: -webkit-gradient(left top, left bottom, color-stop(0%, #fcba6a), color-stop(47%, #ff9715), color-stop(53%, #ff920a), color-stop(63%, #ff8400), color-stop(74%, #eb7d00), color-stop(85%, #de7a00), color-stop(100%, #a85802));
@@ -66,6 +65,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcba6a', endColorstr='#a85802', GradientType=0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: 30px;
 }
 th {
   color: #fff;
@@ -259,24 +259,6 @@ tr:nth-child(odd) {
 }
 .messageToSend .chatTextSubmit {
   height: 50px;
-}
-@media (min-width: 1200px) {
-  .submitForm {
-    width: 33.33333333%;
-    margin-left: 25%;
-  }
-}
-@media (min-width: 992px) {
-  .submitForm {
-    width: 33.33333333%;
-    margin-left: 25%;
-  }
-}
-@media (min-width: 768px) {
-  .submitForm {
-    width: 25%;
-    margin-left: 25%;
-  }
 }
 .alert-warning {
   border-color: #ff4900 !important;
@@ -498,6 +480,35 @@ cropme canvas {
 .has-error {
   margin-bottom: 1px;
 }
+.searchResults {
+  border-color: #080808;
+  overflow: hidden;
+}
+.searchResults .panel {
+  border-color: #080808;
+  overflow: hidden;
+}
+.searchResults .panel-heading {
+  cursor: pointer;
+  color: #9d9d9d;
+  background-color: #222222;
+  border: none;
+}
+.searchResults .panel-heading:hover {
+  background-color: #4D4D4D;
+  color: #FFFFFF;
+}
+.searchResults .panel-body {
+  max-height: 500px;
+  overflow: auto;
+  -webkit-transition: max-height 0.2s, padding 0.2s;
+  transition: max-height 0.2s, padding 0.2s;
+}
+.searchResults .panel-body.hide-body {
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
 .searchResults .arrowIcon {
   float: right;
 }
@@ -506,9 +517,6 @@ cropme canvas {
   color: #000;
   text-align: center;
   display: block;
-}
-.searchResults a:hover {
-  background-color: #aaa;
 }
 .nav,
 .pagination,
@@ -523,4 +531,12 @@ cropme canvas {
 .hide-element {
   max-height: 0;
   opacity: 0;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
