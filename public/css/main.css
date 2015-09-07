@@ -72,6 +72,21 @@ th {
   background-image: url("../backround_images/greey-light.jpg");
   cursor: pointer;
 }
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+}
+.mainMenu {
+  padding: 0;
+}
+h3 {
+  color: #fff;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
+.editprofile {
+  color: #fff;
+  padding: 10px;
+  background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
+}
 .alertBox {
   position: fixed;
   margin-top: 22vh;
