@@ -89,10 +89,15 @@ app.controller("matchController",
         
         Match.get(
           regionAndDivisionId, function(games){
+            console.log("games: ", games);
             games.regionPath = $routeParams.region;
             $scope.date = date.split("-").join("");
             $scope.games = games;
             window.games = games;
+            for (var i = 0; i < games.length; i++) {
+              $scope.finishedGame = games[i].finishedGame;
+              console.log("finishedGame: ", $scope.finishedGame);
+            };
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
             setTimeout(function() {
