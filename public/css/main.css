@@ -297,6 +297,9 @@ tr:nth-child(odd) {
 .inlogg {
   margin-bottom: 10px;
 }
+.img-circle {
+  border-radius: 0%;
+}
 body {
   background-image: url("../backround_images/flashlight.jpg");
 }

@@ -8,5 +8,43 @@
 
 
 <form class="saveButton" ng-submit="editProfile()">
-  <button class="blackText" type="submit"> Spara </button>
+  <button class="blackText" type="submit"> Editera bild </button>
 </form>
+
+
+<section>
+  <div class="matchTopTeam">
+    <table style="width:100%" class="table table-striped table-condensed">
+
+      <tr>
+        <td>
+          <cropme
+            width="300"
+            height="300"
+            ratio="1"
+            icon-class=""
+            type="jpg"
+            destination-width="300"
+            id="cropme1"
+            ok-label="Ok"
+            src="chosenPicture"
+            cancel-label="Cancel">
+          </cropme>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Förnamn: {{user.fname}}</td>
+      </tr>
+
+      <tr>
+        <td>Efternamn: {{user.lname}}</td>
+      </tr>
+
+      <tr>
+        <td>Användarnamn: {{user.username}}</td>
+      </tr>
+
+    </table>
+  </div>
+</section>
