@@ -300,6 +300,12 @@ tr:nth-child(odd) {
 }
 .img-circle {
   border-radius: 0%;
+  width: 300px;
+}
+@media (max-width: 360px) {
+  .img-circle {
+    width: 100%;
+  }
 }
 body {
   background-image: url("../backround_images/flashlight.jpg");
