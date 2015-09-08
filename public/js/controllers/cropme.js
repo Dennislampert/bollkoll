@@ -134,7 +134,7 @@
             img.onerror = function() {
               return scope.$apply(function() {
                 scope.cancel();
-                return scope.dropError = "Unsupported type of image";
+                // return scope.dropError = "Unsupported type of image";
               });
             };
             img.onload = function() {

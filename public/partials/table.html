@@ -18,7 +18,7 @@
           <th>IM</th>
           <th>P</th>
         </tr>
-        <tr ng-repeat="team in getTeams">
+        <tr ng-repeat="team in getTeams | orderBy:'-Points'">
           <td>{{team.name}}</td>
           <td>{{team.gamesPlayed}}</td>
           <td>{{team.gamesWon}}</td>

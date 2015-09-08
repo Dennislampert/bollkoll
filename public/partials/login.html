@@ -1,3 +1,4 @@
+
 <div class="pagewidth wrapper">
   <form class="form-signin" "navbar-form navbar-left" ng-submit="login()" role="search">
     <h2 class="form-signin-heading">Please login</h2>
@@ -6,4 +7,18 @@
     <button class="inlogg btn btn-lg btn-primary btn-block" type="submit">Login</button>  
     <a href="/registrering"><button type="button" class="btn btn-lg btn-primary btn-block">Registrering</button></a>
   </form>
+</div>
+
+
+<!-- <div>
+  <p>{{isLoggedIn}}</p>
+</div>
+ -->
+
+ 
+<div class="alert alert-warning loginErrorMessage" 
+	ng-if="faultyLogin">
+  <strong>Inloggning misslyckades!</strong><br>
+  <p>E-mail adress eller lösenord är fel.</p>
+  <p>Var god försök igen.</p>
 </div>

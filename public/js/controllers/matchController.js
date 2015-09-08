@@ -4,7 +4,6 @@ app.controller("matchController",
   // NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
   // console.log("hallelujah!")
 
-
   var regionAndDivisionId = {};
   var regionName;
 
@@ -25,7 +24,6 @@ app.controller("matchController",
       division: regionAndDivisionId.division
     });
   };
-
 
 
   var time = new Date();
@@ -54,7 +52,6 @@ app.controller("matchController",
       (condition == "afterToday" && date > today);
   };
 
-
   var currentId;
   $scope.currentlyShownResult = function(idToCheck){
     return idToCheck != currentId;
@@ -69,7 +66,6 @@ app.controller("matchController",
 
     console.log("what is the answer?: ", answer);
     if (!answer.length) {
-      // ABORT IF NO REGION FOUND (FOR NOW)
       alert("NO REGION FOUND :/");
       return;
 
@@ -97,7 +93,7 @@ app.controller("matchController",
             for (var i = 0; i < games.length; i++) {
               $scope.finishedGame = games[i].finishedGame;
               console.log("finishedGame: ", $scope.finishedGame);
-            };
+            }
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
             setTimeout(function() {

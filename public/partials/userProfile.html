@@ -1,28 +1,45 @@
+<div class="container">
+  <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <h3>Namn: {{user.fname}} {{user.lname}}</h3>
+    <h3>Användarnamn: {{user.username}}</h3>
+  </div>
 
-<img src="{{image.path}}" class="img-circle col-xs-12 col-sm-12 col-md-12 col-lg-3">
-
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-<h3>Namn: {{user.fname}} {{user.lname}}</h3>
-<h3>Användarnamn: {{user.username}}</h3>
-
-
+   -->
 
 
 
+  <section>
+    <div class="matchTopTeam">
+      <table style="width:100%" class="table table-striped table-condensed">
 
+        <tr>
+          <td>
+            <img src="{{image.path}}" class="img-circle col-xs-12 col-sm-12 col-md-12 col-lg-3">
+          </td>
+        </tr>
 
-<form ng-submit="upload()">
-      <div class="form-group">
-        <input id="files" type="file" class="form-control" accept="image/*"  ngf-select ng-model="files">
+        <tr>
+          <td>Förnamn: {{user.fname}}</td>
+        </tr>
 
-      </div>
+        <tr>
+          <td>Efternamn: {{user.lname}}</td>
+        </tr>
 
-      <div class="form-group">
-        <button class="btn btn-success">Upload!</button>
-      </div>
-</form>
+        <tr>
+          <td>Användarnamn: {{user.username}}</td>
+        </tr>
 
+        <tr>
+          <td>
+            <form class="saveButton" ng-submit="editProfile()">
+              <button class="blackText" type="submit"> Editera bild </button>
+            </form>
+          </td>
+        </tr>
 
-
+      </table>
+    </div>
+  </section>
 </div>
+
