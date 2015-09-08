@@ -1,4 +1,4 @@
-app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootScope, $location){
+app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService", function($http, $rootScope, $location, $route, modalService){
 
   // a function to empty and fill an object
   // without loosing the reference to it
@@ -49,6 +49,9 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
       else {
         return false;
       }
+    },
+    protectRoute: function() {
+      
     }
  };
   // check if logged in every 30 seconds
@@ -62,11 +65,61 @@ app.factory("Login",["$http", "$rootScope", "$location", function($http, $rootSc
         $rootScope.$broadcast("login");
       }
     });
+
   }
+  console.log('route', $route);
+
+  function waitForRoute(callback) {
+    if (!$route.current) {
+      setTimeout(function() {
+        waitForRoute(callback);
+      }, 50);
+      return;
+    }
+    callback();
+  }
+
+  waitForRoute(function() {
+    if (
+      !loginObj.user._id &&
+      $route.current.$$route.loggedIn
+    ) {
+      //event.preventDefault();
+      //event.stopPropagation();
+      $location.path('/');
+      return;
+    }
+  });
+
+  $rootScope.$on('$routeChangeStart', function(event, next) {
+    console.log('route', $route);
+    if (
+      !loginObj.user._id &&
+      next.$$route.loggedIn
+    ) {
+      event.preventDefault();
+      modalService.open({
+        templateUrl:'partials/globalalert.html',
+        controller: 'uploadAlertController',
+        resolve: {
+          message: function() {
+            $rootScope.message = {};
+            $rootScope.message.header = "Du måste vara inloggad";
+            $rootScope.message.msg = "Du behöver vara inloggad för att komma vidare. Var god och logga in.";
+            $rootScope.message.msgBtn = "Stäng";
+            return $rootScope.message;
+          }
+        }
+      });
+      //event.stopPropagation();
+      $location.path('/');
+      return;
+    }
+
+  });
 
   checkLogin();
   setInterval(checkLogin, 30000);
-
 
   return loginObj;
 

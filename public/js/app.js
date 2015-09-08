@@ -1,5 +1,5 @@
 //app declaration and dependency injection
-var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ngFileUpload", "ui.bootstrap"]);
+var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ngFileUpload", "ui.bootstrap", "ngSanitize", "ngTouch", "superswipe", "cropme"]);
 
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
@@ -48,6 +48,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/chat.html",
       controller: "chatController"
     })
+    .when("/:regionPath/:division/chat/:messageId", {
+      templateUrl: "partials/chat.html",
+      controller: "chatController"
+    })
     // Get the ":values" as an object on the $routprovider and use it in the controller..
 
     // Skapa matcher
@@ -59,19 +63,35 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/matches.html",
       controller: "matchController"
     })
+    .when("/:region/:division/spelschema/:matchId", {
+      templateUrl: "partials/matches.html",
+      controller: "matchController"
+    })
     .when("/:region/:division/:gameId/matchstatus", {
       templateUrl: "partials/matchstatus.html",
       controller: "matchStatusController",
-      loggedIn: true
+      loggedIn: true,
+      resolve: {
+        isOkMatch: ["$route", "$location", "Match", function($route, $location, Match) {
+          console.log("fakka u", angular.copy($route.current.params));
+          window.paraaaa = $route;
+          return Match.get({_id:$route.current.params.gameId}, function(data) {
+            console.log("match", data);
+            if (Match.finishedGame) {
+              $location.path('/');
+            }
+          });
+        }]
+      }
     })
     .when("/:region/:division/tabell", {
       templateUrl: "partials/table.html",
       controller: "tableController"
     })
-    .when("/:matchId/chat", {
-      templateUrl: "partials/chat.html",
-      controller: "chatController"
-    })
+    // .when("/:matchId/chat", {
+    //   templateUrl: "partials/chat.html",
+    //   controller: "chatController"
+    // })
     .when("/data", {
       templateUrl: "partials/chat.html",
       controller: "dataController"
@@ -79,6 +99,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .when("/anvandare/:username", {
       templateUrl: "partials/userprofile.html",
       controller: "profileController"
+    })
+    .when("/anvandare/:username/settings", {
+      templateUrl: "partials/userprofilesettings.html",
+      controller: "profileSettingsController"
     })
     .when("/search/:searchParams", {
       templateUrl: "partials/searchResult.html",

@@ -1,6 +1,6 @@
 app.controller("searchResultController",
-  ["$http", "$scope", "$routeParams", "$location", "User", "Message", "Match", "NavTitleChange",
-  function($http, $scope, $routeParams, $location, User, Message, Match, NavTitleChange) {
+  ["$http", "$scope", "$routeParams", "$location", "$anchorScroll", "User", "Message", "Match", "NavTitleChange",
+  function($http, $scope, $routeParams, $location, $anchorScroll, User, Message, Match, NavTitleChange) {
     NavTitleChange("Sök");
 
   	console.log("params", $routeParams.searchParams);
@@ -40,19 +40,31 @@ app.controller("searchResultController",
         $scope.usersFound = result;
         console.log("$scope.usersFound: ", $scope.usersFound);
     });
-    Message.get(searchParams,function(result){
-        $scope.messagesFound = result;
-        console.log("$scope.messagesFound: ", $scope.messagesFound);
-    });
 
-    var mSearch = JSON.parse(JSON.stringify(searchParams)); // copy searchParams object
-    // mSearch._populate = "guestTeamId homeTeamId regionId";
-    Match.get(searchParams,function(result){
+    var maSearch = JSON.parse(JSON.stringify(searchParams)); // copy searchParams object
+    maSearch._populate = "guestTeamId homeTeamId regionId";
+
+    Match.get(maSearch,function(result){
         $scope.matchesFound = result;
         console.log("$scope.matchesFound: ", $scope.matchesFound);
     });
 
+    var meSearch = JSON.parse(JSON.stringify(searchParams)); // copy searchParams object
+    meSearch._populate = "userId regionId";    
+
+    Message.get(meSearch,function(result){
+        $scope.messagesFound = result;
+        console.log("$scope.messagesFound: ", $scope.messagesFound);
+    });
+
+    $scope.scrollToAnchor = function(anchor) {
+      setTimeout(function() {
+        $location.hash(anchor);
+        $anchorScroll();
+      },300);
+    };
+
     $scope.redirect = function(path){
       $location.path(path);
-    }
+    };
 }]);

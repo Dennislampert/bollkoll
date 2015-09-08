@@ -4,6 +4,7 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
 
   $scope.displayedMsgs = [];
 
+
   var scroll = {
     gotoBottom: function() {
       $timeout(function() {
@@ -12,12 +13,20 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
     }
   };
 
+  var globalRegionId;
+  var globalRegionName;
+  console.log("$routeParams.regionPath: ", $routeParams.regionPath);
+  console.log("routeParams: ", $routeParams);
+
   $scope.yourUser = Login.user;
   window.user = Login.user;
 
   if($routeParams.regionPath){
     Region.get({regionPath:$routeParams.regionPath},function(regionId){
       async(0, regionId[0]._id + $routeParams.division);
+      globalRegionId = regionId[0]._id;
+      globalRegionName = regionId[0].regionName;
+
     });
   }
   else{
@@ -37,6 +46,9 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
       $scope.chatInfo.userName = Login.user.username;
       $scope.chatInfo.matchId = matchId.length > 1 ? matchId : null;
       $scope.chatInfo.divisionId = divisionId;
+      $scope.chatInfo.regionId = globalRegionId;
+      $scope.chatInfo.regionName = globalRegionName;
+      $scope.chatInfo.division = $routeParams.division;
       var hashOrgArray = "";
       hashOrgArray = $scope.chatInfo.content.match(/#[a-zA-ZäöåÄÖÅ0-9]*/g);
 
@@ -59,6 +71,10 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
       });
     };
 
+    
+
+    var scrolledToAnchor = false;
+
     $scope.allMessages = [];
     $scope.displayedMsgs = $scope.allMessages;
     function longpoller(timestamp) {
@@ -73,6 +89,7 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
             timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
 
             $scope.allMessages.push(msg);
+
           });
           if (data.length >0){
             scroll.gotoBottom();

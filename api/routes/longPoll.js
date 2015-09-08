@@ -17,25 +17,24 @@ module.exports = function(mongoose) {
           //console.log("message: ", message.req.params);
           var q;
           if (message.matchId.length < 2) {
-            console.log("in if");
+
             q = {
               divisionId: message.divisionId,
               date: {$gt: new Date(message.latestKnownMessageId/1)}
             };
           }
           else {
-            console.log("in else");
             q = {
               matchId:message.matchId,
               divisionId: message.divisionId,
               date:{$gt: new Date(message.latestKnownMessageId/1)}
             };
           }
-          console.log("q: ",q);
+          // console.log("q: ",q);
           mongoose.model("Message").find(q)
             .populate("userId")
             .exec(function(err,data){
-              console.log("data: ",data);
+
               if(!data || data.length === 0){
                 //console.log("no data: ", data);
                 // No new mesages for this client

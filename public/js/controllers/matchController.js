@@ -1,7 +1,9 @@
 app.controller("matchController",
-  ["$scope", "$routeParams", "Match", "Region", "Team", "Login", "NavTitleChange",
-  function($scope, $routeParams, Match, Region, Team, Login, NavTitleChange) {
-  NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
+  ["$scope", "$routeParams", "$anchorScroll", "Match", "Region", "Team", "Login", "NavTitleChange", "$location",
+  function($scope, $routeParams, $anchorScroll, Match, Region, Team, Login, NavTitleChange, $location) {
+  // NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
+  // console.log("hallelujah!")
+
 
   var regionAndDivisionId = {};
   var regionName;
@@ -62,12 +64,14 @@ app.controller("matchController",
 
   // collection.Region hämta regionPath som är lika med routeParams.region
   Region.get({regionPath: $routeParams.region}, function(answer){
+
     console.log("what is the answer?: ", answer);
     if (!answer.length) {
       alert("NO REGION FOUND :/");
       return;
 
     }
+    NavTitleChange("Spelschema för " + answer[0].regionName + " division " + $routeParams.division);
     regionAndDivisionId.regionId = answer[0]._id;
     regionName = answer[0].regionName;
     regionAndDivisionId.division = $routeParams.division;
@@ -82,12 +86,21 @@ app.controller("matchController",
         
         Match.get(
           regionAndDivisionId, function(games){
+            console.log("games: ", games);
             games.regionPath = $routeParams.region;
             $scope.date = date.split("-").join("");
             $scope.games = games;
             window.games = games;
+            for (var i = 0; i < games.length; i++) {
+              $scope.finishedGame = games[i].finishedGame;
+              console.log("finishedGame: ", $scope.finishedGame);
+            }
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
+            setTimeout(function() {
+              $location.hash($routeParams.matchId);
+              $anchorScroll();
+            },500);
           }
         );
       }

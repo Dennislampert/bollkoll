@@ -46,7 +46,6 @@ app.controller("profileController",
     }
   });
 
-
   function loadImage(){
     
     User.get({username: $routeParams.username}, function(userprofile){
@@ -60,6 +59,10 @@ app.controller("profileController",
 
 
   loadImage();
+  
+  $scope.editProfile = function(){
+    $location.url("/anvandare/" + $routeParams.username + "/settings");
+  };
 
 }]);
 
