@@ -1,9 +1,9 @@
-app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Region", "Team", "Message", "Login", "WatchResult",
-function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult){
+
+app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Region", "Team", "Message", "Login", "WatchResult", "modalService",
+function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult,modalService){
   
   var divisionId;
   Region.get({regionPath: $routeParams.region},function(regionId){
-
     console.log("regionId: ",regionId);
     divisionId = regionId[0]._id +""+ $routeParams.division;
   });
@@ -12,52 +12,7 @@ function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult)
     _id: $routeParams.gameId,
     _populate: "homeTeamId guestTeamId"
   },duplicateResults);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  function watchResult_controller(scoreTime, gameId){
-    WatchResult(scoreTime, gameId, function(data){
-      
-      data.forEach(function(newScore){
-        scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
-        
-
-
-        console.log("success: ",data);
-        // scoreTime = newScore.lastScoreTime;
-      });
-      watchResult_controller(scoreTime, gameId);
-      // data.time is the get request..
-
-    });
-  }
-
-  watchResult_controller(0 ,$routeParams.gameId);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
   function duplicateResults(){
     $scope.oldResults = {
@@ -76,7 +31,6 @@ function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult)
     // putting results into the newly created object "chatInfo"
     $scope.chatInfo.homeResults = $scope.match.homeResults;
     $scope.chatInfo.guestResults = $scope.match.guestResults;
-
 
     // the following syntax ends up visible in the chat wwindow
     $scope.chatInfo.content = $scope.match.homeTeamId.name + " " + $scope.match.homeResults + " - " + $scope.match.guestTeamId.name + " " + $scope.match.guestResults;
@@ -98,4 +52,54 @@ function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult)
   $scope.increaseDisallowed = function(x){return x > 30;};
 
 
+  $scope.finishGame = function() {
+    $scope.match.$update(duplicateResults);
+    $scope.match.finishedGame = true;
+    modalService.open({
+      templateUrl:'partials/globalalert.html',
+      controller: 'matchAlertController',
+      resolve: {
+        message: function() {
+          $scope.message = {};
+          $scope.message.header = "Avsluta match?";
+          $scope.message.msg = "Är du säker på att du vill avsluta matchen?";
+          $scope.message.msgBtn = "Avsluta match!";
+          return $scope.message;
+        }
+      }
+    });
+  };
+
+  // longpoling of results
+  function watchResult_controller(scoreTime, gameId){
+    WatchResult(scoreTime, gameId, function(data){
+      
+      data.forEach(function(newScore){
+        scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
+        
+        console.log("success: ",data);
+
+      });
+      watchResult_controller(scoreTime, gameId);
+
+    });
+  }
+  watchResult_controller(0 ,$routeParams.gameId);
+
 }]);
+
+
+    
+app.controller('matchAlertController', ["$scope", "$modalInstance", "message", "$location", "$routeParams", function($scope, $modalInstance, message, $location, $routeParams) {
+  $scope.message = message;
+
+  $scope.cancel = function() {
+    $modalInstance.close();
+    $location.path('/' + $routeParams.region + "/" + $routeParams.division + "/spelschema");
+  };
+
+  $scope.redirect = function() {
+    $modalInstance.close({msg: "I CLOSED!"});
+  };
+}]);
+

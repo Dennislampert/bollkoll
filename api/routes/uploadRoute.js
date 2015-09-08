@@ -3,7 +3,7 @@ var path = require('path'),
     fs = require('fs'),
     // include the multipart middleware for file uploading
     multipart = require('connect-multiparty'),
-    gm = require('gm');
+    gm = require('gm').subClass({imageMagick: true});
 
 
 
@@ -21,7 +21,7 @@ module.exports = function(mongoose) {
     // the recieved file
     var file = req.files.file;
 
-
+    console.log("req.files.file :", req.files.file);
     // read the recieved file
     fs.readFile(file.path, function (err, data) {
       console.log("lite data: ", data);
@@ -36,8 +36,9 @@ module.exports = function(mongoose) {
       console.log("uploadpath :", uploadPath);
       gm(data)
       .resize(200,200)
-      .crop(200, 200)
       .write(uploadPath, function(err){
+
+        console.log("err!: ", err);
   
         // get the mongoose 'File' model
         var FileModel = mongoose.model("File");

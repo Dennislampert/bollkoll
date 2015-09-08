@@ -8,7 +8,10 @@ module.exports = function(mongoose) {
     userName: String,
     content: {type: String, required: true},
     date: { type : Date, default: Date.now },
-    status: {type: Boolean, default: false}
+    status: {type: Boolean, default: false},
+    regionId: {type: mongoose.Schema.Types.ObjectId, ref: "Region"},
+    regionName: String,
+    division: Number
 
   });
   return mongoose.model("Message", messageSchema);

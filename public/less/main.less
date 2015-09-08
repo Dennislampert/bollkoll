@@ -1,14 +1,15 @@
 @import "less/components/top-menu.less";
 @import "less/components/main-menu.less";
 @import "less/components/matches.less";
-@import "less/components/profilePage.less";
 @import "less/components/alert-box.less";
 @import "less/components/matchStatus.less";
 @import "less/components/chat.less";
 @import "less/components/login.less";
+@import "less/components/profilePage.less";
+@import "less/components/profileSettingsPage.less";
+@import "less/components/cropme.less";
 @import "less/components/register.less";
 @import "less/components/searchResults.less";
-
 
 .nav,
 .pagination,
@@ -25,4 +26,48 @@
 .hide-element {
   max-height: 0;
   opacity: 0;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+// body {
+//   background-image: url("@{base-url}/flashlight.jpg");
+//   background-size: cover !important;
+//   @font-face {
+//     font-family: 'sf_collegiateregular';
+//     src: url('../fonts/SF_Collegiate-webfont.eot');
+//     src: url('../fonts/SF_Collegiate-webfont.eot?#iefix') format('embedded-opentype'),
+//          url('../fonts/SF_Collegiate-webfont.woff') format('woff'),
+//          url('../fonts/SF_Collegiate-webfont.ttf') format('truetype'),
+//          url('../fonts/SF_Collegiate-webfont.svg#sf_collegiateregular') format('svg');
+//     font-weight: normal;
+//     font-style: normal;
+//   }
+// }
+
+// body.ng-scope {
+//   // background: no-repeat !important;
+//   background-size: cover !important;
+//   // background-repeat: none;
+//   @font-face {
+//     font-family: 'sf_collegiateregular';
+//     src: url('../fonts/SF_Collegiate-webfont.eot');
+//     src: url('../fonts/SF_Collegiate-webfont.eot?#iefix') format('embedded-opentype'),
+//          url('../fonts/SF_Collegiate-webfont.woff') format('woff'),
+//          url('../fonts/SF_Collegiate-webfont.ttf') format('truetype'),
+//          url('../fonts/SF_Collegiate-webfont.svg#sf_collegiateregular') format('svg');
+//     font-weight: normal;
+//     font-style: normal;
+//   }
+// }
+
+body {
+  font-family: "Times New Roman", Times, serif !important;
 }
