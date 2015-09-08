@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 <div class="container">
   <section>
-
   	<div class="matchTopTeam">
   		<h2 class="h2">{{ match.homeTeamId.name | uppercase }} - {{ match.guestTeamId.name | uppercase }}</h2>
 
@@ -116,142 +114,17 @@
   					</form>
   				</td>
   			</tr>
+  			<tr>
+  				<td>
+  				</td>
+  				<td>
+  					<form class="endButton" ng-submit="finishGame()">
+  						<button class="blackText" type="submit"> Avsluta </button>
+  					</form>
+  				</td>
+  			</tr>
   			
       </table>
   	</div>
-
-
-
   </section>
 </div>
-=======
-<section>
-
-	<div class="matchTopTeam">
-		<h2 class="h2">{{ match.homeTeamId.name | uppercase }} - {{ match.guestTeamId.name | uppercase }}</h2>
-
-    <table style="width:100%" class="table table-striped table-condensed">
-
-			<tr>
-				<td class="matchDate">
-					{{ match.date }}
-				</td>
-				<td></td>
-			</tr>
-
-      <tr>
-				<td class="matchHomeTeam">
-					{{ match.homeTeamId.name | uppercase }}
-				</td>
-				<td></td>
-			</tr>
-
-      <tr>
-		    <td>{{ oldResults.homeResults }}</td>
-		    <td>
-		    	<div class="homeTeamScore">
-			      <button class="blackText" ng-click="decreaseGoals(match,'homeResults')" ng-disabled="decreaseDisallowed(match.homeResults)">-</button>
-			      <span>{{ match.homeResults }}</span>
-			    	<button class="blackText" ng-click="increaseGoals(match,'homeResults')" ng-disabled="increaseDisallowed(match.homeResults)">+</button>
-			    </div>
-		    </td>
-		  </tr>
-
-      <tr>
-		    <td>Gult straffkort</td>
-		    <td>
-		    	<div class="yellowPenaltyCardHomeTeam">
-			      <button class="blackText" ng-click="disabled" ng-disabled="disabled">-</button>
-			      <span>0</span>
-			    	<button class="blackText" ng-click="disabled" ng-disabled="disabled">+</button>
-			    </div>
-		    </td>
-		  </tr>
-
-      <tr>
-		    <td>Rött straffkort</td>
-		    <td>
-		    	<div class="redPenaltyCardHomeTeam">
-			      <button class="blackText" ng-click="disabled" ng-disabled="disabled">-</button>
-			      <span>0</span>
-			    	<button class="blackText" ng-click="disabled" ng-disabled="disabled">+</button>
-			    </div>
-		    </td>
-		  </tr>
-
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-
-	        <tr>
-						<td class="matchGuestTeam">
-							{{ match.guestTeamId.name | uppercase }}
-						</td>
-						<td></td>
-					</tr>
-
-	        <tr>
-				    <td>{{ oldResults.guestResults }}</td>
-				    <td>
-				    	<div class="guestTeamScore">
-					      <button class="blackText" ng-click="decreaseGoals(match,'guestResults')" ng-disabled="decreaseDisallowed(match.guestResults)">-</button>
-					      <span>{{ match.guestResults }}</span>
-					    	<button class="blackText" ng-click="increaseGoals(match,'guestResults')" ng-disabled="increaseDisallowed(match.guestResults)">+</button>
-					    </div>
-				    </td>
-				  </tr>
-
-      <tr>
-		    <td>Gult straffkort</td>
-		    <td>
-		    	<div class="yellowPenaltyCardGuestTeam">
-			      <button class="blackText" ng-click="disabled" ng-disabled="disabled">-</button>
-			      <span>0</span>
-			    	<button class="blackText" ng-click="disabled" ng-disabled="disabled">+</button>
-			    </div>
-		    </td>
-		  </tr>
-
-      <tr>
-		    <td>Rött straffkort</td>
-		    <td>
-		    	<div class="redPenaltyCardGuestTeam">
-			      <button class="blackText" ng-click="disabled" ng-disabled="disabled">-</button>
-			      <span>0</span>
-			    	<button class="blackText" ng-click="disabled" ng-disabled="disabled">+</button>
-			    </div>
-		    </td>
-		  </tr>
-
-			<tr>
-				<td></td>
-				<td></td>
-			</tr>
-
-			<tr>
-				<td>
-				<!-- 	<form class="defaultButtons" ng-submit="defaultResults()">
-					  <button class="blackText" type="submit"> Ångra </button>
-					</form> -->
-				</td>
-				<td>
-					<form class="saveButton" ng-submit="saveResults()">
-						<button class="blackText" type="submit"> Spara </button>
-					</form>
-				</td>
-			</tr>
-			<tr>
-				<td>
-				</td>
-				<td>
-					<form class="endButton" ng-submit="finishGame()">
-						<button class="blackText" type="submit"> Avsluta </button>
-					</form>
-				</td>
-			</tr>
-			
-    </table>
-	</div>
-</section>
->>>>>>> master
