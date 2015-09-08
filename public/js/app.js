@@ -108,8 +108,11 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/searchResult.html",
       controller: "searchResultController"
     })
+    .when("/404", {
+      templateUrl: "partials/404.html"
+    })
     .otherwise({
-      redirectTo: "/"
+      redirectTo: "/404"
     });
   $locationProvider.html5Mode(true);
 }]);

@@ -51,7 +51,13 @@ module.exports = function(mongoose) {
   setInterval(queueHandler,100);
 
   return function(req,res){
-    console.log("req.params", req);
+    // just to prove that the longpoller logs me back in
+    // (probably express-session does a session.save() on res.json() (res.req === req))
+    // res.json(true);
+    // return;
+
+    //console.log("req.sessionStore", req.sessionStore);
+    console.log("req.session", req.session.user ? true : false);
     resultQueue.push({
       req:req,
       res:res,

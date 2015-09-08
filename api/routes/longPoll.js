@@ -60,7 +60,8 @@ module.exports = function(mongoose) {
     setInterval(queueHandler,100);
 
     return function(req,res){
-      console.log("m", req.params);
+
+        console.log("loggedIn", req.session.user ? true : false);
         messageQueue.push({
           req:req,
           res:res,

@@ -47,8 +47,8 @@ app.controller("profileController",
   });
 
   function loadImage(){
-    
     User.get({username: $routeParams.username}, function(userprofile){
+      if (!userprofile[0]){$location.url("/404");return;}
         // $scope.uploadedFilePath = data;
       $scope.user = userprofile[0];
       File.get({owner:userprofile[0]._id}, function(Getfile){
@@ -63,7 +63,6 @@ app.controller("profileController",
   $scope.editProfile = function(){
     $location.url("/anvandare/" + $routeParams.username + "/settings");
   };
-
 }]);
 
 

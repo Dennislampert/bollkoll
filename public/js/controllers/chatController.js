@@ -20,7 +20,7 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
 
   $scope.yourUser = Login.user;
   window.user = Login.user;
-
+  console.log("$scope.yourUser: ",$scope.yourUser);
   if($routeParams.regionPath){
     Region.get({regionPath:$routeParams.regionPath},function(regionId){
       async(0, regionId[0]._id + $routeParams.division);
@@ -62,7 +62,6 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
         };
         $scope.chatInfo.hastag = hashOrgArray.hashOrgArray();
       }
-
       // $scope.chatInfo.matchId = $routeParams.matchId; think this is wrong *_*
       Message.create($scope.chatInfo, function(data) {
 
@@ -70,8 +69,6 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
         $scope.chatInfo.content = "";
       });
     };
-
-    
 
     var scrolledToAnchor = false;
 
@@ -81,22 +78,16 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
 
       var url = "/api/chatlong/"+ divisionId+ "/" + timestamp + "/" + matchId;
       $http.get(url).success(function(data) {
-
         if (!data.hasOwnProperty("status")) {
-          
           data.forEach(function(msg) {
             console.log("timestamp: ",timestamp, " msg.date: ",msg.date);
             timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
-
             $scope.allMessages.push(msg);
-
           });
           if (data.length >0){
             scroll.gotoBottom();
           }
-
           longpoller(timestamp);
-
         }
       });
     }
