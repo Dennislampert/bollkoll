@@ -51,8 +51,10 @@
 .main-menu li a:hover {
   background-color: #4D4D4D;
 }
+.navbar-inverse .navbar-nav > li > a.whiteLogoutText {
+  color: #fff !important;
+}
 .fontaw {
-  padding-left: 20%;
   background: #fcba6a;
   background: -moz-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
   background: -webkit-gradient(left top, left bottom, color-stop(0%, #fcba6a), color-stop(47%, #ff9715), color-stop(53%, #ff920a), color-stop(63%, #ff8400), color-stop(74%, #eb7d00), color-stop(85%, #de7a00), color-stop(100%, #a85802));
@@ -109,9 +111,6 @@ tr:nth-child(even) {
 }
 tr:nth-child(odd) {
   background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg") !important;
-}
-.blackText {
-  color: #000;
 }
 .table {
   margin-bottom: 0px;
@@ -303,16 +302,26 @@ tr:nth-child(odd) {
     width: 100%;
   }
 }
+.matchTopTeam {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.whiteText {
+  color: #fff !important;
+  display: block;
+  margin: 0 auto;
+}
 .mainMenu {
   padding: 0;
 }
 tr td {
   color: #fff;
-  height: 30px;
+  height: 40px;
   vertical-align: middle !important;
   border-top: 0px !important;
 }
-h2 {
+.h2 {
   color: #fff;
   background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
 }
@@ -322,11 +331,13 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg") !important;
 }
-.blackText {
-  color: #000;
-}
 .table {
   margin-bottom: 0px;
+}
+.blackText {
+  color: #000 !important;
+  display: block;
+  margin: 0 auto;
 }
 /* line 19, styles/cropme.scss */
 cropme {
@@ -344,7 +355,7 @@ cropme .step-1 {
   position: relative;
   display: block;
   background-color: #f0f0f0;
-  border: 4px dashed #ccc;
+  border-radius: 1%;
   letter-spacing: 1px;
   font-size: 15px;
   -moz-box-sizing: border-box;
@@ -368,10 +379,11 @@ cropme input[type=file] {
 }
 /* line 47, styles/cropme.scss */
 cropme .cropme-button {
+  border-radius: 5%;
   font-weight: bold;
   cursor: pointer;
   text-align: center;
-  background: #3ba5b3;
+  background: #337ab7;
   color: #fff;
   height: 50px;
   width: 250px;
@@ -541,11 +553,8 @@ cropme canvas {
   -ms-user-select: none;
   user-select: none;
 }
-
 body {
   background-image: url("../backround_images/flashlight.jpg");
-}
-
-body {
   background-size: cover !important;
+  margin-top: 65px;
 }

@@ -53,16 +53,40 @@ app.controller("profileController",
   // });
 
 
+  // function loadImage(){
+    
+  //   User.get({username: $routeParams.username}, function(userprofile){
+  //       // $scope.uploadedFilePath = data;
+  //     $scope.user = userprofile[0];
+  //     File.get({owner:userprofile[0]._id}, function(Getfile){
+  //       $scope.image = Getfile.pop();
+  //     });
+  //   });
+  // }
+
+
   function loadImage(){
     
     User.get({username: $routeParams.username}, function(userprofile){
         // $scope.uploadedFilePath = data;
       $scope.user = userprofile[0];
       File.get({owner:userprofile[0]._id}, function(Getfile){
-        $scope.image = Getfile.pop();
+        if (Getfile.length===0){
+          console.log("true");
+          $scope.image = {};
+          $scope.image.path = "../../files/defaultimg.png";
+        }else{
+          $scope.image = Getfile.pop();
+          
+        }
       });
     });
   }
+
+
+
+
+  
 
 
   loadImage();
