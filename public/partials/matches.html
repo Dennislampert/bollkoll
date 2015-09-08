@@ -1,4 +1,5 @@
-<section >
+<section class="col-xs-4 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 whiteBorder">
+
   <div class="panel panel-default">
 
     <!-- <div class="panel-heading">Kommande matcher</div> -->
@@ -60,8 +61,10 @@
       <tr>
         <th>Hemma - Borta</th>
         <th>Tid</th>
-        <th><i class="fa fontaw fa-info-circle "></i></th>
-        <th><i class="fa fontaw fa-pencil-square-o"></i></th>
+        <th>Info</th>
+        <th>Matchstatus</th>
+        <!-- <th><i class="fa fontaw fa-info-circle "></i></th> -->
+       <!--  <th><i class="fa fontaw fa-pencil-square-o"></i></th> -->
       </tr>
       <tbody ng-repeat="game in games"  id="{{game._id}}" ng-if="dateCompare(game.date,'beforeToday')">
         <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
@@ -73,7 +76,8 @@
         <tr ng-hide="currentlyShownResult(game._id)" >
           <td ng-click="toggleID(game._id)">{{ game.homeResults }}  -  {{ game.guestResults }} </td>
           <td ng-click="toggleID(game._id)">{{ game.time }}</td>
-          <td><a ng-href="/{{game._id}}/chat" class="fa fontaw fa-comments "></a></td>
+          <td></td>
+          <!-- <td><a ng-href="/{{game._id}}/chat" class="fa fontaw fa-comments "></a></td> -->
           <td><a ng-if="!game.finishedGame" ng-href="/{{games.regionPath}}/{{game.division}}/{{game._id}}/matchstatus" class="fa fontaw fa-pencil-square-o"></i></td>
         </tr>
       </tbody>

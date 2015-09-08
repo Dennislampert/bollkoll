@@ -81,6 +81,9 @@ th {
   background-image: url("../backround_images/greey-light.jpg");
   cursor: pointer;
 }
+div.panel.panel-default {
+  margin: 0;
+}
 .alertBox {
   position: fixed;
   margin-top: 22vh;
@@ -125,6 +128,22 @@ tr:nth-child(odd) {
 .yellowPenaltyCardGuestTeam,
 .redPenaltyCardGuestTeam {
   display: inline-block;
+}
+.scoreButtonText {
+  color: #000;
+  font-weight: bold;
+}
+.saveButtonText,
+.endButtonText {
+  color: #000;
+}
+h3.ng-binding,
+h4.ng-binding {
+  margin: 0;
+}
+td.matchHomeTeam.ng-binding,
+td.matchGuestTeam.ng-binding {
+  text-decoration: underline;
 }
 .chat {
   background-color: #fff;
@@ -557,4 +576,9 @@ body {
   background-image: url("../backround_images/flashlight.jpg");
   background-size: cover !important;
   margin-top: 65px;
+}
+.whiteBorder {
+  border: 5px solid #fff;
+  border-radius: 5px;
+  padding: 0;
 }
