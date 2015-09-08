@@ -68,7 +68,19 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .when("/:region/:division/:gameId/matchstatus", {
       templateUrl: "partials/matchstatus.html",
       controller: "matchStatusController",
-      loggedIn: true
+      loggedIn: true,
+      resolve: {
+        isOkMatch: ["$route", "$location", "Match", function($route, $location, Match) {
+          console.log("fakka u", angular.copy($route.current.params));
+          window.paraaaa = $route;
+          return Match.get({_id:$route.current.params.gameId}, function(data) {
+            console.log("match", data);
+            if (Match.finishedGame) {
+              $location.path('/');
+            }
+          });
+        }]
+      }
     })
     .when("/:region/:division/tabell", {
       templateUrl: "partials/table.html",

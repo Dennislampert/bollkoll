@@ -6,23 +6,41 @@ app.controller("profileSettingsController",
   // (logged in user data)
   $scope.user = Login.user;
 
+
+
+  $scope.defaultProfile = function(){
+    $location.url("/anvandare/" + $routeParams.username);
+  };
+
+
+  // $scope.saveProfile = function(){
+  //   $location.url("/anvandare/" + $routeParams.username);
+  // };
+
+
+
+
+
+
+
+
+
   $scope.$on("cropme:done", function(ev, result, canvasEl) {
     User.get({username: $scope.user._id}, function(userprofile){
+      console.log("resultII: ", result);
       FileUploader(result).success(function(data) {
         console.log("saved files, public path: ", data);
         $scope.uploadedFilePath = data;
+        $location.url("/anvandare/" + $routeParams.username);
       });
     });
-      // console.log("users! ", $scope.user);
-      // console.log("ev: ", ev);
       console.log("result: ", result);
-      // console.log("result.croppedImage: ", result.croppedImage);
-      // console.log("blobby: ", Blob);
-      // console.log("canvasEl: ", canvasEl);
-      // console.log("$scope: ", $scope);
   });
 
-  
+
+
+
+
 
 
 

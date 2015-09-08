@@ -51,9 +51,6 @@
 .main-menu li a:hover {
   background-color: #4D4D4D;
 }
-body {
-  background-image: url("../backround_images/flashlight.jpg");
-}
 .fontaw {
   padding-left: 20%;
   background: #fcba6a;
@@ -66,6 +63,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcba6a', endColorstr='#a85802', GradientType=0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: 30px;
 }
 th {
   color: #fff;
@@ -104,9 +102,6 @@ h3 {
 }
 .alertBtn {
   margin-top: 3vh;
-}
-body {
-  background-image: url("../backround_images/flashlight.jpg");
 }
 .mainMenu {
   padding: 0;
@@ -275,24 +270,6 @@ tr:nth-child(odd) {
 .messageToSend .chatTextSubmit {
   height: 50px;
 }
-@media (min-width: 1200px) {
-  .submitForm {
-    width: 33.33333333%;
-    margin-left: 25%;
-  }
-}
-@media (min-width: 992px) {
-  .submitForm {
-    width: 33.33333333%;
-    margin-left: 25%;
-  }
-}
-@media (min-width: 768px) {
-  .submitForm {
-    width: 25%;
-    margin-left: 25%;
-  }
-}
 .alert-warning {
   border-color: #ff4900 !important;
   background-color: #FDE357 !important;
@@ -332,8 +309,14 @@ tr:nth-child(odd) {
 .inlogg {
   margin-bottom: 10px;
 }
-body {
-  background-image: url("../backround_images/flashlight.jpg");
+.img-circle {
+  border-radius: 0%;
+  width: 300px;
+}
+@media (max-width: 360px) {
+  .img-circle {
+    width: 100%;
+  }
 }
 .mainMenu {
   padding: 0;
@@ -513,6 +496,35 @@ cropme canvas {
 .has-error {
   margin-bottom: 1px;
 }
+.searchResults {
+  border-color: #080808;
+  overflow: hidden;
+}
+.searchResults .panel {
+  border-color: #080808;
+  overflow: hidden;
+}
+.searchResults .panel-heading {
+  cursor: pointer;
+  color: #9d9d9d;
+  background-color: #222222;
+  border: none;
+}
+.searchResults .panel-heading:hover {
+  background-color: #4D4D4D;
+  color: #FFFFFF;
+}
+.searchResults .panel-body {
+  max-height: 500px;
+  overflow: auto;
+  -webkit-transition: max-height 0.2s, padding 0.2s;
+  transition: max-height 0.2s, padding 0.2s;
+}
+.searchResults .panel-body.hide-body {
+  max-height: 0;
+  padding: 0;
+  overflow: hidden;
+}
 .searchResults .arrowIcon {
   float: right;
 }
@@ -521,9 +533,6 @@ cropme canvas {
   color: #000;
   text-align: center;
   display: block;
-}
-.searchResults a:hover {
-  background-color: #aaa;
 }
 .nav,
 .pagination,
@@ -538,4 +547,20 @@ cropme canvas {
 .hide-element {
   max-height: 0;
   opacity: 0;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+}
+
+body {
+  background-size: cover !important;
 }
