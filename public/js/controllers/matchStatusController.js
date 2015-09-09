@@ -54,7 +54,51 @@ function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult,
 
   $scope.finishGame = function() {
     $scope.match.$update(duplicateResults);
-    $scope.match.finishedGame = true;
+    if ($scope.match.homeResults > $scope.match.guestResults) {
+        console.log("home team after finish: ", $scope.match);
+        $scope.match.homeTeamId.gamesPlayed ++;
+        $scope.match.homeTeamId.gamesWon ++;
+        $scope.match.homeTeamId.goalsFor += $scope.match.homeResults;
+        $scope.match.homeTeamId.goalsAgainst += $scope.match.guestResults;
+        $scope.match.homeTeamId.Points += 3;
+        $scope.match.guestTeamId.gamesPlayed ++;
+        $scope.match.guestTeamId.gamesLost ++;
+        $scope.match.guestTeamId.goalsFor += $scope.match.guestResults;
+        $scope.match.guestTeamId.goalsAgainst += $scope.match.homeResults;
+        $scope.match.guestTeamId.Points += 0;
+        Team.update($scope.match.homeTeamId._id, $scope.match.homeTeamId);
+        Team.update($scope.match.guestTeamId._id, $scope.match.guestTeamId);
+    }
+    else if ($scope.match.homeResults === $scope.match.guestResults) {
+        console.log("drawn after finish: ", $scope.match);
+        $scope.match.homeTeamId.gamesPlayed ++;
+        $scope.match.homeTeamId.gamesDrawn ++;
+        $scope.match.homeTeamId.goalsFor += $scope.match.homeResults;
+        $scope.match.homeTeamId.goalsAgainst += $scope.match.guestResults;
+        $scope.match.homeTeamId.Points ++;
+        $scope.match.guestTeamId.gamesPlayed ++;
+        $scope.match.guestTeamId.gamesDrawn ++;
+        $scope.match.guestTeamId.goalsFor += $scope.match.guestResults;
+        $scope.match.guestTeamId.goalsAgainst += $scope.match.homeResults;
+        $scope.match.guestTeamId.Points ++;
+        Team.update($scope.match.homeTeamId._id, $scope.match.homeTeamId);
+        Team.update($scope.match.guestTeamId._id, $scope.match.guestTeamId);
+    }
+    else if ($scope.match.homeResults < $scope.match.guestResults) {
+        console.log("guest team after finish: ", $scope.match);
+        $scope.match.homeTeamId.gamesPlayed ++;
+        $scope.match.homeTeamId.gamesLost ++;
+        $scope.match.homeTeamId.goalsFor += $scope.match.homeResults;
+        $scope.match.homeTeamId.goalsAgainst += $scope.match.guestResults;
+        $scope.match.homeTeamId.Points += 0;
+        $scope.match.guestTeamId.gamesPlayed ++;
+        $scope.match.guestTeamId.gamesWon ++;
+        $scope.match.guestTeamId.goalsFor += $scope.match.guestResults;
+        $scope.match.guestTeamId.goalsAgainst += $scope.match.homeResults;
+        $scope.match.guestTeamId.Points += 3;
+        Team.update($scope.match.homeTeamId._id, $scope.match.homeTeamId);
+        Team.update($scope.match.guestTeamId._id, $scope.match.guestTeamId);
+    }
     modalService.open({
       templateUrl:'partials/globalalert.html',
       controller: 'matchAlertController',
@@ -64,6 +108,7 @@ function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult,
           $scope.message.header = "Avsluta match?";
           $scope.message.msg = "Är du säker på att du vill avsluta matchen?";
           $scope.message.msgBtn = "Avsluta match!";
+          //$scope.match.finishedGame = true;
           return $scope.message;
         }
       }
@@ -71,20 +116,20 @@ function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult,
   };
 
   // longpoling of results
-  function watchResult_controller(scoreTime, gameId){
-    WatchResult(scoreTime, gameId, function(data){
+  // function watchResult_controller(scoreTime, gameId){
+  //   WatchResult(scoreTime, gameId, function(data){
       
-      data.forEach(function(newScore){
-        scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
+  //     data.forEach(function(newScore){
+  //       scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
         
-        console.log("success: ",data);
+  //       console.log("success: ",data);
 
-      });
-      watchResult_controller(scoreTime, gameId);
+  //     });
+  //     watchResult_controller(scoreTime, gameId);
 
-    });
-  }
-  watchResult_controller(0 ,$routeParams.gameId);
+  //   });
+  // }
+  // watchResult_controller(0 ,$routeParams.gameId);
 
 }]);
 

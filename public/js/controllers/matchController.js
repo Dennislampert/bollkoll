@@ -92,7 +92,6 @@ app.controller("matchController",
             window.games = games;
             for (var i = 0; i < games.length; i++) {
               $scope.finishedGame = games[i].finishedGame;
-              console.log("finishedGame: ", $scope.finishedGame);
             }
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
