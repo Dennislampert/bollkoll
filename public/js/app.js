@@ -25,8 +25,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       loggedIn: true
     })
     .when("/om-oss", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/about.html",
+      controller: "aboutController"
     })
     .when("/loggain", {
       templateUrl: "partials/login.html",
