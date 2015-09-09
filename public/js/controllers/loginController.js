@@ -25,7 +25,7 @@ app.controller("loginController",
           message: function() {
             $scope.message = {};
             $scope.message.header = "Inloggningen misslyckades!";
-            $scope.message.msg = "Användarnamnet eller lösenordet stämde , var god och försök igen!";
+            $scope.message.msg = "Användarnamnet eller lösenordet stämde inte, var god och försök igen!";
             $scope.message.msgBtn = "Försök igen";
             return $scope.message;
           }

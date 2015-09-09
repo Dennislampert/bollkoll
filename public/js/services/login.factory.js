@@ -15,27 +15,38 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
   var loginObj = {
     user: {},
     login: function(credentials, callback) {
+      console.log("TRYING TO LOGIN", credentials)
       $http.post('api/login', credentials).success(function(data) {
+
         updateObj(data ? data : {}, loginObj.user);
         // console.log("data(login): ", data);
         // console.log("loginObj.user: ", loginObj.user);
         // let the entire app know we are logged in
         $rootScope.$broadcast("login");
 
+        delete window.sessionStorage.loggedOut;
         callback && callback(loginObj.user);
       });
     },
     check: function(callback) {
+
+      if(window.sessionStorage.loggedOut){
+        callback && callback(false);
+        return;
+      }
+
       $http.get('api/login').success(function(data) {
         updateObj(data ? data : {}, loginObj.user);
-        // console.log("data(check): ", data);
         callback && callback(loginObj.user);
       });
     },
     logout: function(callback) {
       $http.delete('api/login').success(function(data) {
         updateObj({}, loginObj.user);
-        
+
+        // set a sessionStorage variable that we are logged out
+        window.sessionStorage.loggedOut = true;
+        this.user = false;
         // let the entire app know we are logged out
         $rootScope.$broadcast("logout");
 
@@ -43,6 +54,9 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
       });
     },
     getCurrentUser: function() {
+      if(window.sessionStorage.loggedOut){
+        return false;
+      }
       if (!objectIsEmpty(loginObj.user)) {
         return loginObj.user;
       }
@@ -57,7 +71,7 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
   // check if logged in every 30 seconds
   function checkLogin(){
     loginObj.check(function() {
-      if (!loginObj.user._id) {
+      if (!loginObj.user._id || window.sessionStorage.loggedOut) {
         // let the entire app know we are logged out
         $rootScope.$broadcast("logout");
       }
@@ -96,7 +110,6 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
       !loginObj.user._id &&
       next.$$route.loggedIn
     ) {
-      return;
       event.preventDefault();
       modalService.open({
         templateUrl:'partials/globalalert.html',

@@ -51,6 +51,16 @@
 .main-menu li a:hover {
   background-color: #4D4D4D;
 }
+.navbar-inverse .navbar-nav > li > a.whiteLogoutText {
+  color: #fff !important;
+}
+.menuWhiteBorder {
+  border-bottom: 5px solid #fff;
+  border-right: 5px solid #fff;
+  border-left: 5px solid #fff;
+  border-radius: 5px;
+  padding: 0;
+}
 .fontaw {
   color: #FB971E;
   font-size: 30px;
@@ -68,6 +78,12 @@ th {
   color: #fff;
   background-image: url("../backround_images/greey-light.jpg");
   cursor: pointer;
+}
+div.panel.panel-default {
+  margin: 0;
+}
+h3 {
+  margin: 0;
 }
 .fontAwesomeButton {
   outline: 0;
@@ -116,9 +132,6 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg") !important;
 }
-.blackText {
-  color: #000;
-}
 .table {
   margin-bottom: 0px;
 }
@@ -132,6 +145,22 @@ tr:nth-child(odd) {
 .yellowPenaltyCardGuestTeam,
 .redPenaltyCardGuestTeam {
   display: inline-block;
+}
+.scoreButtonText {
+  color: #000;
+  font-weight: bold;
+}
+.saveButtonText,
+.endButtonText {
+  color: #000;
+}
+h3.ng-binding,
+h4.ng-binding {
+  margin: 0;
+}
+td.matchHomeTeam.ng-binding,
+td.matchGuestTeam.ng-binding {
+  text-decoration: underline;
 }
 .chat {
   background-color: #fff;
@@ -309,20 +338,26 @@ tr:nth-child(odd) {
     width: 100%;
   }
 }
-@font-face {
-  font-family: "varsity_regular";
-  src: url("../Fonts/varsity_regular.ttf") format("ttf");
+.matchTopTeam {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.whiteText {
+  color: #fff !important;
+  display: block;
+  margin: 0 auto;
 }
 .mainMenu {
   padding: 0;
 }
 tr td {
   color: #fff;
-  height: 30px;
+  height: 40px;
   vertical-align: middle !important;
   border-top: 0px !important;
 }
-h2 {
+.h2 {
   color: #fff;
   background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
 }
@@ -332,14 +367,13 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-image: url("../backround_images/Bollkoll - 3 - Table/table-2.1-light.jpg") !important;
 }
-.blackText {
-  color: #000;
-}
 .table {
   margin-bottom: 0px;
 }
-.nujavlarfan p {
-  font-family: "Times New Roman", Times, serif !important;
+.blackText {
+  color: #000 !important;
+  display: block;
+  margin: 0 auto;
 }
 /* line 19, styles/cropme.scss */
 cropme {
@@ -357,7 +391,7 @@ cropme .step-1 {
   position: relative;
   display: block;
   background-color: #f0f0f0;
-  border: 4px dashed #ccc;
+  border-radius: 1%;
   letter-spacing: 1px;
   font-size: 15px;
   -moz-box-sizing: border-box;
@@ -381,10 +415,11 @@ cropme input[type=file] {
 }
 /* line 47, styles/cropme.scss */
 cropme .cropme-button {
+  border-radius: 5%;
   font-weight: bold;
   cursor: pointer;
   text-align: center;
-  background: #3ba5b3;
+  background: #337ab7;
   color: #fff;
   height: 50px;
   width: 250px;
@@ -532,6 +567,21 @@ cropme canvas {
   text-align: center;
   display: block;
 }
+.aboutWhiteBorder {
+  border-bottom: 5px solid #fff;
+  border-right: 5px solid #fff;
+  border-left: 5px solid #fff;
+  border-radius: 5px;
+  padding: 20px;
+}
+.aboutWhiteBorder h3,
+.aboutWhiteBorder p {
+  color: #fff;
+}
+.aboutWhiteBorder h3 {
+  text-align: center;
+  padding-bottom: 10px;
+}
 .nav,
 .pagination,
 .carousel,
@@ -553,4 +603,14 @@ cropme canvas {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+body {
+  background-image: url("../backround_images/flashlight.jpg");
+  background-size: cover !important;
+  margin-top: 65px;
+}
+.whiteBorder {
+  border: 5px solid #fff;
+  border-radius: 5px;
+  padding: 0;
 }

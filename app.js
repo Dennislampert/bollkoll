@@ -16,38 +16,6 @@ var m = {};
 });
 
 
-// function resize(publicPath, filename, uploadPath) {
-//   var resizeCrop = require('resize-crop');
-//   /*publicPath = publicPath.replace(/\\/g, "\\\\");
-//   uploadPath = uploadPath.replace(/\\/g, "\\\\");*/
-//    console.log("publicPath: ", publicPath);
-//    console.log("uploadPath: ", uploadPath);
-//   resizeCrop(
-//       {
-//           format: filename.split(".").pop(),
-//           src: m.path.normalize(process.cwd() + publicPath),
-//           dest: m.path.normalize(process.cwd() + uploadPath),
-//           height: 250,
-//           width: 250,
-//           gravity: "center"
-//       },
-//       function( err, filePath ){
-//         if (err) { throw err; }
-//           console.log("done!");
-//           console.log("filePath!: ", filePath);
-//           console.log("err: ", err);
-//       }
-//   );
-// }
-
-// resize(
-//   '/public/files/catinshock.jpg',
-//   'slide_414978_5264748_compressed.jpg',
-//   '/public/files/resize-catinshock.jpg')
-
-m['fs'].exists('C:\\NODE.JS\\bollkoll\\public\\files\\slide_414978_5264748_compressed.jpg', function(data){
-  console.log("d", data);
-});
 // Standard Express boiler plate code
 var app = m.express();
 //app.use(favicon(__dirname + '/public/favicon.ico'));

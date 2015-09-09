@@ -1,6 +1,5 @@
-app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Region", "Team", "Message", "Login", "WatchResult", "modalService",
-function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult, modalService){
-  
+app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Region", "Team", "Message", "Login", "modalService", "WatchResult",function($scope, $routeParams, Match, Region, Team, Message, Login, modalService, WatchResult){
+
   var divisionId;
   Region.get({regionPath: $routeParams.region},function(regionId){
     console.log("regionId: ",regionId);
@@ -11,7 +10,6 @@ function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult,
     _id: $routeParams.gameId,
     _populate: "homeTeamId guestTeamId"
   },duplicateResults);
-  
 
   function duplicateResults(){
     $scope.oldResults = {
@@ -50,7 +48,6 @@ function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult,
   $scope.decreaseGoals = function (match,prop){match[prop]--;};
   $scope.decreaseDisallowed = function(x){return x < 1;};
   $scope.increaseDisallowed = function(x){return x > 30;};
-
 
   $scope.finishGame = function() {
     $scope.match.$update(duplicateResults);
@@ -108,32 +105,34 @@ function($scope, $routeParams, Match, Region, Team, Message, Login, WatchResult,
           $scope.message.header = "Avsluta match?";
           $scope.message.msg = "Är du säker på att du vill avsluta matchen?";
           $scope.message.msgBtn = "Avsluta match!";
-          //$scope.match.finishedGame = true;
+          $scope.match.finishedGame = true;
           return $scope.message;
         }
       }
     });
   };
 
-  // longpoling of results
-  // function watchResult_controller(scoreTime, gameId){
-  //   WatchResult(scoreTime, gameId, function(data){
+  function watchResult_controller(scoreTime, gameId){
+    WatchResult(scoreTime, gameId, function(data){
       
-  //     data.forEach(function(newScore){
-  //       scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
+      data.forEach(function(newScore){
+        scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
         
-  //       console.log("success: ",data);
+        console.log(data);
 
-  //     });
-  //     watchResult_controller(scoreTime, gameId);
 
-  //   });
-  // }
-  // watchResult_controller(0 ,$routeParams.gameId);
+        console.log("success: ",data);
+        // scoreTime = newScore.lastScoreTime;
+      });
+      watchResult_controller(scoreTime, gameId);
+      // data.time is the get request..
+
+    });
+  }
+
+  watchResult_controller(0 ,$routeParams.gameId);
 
 }]);
-
-
     
 app.controller('matchAlertController', ["$scope", "$modalInstance", "message", "$location", "$routeParams", function($scope, $modalInstance, message, $location, $routeParams) {
   $scope.message = message;
@@ -146,4 +145,5 @@ app.controller('matchAlertController', ["$scope", "$modalInstance", "message", "
   $scope.redirect = function() {
     $modalInstance.close({msg: "I CLOSED!"});
   };
+
 }]);

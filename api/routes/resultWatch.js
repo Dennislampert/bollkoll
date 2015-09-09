@@ -1,7 +1,8 @@
 
 
 module.exports = function(mongoose) {
-  console.log("running watchresult");
+
+
   var lastResults;
   var resultQueue = [];
 
@@ -22,7 +23,6 @@ module.exports = function(mongoose) {
 
 
       mongoose.model("Match").find(query)
-        .populate("homeTeamId guestTeamId")
         .exec(function(err,data){
           if(!data || data.length === 0){
 
@@ -31,15 +31,14 @@ module.exports = function(mongoose) {
             // but check if connection is older than 30 secs
             // if so close it anyway
             if(now-result.timeing>30000){
-              console.log("watchresult err: ",err);
-              console.log("< 30000");
+
               //console.log("past 30 secs");
               result.res.json([]);
               result.toBeDeleted = true;
             }
           }
           else {
-            console.log("data success: ",data);
+
             // We have new data so close the connection
             result.res.json(data);
             result.toBeDeleted = true;
@@ -52,7 +51,13 @@ module.exports = function(mongoose) {
   setInterval(queueHandler,100);
 
   return function(req,res){
-    console.log("req.params", req.params);
+    // just to prove that the longpoller logs me back in
+    // (probably express-session does a session.save() on res.json() (res.req === req))
+    // res.json(true);
+    // return;
+
+    //console.log("req.sessionStore", req.sessionStore);
+    console.log("req.session", req.session.user ? true : false);
     resultQueue.push({
       req:req,
       res:res,

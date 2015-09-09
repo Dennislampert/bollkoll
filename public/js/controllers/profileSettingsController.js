@@ -17,11 +17,16 @@ app.controller("profileSettingsController",
   //   $location.url("/anvandare/" + $routeParams.username);
   // };
 
-
-
-
-
-
+  function updateCropMeSize(){
+      var w = window.innerWidth - 30*2;
+      $scope.cropme = {width:w,height:w*0.75};
+      if(!$scope.$$phase){
+        $scope.$apply();
+      }
+      //console.log("updating crop me size",w);
+    }
+  updateCropMeSize();
+  window.addEventListener("resize",updateCropMeSize);
 
 
 

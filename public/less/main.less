@@ -10,7 +10,7 @@
 @import "less/components/cropme.less";
 @import "less/components/register.less";
 @import "less/components/searchResults.less";
-
+@import "less/components/about.less";
 .nav,
 .pagination,
 .carousel,
@@ -18,16 +18,13 @@
   cursor: pointer;
   content: 'bananas';
 }
-
 .container{
   margin-top: 65px;
 }
-
 .hide-element {
   max-height: 0;
   opacity: 0;
 }
-
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -35,4 +32,14 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+body {
+  background-image: url("@{base-url}/flashlight.jpg");
+  background-size: cover !important;
+  margin-top: 65px;
+}
+.whiteBorder {
+  border: 5px solid #fff;
+  border-radius: 5px;
+  padding: 0;
 }
