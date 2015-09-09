@@ -1,6 +1,6 @@
 app.controller("matchController",
-  ["$scope", "$routeParams", "Match", "Region", "Team", "Login", "NavTitleChange", "$location",
-  function($scope, $routeParams, Match, Region, Team, Login, NavTitleChange, $location) {
+  ["$scope", "$routeParams", "WatchResult", "Match", "Region", "Team", "Login", "NavTitleChange", "$location",
+  function($scope, $routeParams, WatchResult, Match, Region, Team, Login, NavTitleChange, $location) {
   // NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
   // console.log("hallelujah!")
 
@@ -60,6 +60,7 @@ app.controller("matchController",
   };
 
   $scope.toggleID = function(clickedId){
+    watchResult_controller(0,clickedId);
     currentId = currentId == clickedId ? false : clickedId;
   };
 
@@ -114,4 +115,32 @@ app.controller("matchController",
       window.scrollTo(0,element.top-50);
     },500);
   }
+
+
+
+  function watchResult_controller(scoreTime, gameId){
+    WatchResult(scoreTime, gameId, function(data){
+      
+      data.forEach(function(newScore){
+        scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
+        for (var i = 0; i < $scope.games.length; i++) {
+          if ($scope.games[i]._id === gameId){
+            console.log("i: ",$scope.games[i]);
+            $scope.games[i].homeResults = data[0].homeResults;
+            $scope.games[i].guestResults = data[0].guestResults;
+          }
+        }
+        console.log("data[0].homeResults: ",data[0].guestResults);
+
+
+      });
+      watchResult_controller(scoreTime, gameId);
+      // data.time is the get request..
+
+    });
+  }
+
+
+
+
 }]);

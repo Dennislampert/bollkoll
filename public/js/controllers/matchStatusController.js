@@ -10,12 +10,12 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     _id: $routeParams.gameId,
     _populate: "homeTeamId guestTeamId"
   },duplicateResults);
-
+  
+  
   function duplicateResults(){
-    $scope.oldResults = {
-      homeResults: $scope.match.homeResults,
-      guestResults: $scope.match.guestResults
-    };
+      $scope.oldResults.homeResults = $scope.match.homeResults;
+      $scope.oldResults.guestResults = $scope.match.guestResults;
+
   }
 
   $scope.saveResults = function(){
@@ -118,11 +118,10 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
       data.forEach(function(newScore){
         scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
         
-        console.log(data);
+        console.log("data[0].homeResults: ",data[0].homeResults);
+        $scope.oldResults.homeResults = data[0].homeResults;
+        $scope.oldResults.guestResults = data[0].guestResults;
 
-
-        console.log("success: ",data);
-        // scoreTime = newScore.lastScoreTime;
       });
       watchResult_controller(scoreTime, gameId);
       // data.time is the get request..
@@ -131,7 +130,7 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
   }
 
   watchResult_controller(0 ,$routeParams.gameId);
-
+  $scope.oldResults = {};
 }]);
     
 app.controller('matchAlertController', ["$scope", "$modalInstance", "message", "$location", "$routeParams", function($scope, $modalInstance, message, $location, $routeParams) {

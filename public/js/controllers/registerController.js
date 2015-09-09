@@ -10,27 +10,12 @@ app.controller("registerController",
     $scope.emailUniqe = true;
     $scope.usernameUniqe = true;
     console.log("gooo");
-    
-    if ($scope.userInfo.password != $scope.userInfo.passwordCompare) {
-      modalService.open({
-        templateUrl: 'partials/globalalert.html',
-        controller: 'registerAlertController',
-        resolve: {
-          message: function() {
-            $scope.message = {};
-            $scope.message.header = "Registrering misslyckades!";
-            $scope.message.msg = "Lösenorden matchade inte varandra, var god och försök igen!";
-            $scope.message.msgBtn = "Försök igen";
-            return $scope.message;
-          }
-        }
-      });
-      $scope.userInfo.password = "";
-      $scope.userInfo.passwordCompare = "";
-    }
+
+   
 
     // check if userName is registered
     User.get({username:$scope.userInfo.username},function(username){
+
       console.log("username:", username);
       // check if email is registered
       User.get({email:$scope.userInfo.email},function(email){
@@ -68,6 +53,24 @@ app.controller("registerController",
               }
             }
           });
+        }
+        if ($scope.userInfo.password != $scope.userInfo.passwordCompare) {
+          modalService.open({
+            templateUrl: 'partials/globalalert.html',
+            controller: 'registerAlertController',
+            resolve: {
+              message: function() {
+                $scope.message = {};
+                $scope.message.header = "Registrering misslyckades!";
+                $scope.message.msg = "Lösenorden matchade inte varandra, var god och försök igen!";
+                $scope.message.msgBtn = "Försök igen";
+                return $scope.message;
+              }
+            }
+          });
+          $scope.userInfo.password = "";
+          $scope.userInfo.passwordCompare = "";
+          return;
         }
         if ($scope.userInfo.password === $scope.userInfo.passwordCompare && $scope.emailUniqe === true && $scope.usernameUniqe === true ) {
           User.create($scope.userInfo, function(data) {
