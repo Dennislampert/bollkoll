@@ -1,8 +1,6 @@
-
 <div class="container">
   <div class="chat">
     <div class="row">
-
       <div id="{{message._id}}" class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in displayedMsgs">
         <div ng-if="!message.status">
           <p ng-class="{true:'chatUser', false:'yourChatUser'}[message.userId._id !== yourUser._id]">({{message.date | date:'HH:mm'}}) {{message.userId.username}}:</p>
@@ -14,7 +12,6 @@
           <p class="statusUser">({{message.date | date:'HH:mm'}}) {{message.userId.username}}:</p>
           <!-- <p class="statusDate">{{message.date | date:'hh:mm'}}</p> -->
           <p id="statusMessage">{{message.content}}</p>
-
         </div>
       </div>
     </div>
@@ -34,6 +31,5 @@
         </span>
       </form>
     </div>
-
   </div>
 </div>

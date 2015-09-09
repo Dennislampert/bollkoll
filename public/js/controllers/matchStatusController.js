@@ -11,8 +11,6 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     _populate: "homeTeamId guestTeamId"
   },duplicateResults);
 
-
-
   function duplicateResults(){
     $scope.oldResults = {
       homeResults: $scope.match.homeResults,
@@ -31,7 +29,6 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     $scope.chatInfo.homeResults = $scope.match.homeResults;
     $scope.chatInfo.guestResults = $scope.match.guestResults;
 
-
     // the following syntax ends up visible in the chat wwindow
     $scope.chatInfo.content = $scope.match.homeTeamId.name + " " + $scope.match.homeResults + " - " + $scope.match.guestTeamId.name + " " + $scope.match.guestResults;
     $scope.chatInfo.userId = Login.user._id;
@@ -44,18 +41,61 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
     Message.create($scope.chatInfo, function(resultsInChat) {
       console.log("sended a chat Message about this result..");
     });
-	};
+  };
+
 
   $scope.increaseGoals = function (match,prop){match[prop]++;};
   $scope.decreaseGoals = function (match,prop){match[prop]--;};
   $scope.decreaseDisallowed = function(x){return x < 1;};
   $scope.increaseDisallowed = function(x){return x > 30;};
 
-
-
   $scope.finishGame = function() {
     $scope.match.$update(duplicateResults);
-    $scope.match.finishedGame = true;
+    if ($scope.match.homeResults > $scope.match.guestResults) {
+        console.log("home team after finish: ", $scope.match);
+        $scope.match.homeTeamId.gamesPlayed ++;
+        $scope.match.homeTeamId.gamesWon ++;
+        $scope.match.homeTeamId.goalsFor += $scope.match.homeResults;
+        $scope.match.homeTeamId.goalsAgainst += $scope.match.guestResults;
+        $scope.match.homeTeamId.Points += 3;
+        $scope.match.guestTeamId.gamesPlayed ++;
+        $scope.match.guestTeamId.gamesLost ++;
+        $scope.match.guestTeamId.goalsFor += $scope.match.guestResults;
+        $scope.match.guestTeamId.goalsAgainst += $scope.match.homeResults;
+        $scope.match.guestTeamId.Points += 0;
+        Team.update($scope.match.homeTeamId._id, $scope.match.homeTeamId);
+        Team.update($scope.match.guestTeamId._id, $scope.match.guestTeamId);
+    }
+    else if ($scope.match.homeResults === $scope.match.guestResults) {
+        console.log("drawn after finish: ", $scope.match);
+        $scope.match.homeTeamId.gamesPlayed ++;
+        $scope.match.homeTeamId.gamesDrawn ++;
+        $scope.match.homeTeamId.goalsFor += $scope.match.homeResults;
+        $scope.match.homeTeamId.goalsAgainst += $scope.match.guestResults;
+        $scope.match.homeTeamId.Points ++;
+        $scope.match.guestTeamId.gamesPlayed ++;
+        $scope.match.guestTeamId.gamesDrawn ++;
+        $scope.match.guestTeamId.goalsFor += $scope.match.guestResults;
+        $scope.match.guestTeamId.goalsAgainst += $scope.match.homeResults;
+        $scope.match.guestTeamId.Points ++;
+        Team.update($scope.match.homeTeamId._id, $scope.match.homeTeamId);
+        Team.update($scope.match.guestTeamId._id, $scope.match.guestTeamId);
+    }
+    else if ($scope.match.homeResults < $scope.match.guestResults) {
+        console.log("guest team after finish: ", $scope.match);
+        $scope.match.homeTeamId.gamesPlayed ++;
+        $scope.match.homeTeamId.gamesLost ++;
+        $scope.match.homeTeamId.goalsFor += $scope.match.homeResults;
+        $scope.match.homeTeamId.goalsAgainst += $scope.match.guestResults;
+        $scope.match.homeTeamId.Points += 0;
+        $scope.match.guestTeamId.gamesPlayed ++;
+        $scope.match.guestTeamId.gamesWon ++;
+        $scope.match.guestTeamId.goalsFor += $scope.match.guestResults;
+        $scope.match.guestTeamId.goalsAgainst += $scope.match.homeResults;
+        $scope.match.guestTeamId.Points += 3;
+        Team.update($scope.match.homeTeamId._id, $scope.match.homeTeamId);
+        Team.update($scope.match.guestTeamId._id, $scope.match.guestTeamId);
+    }
     modalService.open({
       templateUrl:'partials/globalalert.html',
       controller: 'matchAlertController',
@@ -65,6 +105,7 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
           $scope.message.header = "Avsluta match?";
           $scope.message.msg = "Är du säker på att du vill avsluta matchen?";
           $scope.message.msgBtn = "Avsluta match!";
+          $scope.match.finishedGame = true;
           return $scope.message;
         }
       }
@@ -104,4 +145,5 @@ app.controller('matchAlertController', ["$scope", "$modalInstance", "message", "
   $scope.redirect = function() {
     $modalInstance.close({msg: "I CLOSED!"});
   };
+
 }]);

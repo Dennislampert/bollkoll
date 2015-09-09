@@ -1,10 +1,6 @@
 app.controller("chatController", ["$http", "$scope", "$routeParams", "$location", "Chat", "Message", "Match", "Region", "Login","$timeout","$anchorScroll",
   function($http, $scope, $routeParams, $location, Chat, Message, Match, Region, Login, $timeout, $anchorScroll){
-
-
   $scope.displayedMsgs = [];
-
-
   var scroll = {
     gotoBottom: function() {
       $timeout(function() {
@@ -12,12 +8,10 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
       });
     }
   };
-
   var globalRegionId;
   var globalRegionName;
   console.log("$routeParams.regionPath: ", $routeParams.regionPath);
   console.log("routeParams: ", $routeParams);
-
   $scope.yourUser = Login.user;
   window.user = Login.user;
   console.log("$scope.yourUser: ",$scope.yourUser);
@@ -26,7 +20,6 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
       async(0, regionId[0]._id + $routeParams.division);
       globalRegionId = regionId[0]._id;
       globalRegionName = regionId[0].regionName;
-
     });
   }
   else{
@@ -40,7 +33,6 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
   function async(matchId, divisionId){
     $scope.readSearch = false;
     $scope.chatInfo = {};
-
     $scope.send = function() {
       $scope.chatInfo.userId = Login.user._id;
       $scope.chatInfo.userName = Login.user.username;
@@ -51,7 +43,6 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
       $scope.chatInfo.division = $routeParams.division;
       var hashOrgArray = "";
       hashOrgArray = $scope.chatInfo.content.match(/#[a-zA-ZäöåÄÖÅ0-9]*/g);
-
       // filter out duplicates in array.. By Nodebite
       if (hashOrgArray){
         Array.prototype.hashOrgArray = function(){
@@ -64,18 +55,14 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
       }
       // $scope.chatInfo.matchId = $routeParams.matchId; think this is wrong *_*
       Message.create($scope.chatInfo, function(data) {
-
         delete $scope.chatInfo.hastag;
         $scope.chatInfo.content = "";
       });
     };
-
     var scrolledToAnchor = false;
-
     $scope.allMessages = [];
     $scope.displayedMsgs = $scope.allMessages;
     function longpoller(timestamp) {
-
       var url = "/api/chatlong/"+ divisionId+ "/" + timestamp + "/" + matchId;
       $http.get(url).success(function(data) {
         if (!data.hasOwnProperty("status")) {
@@ -91,17 +78,14 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
         }
       });
     }
-
     $scope.activateLongpoller = function(){
       if ($scope.readSearch === true){
-
         $scope.readSearch = false;
         $scope.tags.conversation = "";
         // async(matchId, divisionId);
         $scope.displayedMsgs = $scope.allMessages;
       }
     };
-
     $scope.readHashConversation = function(message){
       $scope.searchMessages = [];
       var time = new Date(message.date).getTime();
@@ -113,7 +97,6 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
         $scope.displayedMsgs = $scope.searchMessages;
       });
     };
-
     //get hastage like this (function like modulus %word%)
     $scope.tags = {};
     $scope.tagSearch = function(searchTag){
@@ -124,12 +107,10 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
           $scope.tags.conversation = "läs mer";
           $scope.searchMessages.push(hashtag);
         });
-
         $scope.displayedMsgs = $scope.searchMessages;
       });
     };
   
     longpoller(0);
-
   }
 }]);

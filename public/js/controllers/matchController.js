@@ -4,7 +4,6 @@ app.controller("matchController",
   // NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
   // console.log("hallelujah!")
 
-
   var regionAndDivisionId = {};
   var regionName;
 
@@ -95,7 +94,6 @@ app.controller("matchController",
             window.games = games;
             for (var i = 0; i < games.length; i++) {
               $scope.finishedGame = games[i].finishedGame;
-              console.log("finishedGame: ", $scope.finishedGame);
             }
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
