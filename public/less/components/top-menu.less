@@ -2,8 +2,36 @@
   display: none;
 }
 
+.top-menu {
+  ul li p {
+    position: relative;
+    display: block;
+    color: #9d9d9d;
+    line-height: 20px;
+    padding: 15px;
+    margin: 0;
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
+}
+
 // xs (Phone)
 @media (max-width: 767px) {
+  .top-menu {
+    ul li p {
+      position: relative;
+      display: block;
+      color: #9d9d9d;
+      line-height: 20px;
+      padding: 10px 15px;
+      margin: 0;
+      &:hover {
+        color: #FFFFFF;
+      }
+    }
+  }
+
   .navbar-text {
     text-align: center;
   }

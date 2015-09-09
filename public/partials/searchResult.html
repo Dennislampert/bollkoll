@@ -1,6 +1,16 @@
 <div>
   <div class="row col-lg-6 col-md-8 col-sm-10 col-xs-12 col-lg-offset-3 col-md-offset-2 col-sm-offset-1 col-xs-offset-0">
 
+    <div class="searchResults no-result panel panel-default" ng-if="!usersFound.length && !matchesFound.length && !messagesFound.length">
+      <div class="panel-heading noselect">
+        <h3>
+          Inga resultat funna
+        </h3>
+      </div>
+      <div class="panel-body" ng-hide="true">
+      </div>
+    </div>
+
     <div id="users" class="searchResults panel panel-default" ng-if="usersFound.length">
       <div class="panel-heading noselect" ng-click="showUsers = !showUsers; scrollToAnchor('users')">
         <h3>
@@ -17,8 +27,6 @@
             <p>Last name: {{ user.lname }}</p>
             <button class="btn btn-success pull-right" ng-click=" redirect('/anvandare/' + user.username)">Till profil</button>
           </div>
-        </div>
-        <div class="userResult">
         </div>
       </div>
     </div>

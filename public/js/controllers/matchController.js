@@ -1,6 +1,6 @@
 app.controller("matchController",
-  ["$scope", "$routeParams", "$anchorScroll", "Match", "Region", "Team", "Login", "NavTitleChange", "$location",
-  function($scope, $routeParams, $anchorScroll, Match, Region, Team, Login, NavTitleChange, $location) {
+  ["$scope", "$routeParams", "Match", "Region", "Team", "Login", "NavTitleChange", "$location",
+  function($scope, $routeParams, Match, Region, Team, Login, NavTitleChange, $location) {
   // NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
   // console.log("hallelujah!")
 
@@ -24,6 +24,7 @@ app.controller("matchController",
       division: regionAndDivisionId.division
     });
   };
+
 
 
   var time = new Date();
@@ -52,6 +53,7 @@ app.controller("matchController",
       (condition == "afterToday" && date > today);
   };
 
+
   var currentId;
   $scope.currentlyShownResult = function(idToCheck){
     return idToCheck != currentId;
@@ -66,6 +68,7 @@ app.controller("matchController",
 
     console.log("what is the answer?: ", answer);
     if (!answer.length) {
+      // ABORT IF NO REGION FOUND (FOR NOW)
       alert("NO REGION FOUND :/");
       return;
 
@@ -97,13 +100,18 @@ app.controller("matchController",
             }
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
-            setTimeout(function() {
-              $location.hash($routeParams.matchId);
-              $anchorScroll();
-            },500);
+            
+            scrollToAnchor();
           }
         );
       }
     );
   });
+  
+  function scrollToAnchor() {
+    setTimeout(function() {
+      var element = app.getElementOffset("#id_"+$routeParams.matchId);
+      window.scrollTo(0,element.top-50);
+    },500);
+  }
 }]);
