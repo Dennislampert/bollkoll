@@ -1,7 +1,29 @@
 .nav .home-link {
   display: none;
 }
+.top-menu ul li p {
+  position: relative;
+  display: block;
+  color: #9d9d9d;
+  line-height: 20px;
+  padding: 15px;
+  margin: 0;
+}
+.top-menu ul li p:hover {
+  color: #FFFFFF;
+}
 @media (max-width: 767px) {
+  .top-menu ul li p {
+    position: relative;
+    display: block;
+    color: #9d9d9d;
+    line-height: 20px;
+    padding: 10px 15px;
+    margin: 0;
+  }
+  .top-menu ul li p:hover {
+    color: #FFFFFF;
+  }
   .navbar-text {
     text-align: center;
   }
@@ -163,7 +185,10 @@ td.matchGuestTeam.ng-binding {
   text-decoration: underline;
 }
 .chat {
-  background-color: #fff;
+  background: url("../../backround_images/Bollkoll - 2 - Log in (registration)/schematic-green-soccer-field by DIGITALWIDERESOURCE (Gaussian blur).jpg") no-repeat;
+  background-size: cover;
+  border: 5px solid #fff;
+  border-radius: 5px;
   height: 75vh;
   margin-bottom: 50px;
   overflow-y: scroll;
@@ -289,6 +314,10 @@ td.matchGuestTeam.ng-binding {
 }
 .messageToSend .chatTextSubmit {
   height: 50px;
+}
+.whiteTextUser {
+  color: #fff;
+  font-size: 12px;
 }
 .alert-warning {
   border-color: #ff4900 !important;
@@ -532,6 +561,13 @@ cropme canvas {
 .searchResults {
   border-color: #080808;
   overflow: hidden;
+}
+.searchResults.no-result .panel-heading {
+  cursor: default;
+}
+.searchResults.no-result .panel-heading:hover {
+  background-color: #222222;
+  color: #9d9d9d;
 }
 .searchResults .panel {
   border-color: #080808;
