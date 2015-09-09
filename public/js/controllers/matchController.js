@@ -75,6 +75,8 @@ app.controller("matchController",
     regionAndDivisionId.regionId = answer[0]._id;
     regionName = answer[0].regionName;
     regionAndDivisionId.division = $routeParams.division;
+    $scope.div = $routeParams.division;
+    $scope.regionId = answer[0]._id;
 
     Team.get(
       regionAndDivisionId, function(teams){
