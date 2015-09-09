@@ -1,13 +1,27 @@
 <div class="container">
-  <section >
-    <div class="panel panel-default">
-      <div class="panel-heading">Kommande matcher</div>
-      <table class="table matches-table">
-        <tr>
-          <th>Hemma - Borta</th>
-          <th>Tid</th>
-          <th><i class="fa fontaw fa-info-circle "></i></th>
-          <th><i class="fa fontaw fa-pencil-square-o"></i></th>
+<section >
+  <div class="panel panel-default">
+
+    <div class="panel-heading">Kommande matcher</div>
+    <table class="table matches-table">
+      <tr>
+        <th>Hemma - Borta</th>
+        <th>Tid</th>
+        <th><i class="fa fontaw fa-info-circle "></i></th>
+        <th><i class="fa fontaw fa-pencil-square-o"></i></th>
+      </tr>
+      <tbody ng-repeat="game in games" ng-if="dateCompare(game.date,'afterToday')" >
+        <tr class="first-tr"> <!-- Results ng-repete and hide every second row -->
+          <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
+          <td ng-click="toggleID(game._id)">{{ game.date }}</td>
+          <td><button popover="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}" popover-placement="left" class="fontAwesomeButton"><i class="fa fontaw fa-info-circle"></i></button></td>
+          <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
+        </tr>
+        <tr ng-hide="currentlyShownResult(game._id)" >
+          <td ng-click="toggleID(game._id)">{{ game.homeResults }}  -  {{ game.guestResults }} </td>
+          <td ng-click="toggleID(game._id)">{{ game.time }}</td>
+          <td><a ng-href="/{{game._id}}/chat" class="fa fontaw fa-comments "></a></td>
+          <td><a ng-href="/{{games.regionPath}}/{{game.division}}/{{game._id}}/matchstatus" class="fa fontaw fa-pencil-square-o"></i></td>
         </tr>
         <tbody ng-repeat="game in games" ng-if="dateCompare(game.date,'afterToday')" >
           <tr class="first-tr"> <!-- Results ng-repete and hide every second row -->
@@ -26,14 +40,14 @@
         </tbody>
       </table>
 
-      <div class="panel-heading">Dagens matcher</div>
-      <table class="table matches-table">
-        <tr>
-          <th>Hemma - Borta</th>
-          <th>Tid</th>
-          <th><i class="fa fontaw fa-info-circle "></i></th>
-          <th><i class="fa fontaw fa-pencil-square-o"></i></th>
-        </tr>
+    <div class="panel-heading">Dagens matcher</div>
+    <table class="table matches-table">
+      <tr>
+        <th>Hemma - Borta</th>
+        <th>Tid</th>
+        <th><i class="fa fontaw fa-info-circle "></i></th>
+        <th><i class="fa fontaw fa-pencil-square-o"></i></th>
+      </tr>
         <tbody ng-repeat="game in games" ng-if="dateCompare(game.date,'today')">
           <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
             <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
@@ -50,33 +64,33 @@
         </tbody>
       </table>
 
-      <div class="panel-heading">Spelade matcher</div>
-      <table class="table matches-table">
-        <tr>
-          <th>Hemma - Borta</th>
-          <th>Tid</th>
-          <th><i class="fa fontaw fa-info-circle "></i></th>
-          <th><i class="fa fontaw fa-pencil-square-o"></i></th>
-        </tr>
-        <tbody ng-repeat="game in games"  id="{{game._id}}" ng-if="dateCompare(game.date,'beforeToday')">
-          <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
-            <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
-            <td ng-click="toggleID(game._id)">{{ game.date }}</td>
-            <td><a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"></a></td>
-            <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
-          </tr>
-          <tr ng-hide="currentlyShownResult(game._id)" >
-            <td ng-click="toggleID(game._id)">{{ game.homeResults }}  -  {{ game.guestResults }} </td>
-            <td ng-click="toggleID(game._id)">{{ game.time }}</td>
-            <td><a ng-href="/{{game._id}}/chat" class="fa fontaw fa-comments "></a></td>
-            <td><a ng-if="!game.finishedGame" ng-href="/{{games.regionPath}}/{{game.division}}/{{game._id}}/matchstatus" class="fa fontaw fa-pencil-square-o"></i></td>
-          </tr>
-        </tbody>
-      </table>
 
-      <div class="panel-body">
-        <p>En förklaring till alla symboler</p>
-      </div>
+    <div class="panel-heading">Spelade matcher</div>
+    <table class="table matches-table">
+      <tr>
+        <th>Hemma - Borta</th>
+        <th>Tid</th>
+        <th><i class="fa fontaw fa-info-circle "></i></th>
+        <th><i class="fa fontaw fa-pencil-square-o"></i></th>
+      </tr>
+      <tbody ng-repeat="game in games"  id="{{game._id}}" ng-if="dateCompare(game.date,'beforeToday')">
+        <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
+          <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
+          <td ng-click="toggleID(game._id)">{{ game.date }}</td>
+          <td><button popover="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}" popover-placement="left" class="fontAwesomeButton"><i class="fa fontaw fa-info-circle"></i></button></td>
+          <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
+        </tr>
+        <tr ng-hide="currentlyShownResult(game._id)" >
+          <td ng-click="toggleID(game._id)">{{ game.homeResults }}  -  {{ game.guestResults }} </td>
+          <td ng-click="toggleID(game._id)">{{ game.time }}</td>
+          <td><a ng-href="/{{game._id}}/chat" class="fa fontaw fa-comments "></a></td>
+          <td><a ng-if="!game.finishedGame" ng-href="/{{games.regionPath}}/{{game.division}}/{{game._id}}/matchstatus" class="fa fontaw fa-pencil-square-o"></i></td>
+        </tr>
+      </tbody>
+    </table>
+<input style="width: 50px;" name="input" required value="Click me!" tooltip="See? Now click away..."  tooltip-trigger="focus" tooltip-placement="right" class="form-control">
+    <div class="panel-body">
+      <p>En förklaring till alla symboler</p>
     </div>
   </section>
 </div>
