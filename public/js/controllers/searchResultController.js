@@ -4,7 +4,7 @@ app.controller("searchResultController",
     NavTitleChange("Sök");
 
   	console.log("params", $routeParams.searchParams);
-    var searchRegExp = new RegExp(".*" + $routeParams.searchParams + ".*");
+    var searchRegExp = new RegExp(".*" + $routeParams.searchParams + ".*","i");
     
     // This should work just fine bug in Mongresto (Thomas will fix)
 /*  	var userParams = {
@@ -58,9 +58,10 @@ app.controller("searchResultController",
     });
 
     $scope.scrollToAnchor = function(anchor) {
+
       setTimeout(function() {
-        $location.hash(anchor);
-        $anchorScroll();
+        var element = app.getElementOffset('#' + anchor);
+        window.scrollTo(0,element.top-65);
       },300);
     };
 

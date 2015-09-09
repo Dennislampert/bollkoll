@@ -32,4 +32,7 @@ app.controller("headerController",
       $location.path("/search/" + seachTerm);
     }
   };
+  $scope.redirect = function(path) {
+    $location.path(path);
+  };
 }]);
