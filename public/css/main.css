@@ -54,6 +54,13 @@
 .navbar-inverse .navbar-nav > li > a.whiteLogoutText {
   color: #fff !important;
 }
+.menuWhiteBorder {
+  border-bottom: 5px solid #fff;
+  border-right: 5px solid #fff;
+  border-left: 5px solid #fff;
+  border-radius: 5px;
+  padding: 0;
+}
 .fontaw {
   background: #fcba6a;
   background: -moz-linear-gradient(top, #fcba6a 0%, #ff9715 47%, #ff920a 53%, #ff8400 63%, #eb7d00 74%, #de7a00 85%, #a85802 100%);
