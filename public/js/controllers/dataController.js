@@ -74,6 +74,7 @@ app.controller("dataController", ["$scope", "$http", "Match", "Region", "Team", 
                 creatMatch(null ,guestTeam);
               }
             });
+            // pleace notes me
             function creatMatch(theHomeTeam, theGuestTeam){
 
               thisHomeTeam = thisHomeTeam === null ? theGuestTeam:thisHomeTeam;

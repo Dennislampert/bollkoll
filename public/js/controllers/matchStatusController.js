@@ -118,10 +118,8 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
       data.forEach(function(newScore){
         scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
         
-        console.log(data);
-
-
-        console.log("success: ",data);
+        console.log("success: ",data[0]);
+        
         // scoreTime = newScore.lastScoreTime;
       });
       watchResult_controller(scoreTime, gameId);
