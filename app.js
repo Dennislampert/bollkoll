@@ -16,38 +16,6 @@ var m = {};
 });
 
 
-// function resize(publicPath, filename, uploadPath) {
-//   var resizeCrop = require('resize-crop');
-//   /*publicPath = publicPath.replace(/\\/g, "\\\\");
-//   uploadPath = uploadPath.replace(/\\/g, "\\\\");*/
-//    console.log("publicPath: ", publicPath);
-//    console.log("uploadPath: ", uploadPath);
-//   resizeCrop(
-//       {
-//           format: filename.split(".").pop(),
-//           src: m.path.normalize(process.cwd() + publicPath),
-//           dest: m.path.normalize(process.cwd() + uploadPath),
-//           height: 250,
-//           width: 250,
-//           gravity: "center"
-//       },
-//       function( err, filePath ){
-//         if (err) { throw err; }
-//           console.log("done!");
-//           console.log("filePath!: ", filePath);
-//           console.log("err: ", err);
-//       }
-//   );
-// }
-
-// resize(
-//   '/public/files/catinshock.jpg',
-//   'slide_414978_5264748_compressed.jpg',
-//   '/public/files/resize-catinshock.jpg')
-
-m['fs'].exists('C:\\NODE.JS\\bollkoll\\public\\files\\slide_414978_5264748_compressed.jpg', function(data){
-  console.log("d", data);
-});
 // Standard Express boiler plate code
 var app = m.express();
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -60,26 +28,25 @@ app.use(m.express.static(m.path.join(__dirname, 'public')));
 // Route everything "else" to angular (in html5mode)
 app.get('/api/getdata', function (req, res) {
   var http = require('http');
-
-  var url = 'http://api.everysport.com/v1/leagues/69643/events?limit=1000&apikey=0b5af832685c9f68013fe4055a74ef2f';
+  // Skåne leagid = 69659
+  // hälsingland leadgid = 69643
+  var url = 'http://api.everysport.com/v1/leagues/69659/events?limit=1000&apikey=878d16e28ab6fe3a5f40035efbadca69';
 
   http.get(url, function(resp) {
-      var body = '';
+    var body = '';
 
-      resp.on('data', function(chunk) {
-          body += chunk;
-      });
-      resp.on('end', function() {
-          // var Response = JSON.parse(body);
-          // console.log("Got response: ", body);
-      res.json(JSON.parse(body));
-      });
+    resp.on('data', function(chunk) {
+        body += chunk;
+    });
+    resp.on('end', function() {
+        // var Response = JSON.parse(body);
+        // console.log("Got response: ", body);
+    res.json(JSON.parse(body));
+    });
   }).on('error', function(e) {
       console.log("Got error: ", e);
   });
-
 });
-
 
 var options = {
   permissionToAsk: require('./permission/permissionToAsk.js'),
@@ -99,16 +66,16 @@ var options = {
       method: "get",
       path: "chatlong/:divisionId/:latestKnownMessageId/:matchId?",
       controller: require('./api/routes/longPoll')
+    },
+    {
+      method: "get",
+      path: "resultWatch/:lastScoreTime/:matchId",
+      controller: require('./api/routes/resultWatch')
     }
   ]
 };
 // Initialize our own REST api - mongresto
 m.mongresto.init(app, options);
-// get all data for Hälsingland div 4
-
-
-
-
 
 
 // Route everything "else" to angular (in html5mode)

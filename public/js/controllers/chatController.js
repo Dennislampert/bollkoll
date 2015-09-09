@@ -1,24 +1,26 @@
-
-app.controller("chatController", ["$http", "$scope", "$routeParams", "$location", "Chat", "Message", "Match", "Region", "Login","$anchorScroll",
-  function($http, $scope, $routeParams, $location, Chat, Message, Match, Region, Login, $anchorScroll){
+app.controller("chatController", ["$http", "$scope", "$routeParams", "$location", "Chat", "Message", "Match", "Region", "Login","$timeout","$anchorScroll",
+  function($http, $scope, $routeParams, $location, Chat, Message, Match, Region, Login, $timeout, $anchorScroll){
 
 
   $scope.displayedMsgs = [];
 
-  // var goToBottom = function() {
-  //   console.log("goToBottom!");
-  //   var scrollid = $scope.displayedMsgs.pop();
-  //   console.log("scrollid: ",scrollid._id);
-  //   var objDiv = document.getElementById("scrollid._id");
-  //   objDiv.scrollTop = objDiv.scrollHeight;
-  // };
+
+  var scroll = {
+    gotoBottom: function() {
+      $timeout(function() {
+        document.querySelector(".chat").scrollTop = 1000000000000000000;
+      });
+    }
+  };
+
   var globalRegionId;
   var globalRegionName;
   console.log("$routeParams.regionPath: ", $routeParams.regionPath);
   console.log("routeParams: ", $routeParams);
+
   $scope.yourUser = Login.user;
   window.user = Login.user;
-
+  console.log("$scope.yourUser: ",$scope.yourUser);
   if($routeParams.regionPath){
     Region.get({regionPath:$routeParams.regionPath},function(regionId){
       async(0, regionId[0]._id + $routeParams.division);
@@ -60,55 +62,39 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
         };
         $scope.chatInfo.hastag = hashOrgArray.hashOrgArray();
       }
-
       // $scope.chatInfo.matchId = $routeParams.matchId; think this is wrong *_*
       Message.create($scope.chatInfo, function(data) {
-        console.log("lolek", data);
+
         delete $scope.chatInfo.hastag;
         $scope.chatInfo.content = "";
       });
     };
-
-    
 
     var scrolledToAnchor = false;
 
     $scope.allMessages = [];
     $scope.displayedMsgs = $scope.allMessages;
     function longpoller(timestamp) {
-      console.log( "divisionId: ",divisionId,"matchId: ",matchId);
+
       var url = "/api/chatlong/"+ divisionId+ "/" + timestamp + "/" + matchId;
       $http.get(url).success(function(data) {
-        console.log("data: ",data);
         if (!data.hasOwnProperty("status")) {
           data.forEach(function(msg) {
+            console.log("timestamp: ",timestamp, " msg.date: ",msg.date);
             timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
-
             $scope.allMessages.push(msg);
-
-            scrollToAnchor();
           });
-          // goToBottom();
+          if (data.length >0){
+            scroll.gotoBottom();
+          }
           longpoller(timestamp);
         }
       });
     }
 
-    function scrollToAnchor() {
-      if (!scrolledToAnchor) {
-        setTimeout(function() {
-          $location.hash($routeParams.messageId);
-          $anchorScroll();
-          scrolledToAnchor = true;
-        },500);
-        
-      }
-    }
-
-
     $scope.activateLongpoller = function(){
       if ($scope.readSearch === true){
-        console.log("textingtextarea");
+
         $scope.readSearch = false;
         $scope.tags.conversation = "";
         // async(matchId, divisionId);
@@ -146,14 +132,4 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
     longpoller(0);
 
   }
-
-
-
-
-
-
-
-
-
-
 }]);

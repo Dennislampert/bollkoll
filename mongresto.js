@@ -35,7 +35,6 @@ var mongresto = module.exports = (function _mongresto(){ return {
 
     // The path to the rest api
     apiPath: "/api",
-    
     // The path where you should put your Mongoose models
     modelPath: "./mongoose-schema/",
     
@@ -153,7 +152,6 @@ var mongresto = module.exports = (function _mongresto(){ return {
     // Run query
     this.runQuery();
   },
-
   getFileNames: function(path,callback){
     // Read a folder recursively looking for js files
     var fs = require('fs'), base = {__count:0, arr: []};
@@ -218,7 +216,7 @@ var mongresto = module.exports = (function _mongresto(){ return {
       // convert strings containing reg exps to real reg exps
       for(var i in s3){
         t = s3[i];
-        console.log("t: ", t);
+        // console.log(" *_* mongresto answere: ", t);
         if(t.indexOf('~regexpstart~')===0){
           t = t.replace(/~regexpstart~/g,'').replace(/~regexpend~/,'');
           t = t.split("/");
@@ -344,7 +342,7 @@ var mongresto = module.exports = (function _mongresto(){ return {
   },
 
   buildNgResourcesScript: function(req,res){
-    // Auto generate frontend javascript
+    // Auto generate front-end javascript
     // defining Angular resources
     var ngAppVarName = req.url.split("/").pop();
     var models = this.mongooseModels;

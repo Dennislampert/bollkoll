@@ -27,7 +27,6 @@ app.controller("matchController",
   };
 
 
-
   var time = new Date();
   var stringTime = ""+time+"";
   var month = time.getMonth();
@@ -54,7 +53,6 @@ app.controller("matchController",
       (condition == "afterToday" && date > today);
   };
 
-
   var currentId;
   $scope.currentlyShownResult = function(idToCheck){
     return idToCheck != currentId;
@@ -69,7 +67,6 @@ app.controller("matchController",
 
     console.log("what is the answer?: ", answer);
     if (!answer.length) {
-      // ABORT IF NO REGION FOUND (FOR NOW)
       alert("NO REGION FOUND :/");
       return;
 
@@ -78,6 +75,8 @@ app.controller("matchController",
     regionAndDivisionId.regionId = answer[0]._id;
     regionName = answer[0].regionName;
     regionAndDivisionId.division = $routeParams.division;
+    $scope.div = $routeParams.division;
+    $scope.regionId = answer[0]._id;
 
     Team.get(
       regionAndDivisionId, function(teams){
@@ -97,7 +96,7 @@ app.controller("matchController",
             for (var i = 0; i < games.length; i++) {
               $scope.finishedGame = games[i].finishedGame;
               console.log("finishedGame: ", $scope.finishedGame);
-            };
+            }
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
             setTimeout(function() {
