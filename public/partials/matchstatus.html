@@ -4,7 +4,7 @@
       <table style="width:100%" class="table table-striped table-condensed">
 			<tr>
 				<td class="matchDate">
-					<h3>{{ match.date }}</h3>
+					<h3><strong>{{ match.date }}</strong></h3>
 				</td>
 				<td></td>
 			</tr>
@@ -14,16 +14,16 @@
 			</tr>
       <tr>
 				<td class="matchHomeTeam">
-					{{ match.homeTeamId.name | uppercase }}
+					<h4><strong>{{ match.homeTeamId.name | uppercase }}</strong></h4>
 				</td>
 				<td></td>
 			</tr>
       <tr>
-		    <td><h4>{{ oldResults.homeResults }}</h4></td>
+		    <td><h4><strong>{{ oldResults.homeResults }}</strong></h4></td>
 		    <td>
 		    	<div class="homeTeamScore">
 			      <button class="scoreButtonText" ng-click="decreaseGoals(match,'homeResults')" ng-disabled="decreaseDisallowed(match.homeResults)">-</button>
-			      <span>{{ match.homeResults }}</span>
+			      <span><h4><strong>{{ match.homeResults }}</strong></h4></span>
 			    	<button class="scoreButtonText" ng-click="increaseGoals(match,'homeResults')" ng-disabled="increaseDisallowed(match.homeResults)">+</button>
 			    </div>
 		    </td>
@@ -54,16 +54,16 @@
   			</tr>
   	        <tr>
   						<td class="matchGuestTeam">
-  							{{ match.guestTeamId.name | uppercase }}
+  							<h4><strong>{{ match.guestTeamId.name | uppercase }}</strong></h4>
   						</td>
   						<td></td>
   					</tr>
 	        <tr>
-				    <td><h4>{{ oldResults.guestResults }}</h4></td>
+				    <td><h4><strong>{{ oldResults.guestResults }}</strong></h4></td>
 				    <td>
 				    	<div class="guestTeamScore">
 					      <button class="scoreButtonText" ng-click="decreaseGoals(match,'guestResults')" ng-disabled="decreaseDisallowed(match.guestResults)">-</button>
-					      <span>{{ match.guestResults }}</span>
+					      <span><strong>{{ match.guestResults }}</strong></span>
 					    	<button class="scoreButtonText" ng-click="increaseGoals(match,'guestResults')" ng-disabled="increaseDisallowed(match.guestResults)">+</button>
 					    </div>
 				    </td>

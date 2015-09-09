@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row whiteBorder">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Hälsingland div 4</h3>
@@ -8,25 +8,25 @@
         Tabell
       </div>
       <table class="table table-striped">
-        <tr>
-          <th>Lag</th>
-          <th>S</th>
-          <th>V</th>
-          <th>O</th>
-          <th>F</th>
-          <th>GM</th>
-          <th>IM</th>
-          <th>P</th>
+        <tr class="tableWhiteMenu">
+          <th><h3><span class="stretch">LAG</span></h3></th>
+          <th><h3>S</h3></th>
+          <th><h3>V</h3></th>
+          <th><h3>O</h3></th>
+          <th><h3>F</h3></th>
+          <th><h3>GM</h3></th>
+          <th><h3>IM</h3></th>
+          <th><h3>P</h3></th>
         </tr>
         <tr ng-repeat="team in getTeams | orderBy:'-Points'">
-          <td>{{team.name}}</td>
-          <td>{{team.gamesPlayed}}</td>
-          <td>{{team.gamesWon}}</td>
-          <td>{{team.gamesDrawn}}</td>
-          <td>{{team.gamesLost}}</td>
-          <td>{{team.goalsFor}}</td>
-          <td>{{team.goalsAgainst}}</td>
-          <td>{{team.Points}}</td>
+          <td><strong>{{team.name | uppercase}}</strong></td>
+          <td><strong>{{team.gamesPlayed}}</strong></td>
+          <td><strong>{{team.gamesWon}}</strong></td>
+          <td><strong>{{team.gamesDrawn}}</strong></td>
+          <td><strong>{{team.gamesLost}}</strong></td>
+          <td><strong>{{team.goalsFor}}</strong></td>
+          <td><strong>{{team.goalsAgainst}}</strong></td>
+          <td><strong>{{team.Points}}</strong></td>
         </tr>
       </table>
     </div>
