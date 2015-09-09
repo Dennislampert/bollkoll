@@ -14,7 +14,7 @@
         <tr class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
-          <a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"><td></td></a>
+          <td><button popover="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}" popover-placement="left" class="fontAwesomeButton"><i class="fa fontaw fa-info-circle"></i></button></td>
           <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
         </tr>
         <tr ng-hide="currentlyShownResult(game._id)" >
@@ -40,7 +40,7 @@
         <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
-          <a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"><td></td></a>
+          <td><button popover="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}" popover-placement="left" class="fontAwesomeButton"><i class="fa fontaw fa-info-circle"></i></button></td>
           <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
         </tr>
         <tr ng-hide="currentlyShownResult(game._id)" >
@@ -66,7 +66,7 @@
         <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
-          <td><a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"></a></td>
+          <td><button popover="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}" popover-placement="left" class="fontAwesomeButton"><i class="fa fontaw fa-info-circle"></i></button></td>
           <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
         </tr>
         <tr ng-hide="currentlyShownResult(game._id)" >
@@ -77,7 +77,7 @@
         </tr>
       </tbody>
     </table>
-
+<input style="width: 50px;" name="input" required value="Click me!" tooltip="See? Now click away..."  tooltip-trigger="focus" tooltip-placement="right" class="form-control">
     <div class="panel-body">
       <p>En förklaring till alla symboler</p>
     </div>
