@@ -1,6 +1,26 @@
 .nav .home-link {
   display: none;
 }
+.top-menu .login-light {
+  z-index: -5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 30px;
+  background-color: #444444;
+  border: 1px solid #333333;
+  border-radius: 0 25px 25px 0;
+  -webkit-transition: background-color 1.5s, border 1.5s;
+  transition: background-color 1.5s, border 1.5s;
+}
+.top-menu .login-light.logged-in {
+  background-color: #008F00;
+  border: 1px solid #005000;
+}
+.top-menu .search-form-mobile {
+  display: none;
+}
 .top-menu ul li p {
   position: relative;
   display: block;
@@ -8,11 +28,20 @@
   line-height: 20px;
   padding: 15px;
   margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .top-menu ul li p:hover {
   color: #FFFFFF;
 }
 @media (max-width: 767px) {
+  .top-menu .search-form-mobile {
+    display: block;
+  }
   .top-menu ul li p {
     position: relative;
     display: block;
@@ -41,6 +70,25 @@
   }
   .searchBoxFix button {
     width: 10%;
+  }
+  .search-form-desktop {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .search-form-desktop {
+    z-index: 5;
+    position: fixed;
+    display: block;
+    top: 0;
+    right: 15px;
+    padding: 0;
+    margin: 0;
+    -webkit-transition: top 0.3s;
+    transition: top 0.3s;
+  }
+  .search-form-desktop.show-desktop-search {
+    top: 55px;
   }
 }
 .main-menu {
@@ -101,10 +149,10 @@ th {
   background-image: url("../backround_images/greey-light.jpg");
   cursor: pointer;
 }
-div.panel.panel-default {
+.matches div.panel.panel-default {
   margin: 0;
 }
-h3 {
+.matches h3 {
   margin: 0;
 }
 .fontAwesomeButton {
@@ -176,8 +224,8 @@ tr:nth-child(odd) {
 .endButtonText {
   color: #000;
 }
-h3.ng-binding,
-h4.ng-binding {
+.match-status h3.ng-binding,
+.match-status h4.ng-binding {
   margin: 0;
 }
 td.matchHomeTeam.ng-binding,
