@@ -56,7 +56,7 @@ module.exports = function(mongoose) {
           if (err) { throw err; }
           // and finally send a response to client
           res.json(publicPath);
-          scaleimage("public"+publicPath);
+          // scaleimage("public"+publicPath);
         });
       });
     });
