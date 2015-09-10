@@ -152,8 +152,9 @@ th {
 .matches div.panel.panel-default {
   margin: 0;
 }
-.matches h3 {
+.matches-table tr h3 {
   margin: 0;
+  font-family: 'sf_collegiateregular';
 }
 .fontAwesomeButton {
   outline: 0;
@@ -165,7 +166,7 @@ th {
 }
 .popover {
   color: #fff;
-  font-size: 10px;
+  font-size: 12px;
   background-color: #000;
   top: 393.5px;
   left: 483px;
@@ -179,6 +180,9 @@ th {
 }
 .alertBtn {
   margin-top: 3vh;
+}
+h3 {
+  margin: 0;
 }
 .mainMenu {
   padding: 0;
@@ -194,7 +198,11 @@ tr td {
   background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
 }
 .matchTopTeam h2 {
+  text-align: center;
   margin: 0;
+  padding-top: 6px;
+  font-family: 'sf_collegiateregular';
+  border-bottom: 2px solid #fff;
 }
 tr:nth-child(even) {
   background-image: url("../backround_images/Bollkoll - 3 - Table/table-1.2-dark.jpg");
@@ -204,9 +212,6 @@ tr:nth-child(odd) {
 }
 .table {
   margin-bottom: 0px;
-}
-.matchTopTeam h2 {
-  text-align: center;
 }
 .homeTeamScore,
 .yellowPenaltyCardHomeTeam,
@@ -231,6 +236,9 @@ tr:nth-child(odd) {
 td.matchHomeTeam.ng-binding,
 td.matchGuestTeam.ng-binding {
   text-decoration: underline;
+}
+div h4 {
+  margin: 0;
 }
 .chat {
   background: url("../../backround_images/Bollkoll - 2 - Log in (registration)/schematic-green-soccer-field by DIGITALWIDERESOURCE (Gaussian blur).jpg") no-repeat;
@@ -669,6 +677,10 @@ cropme canvas {
 .babar {
   font-family: 'sf_collegiateregular';
 }
+.tableWhiteMenu th h3 {
+  font-family: 'sf_collegiateregular';
+  border-bottom: 2px solid #fff;
+}
 .nav,
 .pagination,
 .carousel,
@@ -708,3 +720,7 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+/*@font-face {
+  font-family: 'varsity_regular';
+  src: url('./../fonts/varsity_regular.ttf');
+}*/
