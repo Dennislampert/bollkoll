@@ -80,15 +80,17 @@
     z-index: 5;
     position: fixed;
     display: block;
-    top: 0;
-    right: 15px;
-    padding: 0;
+    top: -10px;
+    right: 0;
+    padding: 10px;
     margin: 0;
-    -webkit-transition: top 0.3s;
-    transition: top 0.3s;
+    border-radius: 0 0 0 10px;
+    background-color: #222222;
+    -webkit-transition: top 0.3s ease-in-out;
+    transition: top 0.3s ease-in-out;
   }
   .search-form-desktop.show-desktop-search {
-    top: 55px;
+    top: 50px;
   }
 }
 .main-menu {
@@ -151,6 +153,10 @@ th {
 }
 .matches div.panel.panel-default {
   margin: 0;
+}
+.matches h3 {
+  margin: 0;
+  font-family: 'sf_collegiateregular';
 }
 .matches-table tr h3 {
   margin: 0;
