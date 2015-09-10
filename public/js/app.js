@@ -105,7 +105,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     })
     .when("/anvandare/:username/settings", {
       templateUrl: "partials/userprofilesettings.html",
-      controller: "profileSettingsController"
+      controller: "profileSettingsController",
+      // loggedIn: true
     })
     .when("/search/:searchParams", {
       templateUrl: "partials/searchResult.html",
