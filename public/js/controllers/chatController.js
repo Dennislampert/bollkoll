@@ -126,7 +126,7 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
           });
           //event.stopPropagation();
           return;
-        }
+        } 
       });
     };
   
