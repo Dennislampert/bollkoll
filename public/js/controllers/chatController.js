@@ -1,5 +1,5 @@
-app.controller("chatController", ["$http", "$scope", "$routeParams", "$location", "Chat", "Message", "Match", "Region", "Login","$timeout","$anchorScroll",
-  function($http, $scope, $routeParams, $location, Chat, Message, Match, Region, Login, $timeout, $anchorScroll){
+app.controller("chatController", ["$http", "$scope", "$routeParams", "$location", "Chat", "Message", "Match", "Region", "Login","$timeout","$anchorScroll","modalService",
+  function($http, $scope, $routeParams, $location, Chat, Message, Match, Region, Login, $timeout, $anchorScroll, modalService){
   $scope.displayedMsgs = [];
   var scroll = {
     gotoBottom: function() {
@@ -108,6 +108,25 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
           $scope.searchMessages.push(hashtag);
         });
         $scope.displayedMsgs = $scope.searchMessages;
+        console.log("$scope.displayedMsgs: ", $scope.displayedMsgs);
+        if(!$scope.displayedMsgs[0]) {
+          event.preventDefault();
+          modalService.open({
+            templateUrl:'partials/globalalert.html',
+            controller: 'uploadAlertController',
+            resolve: {
+              message: function() {
+                $scope.message = {};
+                $scope.message.header = "Inget resultat";
+                $scope.message.msg = "Du fick inget resultat på din sök. Var god och sök igen.";
+                $scope.message.msgBtn = "Stäng";
+                return $scope.message;
+              }
+            }
+          });
+          //event.stopPropagation();
+          return;
+        } 
       });
     };
   

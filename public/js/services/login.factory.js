@@ -54,11 +54,11 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
       });
     },
     getCurrentUser: function() {
-      if(window.sessionStorage.loggedOut){
-        return false;
-      }
       if (!objectIsEmpty(loginObj.user)) {
         return loginObj.user;
+      }
+      if(window.sessionStorage.loggedOut){
+        return false;
       }
       else {
         return false;
