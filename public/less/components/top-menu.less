@@ -3,7 +3,7 @@
 }
 
 .top-menu {
-  .login-light {
+  .logged-out-light {
     z-index: -5;
     position: absolute;
     top: 0;
@@ -13,12 +13,37 @@
     background-color: #444444;
     border: 1px solid #333333;
     border-radius: 0 25px 25px 0;
+    
+    
+  }
+  .logged-in-light {
+    z-index: -4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 30px;
+    // background-color: #008F00;
+    // border: 1px solid #005000;
+    border-radius: 0 25px 25px 0;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00af00+0,005000+100 */
+    background: #00af00; /* Old browsers */
+    background: -moz-linear-gradient(left, #00af00 0%, #005000 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#00af00), color-stop(100%,#005000)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, #00af00 0%,#005000 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, #00af00 0%,#005000 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, #00af00 0%,#005000 100%); /* IE10+ */
+    background: linear-gradient(to right, #00af00 0%,#005000 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00af00', endColorstr='#005000',GradientType=1 ); /* IE6-9 */
+
+    opacity: 0;
+    -webkit-transition: opacity 2s;
+    transition: opacity 2s;
+
     &.logged-in {
-      background-color: #008F00;
-      border: 1px solid #005000;
+      opacity: 1;
     }
-    -webkit-transition: background-color 1.5s, border 1.5s;
-    transition: background-color 1.5s, border 1.5s;
   }
   .search-form-mobile {
     display: none;
@@ -101,7 +126,7 @@
     &.show-desktop-search {
       top: 50px;
     }
-    -webkit-transition: top 0.3s ease-in-out;
-    transition: top 0.3s ease-in-out;
+    -webkit-transition: top 0.3s;
+    transition: top 0.3s;
   }
 }
