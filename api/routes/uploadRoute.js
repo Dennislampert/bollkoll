@@ -38,8 +38,9 @@ module.exports = function(mongoose) {
       .resize(200,200)
       .write(uploadPath, function(err){
 
-        console.log("err!: ", err);
-  
+        if(err){
+          console.log("err!: ", err);
+        }
         // get the mongoose 'File' model
         var FileModel = mongoose.model("File");
 
