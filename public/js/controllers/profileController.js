@@ -2,9 +2,10 @@ app.controller("profileController",
   ["$scope", "$http", "$location", "$routeParams", "modalService", "FileUploader", "Login", "User", "File", "NavTitleChange",
   function($scope, $http, $location, $routeParams, modalService, FileUploader, Login, User, File, NavTitleChange) {
   NavTitleChange($routeParams.username + "s profil");
+  console.log("hej");
 
   $scope.onlineUser = Login.user;
-    
+  
   var stop = true;
   $scope.upload = function() {
     if (stop === false){
