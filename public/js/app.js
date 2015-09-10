@@ -17,7 +17,6 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/home.html",
       controller: "homeController"
     })
-    // skapa region
     .when("/region", {
       templateUrl: "partials/addRegion.html",
       controller: "regionController",
@@ -27,7 +26,6 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/alertbox.html",
       controller: "alertBoxController"
     })
-    // skapa ett lag
     .when("/table", {
       templateUrl: "partials/editTable.html",
       controller: "tableController",
@@ -59,7 +57,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     })
     // Get the ":values" as an object on the $routprovider and use it in the controller..
 
-    // Skapa matcher
+    // when "localhost:3000/skane/4/spelschema"
     .when("/:region/:division/spelschema/settings", {
       templateUrl: "partials/matchSet.html",
       controller: "matchController"
@@ -102,7 +100,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       controller: "dataController"
     })
     .when("/anvandare/:username", {
-      templateUrl: "partials/userprofile.html",
+      templateUrl: "partials/userProfile.html",
       controller: "profileController"
     })
     .when("/anvandare/:username/settings", {
@@ -113,11 +111,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       templateUrl: "partials/searchResult.html",
       controller: "searchResultController"
     })
-    .when("/404", {
-      templateUrl: "partials/404.html"
-    })
     .otherwise({
-      redirectTo: "/404"
+      redirectTo: "/"
     });
   $locationProvider.html5Mode(true);
 }]);

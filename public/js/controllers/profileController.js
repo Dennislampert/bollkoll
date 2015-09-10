@@ -3,7 +3,7 @@ app.controller("profileController",
   function($scope, $http, $location, $routeParams, modalService, FileUploader, Login, User, File, NavTitleChange) {
   NavTitleChange($routeParams.username + "s profil");
   $scope.onlineUser = Login.user;
-    
+  
   var stop = true;
   $scope.upload = function() {
     if (stop === false){
