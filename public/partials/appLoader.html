@@ -1,0 +1,5 @@
+<!-- the div below will not be included until Login has finished getting data once -->
+<div ng-if="loginProcessed">
+  <nav-bar ng-include="'partials/navBar.html'" ng-controller="headerController"></nav-bar>
+  <div class="mainMenu" ng-view></div>
+</div>
