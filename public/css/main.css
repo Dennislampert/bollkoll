@@ -246,6 +246,11 @@ td.matchGuestTeam.ng-binding {
 div h4 {
   margin: 0;
 }
+.homeTeamScore span,
+.guestTeamScore span {
+  font-size: 18px;
+  padding: 0 5px;
+}
 .chat {
   background: url("../../backround_images/Bollkoll - 2 - Log in (registration)/schematic-green-soccer-field by DIGITALWIDERESOURCE (Gaussian blur).jpg") no-repeat;
   background-size: cover;
