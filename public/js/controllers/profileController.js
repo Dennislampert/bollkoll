@@ -2,8 +2,6 @@ app.controller("profileController",
   ["$scope", "$http", "$location", "$routeParams", "modalService", "FileUploader", "Login", "User", "File", "NavTitleChange",
   function($scope, $http, $location, $routeParams, modalService, FileUploader, Login, User, File, NavTitleChange) {
   NavTitleChange($routeParams.username + "s profil");
-  console.log("hej");
-
   $scope.onlineUser = Login.user;
   
   var stop = true;
@@ -18,14 +16,12 @@ app.controller("profileController",
       });
     }
   };
-
   $scope.$watch('files', function (file) {
     if (file){
       if (file.length){
         var fileType = file[0].name.split('.').pop().toLowerCase();
         if (fileType == "jpg" || fileType == "png" || fileType == "jpeg"){
           stop = false;
-
         }else{
           $scope.errorbox = modalService.open({
             templateUrl:'partials/globalalert.html',
@@ -46,7 +42,6 @@ app.controller("profileController",
       }
     }
   });
-
   // function loadImage(){
     
   //   User.get({username: $routeParams.username}, function(userprofile){
@@ -57,8 +52,6 @@ app.controller("profileController",
   //     });
   //   });
   // }
-
-
   function loadImage(){
     User.get({username: $routeParams.username}, function(userprofile){
       if (!userprofile[0]){$location.url("/404");return;}
@@ -76,28 +69,18 @@ app.controller("profileController",
       });
     });
   }
-
-
-
-
   
-
-
   loadImage();
   
   $scope.editProfile = function(){
     $location.url("/anvandare/" + $routeParams.username + "/settings");
   };
 }]);
-
-
 app.controller('uploadAlertController', ["$scope", "$modalInstance", "message", function($scope, $modalInstance, message) {
   $scope.message = message;
-
   $scope.cancel = function() {
     $modalInstance.dismiss();
   };
-
   $scope.redirect = function() {
     $modalInstance.close({msg: "I CLOSED!"});
   };

@@ -1,21 +1,21 @@
 <section class="col-xs-4 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2 whiteBorder">
-
   <div class="panel panel-default">
-
-    <!-- <div class="panel-heading">Kommande matcher</div> -->
+    <div class="panel-heading">Kommande matcher</div>
     <table class="table matches-table">
-   <!--    <tr>
-        <th>Hemma - Borta</th>
-        <th>Tid</th>
-        <th><i class="fa fontaw fa-info-circle "></i></th>
-        <th><i class="fa fontaw fa-pencil-square-o"></i></th>
-      </tr> -->
-      <tbody ng-repeat="game in games" ng-if="dateCompare(game.date,'afterToday')" >
+      <tr>
+        <th><h3>Hemma - Borta</h3></th>
+        <th><h3>Tid</h3></th>
+        <th><h3>Info</h3></th>
+        <th><h3>Matchstatus</h3></th>
+        <!-- <th><i class="fa fontaw fa-info-circle "></i></th> -->
+       <!--  <th><i class="fa fontaw fa-pencil-square-o"></i></th> -->
+      </tr>
+      <tbody id="id_{{game._id}}" ng-repeat="game in games" ng-if="dateCompare(game.date,'afterToday')" >
         <tr class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
-          <!-- <a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"><td></td></a>
-          <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td> -->
+          <td><a href="#" tooltip="Plats: {{game.place}}, Kl:{{game.time}}, Datum:{{game.date}}"  tooltip-trigger="focus" tooltip-placement="left" class="fa fontaw fa-info-circle"></a></td>
+          <td ng-click="toggleID(game._id)"><i ng-class="currentlyShownResult(game._id) ? 'fa fontaw fa-sort-asc' : 'fa fontaw fa-sort-desc'" ></i></td>
         </tr>
         <tr ng-hide="currentlyShownResult(game._id)" >
           <td ng-click="toggleID(game._id)">{{ game.homeResults }}  -  {{ game.guestResults }} </td>
@@ -25,18 +25,18 @@
         </tr>
       </tbody>
     </table>
-
-
     
     <div class="panel-heading">Dagens matcher</div>
     <table class="table matches-table">
-   <!--    <tr>
-        <th>Hemma - Borta</th>
-        <th>Tid</th>
-        <th><i class="fa fontaw fa-info-circle "></i></th>
-        <th><i class="fa fontaw fa-pencil-square-o"></i></th>
-      </tr> -->
-      <tbody ng-repeat="game in games" ng-if="dateCompare(game.date,'today')">
+      <tr>
+        <th><h3>Hemma - Borta</h3></th>
+        <th><h3>Tid</h3></th>
+        <th><h3>Info</h3></th>
+        <th><h3>Matchstatus</h3></th>
+        <!-- <th><i class="fa fontaw fa-info-circle "></i></th> -->
+       <!--  <th><i class="fa fontaw fa-pencil-square-o"></i></th> -->
+      </tr>
+      <tbody id="id_{{game._id}}" ng-repeat="game in games" ng-if="dateCompare(game.date,'today')">
         <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
@@ -51,10 +51,7 @@
         </tr>
       </tbody>
     </table>
-
-
-
-    <!-- <div class="panel-heading">Spelade matcher</div> -->
+    <div class="panel-heading">Spelade matcher</div>
     <table class="table matches-table">
       <tr>
         <th><h3>Hemma - Borta</h3></th>
@@ -64,7 +61,7 @@
         <!-- <th><i class="fa fontaw fa-info-circle "></i></th> -->
        <!--  <th><i class="fa fontaw fa-pencil-square-o"></i></th> -->
       </tr>
-      <tbody ng-repeat="game in games"  id="{{game._id}}" ng-if="dateCompare(game.date,'beforeToday')">
+      <tbody ng-repeat="game in games"  id="id_{{game._id}}" ng-if="dateCompare(game.date,'beforeToday')">
         <tr  class="first-tr"> <!-- Results ng-repete and hide every second row -->
           <td ng-click="toggleID(game._id)">{{ game.homeTeamId.name }} - {{ game.guestTeamId.name }}</td>
           <td ng-click="toggleID(game._id)">{{ game.date }}</td>
@@ -79,10 +76,8 @@
         </tr>
       </tbody>
     </table>
-
     <!-- <div class="panel-body">
       <p>En förklaring till alla symboler</p>
     </div> -->
   </div>
 </section>
-</div>

@@ -1,11 +1,10 @@
-
 <div class="container">
   <div class="chat">
     <div class="row">
 
-      <div id="{{message._id}}" class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in displayedMsgs">
+      <div id="id_{{message._id}}" class="message col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-repeat="message in displayedMsgs">
         <div ng-if="!message.status">
-          <p ng-class="{true:'chatUser', false:'yourChatUser'}[message.userId._id !== yourUser._id]">({{message.date | date:'HH:mm'}}) {{message.userId.username}}:</p>
+          <p ng-class="{true:'chatUser', false:'yourChatUser'}[message.userId._id !== yourUser._id]">({{message.date | date:'HH:mm'}}) <span class="whiteTextUser">{{message.userId.username}}</span>:</p>
           <p class="{{message.userId._id !== yourUser._id ? 'otherChatDate' : 'yourChatDate'}}"></p>
           <p id="{{message.userId._id !== yourUser._id ? 'otherChat' : 'yourChat'}}">{{message.content}}</p>
           <button ng-click="readHashConversation(message)" ng-if="tags.conversation" class="{{message.userId._id !== yourUser._id ? 'otherChatDate' : 'yourChatDate'}}">{{tags.conversation}}</button>
@@ -14,7 +13,6 @@
           <p class="statusUser">({{message.date | date:'HH:mm'}}) {{message.userId.username}}:</p>
           <!-- <p class="statusDate">{{message.date | date:'hh:mm'}}</p> -->
           <p id="statusMessage">{{message.content}}</p>
-
         </div>
       </div>
     </div>
@@ -34,6 +32,5 @@
         </span>
       </form>
     </div>
-
   </div>
 </div>

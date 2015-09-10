@@ -1,6 +1,15 @@
 //app declaration and dependency injection
 var app = angular.module("bollKoll", ["ngRoute", "ngResource", "ngFileUpload", "ui.bootstrap", "ngSanitize", "ngTouch", "superswipe", "cropme"]);
 
+app.getElementOffset = function(element){
+    element = typeof element == "string" ? document.querySelector(element) : element;
+    var de = document.documentElement;
+    var box = element.getBoundingClientRect();
+    var top = box.top + window.pageYOffset - de.clientTop;
+    var left = box.left + window.pageXOffset - de.clientLeft;
+    return { top: top, left: left, el: element };
+}
+
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
   //route config
@@ -23,8 +32,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       loggedIn: true
     })
     .when("/om-oss", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
+      templateUrl: "partials/about.html",
+      controller: ""
     })
     .when("/loggain", {
       templateUrl: "partials/login.html",
@@ -37,10 +46,6 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     .when("/registrering", {
       templateUrl: "partials/register.html",
       controller: "registerController"
-    })
-    .when("/om-bollkoll", {
-      templateUrl: "partials/matches.html",
-      controller: "matchController"
     })
     .when("/:regionPath/:division/chat", {
       templateUrl: "partials/chat.html",

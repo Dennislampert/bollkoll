@@ -1,9 +1,8 @@
 app.controller("matchController",
-  ["$scope", "$routeParams", "$anchorScroll", "Match", "Region", "Team", "Login", "NavTitleChange", "$location",
-  function($scope, $routeParams, $anchorScroll, Match, Region, Team, Login, NavTitleChange, $location) {
+  ["$scope", "$routeParams", "WatchResult", "Match", "Region", "Team", "Login", "NavTitleChange", "$location",
+  function($scope, $routeParams, WatchResult, Match, Region, Team, Login, NavTitleChange, $location) {
   // NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
   // console.log("hallelujah!")
-
 
   var regionAndDivisionId = {};
   var regionName;
@@ -25,6 +24,7 @@ app.controller("matchController",
       division: regionAndDivisionId.division
     });
   };
+
 
 
   var time = new Date();
@@ -53,12 +53,14 @@ app.controller("matchController",
       (condition == "afterToday" && date > today);
   };
 
+
   var currentId;
   $scope.currentlyShownResult = function(idToCheck){
     return idToCheck != currentId;
   };
 
   $scope.toggleID = function(clickedId){
+    watchResult_controller(0,clickedId);
     currentId = currentId == clickedId ? false : clickedId;
   };
 
@@ -67,6 +69,7 @@ app.controller("matchController",
 
     console.log("what is the answer?: ", answer);
     if (!answer.length) {
+      // ABORT IF NO REGION FOUND (FOR NOW)
       alert("NO REGION FOUND :/");
       return;
 
@@ -95,17 +98,49 @@ app.controller("matchController",
             window.games = games;
             for (var i = 0; i < games.length; i++) {
               $scope.finishedGame = games[i].finishedGame;
-              console.log("finishedGame: ", $scope.finishedGame);
             }
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
-            setTimeout(function() {
-              $location.hash($routeParams.matchId);
-              $anchorScroll();
-            },500);
+            
+            scrollToAnchor();
           }
         );
       }
     );
   });
+  
+  function scrollToAnchor() {
+    setTimeout(function() {
+      var element = app.getElementOffset("#id_"+$routeParams.matchId);
+      window.scrollTo(0,element.top-50);
+    },500);
+  }
+
+
+
+  function watchResult_controller(scoreTime, gameId){
+    WatchResult(scoreTime, gameId, function(data){
+      
+      data.forEach(function(newScore){
+        scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
+        for (var i = 0; i < $scope.games.length; i++) {
+          if ($scope.games[i]._id === gameId){
+            console.log("i: ",$scope.games[i]);
+            $scope.games[i].homeResults = data[0].homeResults;
+            $scope.games[i].guestResults = data[0].guestResults;
+          }
+        }
+        console.log("data[0].homeResults: ",data[0].guestResults);
+
+
+      });
+      watchResult_controller(scoreTime, gameId);
+      // data.time is the get request..
+
+    });
+  }
+
+
+
+
 }]);
