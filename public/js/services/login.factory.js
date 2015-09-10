@@ -80,7 +80,6 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
       }
     });
   }
-  console.log('route', $route);
 
   function waitForRoute(callback) {
     if (!$route.current) {
@@ -110,46 +109,6 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
       !loginObj.user._id &&
       next.$$route.loggedIn
     ) {
-      event.preventDefault();
-      modalService.open({
-        templateUrl:'partials/globalalert.html',
-        controller: 'uploadAlertController',
-        resolve: {
-          message: function() {
-            $rootScope.message = {};
-            $rootScope.message.header = "Du måste vara inloggad";
-            $rootScope.message.msg = "Du behöver vara inloggad för att komma vidare. Var god och logga in.";
-            $rootScope.message.msgBtn = "Stäng";
-            return $rootScope.message;
-          }
-        }
-      });
-      //event.stopPropagation();
-      $location.path('/');
-      return;
-    }
-
-  });
-
-  waitForRoute(function() {
-    if (
-      !loginObj.user._id &&
-      $route.current.$$route.loggedIn
-    ) {
-      //event.preventDefault();
-      //event.stopPropagation();
-      $location.path('/');
-      return;
-    }
-  });
-
-  $rootScope.$on('$routeChangeStart', function(event, next) {
-    console.log('route', $route);
-    if (
-      !loginObj.user._id &&
-      next.$$route.loggedIn
-    ) {
-      return;
       event.preventDefault();
       modalService.open({
         templateUrl:'partials/globalalert.html',
