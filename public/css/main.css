@@ -64,6 +64,9 @@
 .top-menu ul li p:hover {
   color: #FFFFFF;
 }
+.top-menu .search-shower {
+  display: none;
+}
 @media (max-width: 767px) {
   .top-menu .search-form-mobile {
     display: block;
@@ -117,6 +120,9 @@
   }
   .search-form-desktop.show-desktop-search {
     top: 50px;
+  }
+  .top-menu .search-shower {
+    display: block;
   }
 }
 .main-menu {
@@ -182,11 +188,11 @@ th {
 }
 .matches h3 {
   margin: 0;
-  font-family: 'sf_collegiateregular';
+  font-family: 'varsity_regular';
 }
 .matches-table tr h3 {
   margin: 0;
-  font-family: 'sf_collegiateregular';
+  font-family: 'varsity_regular';
 }
 .fontAwesomeButton {
   outline: 0;
@@ -277,7 +283,7 @@ tr td {
   text-align: center;
   margin: 0;
   padding-top: 6px;
-  font-family: 'sf_collegiateregular';
+  font-family: 'varsity_regular';
   border-bottom: 2px solid #fff;
 }
 tr:nth-child(even) {
@@ -808,14 +814,17 @@ cropme canvas {
   padding-bottom: 10px;
 }
 .babar {
-  font-family: 'sf_collegiateregular';
+  font-family: 'varsity_regular';
 }
 .tableWhiteMenu th h3 {
-  font-family: 'sf_collegiateregular';
+  font-family: 'varsity_regular';
   border-bottom: 2px solid #fff;
 }
 .panel {
   margin-bottom: 0;
+}
+.tableText td {
+  font-size: 16px;
 }
 /*==================================================
 =            Bootstrap 3 Media Queries             =
@@ -901,13 +910,6 @@ body {
   padding: 0;
 }
 @font-face {
-  font-family: 'sf_collegiateregular';
-  src: url('../fonts/SF_Collegiate-webfont.eot');
-  src: url('../fonts/SF_Collegiate-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/SF_Collegiate-webfont.woff') format('woff'), url('../fonts/SF_Collegiate-webfont.ttf') format('truetype'), url('../fonts/SF_Collegiate-webfont.svg#sf_collegiateregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-/*@font-face {
   font-family: 'varsity_regular';
-  src: url('./../fonts/varsity_regular.ttf');
-}*/
+  src: url('../fonts/varsity_regular.ttf');
+}
