@@ -5,8 +5,7 @@ app.controller("profileController",
   $scope.onlineUser = Login.user;
   $scope.user = Login.user;
   $scope.routeUser = $routeParams.username;
-  console.log("$scope.user: ", $scope.user);
-  console.log("$routeParams.username: ", $routeParams.username);
+  
   if(!$scope.user.username){
       event.preventDefault();
       modalService.open({
@@ -50,7 +49,6 @@ app.controller("profileController",
   $scope.upload = function() {
     if (stop === false){
       User.get({username: $routeParams.username}, function(userprofile){
-        console.log("$scope.files: ",$scope.files);
         FileUploader($scope.files).success(function(data) {
           $scope.user = userprofile[0];
           loadImage();
@@ -101,7 +99,6 @@ app.controller("profileController",
       $scope.user = userprofile[0];
       File.get({owner:userprofile[0]._id}, function(Getfile){
         if (Getfile.length===0){
-          console.log("true");
           $scope.image = {};
           $scope.image.path = "../../files/defaultimg.png";
         }else{

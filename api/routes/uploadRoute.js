@@ -21,11 +21,8 @@ module.exports = function(mongoose) {
     // the recieved file
     var file = req.files.file;
 
-    console.log("req.files.file :", req.files.file);
     // read the recieved file
     fs.readFile(file.path, function (err, data) {
-      console.log("lite data: ", data);
-      console.log("filnamn: ", file.name.split(".").pop());
 
       // decide where to store the file
         
@@ -33,13 +30,11 @@ module.exports = function(mongoose) {
       var publicPath = '/' + path.relative(process.cwd() + '/public', uploadPath);
 
       var filetype = file.name.split(".").pop();
-      console.log("uploadpath :", uploadPath);
       gm(data)
       .resize(200,200)
       .write(uploadPath, function(err){
 
         if(err){
-          console.log("err!: ", err);
         }
         // get the mongoose 'File' model
         var FileModel = mongoose.model("File");

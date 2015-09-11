@@ -6,7 +6,6 @@ app.controller("loginController",
 
   $scope.faultyLogin = $location.path().indexOf("/fel")>=0;
 
-  console.log("faultyLogin: ", $scope.faultyLogin);
 
 
   $scope.isLoggedIn = Login.user;
@@ -14,7 +13,6 @@ app.controller("loginController",
   $scope.login = function(){
 
     Login.login($scope.userInfo, function(data) {
-      console.log("logged in: ", data);
       $location.url(data._id ? "/" : "/loggain/fel");
       $route.reload();
       if (!data._id) {

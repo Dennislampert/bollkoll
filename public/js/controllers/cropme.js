@@ -502,7 +502,6 @@
   		xhr.setRequestHeader "Content-Type", blob.type
   		xhr.onreadystatechange = (e) ->
   			if @readyState is 4 and @status is 200
-  				console.log "done"
   			else console.log "failed"  if @readyState is 4 and @status isnt 200
   		xhr.open "POST", url, true
   		xhr.send blob
