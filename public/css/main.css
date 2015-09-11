@@ -823,6 +823,9 @@ cropme canvas {
 .panel {
   margin-bottom: 0;
 }
+.tableText td {
+  font-size: 16px;
+}
 /*==================================================
 =            Bootstrap 3 Media Queries             =
 ==================================================*/
