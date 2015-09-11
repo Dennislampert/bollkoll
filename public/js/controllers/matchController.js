@@ -102,7 +102,9 @@ app.controller("matchController",
             console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
             
-            scrollToAnchor();
+            if ($routeParams.matchId) {
+              scrollToAnchor();
+            }
           }
         );
       }
