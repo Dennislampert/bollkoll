@@ -15,12 +15,9 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
   var loginObj = {
     user: {},
     login: function(credentials, callback) {
-      console.log("TRYING TO LOGIN", credentials)
       $http.post('api/login', credentials).success(function(data) {
 
         updateObj(data ? data : {}, loginObj.user);
-        // console.log("data(login): ", data);
-        // console.log("loginObj.user: ", loginObj.user);
         // let the entire app know we are logged in
         $rootScope.$broadcast("login");
 
@@ -107,7 +104,6 @@ app.factory("Login",["$http", "$rootScope", "$location", "$route", "modalService
       }
     });
     $rootScope.$on('$routeChangeStart', function(event, next) {
-      console.log('route', $route);
       if (
         !loginObj.user._id &&
         next.$$route.loggedIn

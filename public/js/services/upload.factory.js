@@ -7,7 +7,6 @@ app.factory("FileUploader", ["Upload", function(Upload) {
     // the function returns the Upload request
     // so that we can still do .success() etc. in
     // our controllers
-    console.log("file.croppedImage :", file.croppedImage);
 
     var fileName = file.filename.split("/").pop();
 

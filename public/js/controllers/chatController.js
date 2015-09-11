@@ -10,11 +10,8 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
   };
   var globalRegionId;
   var globalRegionName;
-  console.log("$routeParams.regionPath: ", $routeParams.regionPath);
-  console.log("routeParams: ", $routeParams);
   $scope.yourUser = Login.user;
   window.user = Login.user;
-  console.log("$scope.yourUser: ",$scope.yourUser);
   if($routeParams.regionPath){
     Region.get({regionPath:$routeParams.regionPath},function(regionId){
       async(0, regionId[0]._id + $routeParams.division);
@@ -67,7 +64,6 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
       $http.get(url).success(function(data) {
         if (!data.hasOwnProperty("status")) {
           data.forEach(function(msg) {
-            console.log("timestamp: ",timestamp, " msg.date: ",msg.date);
             timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
             $scope.allMessages.push(msg);
           });
@@ -113,7 +109,6 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
           $scope.searchMessages.push(hashtag);
         });
         $scope.displayedMsgs = $scope.searchMessages;
-        console.log("$scope.displayedMsgs: ", $scope.displayedMsgs);
         if(!$scope.displayedMsgs[0]) {
           event.preventDefault();
           modalService.open({

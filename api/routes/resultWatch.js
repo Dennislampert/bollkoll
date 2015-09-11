@@ -26,13 +26,11 @@ module.exports = function(mongoose) {
         .exec(function(err,data){
           if(!data || data.length === 0){
 
-            //console.log("no data: ", data);
             // No new mesages for this client
             // but check if connection is older than 30 secs
             // if so close it anyway
             if(now-result.timeing>30000){
 
-              //console.log("past 30 secs");
               result.res.json([]);
               result.toBeDeleted = true;
             }
@@ -56,8 +54,6 @@ module.exports = function(mongoose) {
     // res.json(true);
     // return;
 
-    //console.log("req.sessionStore", req.sessionStore);
-    console.log("req.session", req.session.user ? true : false);
     resultQueue.push({
       req:req,
       res:res,

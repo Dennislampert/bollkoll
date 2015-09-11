@@ -103,7 +103,6 @@ app.controller("dataController", ["$scope", "$http", "Match", "Region", "Team", 
                   division: thisHomeTeam[0].division,
                   place: event.facts.arena.name
                 },function(prop){
-                  console.log("progress: ",prop);
                   setTimeout(parseOneEvent,100);
                 });
               }

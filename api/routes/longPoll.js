@@ -14,7 +14,6 @@ module.exports = function(mongoose) {
           if (message.processing) { return; }
           message.processing = true;
           var now = new Date().getTime();
-          //console.log("message: ", message.req.params);
           var q;
           if (message.matchId.length < 2) {
 
@@ -30,18 +29,15 @@ module.exports = function(mongoose) {
               date:{$gt: new Date(message.latestKnownMessageId/1)}
             };
           }
-          // console.log("q: ",q);
           mongoose.model("Message").find(q)
             .populate("userId")
             .exec(function(err,data){
 
               if(!data || data.length === 0){
-                //console.log("no data: ", data);
                 // No new mesages for this client
                 // but check if connection is older than 30 secs
                 // if so close it anyway
                 if(now-message.time>30000){
-                  //console.log("past 30 secs");
                   message.res.json([]);
                   message.toBeDeleted = true;
                 }
@@ -56,12 +52,10 @@ module.exports = function(mongoose) {
         });
     }
 
-    //console.log("BANANA")
     setInterval(queueHandler,100);
 
     return function(req,res){
 
-        console.log("loggedIn", req.session.user ? true : false);
         messageQueue.push({
           req:req,
           res:res,

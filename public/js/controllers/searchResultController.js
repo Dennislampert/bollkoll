@@ -3,7 +3,6 @@ app.controller("searchResultController",
   function($http, $scope, $routeParams, $location, $anchorScroll, User, Message, Match, NavTitleChange) {
     NavTitleChange("Sök");
 
-  	console.log("params", $routeParams.searchParams);
     var searchRegExp = new RegExp(".*" + $routeParams.searchParams + ".*","i");
     
     // This should work just fine bug in Mongresto (Thomas will fix)
@@ -25,7 +24,6 @@ app.controller("searchResultController",
    //      searchParams[i] = new RegExp($routeParams[i], "i");
    //    }
   	// 	//searchParams[i] = $routeParams[i];
-   //    console.log("lol: ", searchParams[i]);
   	// }
 
   	$scope.usersFound = [];
@@ -36,9 +34,7 @@ app.controller("searchResultController",
     $scope.showMatches = false;
   	$scope.searchResult = {};
   	User.get(searchParams, function(result){
-        console.log("lol");
         $scope.usersFound = result;
-        console.log("$scope.usersFound: ", $scope.usersFound);
     });
 
     var maSearch = JSON.parse(JSON.stringify(searchParams)); // copy searchParams object
@@ -46,7 +42,6 @@ app.controller("searchResultController",
 
     Match.get(maSearch,function(result){
         $scope.matchesFound = result;
-        console.log("$scope.matchesFound: ", $scope.matchesFound);
     });
 
     var meSearch = JSON.parse(JSON.stringify(searchParams)); // copy searchParams object
@@ -54,7 +49,6 @@ app.controller("searchResultController",
 
     Message.get(meSearch,function(result){
         $scope.messagesFound = result;
-        console.log("$scope.messagesFound: ", $scope.messagesFound);
     });
 
     $scope.scrollToAnchor = function(anchor) {

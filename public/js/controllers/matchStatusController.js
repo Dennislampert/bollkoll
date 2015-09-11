@@ -2,7 +2,6 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
 
   var divisionId;
   Region.get({regionPath: $routeParams.region},function(regionId){
-    console.log("regionId: ",regionId);
     divisionId = regionId[0]._id +""+ $routeParams.division;
   });
 
@@ -39,7 +38,6 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
 
 
     Message.create($scope.chatInfo, function(resultsInChat) {
-      console.log("sended a chat Message about this result..");
     });
   };
 
@@ -52,7 +50,6 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
   $scope.finishGame = function() {
     $scope.match.$update(duplicateResults);
     if ($scope.match.homeResults > $scope.match.guestResults) {
-        console.log("home team after finish: ", $scope.match);
         $scope.match.homeTeamId.gamesPlayed ++;
         $scope.match.homeTeamId.gamesWon ++;
         $scope.match.homeTeamId.goalsFor += $scope.match.homeResults;
@@ -67,7 +64,6 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
         Team.update($scope.match.guestTeamId._id, $scope.match.guestTeamId);
     }
     else if ($scope.match.homeResults === $scope.match.guestResults) {
-        console.log("drawn after finish: ", $scope.match);
         $scope.match.homeTeamId.gamesPlayed ++;
         $scope.match.homeTeamId.gamesDrawn ++;
         $scope.match.homeTeamId.goalsFor += $scope.match.homeResults;
@@ -82,7 +78,6 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
         Team.update($scope.match.guestTeamId._id, $scope.match.guestTeamId);
     }
     else if ($scope.match.homeResults < $scope.match.guestResults) {
-        console.log("guest team after finish: ", $scope.match);
         $scope.match.homeTeamId.gamesPlayed ++;
         $scope.match.homeTeamId.gamesLost ++;
         $scope.match.homeTeamId.goalsFor += $scope.match.homeResults;
@@ -118,7 +113,6 @@ app.controller("matchStatusController", ["$scope", "$routeParams", "Match", "Reg
       data.forEach(function(newScore){
         scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
         
-        console.log("data[0].homeResults: ",data[0].homeResults);
         $scope.oldResults.homeResults = data[0].homeResults;
         $scope.oldResults.guestResults = data[0].guestResults;
 

@@ -106,7 +106,6 @@ var mongresto = module.exports = (function _mongresto(){ return {
     
     // Check connection
     this.mongoose.connection.once('open', function() {
-      // console.log("Mongresto: Connected to database " + dbName + "!");
     });
   },
 
@@ -216,7 +215,6 @@ var mongresto = module.exports = (function _mongresto(){ return {
       // convert strings containing reg exps to real reg exps
       for(var i in s3){
         t = s3[i];
-        // console.log(" *_* mongresto answere: ", t);
         if(t.indexOf('~regexpstart~')===0){
           t = t.replace(/~regexpstart~/g,'').replace(/~regexpend~/,'');
           t = t.split("/");

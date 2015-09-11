@@ -1,6 +1,5 @@
 app.factory("modalService", ["$location", "$log", "$modal", function($location, $log, $modal) {
   function open (settings) {
-    console.log("settingss :", settings);
     // Defaults values for modal
     var defaults = {
       animation: true,

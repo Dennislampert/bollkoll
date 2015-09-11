@@ -2,7 +2,6 @@ app.controller("tableController",
   ["$scope", "$routeParams", "Team", "Region", "NavTitleChange",
   function($scope, $routeParams, Team, Region, NavTitleChange) {
   NavTitleChange("Tabell för " + $routeParams.region + " division " + $routeParams.division);
-  console.log("im working");
 
   // $scope.team = Team.create({
   //   name: "Hällbo IK",

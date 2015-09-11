@@ -9,20 +9,16 @@ app.controller("registerController",
   $scope.register = function() {
     $scope.emailUniqe = true;
     $scope.usernameUniqe = true;
-    console.log("gooo");
 
    
 
     // check if userName is registered
     User.get({username:$scope.userInfo.username},function(username){
 
-      console.log("username:", username);
       // check if email is registered
       User.get({email:$scope.userInfo.email},function(email){
-        console.log("email:", email);
         if(username.length > 0){
           $scope.usernameUniqe = false;
-          console.log("Username exists");
           //$scope.userNameAlreadyRegistered = true;
           modalService.open({
             templateUrl: 'partials/globalalert.html',
@@ -87,7 +83,6 @@ app.controller("registerController",
                 }
               },
             });
-            console.log("rr", data);
             $location.url("/loggain");
           });
         }
