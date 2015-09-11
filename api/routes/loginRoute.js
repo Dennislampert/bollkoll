@@ -27,7 +27,6 @@ module.exports = function(mongoose) {
 
         // store all other user info in a session property
         data && (req.session.user = data);
-        console.log("SAVED SESSION DATA session.user",data);
         res.json(data);
       });
     } else if (req.method == "DELETE") {

@@ -36,16 +36,13 @@ app.get('/api/getdata', function (req, res) {
     var body = '';
 
     resp.on('data', function(chunk) {
-        body += chunk;
+      body += chunk;
     });
     resp.on('end', function() {
-        // var Response = JSON.parse(body);
-        // console.log("Got response: ", body);
-    res.json(JSON.parse(body));
+      // var Response = JSON.parse(body);
+      res.json(JSON.parse(body));
     });
-  }).on('error', function(e) {
-      console.log("Got error: ", e);
-  });
+  }).on('error', function(e) {});
 });
 
 var options = {
@@ -85,7 +82,6 @@ app.get('*', function (req, res) {
 
 // Start up
 app.listen(3000, function(){
-  console.log("Node is running!");
 });
 
 

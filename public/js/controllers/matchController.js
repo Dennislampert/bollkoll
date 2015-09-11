@@ -2,7 +2,6 @@ app.controller("matchController",
   ["$scope", "$routeParams", "WatchResult", "Match", "Region", "Team", "Login", "NavTitleChange", "$location",
   function($scope, $routeParams, WatchResult, Match, Region, Team, Login, NavTitleChange, $location) {
   // NavTitleChange("Spelschema för " + $routeParams.region + " division " + $routeParams.division);
-  // console.log("hallelujah!")
 
   var regionAndDivisionId = {};
   var regionName;
@@ -67,7 +66,6 @@ app.controller("matchController",
   // collection.Region hämta regionPath som är lika med routeParams.region
   Region.get({regionPath: $routeParams.region}, function(answer){
 
-    console.log("what is the answer?: ", answer);
     if (!answer.length) {
       // ABORT IF NO REGION FOUND (FOR NOW)
       alert("NO REGION FOUND :/");
@@ -85,13 +83,11 @@ app.controller("matchController",
       regionAndDivisionId, function(teams){
         $scope.homeTeams = teams;
         $scope.guestTeams = teams;
-        console.log("$scope.homeTeams: ", $scope.homeTeams);
         // Populate by several properties by separating them with space in string
         regionAndDivisionId._populate = "homeTeamId guestTeamId";
         
         Match.get(
           regionAndDivisionId, function(games){
-            console.log("games: ", games);
             games.regionPath = $routeParams.region;
             $scope.date = date.split("-").join("");
             $scope.games = games;
@@ -99,7 +95,6 @@ app.controller("matchController",
             for (var i = 0; i < games.length; i++) {
               $scope.finishedGame = games[i].finishedGame;
             }
-            console.log("date: ",$scope.date / 1 , " game.date: ",games[0].date.replace('-','').replace('-','') / 1 );
             $scope.playedGames = "";
             
             scrollToAnchor();
@@ -125,12 +120,10 @@ app.controller("matchController",
         scoreTime = new Date(newScore.lastScoreTime).getTime() > new Date(scoreTime).getTime() ? new Date(newScore.lastScoreTime).getTime() : new Date(scoreTime).getTime();
         for (var i = 0; i < $scope.games.length; i++) {
           if ($scope.games[i]._id === gameId){
-            console.log("i: ",$scope.games[i]);
             $scope.games[i].homeResults = data[0].homeResults;
             $scope.games[i].guestResults = data[0].guestResults;
           }
         }
-        console.log("data[0].homeResults: ",data[0].guestResults);
 
 
       });

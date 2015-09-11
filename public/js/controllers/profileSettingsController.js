@@ -6,8 +6,6 @@ app.controller("profileSettingsController",
   // (logged in user data)
   $scope.user = Login.user;
   $scope.routeUser = $routeParams.username;
-  console.log("$scope.user: ", $scope.user);
-  console.log("$routeParams.username: ", $routeParams.username);
   if(!$scope.user.username){
       event.preventDefault();
       modalService.open({
@@ -62,7 +60,6 @@ app.controller("profileSettingsController",
       if(!$scope.$$phase){
         $scope.$apply();
       }
-      //console.log("updating crop me size",w);
     }
   updateCropMeSize();
   window.addEventListener("resize",updateCropMeSize);
@@ -71,14 +68,11 @@ app.controller("profileSettingsController",
 
   $scope.$on("cropme:done", function(ev, result, canvasEl) {
     User.get({username: $scope.user._id}, function(userprofile){
-      console.log("resultII: ", result);
       FileUploader(result).success(function(data) {
-        console.log("saved files, public path: ", data);
         $scope.uploadedFilePath = data;
         $location.url("/anvandare/" + $routeParams.username);
       });
     });
-      console.log("result: ", result);
   });
 
 

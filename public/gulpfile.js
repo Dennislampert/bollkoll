@@ -25,7 +25,6 @@ gulp.task('build-css-from-less', [], function() {
 });
 
 function reportChange() {
-  console.log("LESS files changed, new CSS generated...");
 }
 
 // a gulp task to watch files for changes
