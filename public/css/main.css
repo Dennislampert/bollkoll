@@ -38,8 +38,8 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00af00', endColorstr='#005000', GradientType=1);
   /* IE6-9 */
   opacity: 0;
-  -webkit-transition: opacity 2s;
-  transition: opacity 2s;
+  -webkit-transition: opacity 3s;
+  transition: opacity 3s;
 }
 .top-menu .logged-in-light.logged-in {
   opacity: 1;
@@ -821,6 +821,9 @@ cropme canvas {
   }
 }
 /* Custom, iPhone Retina */
+* {
+  -webkit-text-size-adjust: none;
+}
 * {
   -webkit-text-size-adjust: none;
 }

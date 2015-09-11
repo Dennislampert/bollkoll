@@ -68,7 +68,7 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
             $scope.allMessages.push(msg);
           });
 
-          if (data.length >0 && !$routeParams.messageId){
+          if (data.length >0){
             scroll.gotoBottom();
           }
           if (!scrolledToAnchor && $routeParams.messageId) {
@@ -136,6 +136,7 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
   function scrollToAnchor() {
     setTimeout(function() {
       var chat = app.getElementOffset(".chat");
+      chat.el.scrollTop = 0;
       var element = app.getElementOffset("#id_" + $routeParams.messageId);
       chat.el.scrollTop = element.top-chat.top;
     }, 500);
