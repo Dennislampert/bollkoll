@@ -221,21 +221,10 @@ th {
 /* Large Devices, Wide Screens */
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
-@media only screen and (max-width: 1200px) {
-  .matches-table tr h3 {
-    color: purple;
-  }
-}
 /* Medium Devices, Desktops */
-@media only screen and (max-width: 992px) {
-  .matches-table tr h3 {
-    color: green;
-  }
-}
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
   .matches-table tr h3 {
-    color: blue;
     font-size: 35px;
   }
 }
@@ -243,17 +232,11 @@ th {
 @media only screen and (max-width: 480px) {
   .matches-table tr h3 {
     font-family: serif;
-    color: yellow;
     font-size: 20px;
     font-weight: bold;
   }
 }
 /* Custom, iPhone Retina */
-@media only screen and (max-width: 320px) {
-  .matches-table tr h3 {
-    color: red;
-  }
-}
 .alertBox {
   position: fixed;
   margin-top: 22vh;
@@ -336,6 +319,7 @@ div h4 {
   margin-bottom: 50px;
   overflow-y: scroll;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 .chat #otherChat {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e0e0e0+0,f3f3f3+30,f3f3f3+70,e0e0e0+100 */
@@ -472,28 +456,10 @@ div h4 {
 /* Medium Devices, Desktops */
 /* Large Devices, Wide Screens */
 /*==========  Non-Mobile First Method  ==========*/
-@media only screen and (max-width: 1920px) {
-  .chatBubbles {
-    color: pink;
-  }
-}
 /* Large Devices, Wide Screens */
-@media only screen and (max-width: 1200px) {
-  .chatBubbles {
-    color: purple;
-  }
-}
 /* Medium Devices, Desktops */
-@media only screen and (max-width: 992px) {
-  .chatBubbles {
-    color: green;
-  }
-}
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
-  .chatBubbles {
-    color: blue;
-  }
   .chat {
     height: 82vh;
   }
@@ -502,18 +468,12 @@ div h4 {
 @media only screen and (max-width: 480px) {
   .chatBubbles {
     font-family: serif;
-    color: orange;
   }
   .container {
     padding: 0;
   }
 }
 /* Custom, iPhone Retina */
-@media only screen and (max-width: 320px) {
-  .chatBubbles {
-    color: red;
-  }
-}
 .alert-warning {
   border-color: #ff4900 !important;
   background-color: #FDE357 !important;
@@ -638,17 +598,18 @@ cropme input[type=file] {
   right: 0;
 }
 /* line 47, styles/cropme.scss */
-cropme .cropme-button {
+cropme .cropme-button span {
+  display: block;
   border-radius: 5%;
   font-weight: bold;
   cursor: pointer;
   text-align: center;
+  padding: 15px 0;
   background: #337ab7;
   color: #fff;
   height: 50px;
   width: 250px;
   margin-left: -125px;
-  line-height: 50px;
   -moz-box-shadow: #ccc 2px 2px 1px 0, #328d99 0 0 2px 2px inset;
   -webkit-box-shadow: #ccc 2px 2px 1px 0, #328d99 0 0 2px 2px inset;
   box-shadow: #ccc 2px 2px 1px 0, #328d99 0 0 2px 2px inset;
@@ -837,21 +798,10 @@ cropme canvas {
 /* Large Devices, Wide Screens */
 /*==========  Non-Mobile First Method  ==========*/
 /* Large Devices, Wide Screens */
-@media only screen and (max-width: 1200px) {
-  tr.tableWhiteMenu th {
-    color: purple;
-  }
-}
 /* Medium Devices, Desktops */
-@media only screen and (max-width: 992px) {
-  tr.tableWhiteMenu th {
-    color: green;
-  }
-}
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
   tr.tableWhiteMenu th {
-    color: blue;
     font-size: 35px;
   }
   .tableCss {
@@ -867,15 +817,12 @@ cropme canvas {
     font-size: 18px;
   }
   tr.tableWhiteMenu th {
-    color: yellow;
     font-weight: bold;
   }
 }
 /* Custom, iPhone Retina */
-@media only screen and (max-width: 320px) {
-  tr.tableWhiteMenu th {
-    color: red;
-  }
+* {
+  -webkit-text-size-adjust: none;
 }
 .nav,
 .pagination,
