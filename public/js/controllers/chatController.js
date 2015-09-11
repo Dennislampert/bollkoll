@@ -4,7 +4,8 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
   var scroll = {
     gotoBottom: function() {
       $timeout(function() {
-        document.querySelector(".chat").scrollTop = 1000000000000000000;
+        document.querySelector(".chat").scrollTop = 1000000;
+        window.scrollTo(0,1000000);
       });
     }
   };
