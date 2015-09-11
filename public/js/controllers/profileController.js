@@ -5,46 +5,7 @@ app.controller("profileController",
   $scope.onlineUser = Login.user;
   $scope.user = Login.user;
   $scope.routeUser = $routeParams.username;
-  
-  if(!$scope.user.username){
-      event.preventDefault();
-      modalService.open({
-        templateUrl:'partials/globalalert.html',
-        controller: 'uploadAlertController',
-        resolve: {
-          message: function() {
-            $scope.message = {};
-            $scope.message.header = "Du måste vara inloggad";
-            $scope.message.msg = "Du behöver vara inloggad för att komma vidare. Var god och logga in.";
-            $scope.message.msgBtn = "Stäng";
-            return $scope.message;
-          }
-        }
-      });
-      //event.stopPropagation();
-      $location.path('/');
-      return;
-  } else {
-      if($scope.user.username !== $scope.routeUser){
-        event.preventDefault();
-        modalService.open({
-          templateUrl:'partials/globalalert.html',
-          controller: 'uploadAlertController',
-          resolve: {
-            message: function() {
-              $scope.message = {};
-              $scope.message.header = "Fel användare";
-              $scope.message.msg = "Du behöver vara inloggad som rätt användare för att ändra användarens profil. Var god och logga in som rätt användare.";
-              $scope.message.msgBtn = "Stäng";
-              return $scope.message;
-            }
-          }
-        });
-        //event.stopPropagation();
-        $location.path('/');
-        return;
-      }
-    }
+
   var stop = true;
   $scope.upload = function() {
     if (stop === false){
