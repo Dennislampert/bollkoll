@@ -97,7 +97,9 @@ app.controller("matchController",
             }
             $scope.playedGames = "";
             
-            scrollToAnchor();
+            if ($routeParams.matchId) {
+              scrollToAnchor();
+            }
           }
         );
       }
