@@ -64,6 +64,9 @@
 .top-menu ul li p:hover {
   color: #FFFFFF;
 }
+.top-menu .search-shower {
+  display: none;
+}
 @media (max-width: 767px) {
   .top-menu .search-form-mobile {
     display: block;
@@ -117,6 +120,9 @@
   }
   .search-form-desktop.show-desktop-search {
     top: 50px;
+  }
+  .top-menu .search-shower {
+    display: block;
   }
 }
 .main-menu {
