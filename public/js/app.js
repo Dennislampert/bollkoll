@@ -8,7 +8,7 @@ app.getElementOffset = function(element){
     var top = box.top + window.pageYOffset - de.clientTop;
     var left = box.left + window.pageXOffset - de.clientLeft;
     return { top: top, left: left, el: element };
-}
+};
 
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {

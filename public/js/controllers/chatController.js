@@ -71,8 +71,13 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
             timestamp = new Date(msg.date).getTime() > timestamp ? new Date(msg.date).getTime() : timestamp;
             $scope.allMessages.push(msg);
           });
-          if (data.length >0){
+
+          if (data.length >0 && !$routeParams.messageId){
             scroll.gotoBottom();
+          }
+          if (!scrolledToAnchor && $routeParams.messageId) {
+            scrollToAnchor();
+            scrolledToAnchor = true;
           }
           longpoller(timestamp);
         }
@@ -131,5 +136,13 @@ app.controller("chatController", ["$http", "$scope", "$routeParams", "$location"
     };
   
     longpoller(0);
+  }
+
+  function scrollToAnchor() {
+    setTimeout(function() {
+      var chat = app.getElementOffset(".chat");
+      var element = app.getElementOffset("#id_" + $routeParams.messageId);
+      chat.el.scrollTop = element.top-chat.top;
+    }, 500);
   }
 }]);
