@@ -38,8 +38,8 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00af00', endColorstr='#005000', GradientType=1);
   /* IE6-9 */
   opacity: 0;
-  -webkit-transition: opacity 2s;
-  transition: opacity 2s;
+  -webkit-transition: opacity 3s;
+  transition: opacity 3s;
 }
 .top-menu .logged-in-light.logged-in {
   opacity: 1;
@@ -638,17 +638,18 @@ cropme input[type=file] {
   right: 0;
 }
 /* line 47, styles/cropme.scss */
-cropme .cropme-button {
+cropme .cropme-button span {
+  display: block;
   border-radius: 5%;
   font-weight: bold;
   cursor: pointer;
   text-align: center;
+  padding: 15px 0;
   background: #337ab7;
   color: #fff;
   height: 50px;
   width: 250px;
   margin-left: -125px;
-  line-height: 50px;
   -moz-box-shadow: #ccc 2px 2px 1px 0, #328d99 0 0 2px 2px inset;
   -webkit-box-shadow: #ccc 2px 2px 1px 0, #328d99 0 0 2px 2px inset;
   box-shadow: #ccc 2px 2px 1px 0, #328d99 0 0 2px 2px inset;
@@ -876,6 +877,9 @@ cropme canvas {
   tr.tableWhiteMenu th {
     color: red;
   }
+}
+* {
+  -webkit-text-size-adjust: none;
 }
 .nav,
 .pagination,
