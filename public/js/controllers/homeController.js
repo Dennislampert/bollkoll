@@ -10,7 +10,6 @@ app.controller("homeController", ["$scope","Book", function($scope,Book){
   });
 
   $scope.test = Book.get({publishingYear:{$gte:1980}});
-  // $scope.test = Book.getById("55815ab22a32d551d4c54bd7");
-  // $scope.test = Book.get({_id:"55815ab22a32d551d4c54bd7"});
+
 
 }]);
